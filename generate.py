@@ -197,6 +197,14 @@ def clean_briefing(text: str) -> str:
     #    Claude often emits these unintentionally, causing cramped output.
     text = re.sub(r'[ \t]+$', '', text, flags=re.MULTILINE)
 
+    # 0b. Ensure Top-3 briefing field labels start new paragraphs.
+    #     Without a blank line before them, markdown renders everything in one <p>.
+    text = re.sub(
+        r'(?m)(?<!\n)\n(\*\*(?:来源|摘要|产品技术视角)[：:])',
+        r'\n\n\1',
+        text,
+    )
+
     # 1. Drop everything before the first heading
     match = re.search(r'^#{1,3}\s', text, re.MULTILINE)
     if match:
@@ -226,10 +234,23 @@ def clean_briefing(text: str) -> str:
 
 
 def md_to_html(text: str) -> str:
-    return md_lib.markdown(
+    html = md_lib.markdown(
         text,
         extensions=["extra", "sane_lists"],
     )
+    # Fallback: if any <br> + bold field label combos remain, split into proper <p>.
+    # Handles cases where clean_briefing didn't add blank lines (e.g., older content).
+    html = re.sub(
+        r'<br\s*/?>\s*\n(<strong>(?:来源|摘要)[：：])',
+        r'</p>\n<p>\1',
+        html,
+    )
+    html = re.sub(
+        r'\n(<strong>产品技术视角[：：])',
+        r'</p>\n<p>\1',
+        html,
+    )
+    return html
 
 
 def build_archive_nav(entries: list[dict]) -> str:
