@@ -139,7 +139,7 @@ def fetch_briefing() -> str:
 
     for turn in range(15):  # safety cap
         response = client.messages.create(
-            model="claude-opus-4-5",
+            model="claude-haiku-4-5",
             max_tokens=8000,
             system=system,
             tools=[{"type": "web_search_20250305", "name": "web_search"}],
