@@ -205,6 +205,15 @@ def clean_briefing(text: str) -> str:
         text,
     )
 
+    # 0c. Ensure a blank line between **摘要：** and the first bullet item.
+    #     sane_lists requires a blank line before any list that follows text;
+    #     without it, "- item" is treated as plain text inside the label's <p>.
+    text = re.sub(
+        r'(\*\*摘要[：:]\s*\*\*)\n(-\s)',
+        r'\1\n\n\2',
+        text,
+    )
+
     # 1. Drop everything before the first heading
     match = re.search(r'^#{1,3}\s', text, re.MULTILINE)
     if match:
@@ -250,6 +259,10 @@ def md_to_html(text: str) -> str:
         r'</p>\n<p>\1',
         html,
     )
+    # Remove stray newlines before Chinese punctuation.
+    # Claude sometimes splits a sentence mid-line; in HTML a bare \n followed
+    # by ，。；etc. renders as " ，" (space + punctuation) which looks wrong.
+    html = re.sub(r'[ \t]*\n[ \t]*([，。；：！？、—])', r'\1', html)
     return html
 
 
