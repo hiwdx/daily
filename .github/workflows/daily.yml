@@ -32,15 +32,7 @@ jobs:
           echo "今日日期（CST）: ${TODAY}"
 
           # 定时任务：用 archive.json 判断今日是否已生成
-          if python3 -c "
-import json, sys
-try:
-    data = json.load(open('docs/archive.json'))
-    dates = [e.get('date','') for e in data]
-    sys.exit(0 if '$TODAY' in dates else 1)
-except:
-    sys.exit(1)
-          "; then
+          if python3 -c "import json,sys; d=json.load(open('docs/archive.json')); sys.exit(0 if '${TODAY}' in [e.get('date','') for e in d] else 1)" 2>/dev/null; then
             echo "skip=true" >> $GITHUB_OUTPUT
             echo "✅ 今日简报已存在（${TODAY}），跳过生成"
           else
