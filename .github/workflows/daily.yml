@@ -23,11 +23,14 @@ jobs:
         run: |
           TODAY=$(TZ=Asia/Shanghai date +'%Y-%m-%d')
           echo "今日日期（CST）: ${TODAY}"
-          ARCHIVE_IN_GIT=$(git ls-files "docs/archive/${TODAY}.html")
-          INDEX_IN_GIT=$(git ls-files "docs/index.html")
-          echo "archive 文件（git）: $([ -n "$ARCHIVE_IN_GIT" ] && echo '存在' || echo '不存在')"
-          echo "index.html（git）:   $([ -n "$INDEX_IN_GIT"   ] && echo '存在' || echo '不存在')"
-          if [ -n "$ARCHIVE_IN_GIT" ] && [ -n "$INDEX_IN_GIT" ]; then
+          echo "当前 HEAD commit: $(git log --oneline -1)"
+          echo "docs/ 文件列表:"
+          git ls-tree HEAD docs/ || echo "(empty)"
+          ARCHIVE_EXISTS=$(git rev-parse "HEAD:docs/archive/${TODAY}.html" 2>/dev/null && echo yes || echo no)
+          INDEX_EXISTS=$(git rev-parse "HEAD:docs/index.html" 2>/dev/null && echo yes || echo no)
+          echo "archive 文件（HEAD tree）: ${ARCHIVE_EXISTS}"
+          echo "index.html（HEAD tree）:   ${INDEX_EXISTS}"
+          if [ "$ARCHIVE_EXISTS" = "yes" ] && [ "$INDEX_EXISTS" = "yes" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
             echo "✅ 今日简报已存在（${TODAY}），跳过生成"
           else
