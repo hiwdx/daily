@@ -270,18 +270,16 @@ def build_archive_nav(entries: list[dict]) -> str:
     """
     Build archive list HTML. Uses root-relative paths (/archive/DATE.html)
     so it works correctly from both docs/index.html and docs/archive/*.html.
+    "今日" label and active state are applied dynamically by JS so they
+    remain correct no matter when the static page is viewed.
     """
     if not entries:
         return '<p class="no-archive">暂无历史记录</p>'
     items = []
     for entry in sorted(entries, key=lambda e: e["date"], reverse=True)[:90]:
         date = entry["date"]
-        is_today = date == TODAY_ISO
-        href = "/" if is_today else f"/archive/{date}.html"
-        css = ' class="active"' if is_today else ""
-        label = f"{date} <span class='today-tag'>今日</span>" if is_today else date
-        items.append(f'<li{css}><a href="{href}">{label}</a></li>')
-    return '<ul class="archive-list">' + "\n".join(items) + "</ul>"
+        items.append(f'<li data-date="{date}"><a href="/archive/{date}.html">{date}</a></li>')
+    return '<ul class="archive-list" id="archive-list">' + "\n".join(items) + "</ul>"
 
 
 # ── HTML template (uses [[PLACEHOLDER]] to avoid .format() escaping CSS) ──────
@@ -564,6 +562,24 @@ HTML_TEMPLATE = """\
   <div id="footer">
     © 2026 hiwd · All rights reserved.
   </div>
+  <script>
+    // Dynamically mark today's entry in the archive list.
+    // Using browser time shifted to CST (UTC+8) so it matches the generation timezone.
+    (function () {
+      const cstNow = new Date(Date.now() + 8 * 3600 * 1000);
+      const today = cstNow.toISOString().slice(0, 10);
+      const list = document.getElementById('archive-list');
+      if (!list) return;
+      const li = list.querySelector('[data-date="' + today + '"]');
+      if (!li) return;
+      li.classList.add('active');
+      const a = li.querySelector('a');
+      if (a) {
+        a.href = '/';
+        a.innerHTML = today + ' <span class="today-tag">今日</span>';
+      }
+    })();
+  </script>
 
 </body>
 </html>
