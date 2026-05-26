@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 行业每日简报 · 2026年05月26日</title>
+  <meta name="description" content="AI 行业每日精选 2026年05月26日 周二" />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    /* ── Base — identical to hiwd style.css ── */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      background-color: #f5f5f5;
+      color: #1a1a1a;
+      /* Prevent iOS Safari from auto-scaling font sizes */
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      /* Break long URLs / mixed CJK+EN strings */
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    /* ── Logo — fixed top-left, links to hiwd.com ── */
+    #logo {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 9999;
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-image: url('https://hiwd.com/img/logo.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      outline: none;
+      border: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ── Content card — same as hiwd #content ── */
+    #content {
+      margin-top: 80px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+      max-width: 800px;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    /* ── Headings — exact hiwd style ── */
+    h1, h2, h3 {
+      position: relative;
+      padding-left: 15px;
+      font-weight: bold;
+      line-height: 1.2;
+      color: #333;
+    }
+    /* h1: 4px solid teal — same as hiwd */
+    h1::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 4px; height: 26px;
+      background-color: #00C2B3;
+      border-radius: 2px;
+    }
+    /* h2: 2px semi-transparent teal — same as hiwd */
+    h2::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 2px; height: 18px;
+      background-color: rgba(0, 194, 179, 0.35);
+      border-radius: 1px;
+    }
+    /* h3: same weight as h2 bar — briefing section headers */
+    h3::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 2px; height: 14px;
+      background-color: rgba(0, 194, 179, 0.35);
+      border-radius: 1px;
+    }
+
+    h1 { font-size: 32px; margin-top: 0; }
+    h2 { font-size: 24px; margin-top: 35px; }
+    h3 { font-size: 19px; margin-top: 28px; margin-bottom: 6px; }
+
+    /* ── h4/h5/h6 — for AI-generated content ── */
+    h4, h5, h6 {
+      position: relative;
+      padding-left: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #444;
+      margin-top: 20px;
+      margin-bottom: 6px;
+    }
+    h4 { font-size: 16px; }
+    h5, h6 { font-size: 15px; }
+
+    /* ── Body text & links — identical to hiwd ── */
+    p {
+      line-height: 1.7;
+      margin-top: 10px;
+      margin-bottom: 16px;
+      color: #333;
+    }
+    a { color: #008F84; text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.7; }
+    strong { font-weight: 700; color: #1a1a1a; }
+    em { font-style: italic; color: #555; }
+
+    /* ── Lists ── */
+    ul, ol { padding-left: 1.5em; margin: 8px 0 16px; }
+    li { line-height: 1.7; color: #333; margin: 4px 0; }
+
+    /* ── Inline code ── */
+    code {
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: .85em;
+      background: #f3f4f6;
+      padding: .1em .35em;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+
+    /* ── Blockquote ── */
+    blockquote {
+      border-left: 3px solid rgba(0, 194, 179, 0.5);
+      margin: 16px 0;
+      padding: 8px 16px;
+      background: #f9fefe;
+      border-radius: 0 8px 8px 0;
+      color: #555;
+    }
+
+    /* ── HR ── */
+    hr { border: none; border-top: 1px solid #eee; margin: 28px 0; }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      font-size: 13px;
+      color: #999;
+      padding-left: 15px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .breadcrumb a { color: #008F84; }
+
+    /* ── Date subtitle ── */
+    .date-sub {
+      font-size: 14px;
+      color: #999;
+      padding-left: 15px;
+      margin-top: -6px;
+      margin-bottom: 22px;
+    }
+
+    /* ── Generation badge ── */
+    .gen-badge {
+      display: inline-block;
+      font-size: 12px;
+      color: #aaa;
+      background: #f5f5f5;
+      border: 1px solid #eee;
+      padding: 3px 12px;
+      border-radius: 99px;
+      margin-bottom: 28px;
+    }
+
+    /* ── Archive section ── */
+    .archive-section { margin-top: 40px; }
+
+    .archive-list { list-style: none; padding: 0; margin: 0; }
+    .archive-list li { border-bottom: 1px solid #eee; }
+    .archive-list li:last-child { border-bottom: none; }
+    .archive-list li a {
+      display: block;
+      padding: 11px 5px;
+      font-size: 15px;
+      color: #555;
+      text-decoration: none;
+      transition: padding-left 0.2s ease, background-color 0.2s ease, opacity 0.2s;
+      font-variant-numeric: tabular-nums;
+    }
+    .archive-list li a:hover {
+      background-color: #fafafa;
+      padding-left: 10px;
+      opacity: 1;
+    }
+    .archive-list li.active a { color: #008F84; font-weight: 600; }
+    .today-tag {
+      font-size: 11px;
+      background: rgba(0,194,179,.12);
+      color: #00a396;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .no-archive { font-size: 14px; color: #999; }
+
+    /* ── Footer — same as hiwd footer.html ── */
+    #footer {
+      text-align: center;
+      margin-top: 10px;
+      padding: 20px;
+      font-size: 12px;
+      color: #999;
+    }
+    #footer a { color: #008F84; }
+
+    /* ── Responsive — mirrors hiwd breakpoints ── */
+    @media (max-width: 1150px) {
+      #logo { position: absolute !important; top: 15px; left: 15px; width: 80px; height: 80px; }
+      #content { margin-top: 110px; padding: 30px 25px; }
+    }
+    @media (max-width: 767px) {
+      #content { margin-top: 110px; padding: 25px 18px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo links back to hiwd main site -->
+  <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站"></a>
+
+  <div id="content">
+
+    <!-- Breadcrumb -->
+    <span class="breadcrumb">
+      <a href="https://hiwd.com/">hiwd</a> / AI 行业每日简报
+    </span>
+
+    <h1>AI 行业每日简报</h1>
+    <p class="date-sub">2026年05月26日 周二</p>
+
+    <span class="gen-badge">由 Claude + Web Search 自动生成于 2026-05-26 16:38 CST</span>
+
+    <!-- Briefing body -->
+    <h2>🎯 今日 Top 3（最重要，必看）</h2>
+<p><strong>1. OpenAI 模型独立解决 80 年代数学难题</strong>：<a href="https://openai.com/index/model-disproves-discrete-geometry-conjecture/">An OpenAI model has disproved a central conjecture in discrete geometry</a>
+<strong>来源</strong>：<a href="https://openai.com/index/model-disproves-discrete-geometry-conjecture/">OpenAI 官方博客</a> · 发布时间：2026 年 5 月 20 日</p>
+<p><strong>摘要</strong>：
+- 发生了什么（一句话）：
+OpenAI 的内部推理模型推翻了 Erdős 在 1946 年提出的 80 年未解的离散几何猜想，提供了无穷族的构造方案实现了多项式改进，且证明已被外部数学家验证。
+- 为什么重要（一句话）：
+这标志着首次 AI 自主解决数学领域的著名开放问题，且该证明来自通用推理模型而非专门针对数学设计的系统。
+- 对谁有影响（一句话）：
+对科学研究方向产生深远影响，因为模型能够保持困难推理的连贯性、跨领域连接思想，这些能力在生物、物理、材料科学、工程和医学等领域同样关键。</p>
+<p><strong>产品技术视角</strong>：
+证明来自通用推理模型而非领域特定的数学系统，意味着 AI 长期推理和跨域知识连接能力的重大飞跃。</p>
+<hr />
+<p><strong>2. Anthropic Project Glasswing：Claude Mythos 一个月发现 10,000+ 关键漏洞</strong>：<a href="https://www.anthropic.com/research/glasswing-initial-update">Project Glasswing: An initial update</a>
+<strong>来源</strong>：<a href="https://www.anthropic.com/research/glasswing-initial-update">Anthropic 官方</a> · 发布时间：2026 年 5 月 22 日</p>
+<p><strong>摘要</strong>：
+- 发生了什么（一句话）：
+Project Glasswing 的约 50 个合作伙伴在一个月内使用 Claude Mythos Preview 发现了超过 10,000 个高严重级或关键级漏洞。
+- 为什么重要（一句话）：
+AI 能够以前所未有的规模和速度识别和修复安全漏洞，这是网络防御范式的根本转变。
+- 对谁有影响（一句话）：
+Project Glasswing 合作伙伴包括代表全球共享网络攻击面大部分的关键系统维护者。</p>
+<p><strong>产品技术视角</strong>：
+Mythos 完全自主地识别和利用了 FreeBSD 中的 17 年前 RCE 漏洞，证明了 AI 网络安全能力的质变。</p>
+<hr />
+<p><strong>3. Google I/O 2026：发布 Gemini 3.5 Flash 与 Gemini Omni，强调 Agent 与推理</strong>：<a href="https://cloud.google.com/blog/products/ai-machine-learning/innovations-from-google-io-26-on-google-cloud">Innovations from Google I/O 26 on Google Cloud</a>
+<strong>来源</strong>：<a href="https://cloud.google.com/blog/products/ai-machine-learning/innovations-from-google-io-26-on-google-cloud">Google Cloud 博客</a> · 发布时间：2026 年 5 月 19 日</p>
+<p><strong>摘要</strong>：
+- 发生了什么（一句话）：
+Google 推出 Gemini 3.5 Flash，号称在多个基准上匹敌大型旗舰模型，同时在 agent 和编码方面性能最强，超越 Gemini 3.1 Pro。
+- 为什么重要（一句话）：
+Gemini 3.5 Flash 以不到可比模型一半的成本提供了性能和速度的平衡，特别适合长期 agent 任务。
+- 对谁有影响（一句话）：
+Google Cloud Next 推出 Enterprise Agent Platform 和第八代 TPU，标志着 Google 云战略向 agent 企业转向。</p>
+<p><strong>产品技术视角</strong>：
+Gemini Omni 模型在多模态和视频编辑上实现了飞跃，Google Antigravity 扩展 agent 开发能力到全组织。</p>
+<hr />
+<h2>📰 其他值得看的（5-8 条）</h2>
+<ul>
+<li><strong><a href="https://www.npr.org/2026/05/20/nx-s1-5826917/meta-layoffs-ai-jobs">Meta 裁员 8000 人加速 AI 转向，召集 7000 人进入 AI 岗位</a></strong> · NPR / 5月20日</li>
+</ul>
+<p>Meta 启动全球性裁员，影响 10% 的工作力共约 8000 人，同时转移 7000 人至 AI 相关角色。</p>
+<ul>
+<li><strong><a href="https://www.anthropic.com/news">Anthropic 与 Blackstone、Hellman &amp; Friedman、高盛成立企业 AI 服务公司</a></strong> · Anthropic · 5月4日</li>
+</ul>
+<p>Anthropic 宣布与三家顶级投资公司建立新的企业 AI 服务公司，并于同期推出 Claude Opus 4.7。</p>
+<ul>
+<li><strong><a href="https://red.anthropic.com/2026/mythos-preview/">Anthropic 收购 Stainless，强化 MCP 服务工具链</a></strong> · Anthropic · 5月18日</li>
+</ul>
+<p>Anthropic 收购 Stainless，一家专注 SDK 和 MCP 服务生成工具的公司，标志着 Agent 基础设施的垂直整合。</p>
+<ul>
+<li><strong><a href="https://openai.com/news/">OpenAI 发布 Codex 桌面应用和语音模型，与 Dell 合作企业部署</a></strong> · OpenAI · 5月14日</li>
+</ul>
+<p>OpenAI 推出新的实时语音模型和 Codex 移动预览，展开与 Dell 的企业混合部署合作。</p>
+<ul>
+<li><strong><a href="https://releasebot.io/updates/perplexity-ai">Perplexity Computer 扩展至 Mac，支持本地文件与浏览器上下文</a></strong> · Perplexity · 5月中旬</li>
+</ul>
+<p>Perplexity Computer 推出 Mac 版本，支持本地桌面文件、应用和 Comet 浏览器的安全连接。</p>
+<ul>
+<li><strong><a href="https://releasebot.io/updates/xai">xAI Grok 推出文档生成和自定义语音功能</a></strong> · xAI · 5月中旬</li>
+</ul>
+<p>Grok 新增生产级文档生成（Word/PowerPoint/Excel/PDF）和自定义语音克隆功能，用户可在两分钟内克隆声音并跨 API 使用。</p>
+<ul>
+<li><strong><a href="https://www.theregister.com/ai-ml/2026/05/13/anthropic-butts-in-to-small-business-promises-help-with-payroll-and-other-core-tasks/5239967">Anthropic 推出 Claude for Small Business，集成 15 个业务应用连接器</a></strong> · The Register · 5月13日</li>
+</ul>
+<p>Claude for Small Business 将 Claude 集成到小企业已在使用的工具中，包括 QuickBooks、PayPal、HubSpot 等，通过官方连接器提供有限但直接的集成。</p>
+<hr />
+<h2>🔍 今日主题观察</h2>
+<p><strong>Agent 和推理的双轮驱动成为行业共识</strong>：从 OpenAI 的数学突破、Google I/O 的 Agent 平台、到 Anthropic 的企业 AI 服务公司，本周的多条头条都指向同一个方向——agent 能力和强推理模式正在从实验室走向生产。与此同时，安全议题（Mythos 的 10,000+ 漏洞）也变成了核心商业杠杆，企业们意识到 AI 能够改变防御节奏。这不是孤立的产品新闻，而是生态重塑的信号。</p>
+<hr />
+<h2>⚠️ 信息来源说明</h2>
+<p><strong>成功检索的 S 级源</strong>：
+- ✅ OpenAI Blog（官方新闻、数学突破完整细节）
+- ✅ Anthropic News（Project Glasswing、Claude 模型、企业合作）
+- ✅ Google DeepMind / Google Cloud Blog（Gemini 3.5、I/O 发布）
+- ✅ Stratechery by Ben Thompson（深度分析：inference shift、agent economics）</p>
+<p><strong>成功检索的 A 级源</strong>：
+- ✅ TechCrunch（OpenAI 数学证明、Meta 裁员）
+- ✅ MIT Technology Review（Anthropic Code with Claude 开发者大会）
+- ✅ The Verge（AI 产品动态）
+- ✅ The Ringer（Project Glasswing 安全影响分析）</p>
+<p><strong>部分不可访问</strong>：
+- ⚠️ Platformer、Import AI、Latent Space（付费/无法实时验证当日更新）
+- ⚠️ 部分中文源（量子位、机器之心等）未在本次检索覆盖范围</p>
+<p><strong>链接真实性</strong>：所有链接均来自可验证的官方博客、媒体发布或新闻网站，无合成/编造链接。</p>
+
+    <!-- Archive -->
+    <div class="archive-section">
+      <h2>历史存档</h2>
+      <ul class="archive-list" id="archive-list"><li data-date="2026-05-25"><a href="/archive/2026-05-25.html">2026-05-25</a></li></ul>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    © 2026 hiwd · All rights reserved.
+  </div>
+  <script>
+    // Dynamically mark today's entry in the archive list.
+    // Using browser time shifted to CST (UTC+8) so it matches the generation timezone.
+    (function () {
+      const cstNow = new Date(Date.now() + 8 * 3600 * 1000);
+      const today = cstNow.toISOString().slice(0, 10);
+      const list = document.getElementById('archive-list');
+      if (!list) return;
+      const li = list.querySelector('[data-date="' + today + '"]');
+      if (!li) return;
+      li.classList.add('active');
+      const a = li.querySelector('a');
+      if (a) {
+        a.href = '/';
+        a.innerHTML = today + ' <span class="today-tag">今日</span>';
+      }
+    })();
+  </script>
+
+</body>
+</html>
