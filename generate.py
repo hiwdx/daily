@@ -132,24 +132,19 @@ def fetch_briefing() -> str:
 
     messages: list = [{"role": "user", "content": USER_PROMPT}]
 
-    # System prompt with prompt caching (saves cost on repeated runs)
-    system = [
-        {
-            "type": "text",
-            "text": SYSTEM_PROMPT,
-            "cache_control": {"type": "ephemeral"},
-        }
-    ]
+    # System prompt (plain string; caching handled at request level below)
+    system = SYSTEM_PROMPT
 
     print(f"📡 Calling Claude API for {TODAY_ISO}...")
 
-    for turn in range(15):  # safety cap
+    for turn in range(8):  # safety cap (was 15)
         response = client.messages.create(
             model="claude-haiku-4-5",
-            max_tokens=8000,
+            max_tokens=2000,  # was 8000; briefing output is ~300 tokens
             system=system,
             tools=[{"type": "web_search_20250305", "name": "web_search"}],
             messages=messages,
+            cache_control={"type": "ephemeral"},  # auto-caches growing context
         )
 
         print(
