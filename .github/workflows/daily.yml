@@ -22,12 +22,15 @@ jobs:
         id: check
         run: |
           TODAY=$(TZ=Asia/Shanghai date +'%Y-%m-%d')
-          if [ -f "docs/archive/${TODAY}.html" ]; then
+          echo "今日日期（CST）: ${TODAY}"
+          echo "archive 文件: $([ -f "docs/archive/${TODAY}.html" ] && echo '存在' || echo '不存在')"
+          echo "index.html:    $([ -f "docs/index.html" ] && echo '存在' || echo '不存在')"
+          if [ -f "docs/archive/${TODAY}.html" ] && [ -f "docs/index.html" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
             echo "✅ 今日简报已存在（${TODAY}），跳过生成"
           else
             echo "skip=false" >> $GITHUB_OUTPUT
-            echo "⚠️  今日简报缺失（${TODAY}），开始生成"
+            echo "⚠️  简报缺失（${TODAY}），开始生成"
           fi
 
       - name: Set up Python 3.11
