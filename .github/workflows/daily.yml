@@ -56,5 +56,6 @@ jobs:
           # 只有文件真正变化时才 commit
           git diff --staged --quiet && echo "No changes" || (
             git commit -m "📰 AI 简报 $(TZ=Asia/Shanghai date +'%Y-%m-%d')" &&
+            git pull --rebase origin main &&
             git push
           )
