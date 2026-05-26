@@ -2,8 +2,10 @@ name: Daily AI Briefing
 
 on:
   schedule:
-    # 每天北京时间 08:30 运行（UTC 00:30）
+    # 主任务：每天北京时间 08:30 运行（UTC 00:30）
     - cron: '30 0 * * *'
+    # 补跑任务：每天北京时间 09:30 运行（UTC 01:30），主任务失败时兜底
+    - cron: '30 1 * * *'
   workflow_dispatch:    # 允许手动触发
 
 jobs:
@@ -16,21 +18,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Check if today's briefing already exists
+        id: check
+        run: |
+          TODAY=$(TZ=Asia/Shanghai date +'%Y-%m-%d')
+          if [ -f "docs/archive/${TODAY}.html" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "✅ 今日简报已存在（${TODAY}），跳过生成"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "⚠️  今日简报缺失（${TODAY}），开始生成"
+          fi
+
       - name: Set up Python 3.11
+        if: steps.check.outputs.skip == 'false'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
       - name: Install dependencies
+        if: steps.check.outputs.skip == 'false'
         run: pip install -r requirements.txt
 
       - name: Generate daily briefing
+        if: steps.check.outputs.skip == 'false'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python generate.py
 
       - name: Commit and push
+        if: steps.check.outputs.skip == 'false'
         run: |
           git config user.name  "AI Briefing Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -1,0 +1,19 @@
+name: Keepalive
+
+# 每周日重新激活 daily.yml，防止 GitHub 因 60 天无活动自动禁用定时任务
+on:
+  schedule:
+    # 每周日 UTC 08:00（北京时间 16:00）
+    - cron: '0 8 * * 0'
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Re-enable daily workflow
+        run: gh workflow enable daily.yml --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
