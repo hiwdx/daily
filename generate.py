@@ -140,11 +140,10 @@ def fetch_briefing() -> str:
     for turn in range(8):  # safety cap (was 15)
         response = client.messages.create(
             model="claude-haiku-4-5",
-            max_tokens=2000,  # was 8000; briefing output is ~300 tokens
+            max_tokens=4000,  # briefing ~800–1200 tokens; 4000 gives safe headroom
             system=system,
             tools=[{"type": "web_search_20250305", "name": "web_search"}],
             messages=messages,
-            cache_control={"type": "ephemeral"},  # auto-caches growing context
         )
 
         print(
@@ -194,17 +193,19 @@ def clean_briefing(text: str) -> str:
 
     # 0b. Ensure Top-3 briefing field labels start new paragraphs.
     #     Without a blank line before them, markdown renders everything in one <p>.
+    #     Claude outputs **来源**：（colon outside bold），so pattern must include \*\*.
     text = re.sub(
-        r'(?m)(?<!\n)\n(\*\*(?:来源|摘要|产品技术视角)[：:])',
+        r'(?m)(?<!\n)\n(\*\*(?:来源|摘要|产品技术视角)\*\*\s*[：:])',
         r'\n\n\1',
         text,
     )
 
-    # 0c. Ensure a blank line between **摘要：** and the first bullet item.
+    # 0c. Ensure a blank line between **摘要**： and the first bullet item.
     #     sane_lists requires a blank line before any list that follows text;
     #     without it, "- item" is treated as plain text inside the label's <p>.
+    #     Claude outputs **摘要**：（colon outside bold），pattern corrected accordingly.
     text = re.sub(
-        r'(\*\*摘要[：:]\s*\*\*)\n(-\s)',
+        r'(\*\*摘要\*\*\s*[：:])\n(-\s)',
         r'\1\n\n\2',
         text,
     )
@@ -244,13 +245,14 @@ def md_to_html(text: str) -> str:
     )
     # Fallback: if any <br> + bold field label combos remain, split into proper <p>.
     # Handles cases where clean_briefing didn't add blank lines (e.g., older content).
+    # Claude outputs **来源**：→ HTML: <strong>来源</strong>：，pattern matches closing </strong>.
     html = re.sub(
-        r'<br\s*/?>\s*\n(<strong>(?:来源|摘要)[：：])',
+        r'<br\s*/?>\s*\n(<strong>(?:来源|摘要)</strong>\s*[：：])',
         r'</p>\n<p>\1',
         html,
     )
     html = re.sub(
-        r'\n(<strong>产品技术视角[：：])',
+        r'\n(<strong>产品技术视角</strong>\s*[：：])',
         r'</p>\n<p>\1',
         html,
     )
