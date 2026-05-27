@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # Re-run 时也拿最新 main，而非旧 SHA
 
       - name: Check if today's briefing already exists
         id: check
@@ -66,6 +68,6 @@ jobs:
           # 只有文件真正变化时才 commit
           git diff --staged --quiet && echo "No changes" || (
             git commit -m "📰 AI 简报 $(TZ=Asia/Shanghai date +'%Y-%m-%d')" &&
-            git pull --rebase origin main &&
+            git pull --rebase -X theirs origin main &&
             git push
           )
