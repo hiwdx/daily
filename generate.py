@@ -119,10 +119,12 @@ def fetch_briefing() -> str:
     """
     Call Claude with the web_search tool and return the briefing markdown.
 
-    The web_search tool (type: "web_search_20250305") is server-side:
+    The web_search tool (type: "web_search_20260209") is server-side:
     Anthropic executes searches automatically and injects results back into
     the conversation. Claude may perform multiple searches before finishing,
     so we run an agentic loop until stop_reason == "end_turn".
+    If the server-side loop hits its iteration limit it returns "pause_turn";
+    we re-send the conversation to resume.
     """
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
@@ -142,7 +144,7 @@ def fetch_briefing() -> str:
             model="claude-haiku-4-5",
             max_tokens=4000,  # briefing ~800–1200 tokens; 4000 gives safe headroom
             system=system,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            tools=[{"type": "web_search_20260209", "name": "web_search"}],
             messages=messages,
         )
 
@@ -175,6 +177,13 @@ def fetch_briefing() -> str:
             ]
             if tool_results:
                 messages.append({"role": "user", "content": tool_results})
+            continue
+
+        if response.stop_reason == "pause_turn":
+            # web_search_20260209 runs searches in a server-side loop (max 10
+            # iterations). When it hits the limit it returns "pause_turn" with
+            # partial content. Re-send the conversation to let it continue.
+            messages.append({"role": "assistant", "content": response.content})
             continue
 
         # stop_reason == "max_tokens" or other — return whatever text we have
@@ -621,6 +630,13 @@ def main() -> None:
     briefing_md = fetch_briefing()
     print(f"✅ Received {len(briefing_md)} chars from Claude")
 
+    # Add today to archive entries BEFORE rendering so it appears in the nav
+    # and the JS "今日" highlight can find the entry.
+    archive_updated = not any(e["date"] == TODAY_ISO for e in archive_entries)
+    if archive_updated:
+        archive_entries.append({"date": TODAY_ISO})
+        archive_entries.sort(key=lambda e: e["date"])
+
     # Render HTML
     page_html = render_page(briefing_md, archive_entries)
 
@@ -633,10 +649,8 @@ def main() -> None:
     (docs / "index.html").write_text(page_html, encoding="utf-8")
     print(f"✅ Updated → docs/index.html")
 
-    # Update archive index (deduplicated)
-    if not any(e["date"] == TODAY_ISO for e in archive_entries):
-        archive_entries.append({"date": TODAY_ISO})
-        archive_entries.sort(key=lambda e: e["date"])
+    # Persist archive index only when a new entry was added
+    if archive_updated:
         archive_json.write_text(
             json.dumps(archive_entries, ensure_ascii=False, indent=2),
             encoding="utf-8",
