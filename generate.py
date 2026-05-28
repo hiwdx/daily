@@ -144,7 +144,7 @@ def fetch_briefing() -> str:
             model="claude-haiku-4-5",
             max_tokens=4000,  # briefing ~800–1200 tokens; 4000 gives safe headroom
             system=system,
-            tools=[{"type": "web_search_20260209", "name": "web_search"}],
+            tools=[{"type": "web_search_20260209", "name": "web_search", "allowed_callers": ["direct"]}],
             messages=messages,
         )
 
