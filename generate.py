@@ -302,7 +302,7 @@ HTML_TEMPLATE = """\
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI 行业每日简报 · [[DATE_CN]]</title>
   <meta name="description" content="AI 行业每日精选 [[DATE_CN]] [[WEEKDAY]]" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
   <style>
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; }
