@@ -161,24 +161,6 @@ def fetch_briefing() -> str:
         if response.stop_reason == "end_turn":
             return clean_briefing(text) or "（本次未生成内容，请检查 API 配置）"
 
-        if response.stop_reason == "tool_use":
-            # Append the assistant turn and acknowledge tool calls
-            messages.append({"role": "assistant", "content": response.content})
-            tool_results = [
-                {
-                    "type": "tool_result",
-                    "tool_use_id": b.id,
-                    # Server-side tool: results are injected by Anthropic,
-                    # we just acknowledge each tool_use block.
-                    "content": "",
-                }
-                for b in response.content
-                if getattr(b, "type", "") == "tool_use"
-            ]
-            if tool_results:
-                messages.append({"role": "user", "content": tool_results})
-            continue
-
         if response.stop_reason == "pause_turn":
             # web_search_20260209 runs searches in a server-side loop (max 10
             # iterations). When it hits the limit it returns "pause_turn" with
