@@ -135,7 +135,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 - 不要在末尾输出字数统计或任何自我评估（如"总字数：XXX 字"）"""
 
 
-def build_user_prompt(recent_urls: list[str] | None = None) -> str:
+def build_user_prompt(recent_urls=None) -> str:
     """Build the user prompt, optionally injecting a deduplication block.
 
     `recent_urls` should be the list returned by `get_recent_article_urls()`.
