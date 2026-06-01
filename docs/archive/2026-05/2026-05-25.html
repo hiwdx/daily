@@ -169,24 +169,82 @@
     /* ── Archive section ── */
     .archive-section { margin-top: 40px; }
 
-    .archive-list { list-style: none; padding: 0; margin: 0; }
-    .archive-list li { border-bottom: 1px solid #eee; }
-    .archive-list li:last-child { border-bottom: none; }
-    .archive-list li a {
-      display: block;
+    /* ── Month-grouped collapsible archive nav ── */
+    .archive-nav { margin: 0; }
+
+    details.month-item,
+    details.older-archive {
+      border-bottom: 1px solid #eee;
+    }
+    details.month-item:last-child,
+    details.older-archive:last-child { border-bottom: none; }
+
+    details.month-item > summary,
+    details.older-archive > summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
       padding: 11px 5px;
       font-size: 15px;
       color: #555;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s;
+    }
+    details.month-item > summary::-webkit-details-marker,
+    details.older-archive > summary::-webkit-details-marker { display: none; }
+
+    details.month-item > summary::before {
+      content: "▶";
+      font-size: 10px;
+      margin-right: 8px;
+      color: #bbb;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.month-item[open] > summary::before { transform: rotate(90deg); }
+
+    details.older-archive > summary {
+      color: #008F84;
+      font-size: 14px;
+    }
+    details.older-archive > summary::before {
+      content: "▶";
+      font-size: 10px;
+      margin-right: 8px;
+      color: #00c2b3;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.older-archive[open] > summary::before { transform: rotate(90deg); }
+
+    details.month-item > summary:hover,
+    details.older-archive > summary:hover { background-color: #fafafa; }
+
+    .month-count {
+      font-size: 12px;
+      color: #bbb;
+      margin-left: 6px;
+    }
+
+    .day-list { list-style: none; padding: 0; margin: 0; }
+    .day-list li { border-top: 1px solid #f5f5f5; }
+    .day-list li a {
+      display: block;
+      padding: 9px 5px 9px 22px;
+      font-size: 14px;
+      color: #555;
       text-decoration: none;
-      transition: padding-left 0.2s ease, background-color 0.2s ease, opacity 0.2s;
+      transition: padding-left 0.2s ease, background-color 0.2s ease;
       font-variant-numeric: tabular-nums;
     }
-    .archive-list li a:hover {
+    .day-list li a:hover {
       background-color: #fafafa;
-      padding-left: 10px;
-      opacity: 1;
+      padding-left: 28px;
     }
-    .archive-list li.active a { color: #008F84; font-weight: 600; }
+    .day-list li.active a { color: #008F84; font-weight: 600; }
+    .older-months { padding-bottom: 4px; }
+
     .today-tag {
       font-size: 11px;
       background: rgba(0,194,179,.12);

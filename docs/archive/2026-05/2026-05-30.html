@@ -188,24 +188,82 @@
     /* ── Archive section ── */
     .archive-section { margin-top: 40px; }
 
-    .archive-list { list-style: none; padding: 0; margin: 0; }
-    .archive-list li { border-bottom: 1px solid #eee; }
-    .archive-list li:last-child { border-bottom: none; }
-    .archive-list li a {
-      display: block;
+    /* ── Month-grouped collapsible archive nav ── */
+    .archive-nav { margin: 0; }
+
+    details.month-item,
+    details.older-archive {
+      border-bottom: 1px solid #eee;
+    }
+    details.month-item:last-child,
+    details.older-archive:last-child { border-bottom: none; }
+
+    details.month-item > summary,
+    details.older-archive > summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
       padding: 11px 5px;
       font-size: 15px;
       color: #555;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s;
+    }
+    details.month-item > summary::-webkit-details-marker,
+    details.older-archive > summary::-webkit-details-marker { display: none; }
+
+    details.month-item > summary::before {
+      content: "▶";
+      font-size: 10px;
+      margin-right: 8px;
+      color: #bbb;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.month-item[open] > summary::before { transform: rotate(90deg); }
+
+    details.older-archive > summary {
+      color: #008F84;
+      font-size: 14px;
+    }
+    details.older-archive > summary::before {
+      content: "▶";
+      font-size: 10px;
+      margin-right: 8px;
+      color: #00c2b3;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.older-archive[open] > summary::before { transform: rotate(90deg); }
+
+    details.month-item > summary:hover,
+    details.older-archive > summary:hover { background-color: #fafafa; }
+
+    .month-count {
+      font-size: 12px;
+      color: #bbb;
+      margin-left: 6px;
+    }
+
+    .day-list { list-style: none; padding: 0; margin: 0; }
+    .day-list li { border-top: 1px solid #f5f5f5; }
+    .day-list li a {
+      display: block;
+      padding: 9px 5px 9px 22px;
+      font-size: 14px;
+      color: #555;
       text-decoration: none;
-      transition: padding-left 0.2s ease, background-color 0.2s ease, opacity 0.2s;
+      transition: padding-left 0.2s ease, background-color 0.2s ease;
       font-variant-numeric: tabular-nums;
     }
-    .archive-list li a:hover {
+    .day-list li a:hover {
       background-color: #fafafa;
-      padding-left: 10px;
-      opacity: 1;
+      padding-left: 28px;
     }
-    .archive-list li.active a { color: #008F84; font-weight: 600; }
+    .day-list li.active a { color: #008F84; font-weight: 600; }
+    .older-months { padding-bottom: 4px; }
+
     .today-tag {
       font-size: 11px;
       background: rgba(0,194,179,.12);
@@ -375,12 +433,24 @@ Agentic 架构成为默认标准，企业期待 AI 能接收复杂多步任务�
     <!-- Archive -->
     <div class="archive-section">
       <h2>历史存档</h2>
-      <ul class="archive-list" id="archive-list"><li data-date="2026-05-30"><a href="/archive/2026-05-30.html">2026-05-30</a></li>
-<li data-date="2026-05-29"><a href="/archive/2026-05-29.html">2026-05-29</a></li>
-<li data-date="2026-05-28"><a href="/archive/2026-05-28.html">2026-05-28</a></li>
-<li data-date="2026-05-27"><a href="/archive/2026-05-27.html">2026-05-27</a></li>
-<li data-date="2026-05-26"><a href="/archive/2026-05-26.html">2026-05-26</a></li>
-<li data-date="2026-05-25"><a href="/archive/2026-05-25.html">2026-05-25</a></li></ul>
+      <div class="archive-nav"><details class="month-item">
+  <summary>2026-06 <span class="month-count">1篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-06-01"><a href="/archive/2026-06/2026-06-01.html">2026-06-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
+  <summary>2026-05 <span class="month-count">7篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-05-31"><a href="/archive/2026-05/2026-05-31.html">2026-05-31</a></li>
+    <li data-date="2026-05-30"><a href="/archive/2026-05/2026-05-30.html">2026-05-30</a></li>
+    <li data-date="2026-05-29"><a href="/archive/2026-05/2026-05-29.html">2026-05-29</a></li>
+    <li data-date="2026-05-28"><a href="/archive/2026-05/2026-05-28.html">2026-05-28</a></li>
+    <li data-date="2026-05-27"><a href="/archive/2026-05/2026-05-27.html">2026-05-27</a></li>
+    <li data-date="2026-05-26"><a href="/archive/2026-05/2026-05-26.html">2026-05-26</a></li>
+    <li data-date="2026-05-25"><a href="/archive/2026-05/2026-05-25.html">2026-05-25</a></li>
+  </ul>
+</details></div>
     </div>
 
   </div>
@@ -389,14 +459,12 @@ Agentic 架构成为默认标准，企业期待 AI 能接收复杂多步任务�
     © 2026 hiwd · All rights reserved.
   </div>
   <script>
-    // Dynamically mark today's entry in the archive list.
+    // Dynamically mark today's entry in the archive nav.
     // Using browser time shifted to CST (UTC+8) so it matches the generation timezone.
     (function () {
       const cstNow = new Date(Date.now() + 8 * 3600 * 1000);
       const today = cstNow.toISOString().slice(0, 10);
-      const list = document.getElementById('archive-list');
-      if (!list) return;
-      const li = list.querySelector('[data-date="' + today + '"]');
+      const li = document.querySelector('[data-date="' + today + '"]');
       if (!li) return;
       li.classList.add('active');
       const a = li.querySelector('a');

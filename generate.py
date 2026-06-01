@@ -40,7 +40,7 @@ def get_recent_article_urls(archive_dir: Path, days: int = 2) -> list[str]:
     These are passed to the prompt so Claude avoids re-reporting the same stories.
     """
     urls: set[str] = set()
-    html_files = sorted(archive_dir.glob("????-??-??.html"), reverse=True)[:days]
+    html_files = sorted(archive_dir.glob("????-??/????-??-??.html"), reverse=True)[:days]
     for html_file in html_files:
         text = html_file.read_text("utf-8")
         for url in re.findall(r'href="(https?://[^"]+)"', text):
@@ -295,20 +295,51 @@ def md_to_html(text: str) -> str:
     return html
 
 
-def build_archive_nav(entries: list[dict]) -> str:
+def build_archive_nav(entries: list) -> str:
     """
-    Build archive list HTML. Uses root-relative paths (/archive/DATE.html)
-    so it works correctly from both docs/index.html and docs/archive/*.html.
-    "今日" label and active state are applied dynamically by JS so they
-    remain correct no matter when the static page is viewed.
+    Build archive nav HTML grouped by month, collapsible via <details>.
+    Last 3 months shown as collapsed <details>; older months inside "查看更早".
+    Default visible rows: ≤4 (3 month headers + "查看更早"), regardless of total entries.
+    URL format: /archive/YYYY-MM/YYYY-MM-DD.html
     """
     if not entries:
         return '<p class="no-archive">暂无历史记录</p>'
-    items = []
-    for entry in sorted(entries, key=lambda e: e["date"], reverse=True)[:90]:
-        date = entry["date"]
-        items.append(f'<li data-date="{date}"><a href="/archive/{date}.html">{date}</a></li>')
-    return '<ul class="archive-list" id="archive-list">' + "\n".join(items) + "</ul>"
+
+    # Group by YYYY-MM, newest first
+    months: dict = {}
+    for entry in sorted(entries, key=lambda e: e["date"], reverse=True):
+        month = entry["date"][:7]
+        months.setdefault(month, []).append(entry["date"])
+
+    def render_month(month: str, dates: list) -> str:
+        count = len(dates)
+        items = "\n".join(
+            f'    <li data-date="{d}"><a href="/archive/{month}/{d}.html">{d}</a></li>'
+            for d in sorted(dates, reverse=True)
+        )
+        return (
+            f'<details class="month-item">\n'
+            f'  <summary>{month} <span class="month-count">{count}篇</span></summary>\n'
+            f'  <ul class="day-list">\n{items}\n  </ul>\n'
+            f'</details>'
+        )
+
+    month_keys = sorted(months.keys(), reverse=True)
+    recent = month_keys[:3]
+    older = month_keys[3:]
+
+    parts = [render_month(m, months[m]) for m in recent]
+
+    if older:
+        older_html = "\n".join(render_month(m, months[m]) for m in older)
+        parts.append(
+            f'<details class="older-archive">\n'
+            f'  <summary>查看更早</summary>\n'
+            f'  <div class="older-months">\n{older_html}\n  </div>\n'
+            f'</details>'
+        )
+
+    return '<div class="archive-nav">' + "\n".join(parts) + "</div>"
 
 
 # ── HTML template (uses [[PLACEHOLDER]] to avoid .format() escaping CSS) ──────
@@ -508,24 +539,82 @@ HTML_TEMPLATE = """\
     /* ── Archive section ── */
     .archive-section { margin-top: 40px; }
 
-    .archive-list { list-style: none; padding: 0; margin: 0; }
-    .archive-list li { border-bottom: 1px solid #eee; }
-    .archive-list li:last-child { border-bottom: none; }
-    .archive-list li a {
-      display: block;
+    /* ── Month-grouped collapsible archive nav ── */
+    .archive-nav { margin: 0; }
+
+    details.month-item,
+    details.older-archive {
+      border-bottom: 1px solid #eee;
+    }
+    details.month-item:last-child,
+    details.older-archive:last-child { border-bottom: none; }
+
+    details.month-item > summary,
+    details.older-archive > summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
       padding: 11px 5px;
       font-size: 15px;
       color: #555;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s;
+    }
+    details.month-item > summary::-webkit-details-marker,
+    details.older-archive > summary::-webkit-details-marker { display: none; }
+
+    details.month-item > summary::before {
+      content: "▶";
+      font-size: 10px;
+      margin-right: 8px;
+      color: #bbb;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.month-item[open] > summary::before { transform: rotate(90deg); }
+
+    details.older-archive > summary {
+      color: #008F84;
+      font-size: 14px;
+    }
+    details.older-archive > summary::before {
+      content: "▶";
+      font-size: 10px;
+      margin-right: 8px;
+      color: #00c2b3;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.older-archive[open] > summary::before { transform: rotate(90deg); }
+
+    details.month-item > summary:hover,
+    details.older-archive > summary:hover { background-color: #fafafa; }
+
+    .month-count {
+      font-size: 12px;
+      color: #bbb;
+      margin-left: 6px;
+    }
+
+    .day-list { list-style: none; padding: 0; margin: 0; }
+    .day-list li { border-top: 1px solid #f5f5f5; }
+    .day-list li a {
+      display: block;
+      padding: 9px 5px 9px 22px;
+      font-size: 14px;
+      color: #555;
       text-decoration: none;
-      transition: padding-left 0.2s ease, background-color 0.2s ease, opacity 0.2s;
+      transition: padding-left 0.2s ease, background-color 0.2s ease;
       font-variant-numeric: tabular-nums;
     }
-    .archive-list li a:hover {
+    .day-list li a:hover {
       background-color: #fafafa;
-      padding-left: 10px;
-      opacity: 1;
+      padding-left: 28px;
     }
-    .archive-list li.active a { color: #008F84; font-weight: 600; }
+    .day-list li.active a { color: #008F84; font-weight: 600; }
+    .older-months { padding-bottom: 4px; }
+
     .today-tag {
       font-size: 11px;
       background: rgba(0,194,179,.12);
@@ -592,14 +681,12 @@ HTML_TEMPLATE = """\
     © 2026 hiwd · All rights reserved.
   </div>
   <script>
-    // Dynamically mark today's entry in the archive list.
+    // Dynamically mark today's entry in the archive nav.
     // Using browser time shifted to CST (UTC+8) so it matches the generation timezone.
     (function () {
       const cstNow = new Date(Date.now() + 8 * 3600 * 1000);
       const today = cstNow.toISOString().slice(0, 10);
-      const list = document.getElementById('archive-list');
-      if (!list) return;
-      const li = list.querySelector('[data-date="' + today + '"]');
+      const li = document.querySelector('[data-date="' + today + '"]');
       if (!li) return;
       li.classList.add('active');
       const a = li.querySelector('a');
@@ -631,11 +718,55 @@ def render_page(briefing_md: str, archive_entries: list[dict]) -> str:
     )
 
 
+# ── One-time migration ────────────────────────────────────────────────────────
+def migrate_archive(docs_dir: Path) -> None:
+    """Move flat archive/YYYY-MM-DD.html files into archive/YYYY-MM/ subdirs.
+
+    Updates all internal /archive/DATE.html links in each file.
+    Skips automatically if no flat HTML files are found (already migrated).
+    """
+    archive_dir = docs_dir / "archive"
+    old_files = list(archive_dir.glob("????-??-??.html"))
+    if not old_files:
+        return  # Already migrated or nothing to do
+
+    print(f"🔄 Migrating {len(old_files)} archive files to monthly subdirs...")
+    link_re = re.compile(r'/archive/(\d{4}-\d{2}-\d{2})\.html')
+
+    def rewrite_links(html: str) -> str:
+        return link_re.sub(lambda m: f'/archive/{m.group(1)[:7]}/{m.group(1)}.html', html)
+
+    for old_file in sorted(old_files):
+        date = old_file.stem          # e.g. "2026-05-25"
+        month = date[:7]              # e.g. "2026-05"
+        month_dir = archive_dir / month
+        month_dir.mkdir(parents=True, exist_ok=True)
+        new_file = month_dir / f"{date}.html"
+        html = rewrite_links(old_file.read_text("utf-8"))
+        new_file.write_text(html, encoding="utf-8")
+        old_file.unlink()
+        print(f"  ✅ archive/{date}.html → archive/{month}/{date}.html")
+
+    # Update docs/index.html links
+    index_file = docs_dir / "index.html"
+    if index_file.exists():
+        html = index_file.read_text("utf-8")
+        updated = rewrite_links(html)
+        if updated != html:
+            index_file.write_text(updated, encoding="utf-8")
+            print("  ✅ Updated links in docs/index.html")
+
+    print("✅ Migration complete")
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main() -> None:
     docs = Path("docs")
     archive_dir = docs / "archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
+
+    # One-time migration: move flat archive files into monthly subdirs
+    migrate_archive(docs)
 
     # Touch .nojekyll so GitHub Pages serves raw files
     (docs / ".nojekyll").touch()
@@ -669,10 +800,12 @@ def main() -> None:
     # Render HTML
     page_html = render_page(briefing_md, archive_entries)
 
-    # Save archive copy
-    archive_file = archive_dir / f"{TODAY_ISO}.html"
+    # Save archive copy (monthly subdir: docs/archive/YYYY-MM/YYYY-MM-DD.html)
+    month_dir = archive_dir / TODAY_ISO[:7]
+    month_dir.mkdir(parents=True, exist_ok=True)
+    archive_file = month_dir / f"{TODAY_ISO}.html"
     archive_file.write_text(page_html, encoding="utf-8")
-    print(f"✅ Saved  → docs/archive/{TODAY_ISO}.html")
+    print(f"✅ Saved  → docs/archive/{TODAY_ISO[:7]}/{TODAY_ISO}.html")
 
     # Update index (latest briefing)
     (docs / "index.html").write_text(page_html, encoding="utf-8")
