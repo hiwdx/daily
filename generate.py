@@ -58,6 +58,16 @@ SYSTEM_PROMPT = (
 
 _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
 
+## 搜索策略
+
+执行时，**优先用聚合式关键词**一次覆盖多个源，而不是逐站点搜索：
+- 第 1 搜：`AI news today {TODAY_ISO} site:openai.com OR site:anthropic.com OR site:deepmind.google OR site:ai.meta.com`
+- 第 2 搜：`AI model release OR AI product launch OR LLM benchmark {TODAY_ISO}`
+- 第 3 搜：`AI funding OR AI acquisition OR AI partnership {TODAY_ISO}`
+- 第 4 搜：`Hacker News AI today` 或 `site:news.ycombinator.com AI`
+- 第 5 搜（中文）：`AI 大模型 发布 今日` 或 `人工智能 产品 发布 {TODAY_CN}`
+- 剩余搜索：按以下"信息源优先级"补充覆盖未命中的 S/A 级源
+
 ## 信息源优先级
 
 ### S 级（必须覆盖，一手源）
@@ -122,14 +132,14 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 如果今天的新闻呈现某个趋势（例如"多家公司都在做 agent 框架"），给出 2-3 句话的观察。
 
 ### ⚠️ 信息来源说明
-明确告诉我：
-- 哪些源你成功检索了
-- 哪些源你没能访问（网络/付费墙等原因）
-- 所有链接都是你真实访问过的，还是可能存在幻觉
+只需告诉我：
+- 本次简报中，哪些源**直接提供了内容**（列出媒体名即可）
+- 上述内容中的链接，是搜索结果中的真实 URL，还是根据主域名推测的（注明 `⚠️ 链接待确认`）
 
 ## 硬性要求
 - 所有链接必须是**真实可点击的原文 URL**，绝对不要编造
-- 如果某条新闻无法确认原文链接，宁可不收录
+- 如果搜索片段中只有主域名（如 `techcrunch.com`）而没有完整文章路径，可以用主域名作为链接占位，并在"来源"字段后注明 `⚠️ 链接待确认`，不要因为缺少完整 URL 就丢弃重大新闻
+- 如果某条新闻既无法确认完整 URL、也找不到主域名，才宁可不收录
 - **语言规则**：标题、摘要、分析、观察等所有内容一律用**中文**写，让读者看懂；公司名（Google/Meta/OpenAI）、产品名（Gemini/Claude/GPT）、通用技术术语（agent/LLM/RAG/fine-tuning 等）可保留英文
 - 总长度控制在 1000 字以内（精炼）
 - 不要在末尾输出字数统计或任何自我评估（如"总字数：XXX 字"）"""
