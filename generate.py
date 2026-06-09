@@ -517,27 +517,29 @@ HTML_TEMPLATE = """\
 
     /* ── Header compact block ── */
     .hero {
-      margin-bottom: 22px;
+      margin-bottom: 14px;
     }
 
     .hero-meta {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-      font-size: 13px;
-      color: #8a8a8a;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
       padding-left: 15px;
+      font-size: 13px;
+      color: #8c8c8c;
+      line-height: 1.4;
     }
 
     .breadcrumb {
       min-width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .breadcrumb a { color: #008F84; }
+
+    .meta-sep {
+      color: #c7c7c7;
+    }
 
     .date-sub {
       font-size: 13px;
@@ -546,59 +548,16 @@ HTML_TEMPLATE = """\
       white-space: nowrap;
     }
 
-    .hero-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 10px;
-    }
-
-    .hero-head h1 {
-      margin-bottom: 0;
-      flex: 1;
-    }
-
-    .top3-jump {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #f4fbfa;
-      border: 1px solid #d9f0ed;
-      color: #008f84;
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1;
-    }
-    .top3-jump:hover {
-      opacity: 1;
-      background: #ecf8f6;
+    .hero h1 {
+      margin-bottom: 6px;
     }
 
     .gen-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      max-width: 100%;
+      display: block;
+      padding-left: 15px;
       font-size: 11px;
-      line-height: 1.35;
-      color: #909090;
-      background: #f7f7f7;
-      border: 1px solid #eeeeee;
-      padding: 6px 10px;
-      border-radius: 10px;
-    }
-
-    .gen-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #00C2B3;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 4px rgba(0, 194, 179, 0.10);
+      line-height: 1.45;
+      color: #a0a0a0;
     }
 
     /* ── Archive section ── */
@@ -708,33 +667,23 @@ HTML_TEMPLATE = """\
     }
     @media (max-width: 767px) {
       #content { margin-top: 110px; padding: 22px 16px; }
-      .hero { margin-bottom: 18px; }
+      .hero { margin-bottom: 16px; }
       .hero-meta {
-        display: block;
+        gap: 6px;
         padding-left: 12px;
-        margin-bottom: 10px;
-      }
-      .breadcrumb {
-        display: block;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
+        font-size: 12px;
       }
       .date-sub {
-        display: block;
+        font-size: 12px;
       }
-      .hero-head {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 8px;
-      }
+      .hero h1 { margin-bottom: 4px; }
       h1 { font-size: 26px; }
       h2 { font-size: 22px; }
       h3 { font-size: 18px; margin-top: 20px; }
-      .top3-jump { display: none; }
       .gen-badge {
-        width: 100%;
-        border-radius: 12px;
-        padding: 7px 10px;
+        padding-left: 12px;
+        font-size: 10px;
       }
       p, li { line-height: 1.75; }
     }
@@ -750,19 +699,15 @@ HTML_TEMPLATE = """\
     <div class="hero">
       <div class="hero-meta">
         <span class="breadcrumb"><a href="https://hiwd.com/">hiwd</a> / <a href="/">daily.hiwd.com</a></span>
+        <span class="meta-sep">/</span>
         <span class="date-sub">[[DATE_CN]] [[WEEKDAY]]</span>
       </div>
+      <h1>AI 行业每日简报</h1>
 
-      <div class="hero-head">
-        <h1>AI 行业每日简报</h1>
-        <a class="top3-jump" href="#top3">Top 3</a>
-      </div>
-
-      <span class="gen-badge"><span class="gen-dot"></span>由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</span>
+      <span class="gen-badge">由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</span>
     </div>
 
     <!-- Briefing body -->
-    <div id="top3"></div>
     [[CONTENT]]
 
     <!-- Archive -->

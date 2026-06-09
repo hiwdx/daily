@@ -154,35 +154,49 @@
     /* ── HR ── */
     hr { border: none; border-top: 1px solid #eee; margin: 28px 0; }
 
-    /* ── Breadcrumb ── */
-    .breadcrumb {
-      font-size: 13px;
-      color: #999;
+    /* ── Header compact block ── */
+    .hero {
+      margin-bottom: 14px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
       padding-left: 15px;
-      margin-bottom: 20px;
-      display: block;
+      font-size: 13px;
+      color: #8c8c8c;
+      line-height: 1.4;
+    }
+
+    .breadcrumb {
+      min-width: 0;
     }
     .breadcrumb a { color: #008F84; }
 
-    /* ── Date subtitle ── */
-    .date-sub {
-      font-size: 14px;
-      color: #999;
-      padding-left: 15px;
-      margin-top: -6px;
-      margin-bottom: 22px;
+    .meta-sep {
+      color: #c7c7c7;
     }
 
-    /* ── Generation badge ── */
+    .date-sub {
+      font-size: 13px;
+      color: #8f8f8f;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .hero h1 {
+      margin-bottom: 6px;
+    }
+
     .gen-badge {
-      display: inline-block;
-      font-size: 12px;
-      color: #aaa;
-      background: #f5f5f5;
-      border: 1px solid #eee;
-      padding: 3px 12px;
-      border-radius: 99px;
-      margin-bottom: 28px;
+      display: block;
+      padding-left: 15px;
+      font-size: 11px;
+      line-height: 1.45;
+      color: #a0a0a0;
     }
 
     /* ── Archive section ── */
@@ -291,10 +305,26 @@
       #content { margin-top: 110px; padding: 30px 25px; }
     }
     @media (max-width: 767px) {
-      #content { margin-top: 110px; padding: 25px 18px; }
+      #content { margin-top: 110px; padding: 22px 16px; }
+      .hero { margin-bottom: 16px; }
+      .hero-meta {
+        gap: 6px;
+        padding-left: 12px;
+        margin-bottom: 8px;
+        font-size: 12px;
+      }
+      .date-sub {
+        font-size: 12px;
+      }
+      .hero h1 { margin-bottom: 4px; }
       h1 { font-size: 26px; }
       h2 { font-size: 22px; }
-      h3 { font-size: 18px; }
+      h3 { font-size: 18px; margin-top: 20px; }
+      .gen-badge {
+        padding-left: 12px;
+        font-size: 10px;
+      }
+      p, li { line-height: 1.75; }
     }
   </style>
 </head>
@@ -308,19 +338,15 @@
     <div class="hero">
       <div class="hero-meta">
         <span class="breadcrumb"><a href="https://hiwd.com/">hiwd</a> / <a href="/">daily.hiwd.com</a></span>
+        <span class="meta-sep">/</span>
         <span class="date-sub">2026年06月09日 周二</span>
       </div>
+      <h1>AI 行业每日简报</h1>
 
-      <div class="hero-head">
-        <h1>AI 行业每日简报</h1>
-        <a class="top3-jump" href="#top3">Top 3</a>
-      </div>
-
-      <span class="gen-badge"><span class="gen-dot"></span>由 Claude + Web Search 自动生成于 2026-06-09 06:08 CST</span>
+      <span class="gen-badge">由 Claude + Web Search 自动生成于 2026-06-09 06:08 CST</span>
     </div>
 
     <!-- Briefing body -->
-    <div id="top3"></div>
     <h2>🎯 今日 Top 3（最重要，必看）</h2>
 <p><strong>标题</strong>：<a href="https://www.cnn.com/2026/06/08/tech/apple-wwdc-tim-cook">Apple 于 WWDC 2026 推出全新"Siri AI"，集成 Google Gemini 打响生态交互战</a></p>
 <p><strong>来源</strong>：<a href="https://www.cnn.com/2026/06/08/tech/apple-wwdc-tim-cook">CNN Business</a> · 2026-06-08</p>
