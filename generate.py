@@ -675,7 +675,7 @@ HTML_TEMPLATE = """\
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> / <a href="/">daily.hiwd.com</a></div>
+      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> ｜ <a href="/">Daily</a></div>
       <div class="hero-meta secondary">由 Claude + Web Search 自动生成于 2026-06-09 06:08 CST · 2026年06月09日 周二</div>
       <h1>AI 行业每日简报</h1>
     </div>
