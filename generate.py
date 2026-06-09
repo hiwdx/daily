@@ -280,6 +280,26 @@ def clean_briefing(text: str) -> str:
     return text.strip()
 
 
+def _format_theme_observation_block(match: re.Match) -> str:
+    heading, body = match.groups()
+    if "：<strong>" not in body:
+        return match.group(0)
+
+    intro, rest = body.split("：<strong>", 1)
+    intro = intro.strip() + "："
+    items = [f"<strong>{part.strip()}" for part in rest.split("；") if part.strip()]
+    if not items:
+        return match.group(0)
+
+    list_items = "".join(f"<li>{item}</li>" for item in items)
+    return (
+        f"{heading}<div class="theme-observation">"
+        f"<p class="theme-intro">{intro}</p>"
+        f"<ul class="theme-list">{list_items}</ul>"
+        f"</div>"
+    )
+
+
 def md_to_html(text: str) -> str:
     html = md_lib.markdown(
         text,
@@ -545,6 +565,26 @@ HTML_TEMPLATE = """\
       margin-bottom: 4px;
     }
 
+    .theme-observation {
+      margin: 6px 0 2px;
+      padding: 2px 0 2px 15px;
+      border-left: 3px solid rgba(0, 194, 179, 0.18);
+    }
+
+    .theme-intro {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .theme-list {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .theme-list li {
+      margin: 8px 0;
+    }
+
     /* ── Archive section ── */
     .archive-section { margin-top: 40px; }
 
@@ -675,7 +715,7 @@ HTML_TEMPLATE = """\
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> ｜ <a href="/">Daily</a></div>
+      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> ｜ <a href="/">daily</a></div>
       <div class="hero-meta secondary">由 Claude + Web Search 自动生成于 2026-06-09 06:08 CST · 2026年06月09日 周二</div>
       <h1>AI 行业每日简报</h1>
     </div>
