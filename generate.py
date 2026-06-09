@@ -515,35 +515,90 @@ HTML_TEMPLATE = """\
     /* ── HR ── */
     hr { border: none; border-top: 1px solid #eee; margin: 28px 0; }
 
-    /* ── Breadcrumb ── */
-    .breadcrumb {
-      font-size: 13px;
-      color: #999;
-      padding-left: 15px;
-      margin-bottom: 20px;
-      display: block;
-    }
-    .breadcrumb a { color: #008F84; }
-
-    /* ── Date subtitle ── */
-    .date-sub {
-      font-size: 14px;
-      color: #999;
-      padding-left: 15px;
-      margin-top: -6px;
+    /* ── Header compact block ── */
+    .hero {
       margin-bottom: 22px;
     }
 
-    /* ── Generation badge ── */
-    .gen-badge {
-      display: inline-block;
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: #8a8a8a;
+      padding-left: 15px;
+    }
+
+    .breadcrumb {
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .breadcrumb a { color: #008F84; }
+
+    .date-sub {
+      font-size: 13px;
+      color: #8f8f8f;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .hero-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .hero-head h1 {
+      margin-bottom: 0;
+      flex: 1;
+    }
+
+    .top3-jump {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f4fbfa;
+      border: 1px solid #d9f0ed;
+      color: #008f84;
       font-size: 12px;
-      color: #aaa;
-      background: #f5f5f5;
-      border: 1px solid #eee;
-      padding: 3px 12px;
-      border-radius: 99px;
-      margin-bottom: 28px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .top3-jump:hover {
+      opacity: 1;
+      background: #ecf8f6;
+    }
+
+    .gen-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 100%;
+      font-size: 11px;
+      line-height: 1.35;
+      color: #909090;
+      background: #f7f7f7;
+      border: 1px solid #eeeeee;
+      padding: 6px 10px;
+      border-radius: 10px;
+    }
+
+    .gen-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00C2B3;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(0, 194, 179, 0.10);
     }
 
     /* ── Archive section ── */
@@ -652,10 +707,36 @@ HTML_TEMPLATE = """\
       #content { margin-top: 110px; padding: 30px 25px; }
     }
     @media (max-width: 767px) {
-      #content { margin-top: 110px; padding: 25px 18px; }
+      #content { margin-top: 110px; padding: 22px 16px; }
+      .hero { margin-bottom: 18px; }
+      .hero-meta {
+        display: block;
+        padding-left: 12px;
+        margin-bottom: 10px;
+      }
+      .breadcrumb {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .date-sub {
+        display: block;
+      }
+      .hero-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
       h1 { font-size: 26px; }
       h2 { font-size: 22px; }
-      h3 { font-size: 18px; }
+      h3 { font-size: 18px; margin-top: 20px; }
+      .top3-jump { display: none; }
+      .gen-badge {
+        width: 100%;
+        border-radius: 12px;
+        padding: 7px 10px;
+      }
+      p, li { line-height: 1.75; }
     }
   </style>
 </head>
@@ -666,17 +747,22 @@ HTML_TEMPLATE = """\
 
   <div id="content">
 
-    <!-- Breadcrumb -->
-    <span class="breadcrumb">
-      <a href="https://hiwd.com/">hiwd</a> / AI 行业每日简报
-    </span>
+    <div class="hero">
+      <div class="hero-meta">
+        <span class="breadcrumb"><a href="https://hiwd.com/">hiwd</a> / <a href="/">daily.hiwd.com</a></span>
+        <span class="date-sub">[[DATE_CN]] [[WEEKDAY]]</span>
+      </div>
 
-    <h1>AI 行业每日简报</h1>
-    <p class="date-sub">[[DATE_CN]] [[WEEKDAY]]</p>
+      <div class="hero-head">
+        <h1>AI 行业每日简报</h1>
+        <a class="top3-jump" href="#top3">Top 3</a>
+      </div>
 
-    <span class="gen-badge">由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</span>
+      <span class="gen-badge"><span class="gen-dot"></span>由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</span>
+    </div>
 
     <!-- Briefing body -->
+    <div id="top3"></div>
     [[CONTENT]]
 
     <!-- Archive -->
@@ -701,7 +787,6 @@ HTML_TEMPLATE = """\
       li.classList.add('active');
       const a = li.querySelector('a');
       if (a) {
-        a.href = '/';
         a.innerHTML = today + ' <span class="today-tag">今日</span>';
       }
     })();
