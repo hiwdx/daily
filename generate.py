@@ -521,11 +521,15 @@ HTML_TEMPLATE = """\
     }
 
     .hero-meta {
-      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
       padding-left: 15px;
-      font-size: 12px;
-      color: #7f7f7f;
-      line-height: 1.45;
+      font-size: 13px;
+      color: #8c8c8c;
+      line-height: 1.4;
     }
 
     .breadcrumb {
@@ -533,42 +537,28 @@ HTML_TEMPLATE = """\
     }
     .breadcrumb a { color: #008F84; }
 
-    .hero-submeta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-left: 15px;
-      margin-bottom: 14px;
-      font-size: 12px;
-      line-height: 1.45;
-      color: #8b8b8b;
+    .meta-sep {
+      color: #c7c7c7;
     }
 
     .date-sub {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: #f4f6f6;
-      border: 1px solid #e6eceb;
-      color: #5f6d6b;
-      font-size: inherit;
-      font-weight: 600;
+      font-size: 13px;
+      color: #8f8f8f;
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
-      line-height: 1.1;
     }
 
     .hero h1 {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .gen-badge {
       display: block;
-      font-size: inherit;
-      line-height: inherit;
-      color: #9a9a9a;
+      padding-left: 15px;
+      margin-bottom: 12px;
+      font-size: 11px;
+      line-height: 1.45;
+      color: #a0a0a0;
     }
 
     /* ── Archive section ── */
@@ -680,25 +670,22 @@ HTML_TEMPLATE = """\
       #content { margin-top: 110px; padding: 22px 16px; }
       .hero { margin-bottom: 16px; }
       .hero-meta {
+        gap: 6px;
         padding-left: 12px;
-        margin-bottom: 6px;
-        font-size: 12px;
-      }
-      .hero-submeta {
-        gap: 8px;
-        padding-left: 12px;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
         font-size: 12px;
       }
       .date-sub {
-        padding: 4px 9px;
+        font-size: 12px;
       }
       .hero h1 { margin-bottom: 4px; }
       h1 { font-size: 26px; }
       h2 { font-size: 22px; }
       h3 { font-size: 18px; margin-top: 20px; }
       .gen-badge {
-        font-size: inherit;
+        padding-left: 12px;
+        margin-bottom: 10px;
+        font-size: 10px;
       }
       p, li { line-height: 1.75; }
     }
@@ -715,10 +702,7 @@ HTML_TEMPLATE = """\
       <div class="hero-meta">
         <span class="breadcrumb"><a href="https://hiwd.com/">hiwd</a> / <a href="/">daily.hiwd.com</a></span>
       </div>
-      <div class="hero-submeta">
-        <span class="date-sub">[[DATE_CN]] [[WEEKDAY]]</span>
-        <span class="gen-badge">由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</span>
-      </div>
+      <div class="gen-badge">由 Claude + Web Search 自动生成于 [[GENERATED_AT]] · [[DATE_CN]] [[WEEKDAY]]</div>
       <h1>AI 行业每日简报</h1>
     </div>
 
