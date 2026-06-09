@@ -517,45 +517,32 @@ HTML_TEMPLATE = """\
 
     /* ── Header compact block ── */
     .hero {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .hero-meta {
-      margin-bottom: 8px;
       padding-left: 15px;
       font-size: 16px;
+      line-height: 1.65;
       color: #666;
-      line-height: 1.7;
     }
 
-    .breadcrumb {
-      min-width: 0;
-    }
-    .breadcrumb a { color: #008F84; }
-    .breadcrumb, .breadcrumb a { font-size: inherit; }
-
-    .meta-sep {
-      color: #c7c7c7;
+    .hero-meta + .hero-meta {
+      margin-top: 2px;
     }
 
-    .date-sub {
-      font-size: 13px;
-      color: #8f8f8f;
-      font-variant-numeric: tabular-nums;
-      white-space: nowrap;
+    .hero-meta.secondary {
+      margin-bottom: 14px;
+      color: #8b8b8b;
+    }
+
+    .hero-meta a {
+      color: #008F84;
+      text-decoration: none;
     }
 
     .hero h1 {
-      margin-bottom: 6px;
-    }
-
-        .gen-badge {
-      display: block;
-      padding-left: 15px;
-      margin-bottom: 14px;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #666;
+      margin-bottom: 4px;
     }
 
     /* ── Archive section ── */
@@ -668,18 +655,14 @@ HTML_TEMPLATE = """\
       .hero { margin-bottom: 16px; }
       .hero-meta {
         padding-left: 12px;
-        margin-bottom: 8px;
         font-size: 16px;
       }
-      .hero h1 { margin-bottom: 4px; }
+      .hero-meta.secondary {
+        margin-bottom: 12px;
+      }
       h1 { font-size: 26px; }
       h2 { font-size: 22px; }
       h3 { font-size: 18px; margin-top: 20px; }
-      .gen-badge {
-        padding-left: 12px;
-        margin-bottom: 12px;
-        font-size: 16px;
-      }
       p, li { line-height: 1.75; }
     }
   </style>
@@ -692,10 +675,8 @@ HTML_TEMPLATE = """\
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta">
-        <span class="breadcrumb"><a href="https://hiwd.com/">hiwd</a> / <a href="/">daily.hiwd.com</a></span>
-      </div>
-      <div class="gen-badge">由 Claude + Web Search 自动生成于 [[GENERATED_AT]] · [[DATE_CN]] [[WEEKDAY]]</div>
+      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> / <a href="/">daily.hiwd.com</a></div>
+      <div class="hero-meta secondary">由 Claude + Web Search 自动生成于 2026-06-09 06:08 CST · 2026年06月09日 周二</div>
       <h1>AI 行业每日简报</h1>
     </div>
 
