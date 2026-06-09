@@ -521,21 +521,18 @@ HTML_TEMPLATE = """\
     }
 
     .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
       margin-bottom: 8px;
       padding-left: 15px;
-      font-size: 13px;
-      color: #8c8c8c;
-      line-height: 1.4;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.7;
     }
 
     .breadcrumb {
       min-width: 0;
     }
     .breadcrumb a { color: #008F84; }
+    .breadcrumb, .breadcrumb a { font-size: inherit; }
 
     .meta-sep {
       color: #c7c7c7;
@@ -552,13 +549,13 @@ HTML_TEMPLATE = """\
       margin-bottom: 6px;
     }
 
-    .gen-badge {
+        .gen-badge {
       display: block;
       padding-left: 15px;
-      margin-bottom: 12px;
-      font-size: 11px;
-      line-height: 1.45;
-      color: #a0a0a0;
+      margin-bottom: 14px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #666;
     }
 
     /* ── Archive section ── */
@@ -670,13 +667,9 @@ HTML_TEMPLATE = """\
       #content { margin-top: 110px; padding: 22px 16px; }
       .hero { margin-bottom: 16px; }
       .hero-meta {
-        gap: 6px;
         padding-left: 12px;
         margin-bottom: 8px;
-        font-size: 12px;
-      }
-      .date-sub {
-        font-size: 12px;
+        font-size: 16px;
       }
       .hero h1 { margin-bottom: 4px; }
       h1 { font-size: 26px; }
@@ -684,8 +677,8 @@ HTML_TEMPLATE = """\
       h3 { font-size: 18px; margin-top: 20px; }
       .gen-badge {
         padding-left: 12px;
-        margin-bottom: 10px;
-        font-size: 10px;
+        margin-bottom: 12px;
+        font-size: 16px;
       }
       p, li { line-height: 1.75; }
     }
