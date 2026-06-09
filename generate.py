@@ -702,9 +702,8 @@ HTML_TEMPLATE = """\
         <span class="meta-sep">/</span>
         <span class="date-sub">[[DATE_CN]] [[WEEKDAY]]</span>
       </div>
+      <div class="gen-badge">由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</div>
       <h1>AI 行业每日简报</h1>
-
-      <span class="gen-badge">由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</span>
     </div>
 
     <!-- Briefing body -->
