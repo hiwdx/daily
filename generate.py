@@ -555,6 +555,7 @@ HTML_TEMPLATE = """\
     .gen-badge {
       display: block;
       padding-left: 15px;
+      margin-bottom: 12px;
       font-size: 11px;
       line-height: 1.45;
       color: #a0a0a0;
@@ -683,6 +684,7 @@ HTML_TEMPLATE = """\
       h3 { font-size: 18px; margin-top: 20px; }
       .gen-badge {
         padding-left: 12px;
+        margin-bottom: 10px;
         font-size: 10px;
       }
       p, li { line-height: 1.75; }
