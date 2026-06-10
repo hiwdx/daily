@@ -551,7 +551,7 @@ HTML_TEMPLATE = """\
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px 14px;
+      gap: 0 4px;
       padding-left: 15px;
       font-size: 16px;
       line-height: 1.6;
@@ -563,13 +563,19 @@ HTML_TEMPLATE = """\
       text-decoration: none;
     }
 
+    .hero-divider {
+      margin: 0 2px;
+      color: #8e8e93;
+    }
+
     .hero-date {
-      margin-left: 6px;
+      margin-left: 10px;
       color: #6e6e73;
       white-space: nowrap;
     }
 
     .hero h1 {
+      margin-top: 20px;
       margin-bottom: 0;
     }
 
@@ -699,6 +705,10 @@ HTML_TEMPLATE = """\
     }
     #footer a { color: #008F84; }
 
+    .footer-meta {
+      margin-bottom: 4px;
+    }
+
     /* ── Responsive — mirrors hiwd breakpoints ── */
     @media (max-width: 1150px) {
       #logo { position: absolute !important; top: 15px; left: 15px; width: 80px; height: 80px; }
@@ -726,7 +736,7 @@ HTML_TEMPLATE = """\
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> ｜ <a href="/">daily</a><span class="hero-date">[[DATE_CN]] [[WEEKDAY]]</span></div>
+      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a><span class="hero-divider">｜</span><a href="/">daily</a><span class="hero-date">[[DATE_CN]] [[WEEKDAY]]</span></div>
       <h1>AI 行业每日简报</h1>
     </div>
 
@@ -742,6 +752,7 @@ HTML_TEMPLATE = """\
   </div>
 
   <div id="footer">
+    <div class="footer-meta">由 Claude + Web Search 自动生成</div>
     <div>© 2026 hiwd · All rights reserved.</div>
   </div>
   <script>
