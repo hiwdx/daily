@@ -401,12 +401,12 @@ HTML_TEMPLATE = """\
     body {
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
-        "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
       font-size: 16px;
-      background-color: #f5f5f5;
-      color: #1a1a1a;
+      line-height: 1.72;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
       /* Prevent iOS Safari from auto-scaling font sizes */
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
@@ -434,16 +434,17 @@ HTML_TEMPLATE = """\
 
     /* ── Content card — same as hiwd #content ── */
     #content {
-      margin-top: 80px;
+      margin-top: 84px;
       margin-left: auto;
       margin-right: auto;
-      width: 90%;
-      max-width: 800px;
-      padding: 30px;
-      background-color: #fff;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      margin-bottom: 30px;
+      width: min(90%, 860px);
+      padding: 40px 42px 34px;
+      background-color: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+      border-radius: 24px;
+      margin-bottom: 26px;
+      backdrop-filter: saturate(180%) blur(18px);
     }
 
     /* ── Headings — exact hiwd style ── */
@@ -543,23 +544,18 @@ HTML_TEMPLATE = """\
 
     /* ── Header compact block ── */
     .hero {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 10px;
       padding-left: 15px;
       font-size: 16px;
-      line-height: 1.65;
-      color: #666;
-    }
-
-    .hero-meta + .hero-meta {
-      margin-top: 2px;
-    }
-
-    .hero-meta.secondary {
-      margin-bottom: 14px;
-      color: #8b8b8b;
+      line-height: 1.6;
+      color: #6e6e73;
     }
 
     .hero-meta a {
@@ -567,8 +563,13 @@ HTML_TEMPLATE = """\
       text-decoration: none;
     }
 
+    .hero-date {
+      color: #6e6e73;
+      white-space: nowrap;
+    }
+
     .hero h1 {
-      margin-bottom: 4px;
+      margin-bottom: 0;
     }
 
     .theme-observation {
@@ -687,31 +688,34 @@ HTML_TEMPLATE = """\
 
     /* ── Footer — same as hiwd footer.html ── */
     #footer {
+      width: min(90%, 860px);
+      margin: 0 auto 28px;
+      padding: 0 8px 8px;
       text-align: center;
-      margin-top: 10px;
-      padding: 20px;
-      font-size: 12px;
-      color: #999;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #8e8e93;
     }
     #footer a { color: #008F84; }
+
+    .footer-meta {
+      margin-bottom: 4px;
+    }
 
     /* ── Responsive — mirrors hiwd breakpoints ── */
     @media (max-width: 1150px) {
       #logo { position: absolute !important; top: 15px; left: 15px; width: 80px; height: 80px; }
-      #content { margin-top: 110px; padding: 30px 25px; }
+      #content { margin-top: 110px; padding: 34px 28px 28px; }
     }
     @media (max-width: 767px) {
-      #content { margin-top: 110px; padding: 22px 16px; }
-      .hero { margin-bottom: 16px; }
+      #content { margin-top: 108px; width: calc(100% - 32px); padding: 28px 18px 24px; border-radius: 20px; }
+      .hero { margin-bottom: 14px; }
       .hero-meta {
         padding-left: 12px;
         font-size: 16px;
       }
-      .hero-meta.secondary {
-        margin-bottom: 12px;
-      }
-      h1 { font-size: 26px; }
-      h2 { font-size: 22px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 24px; }
       h3 { font-size: 18px; margin-top: 20px; }
       p, li { line-height: 1.75; }
     }
@@ -725,8 +729,7 @@ HTML_TEMPLATE = """\
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> ｜ <a href="/">daily</a></div>
-      <div class="hero-meta secondary">由 Claude + Web Search 自动生成于 [[GENERATED_AT]] · [[DATE_CN]] [[WEEKDAY]]</div>
+      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a> ｜ <a href="/">daily</a><span class="hero-date">[[DATE_CN]] [[WEEKDAY]]</span></div>
       <h1>AI 行业每日简报</h1>
     </div>
 
@@ -742,7 +745,8 @@ HTML_TEMPLATE = """\
   </div>
 
   <div id="footer">
-    © 2026 hiwd · All rights reserved.
+    <div class="footer-meta">由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</div>
+    <div>© 2026 hiwd · All rights reserved.</div>
   </div>
   <script>
     // Dynamically mark today's entry in the archive nav.
