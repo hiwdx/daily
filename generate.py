@@ -551,7 +551,7 @@ HTML_TEMPLATE = """\
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px 10px;
+      gap: 8px 14px;
       padding-left: 15px;
       font-size: 16px;
       line-height: 1.6;
@@ -564,6 +564,7 @@ HTML_TEMPLATE = """\
     }
 
     .hero-date {
+      margin-left: 6px;
       color: #6e6e73;
       white-space: nowrap;
     }
@@ -698,10 +699,6 @@ HTML_TEMPLATE = """\
     }
     #footer a { color: #008F84; }
 
-    .footer-meta {
-      margin-bottom: 4px;
-    }
-
     /* ── Responsive — mirrors hiwd breakpoints ── */
     @media (max-width: 1150px) {
       #logo { position: absolute !important; top: 15px; left: 15px; width: 80px; height: 80px; }
@@ -745,7 +742,6 @@ HTML_TEMPLATE = """\
   </div>
 
   <div id="footer">
-    <div class="footer-meta">由 Claude + Web Search 自动生成于 [[GENERATED_AT]]</div>
     <div>© 2026 hiwd · All rights reserved.</div>
   </div>
   <script>
