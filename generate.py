@@ -437,7 +437,7 @@ HTML_TEMPLATE = """\
       margin-top: 84px;
       margin-left: auto;
       margin-right: auto;
-      width: min(90%, 820px);
+      width: min(90%, 830px);
       padding: 40px 42px 34px;
       background-color: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(15, 23, 42, 0.05);
@@ -695,7 +695,7 @@ HTML_TEMPLATE = """\
 
     /* ── Footer — same as hiwd footer.html ── */
     #footer {
-      width: min(90%, 820px);
+      width: min(90%, 830px);
       margin: 0 auto 28px;
       padding: 0 8px 8px;
       text-align: center;
