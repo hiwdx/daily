@@ -403,8 +403,8 @@ HTML_TEMPLATE = """\
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.72;
+      font-size: 17px;
+      line-height: 1.82;
       background-color: #f5f5f7;
       color: #1d1d1f;
       /* Prevent iOS Safari from auto-scaling font sizes */
@@ -553,8 +553,8 @@ HTML_TEMPLATE = """\
       align-items: center;
       gap: 0 4px;
       padding-left: 15px;
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 17px;
+      line-height: 1.72;
       color: #6e6e73;
     }
 
@@ -719,12 +719,12 @@ HTML_TEMPLATE = """\
       .hero { margin-bottom: 14px; }
       .hero-meta {
         padding-left: 12px;
-        font-size: 16px;
+        font-size: 17px;
       }
       h1 { font-size: 28px; }
       h2 { font-size: 24px; }
       h3 { font-size: 18px; margin-top: 20px; }
-      p, li { line-height: 1.75; }
+      p, li { line-height: 1.82; }
     }
   </style>
 </head>
