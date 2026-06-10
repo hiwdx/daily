@@ -287,16 +287,16 @@ def _format_theme_observation_block(match: re.Match) -> str:
 
     intro, rest = body.split("：<strong>", 1)
     intro = intro.strip() + "："
-    items = [f"<strong>{part.strip()}" for part in rest.split("；") if part.strip()]
+    items = [part.strip() for part in re.split(r'；(?=<strong>)', f'<strong>{rest}') if part.strip()]
     if not items:
         return match.group(0)
 
     list_items = "".join(f"<li>{item}</li>" for item in items)
     return (
-        f"{heading}<div class="theme-observation">"
-        f"<p class="theme-intro">{intro}</p>"
-        f"<ul class="theme-list">{list_items}</ul>"
-        f"</div>"
+        f'{heading}<div class="theme-observation">'
+        f'<p class="theme-intro">{intro}</p>'
+        f'<ul class="theme-list">{list_items}</ul>'
+        f'</div>'
     )
 
 
@@ -322,6 +322,12 @@ def md_to_html(text: str) -> str:
     # Claude sometimes splits a sentence mid-line; in HTML a bare \n followed
     # by ，。；etc. renders as " ，" (space + punctuation) which looks wrong.
     html = re.sub(r'[ \t]*\n[ \t]*([，。；：！？、—])', r'\1', html)
+    html = re.sub(
+        r'(<h2>🔍 今日主题观察</h2>)\s*<p>(.*?)</p>',
+        _format_theme_observation_block,
+        html,
+        flags=re.S,
+    )
     return html
 
 
@@ -566,12 +572,16 @@ HTML_TEMPLATE = """\
     }
 
     .theme-observation {
-      margin: 6px 0 2px;
-      padding: 2px 0 2px 15px;
-      border-left: 3px solid rgba(0, 194, 179, 0.18);
+      margin: 8px 0 2px;
+      padding: 14px 16px 14px 18px;
+      border: 1px solid rgba(0, 194, 179, 0.12);
+      border-left: 3px solid rgba(0, 194, 179, 0.28);
+      border-radius: 10px;
+      background: linear-gradient(180deg, #fafdfd 0%, #f7fbfb 100%);
     }
 
     .theme-intro {
+      margin-top: 0;
       margin-bottom: 10px;
       color: #555;
     }
