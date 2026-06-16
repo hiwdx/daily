@@ -38,51 +38,32 @@
       left: 15px;
       z-index: 9999;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: .38rem;
       text-decoration: none;
       outline: none;
       border: none;
       -webkit-tap-highlight-color: transparent;
-      white-space: nowrap;
       user-select: none;
     }
     #logo-hiwd {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      color: #1d1d1f;
-      line-height: 1;
-    }
-    #logo-i {
-      position: relative;
-      display: inline-block;
-    }
-    #logo-i::after {
-      content: '';
-      position: absolute;
-      top: .06em;
-      left: 50%;
-      transform: translateX(-50%);
-      width: .155em;
-      height: .155em;
-      border-radius: 50%;
-      background: #00C2B3;
+      display: block;
+      width: 100px;
+      height: 100px;
+      background: url('https://hiwd.com/img/logo.png') no-repeat center center;
+      background-size: cover;
     }
     #logo-rule {
-      width: 1px;
-      height: .9em;
-      background: rgba(29,29,31,.18);
-      flex-shrink: 0;
-      align-self: center;
+      display: none;
     }
     #logo-sub {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 2rem;
+      font-size: 11px;
       font-weight: 400;
-      letter-spacing: -0.02em;
-      color: #1d1d1f;
+      letter-spacing: 0.06em;
+      color: #888;
+      line-height: 1;
+      margin-top: 2px;
     }
 
     /* ── Content card — same as hiwd #content ── */
@@ -365,6 +346,7 @@
     /* ── Responsive — mirrors hiwd breakpoints ── */
     @media (max-width: 1150px) {
       #logo { position: absolute !important; top: 15px; left: 15px; }
+      #logo-hiwd { width: 80px; height: 80px; }
       #content { margin-top: 110px; padding: 34px 28px 28px; }
     }
     @media (max-width: 767px) {
@@ -385,7 +367,7 @@
 
   <!-- Logo links back to hiwd main site -->
   <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站">
-    <span id="logo-hiwd">h<span id="logo-i">ı</span>wd</span>
+    <span id="logo-hiwd"></span>
     <span id="logo-rule"></span>
     <span id="logo-sub">daily</span>
   </a>
