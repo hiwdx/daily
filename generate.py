@@ -70,15 +70,12 @@ def contains_sensitive_politics(text: str) -> bool:
 
 _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
 
-## 搜索策略
+## 搜索策略（严格限制 3 次）
 
-执行时，**优先用聚合式关键词**一次覆盖多个源，而不是逐站点搜索：
-- 第 1 搜：`AI news today {TODAY_ISO} site:openai.com OR site:anthropic.com OR site:deepmind.google OR site:ai.meta.com`
-- 第 2 搜：`AI model release OR AI product launch OR LLM benchmark {TODAY_ISO}`
-- 第 3 搜：`AI funding OR AI acquisition OR AI partnership {TODAY_ISO}`
-- 第 4 搜：`Hacker News AI today` 或 `site:news.ycombinator.com AI`
-- 第 5 搜（中文）：`AI 大模型 发布 今日` 或 `人工智能 产品 发布 {TODAY_CN}`
-- 剩余搜索：按以下"信息源优先级"补充覆盖未命中的 S/A 级源
+用宽泛关键词一次覆盖多个源，**总搜索次数不超过 3 次**：
+- 搜索 1：`AI news {TODAY_ISO} site:openai.com OR site:anthropic.com OR site:deepmind.google OR site:techcrunch.com OR site:theverge.com`
+- 搜索 2：`AI model release OR product launch OR LLM benchmark OR AI funding OR acquisition {TODAY_ISO}`
+- 搜索 3（中文）：`AI 大模型 发布 {TODAY_CN}`
 
 ## 信息源优先级
 
@@ -243,10 +240,24 @@ def fetch_briefing(user_prompt: str) -> str:
 
     client = anthropic.Anthropic(api_key=api_key)
 
-    messages: list = [{"role": "user", "content": user_prompt}]
+    # Wrap user prompt in a content block so we can attach cache_control.
+    # On the first turn this primes the cache; subsequent turns (pause_turn loop)
+    # read from cache at ~10% of normal input token cost.
+    messages: list = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": user_prompt,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+        }
+    ]
 
-    # System prompt (plain string; caching handled at request level below)
-    system = SYSTEM_PROMPT
+    # Cache the system prompt too (it's stable across all turns).
+    system = [{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}]
 
     print(f"📡 Calling Claude API for {TODAY_ISO}...")
 
