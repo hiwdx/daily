@@ -206,6 +206,13 @@ def _api_create_with_retry(client, system: str, messages: list, max_retries: int
         except anthropic.AuthenticationError as e:
             print(f"❌ Authentication error — check ANTHROPIC_API_KEY: {e}", file=sys.stderr)
             raise
+        except anthropic.BadRequestError as e:
+            msg = str(e)
+            if "usage limits" in msg or "regain access" in msg:
+                print(f"❌ API usage limit reached — go to console.anthropic.com/settings/limits to increase your monthly spend limit. {e}", file=sys.stderr)
+            else:
+                print(f"❌ Bad request error: {e}", file=sys.stderr)
+            raise
         except _retryable as e:
             if attempt >= max_retries:
                 print(
