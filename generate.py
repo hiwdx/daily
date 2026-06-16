@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -180,6 +181,44 @@ def build_user_prompt(recent_urls=None) -> str:
 
 
 # ── Claude API ────────────────────────────────────────────────────────────────
+def _api_create_with_retry(client, system: str, messages: list, max_retries: int = 3):
+    """Call client.messages.create with exponential back-off for transient errors.
+
+    Retries on connection errors, rate-limit errors, and 5xx server errors.
+    Fails immediately on authentication errors (retrying won't help).
+    """
+    _retryable = (
+        anthropic.APIConnectionError,
+        anthropic.RateLimitError,
+        anthropic.InternalServerError,
+    )
+    delays = [10, 30, 60]  # seconds between successive attempts
+
+    for attempt in range(max_retries + 1):
+        try:
+            return client.messages.create(
+                model="claude-haiku-4-5",
+                max_tokens=4000,
+                system=system,
+                tools=[{"type": "web_search_20260209", "name": "web_search", "allowed_callers": ["direct"]}],
+                messages=messages,
+            )
+        except anthropic.AuthenticationError as e:
+            print(f"❌ Authentication error — check ANTHROPIC_API_KEY: {e}", file=sys.stderr)
+            raise
+        except _retryable as e:
+            if attempt >= max_retries:
+                print(
+                    f"❌ API error after {max_retries} retries: {type(e).__name__}: {e}",
+                    file=sys.stderr,
+                )
+                raise
+            wait = delays[attempt]
+            print(f"  ⚠️ Transient API error (attempt {attempt + 1}/{max_retries}): {type(e).__name__}: {e}")
+            print(f"  ⏳ Retrying in {wait}s…")
+            time.sleep(wait)
+
+
 def fetch_briefing(user_prompt: str) -> str:
     """
     Call Claude with the web_search tool and return the briefing markdown.
@@ -205,13 +244,7 @@ def fetch_briefing(user_prompt: str) -> str:
     print(f"📡 Calling Claude API for {TODAY_ISO}...")
 
     for turn in range(8):  # safety cap (was 15)
-        response = client.messages.create(
-            model="claude-haiku-4-5",
-            max_tokens=4000,  # briefing ~800–1200 tokens; 4000 gives safe headroom
-            system=system,
-            tools=[{"type": "web_search_20260209", "name": "web_search", "allowed_callers": ["direct"]}],
-            messages=messages,
-        )
+        response = _api_create_with_retry(client, system, messages)
 
         print(
             f"  turn {turn + 1} | stop_reason={response.stop_reason} | "
