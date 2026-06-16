@@ -38,32 +38,37 @@
       left: 15px;
       z-index: 9999;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 10px;
       text-decoration: none;
       outline: none;
       border: none;
       -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
       user-select: none;
     }
     #logo-hiwd {
-      display: block;
-      width: 100px;
-      height: 100px;
+      display: inline-block;
+      width: 46px;
+      height: 20px;
       background: url('https://hiwd.com/img/logo.png') no-repeat center center;
-      background-size: cover;
+      background-size: auto 48px;
+      flex-shrink: 0;
     }
     #logo-rule {
-      display: none;
+      display: block;
+      width: 1px;
+      height: 16px;
+      background: rgba(29,29,31,.18);
+      flex-shrink: 0;
     }
     #logo-sub {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 11px;
+      font-size: 16px;
       font-weight: 400;
-      letter-spacing: 0.06em;
-      color: #888;
+      letter-spacing: -0.01em;
+      color: #1d1d1f;
       line-height: 1;
-      margin-top: 2px;
     }
 
     /* ── Content card — same as hiwd #content ── */
@@ -346,7 +351,6 @@
     /* ── Responsive — mirrors hiwd breakpoints ── */
     @media (max-width: 1150px) {
       #logo { position: absolute !important; top: 15px; left: 15px; }
-      #logo-hiwd { width: 80px; height: 80px; }
       #content { margin-top: 110px; padding: 34px 28px 28px; }
     }
     @media (max-width: 767px) {
