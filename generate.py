@@ -516,7 +516,7 @@ HTML_TEMPLATE = """\
     }
     #logo-hiwd {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 1.22rem;
+      font-size: 2rem;
       font-weight: 400;
       letter-spacing: -0.02em;
       color: #1d1d1f;
@@ -546,7 +546,7 @@ HTML_TEMPLATE = """\
     }
     #logo-sub {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 1.22rem;
+      font-size: 2rem;
       font-weight: 400;
       letter-spacing: -0.02em;
       color: #1d1d1f;
