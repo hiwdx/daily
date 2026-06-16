@@ -470,7 +470,7 @@ HTML_TEMPLATE = """\
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI 行业每日简报 · [[DATE_CN]]</title>
+  <title>[[PAGE_TITLE]]</title>
   <meta name="description" content="AI 行业每日精选 [[DATE_CN]] [[WEEKDAY]]" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
   <style>
@@ -856,13 +856,16 @@ HTML_TEMPLATE = """\
 """
 
 
-def render_page(briefing_md: str, archive_entries: list[dict]) -> str:
+def render_page(briefing_md: str, archive_entries: list[dict], page_title: str | None = None) -> str:
     content_html = md_to_html(briefing_md)
     archive_html = build_archive_nav(archive_entries)
     generated_at = NOW.strftime("%Y-%m-%d %H:%M CST")
+    if page_title is None:
+        page_title = f"AI 行业每日简报 · {TODAY_CN}"
 
     return (
         HTML_TEMPLATE
+        .replace("[[PAGE_TITLE]]", page_title)
         .replace("[[DATE_CN]]", TODAY_CN)
         .replace("[[DATE_ISO]]", TODAY_ISO)
         .replace("[[WEEKDAY]]", WEEKDAY_CN)
@@ -951,18 +954,27 @@ def main() -> None:
         archive_entries.append({"date": TODAY_ISO})
         archive_entries.sort(key=lambda e: e["date"])
 
-    # Render HTML
-    page_html = render_page(briefing_md, archive_entries)
+    # Render HTML — two variants with different <title> for SEO:
+    # archive page keeps the date (unique URL = unique title),
+    # index page uses a stable keyword title (no date = better ranking for main page).
+    archive_html = render_page(
+        briefing_md, archive_entries,
+        page_title=f"AI 行业每日简报 · {TODAY_CN} | hiwd",
+    )
+    index_html = render_page(
+        briefing_md, archive_entries,
+        page_title="AI 行业每日简报 | hiwd",
+    )
 
     # Save archive copy (monthly subdir: docs/archive/YYYY-MM/YYYY-MM-DD.html)
     month_dir = archive_dir / TODAY_ISO[:7]
     month_dir.mkdir(parents=True, exist_ok=True)
     archive_file = month_dir / f"{TODAY_ISO}.html"
-    archive_file.write_text(page_html, encoding="utf-8")
+    archive_file.write_text(archive_html, encoding="utf-8")
     print(f"✅ Saved  → docs/archive/{TODAY_ISO[:7]}/{TODAY_ISO}.html")
 
     # Update index (latest briefing)
-    (docs / "index.html").write_text(page_html, encoding="utf-8")
+    (docs / "index.html").write_text(index_html, encoding="utf-8")
     print(f"✅ Updated → docs/index.html")
 
     # Persist archive index only when a new entry was added
