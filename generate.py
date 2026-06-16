@@ -473,6 +473,9 @@ HTML_TEMPLATE = """\
   <title>[[PAGE_TITLE]]</title>
   <meta name="description" content="AI 行业每日精选 [[DATE_CN]] [[WEEKDAY]]" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
   <style>
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; }
@@ -501,15 +504,52 @@ HTML_TEMPLATE = """\
       top: 15px;
       left: 15px;
       z-index: 9999;
-      display: block;
-      width: 100px;
-      height: 100px;
-      background-image: url('https://hiwd.com/img/logo.png');
-      background-size: cover;
-      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      gap: .38rem;
+      text-decoration: none;
       outline: none;
       border: none;
       -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+      user-select: none;
+    }
+    #logo-hiwd {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.22rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #1d1d1f;
+      line-height: 1;
+    }
+    #logo-i {
+      position: relative;
+      display: inline-block;
+    }
+    #logo-i::after {
+      content: '';
+      position: absolute;
+      top: .06em;
+      left: 50%;
+      transform: translateX(-50%);
+      width: .155em;
+      height: .155em;
+      border-radius: 50%;
+      background: #00C2B3;
+    }
+    #logo-rule {
+      width: 1px;
+      height: .9em;
+      background: rgba(29,29,31,.18);
+      flex-shrink: 0;
+      align-self: center;
+    }
+    #logo-sub {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.22rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #1d1d1f;
     }
 
     /* ── Content card — same as hiwd #content ── */
@@ -791,7 +831,7 @@ HTML_TEMPLATE = """\
 
     /* ── Responsive — mirrors hiwd breakpoints ── */
     @media (max-width: 1150px) {
-      #logo { position: absolute !important; top: 15px; left: 15px; width: 80px; height: 80px; }
+      #logo { position: absolute !important; top: 15px; left: 15px; }
       #content { margin-top: 110px; padding: 34px 28px 28px; }
     }
     @media (max-width: 767px) {
@@ -811,7 +851,11 @@ HTML_TEMPLATE = """\
 <body>
 
   <!-- Logo links back to hiwd main site -->
-  <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站"></a>
+  <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站">
+    <span id="logo-hiwd">h<span id="logo-i">ı</span>wd</span>
+    <span id="logo-rule"></span>
+    <span id="logo-sub">daily</span>
+  </a>
 
   <div id="content">
 
