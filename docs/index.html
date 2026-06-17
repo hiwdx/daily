@@ -221,13 +221,18 @@
       color: #8e8e93;
     }
 
+    .hero-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .hero-title-row h1 { margin: 0; }
+
     .hero-date {
-      margin-left: 14px;
       font-size: 15px;
       font-weight: 400;
       color: #6e6e73;
       white-space: nowrap;
-      vertical-align: middle;
       letter-spacing: 0;
     }
 
@@ -382,7 +387,8 @@
       h2 { font-size: 24px; }
       h3 { font-size: 18px; margin-top: 20px; }
       p, li { line-height: 1.82; }
-      .hero-date { display: block; margin-left: 0; margin-top: 6px; }
+      .hero-title-row { display: block; }
+      .hero-date { display: block; margin-top: 6px; padding-left: 15px; }
     }
   </style>
 </head>
@@ -398,7 +404,10 @@
   <div id="content">
 
     <div class="hero">
-      <h1>AI 行业每日简报<span class="hero-date">2026年06月17日 周三</span></h1>
+      <div class="hero-title-row">
+        <h1>AI 行业每日简报</h1>
+        <span class="hero-date">2026年06月17日 周三</span>
+      </div>
     </div>
 
     <!-- Briefing body -->
