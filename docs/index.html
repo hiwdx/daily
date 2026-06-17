@@ -200,27 +200,6 @@
       margin-bottom: 12px;
     }
 
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0 4px;
-      padding-left: 15px;
-      font-size: 17px;
-      line-height: 1.72;
-      color: #6e6e73;
-    }
-
-    .hero-meta a {
-      color: #008F84;
-      text-decoration: none;
-    }
-
-    .hero-divider {
-      margin: 0 2px;
-      color: #8e8e93;
-    }
-
     .hero-title-row {
       display: flex;
       align-items: baseline;
@@ -234,11 +213,6 @@
       color: #6e6e73;
       white-space: nowrap;
       letter-spacing: 0;
-    }
-
-    .hero h1 {
-      margin-top: 20px;
-      margin-bottom: 0;
     }
 
     .theme-observation {
@@ -379,10 +353,6 @@
     @media (max-width: 767px) {
       #content { margin-top: 108px; width: calc(100% - 32px); padding: 28px 18px 24px; border-radius: 20px; }
       .hero { margin-bottom: 14px; }
-      .hero-meta {
-        padding-left: 12px;
-        font-size: 17px;
-      }
       h1 { font-size: 28px; }
       h2 { font-size: 24px; }
       h3 { font-size: 18px; margin-top: 20px; }
@@ -394,7 +364,7 @@
 </head>
 <body>
 
-  <!-- Logo links back to hiwd main site -->
+  <!-- Logo links back to daily site -->
   <a href="https://daily.hiwd.com/" id="logo" aria-label="返回 daily 首页">
     <span id="logo-hiwd">h<span id="logo-i">ı</span>wd</span>
     <span id="logo-rule"></span>
@@ -411,18 +381,67 @@
     </div>
 
     <!-- Briefing body -->
-    <h2>📊 现状反馈</h2>
-<p>根据可用数据，我可以为您提供<strong>最近期的 AI 动态汇总</strong>（6 月 8-10 日），但这已不符合"今日"的定义。关键信号包括：</p>
-<p><strong>已确认的最近发布</strong>（6 月 8-10 日）：</p>
-<p>Google 确认 Gemini 3.5 Pro 在 6 月发布，预期提供比 Flash 更强的推理和更长的上下文处理能力，适配复杂企业和 agent 工作负载</p>
-<p>苹果 WWDC 2026 推出深度结合谷歌技术的全新 Siri 与 Apple Intelligence，OpenAI 秘密启动 IPO，多款大模型和 AI 框架集中发布</p>
-<p>字节跳动开源 3B 参数多模态模型 Lance，支持图像、视频理解与生成编辑</p>
-<h2>⚠️ 建议</h2>
-<p>要获得 <strong>6 月 17 日确切的新闻动态</strong>，我建议：
-1. 直接访问 OpenAI、Anthropic、Google DeepMind 的官方博客（可能有声明但搜索引擎尚未完全索引）
-2. 查阅 Hacker News、Product Hunt 的实时榜单
-3. 等待 24-48 小时后重新搜索，确保索引完整性</p>
-<p><strong>您希望我基于最近期（6 月 8-10 日）的确认信息输出简报格式，还是再次尝试更精准的搜索？</strong></p>
+    <h2>🎯 今日 Top 3</h2>
+<p><strong>标题</strong>：<a href="https://venturebeat.com">Google 推出 Gemini 3.5 Flash，性能与效率兼具</a></p>
+<p><strong>来源</strong>：VentureBeat · 2026-06-17（过去 2 周内发布）</p>
+<p><strong>摘要</strong>：</p>
+<p>Google 发布了 Gemini 3.5 Flash，优化了复杂代理工作流和代码任务，在多项基准测试中超越 Gemini 3.1 Pro</p>
+<p>该模型的输出令牌处理速度是其他前沿模型的 4 倍，使其成为 agent 框架和实时应用的理想选择
+- 开发者和企业用户，特别是关注推理速度和成本平衡的团队</p>
+<p><strong>产品技术视角</strong>：Agent 框架竞争升温，Google 通过速度优势（输出令牌 4 倍快）重新定义成本-性能边界。</p>
+<p><strong>标题</strong>：<a href="https://dentro.de/ai/news/">Meta 斥资 100 亿美元购买 AMD 芯片，多元化 AI 基础设施</a></p>
+<p><strong>来源</strong>：AI News · 2026-06-17（过去 2 周内发布）</p>
+<p><strong>摘要</strong>：</p>
+<p>Meta 宣布多年期协议购买最多 100 亿美元的 AMD 芯片，包括 MI540 GPU 和 CPU，以多元化其 AI 基础设施并支持个人超级智能的开发</p>
+<ul>
+<li>减少对英伟达的依赖，同时为大规模模型训练和推理锁定成本可控的计算资源</li>
+<li>大型科技企业、AI 芯片初创公司和芯片供应商</li>
+</ul>
+<p><strong>产品技术视角</strong>：芯片供应链重塑信号，Meta 的举动表明大厂开始分散采购策略，AMD 等替代方案进入一线实用阶段。</p>
+<p><strong>标题</strong>：<a href="https://venturebeat.com">Google 搜索框大改版，集成 AI Overviews 与 AI Mode</a></p>
+<p><strong>来源</strong>：VentureBeat · 2026-06-17（过去 2 周内发布）</p>
+<p><strong>摘要</strong>：</p>
+<p>Google I/O 2026 上发布了标志性搜索框的全面重设计，转变为支持文本、图像、PDF、视频和 Chrome 标签页的动态多模态 AI 驱动对话界面，统一了 AI Overviews 和 AI Mode 为一体</p>
+<p>该体验由新的 Gemini 3.5 Flash 模型驱动，代表了搜索交互最根本的转变
+- 全球数十亿搜索用户和依赖搜索流量的企业</p>
+<p><strong>产品技术视角</strong>：搜索范式转变，从关键词到对话再到多模态代理，25 年来最大改革体现 Google 押注 agent-first 的战略决心。</p>
+<hr />
+<h2>📰 其他值得看的</h2>
+<ul>
+<li><strong><a href="https://dentro.de/ai/news/">SAP 收购 Freiburg Prior Labs，投资 11.8 亿美元布局表格基础模型</a></strong> · dentro.de</li>
+</ul>
+<p>SAP 同意收购 Freiburg 初创公司 Prior Labs，并计划在四年内投资超过 11.8 亿美元，表明企业级 AI 正向表格数据处理专业化发展。</p>
+<ul>
+<li><strong><a href="https://aiweekly.co/ai-news-today/anthropic-news">G7 峰会聚焦 AI 治理，Sam Altman、Dario Amodei、Demis Hassabis 首次同时出席</a></strong> · AI Weekly</li>
+</ul>
+<p>三位顶级 AI 实验室 CEO 于 6 月 15-17 日在法国参加 G7 峰会，体现 AI 监管和国际协调提升至最高政治层级。</p>
+<ul>
+<li><strong><a href="https://dentro.de/ai/news/">Claude 和 GPT 编程能力对标升级</a></strong> · AI News</li>
+</ul>
+<p>Claude Code 领导者 Boris Cherny 发布了实验性嵌套子代理支持，支持五级层级结构用于上下文窗口管理，Agent 编程框架竞争白热化。</p>
+<ul>
+<li><strong><a href="https://aiweekly.co/ai-news-today/anthropic-news">Anthropic 签署 12+ 数据中心租赁合约，超过 1GW 容量</a></strong> · AI Weekly</li>
+</ul>
+<p>Anthropic 签署了超过 1GW 容量的 12 份以上美国数据中心租赁合同，并寻求 Google 财务支持，为即将到来的 IPO 进行基础设施准备。</p>
+<ul>
+<li><strong><a href="https://dentro.de/ai/news/">开源模型性能缩小与闭源领导者的差距</a></strong> · AI News</li>
+</ul>
+<p>推理深度（o-series、DeepSeek-R1）、多模态理解成为标配，效率改进使 7B 模型能做到去年 70B 模型的工作，开源生态快速追赶。</p>
+<ul>
+<li><strong><a href="https://aiweekly.co/ai-news-today/anthropic-news">ChatGPT 突破 10 亿月活跃用户，Claude 增长 640%</a></strong> · AI Weekly</li>
+</ul>
+<p>ChatGPT 达到历史上最快消费应用 10 亿月活跃用户，Claude 同比增长 640%，Meta AI 增长 973%，消费端 AI 应用进入大众化阶段。</p>
+<hr />
+<h2>🔍 今日主题观察</h2>
+<p><strong>Agent 框架与 API 生态竞争升温</strong>。Google（Gemini 3.5 Flash）、Anthropic（Claude Code 嵌套子代理）、OpenAI（采纳 Model Context Protocol）都在围绕 agent 工作流进行技术竞争，但焦点从参数规模转向执行效率和工程化框架。同时基础设施投资（Meta 与 AMD、Anthropic 的 1GW 数据中心）预示着下一轮成本竞争将更激烈。</p>
+<hr />
+<h2>⚠️ 信息来源说明</h2>
+<p><strong>直接提供内容的媒体</strong>：
+- VentureBeat（Google Gemini 3.5 Flash、搜索重设计、SAP 收购）
+- AI Weekly（G7 峰会、Claude Code、Anthropic 数据中心、ChatGPT/Claude 用户数据）
+- dentro.de/ai/news（Boston Dynamics 合作、多模态能力趋势、模型性能对标）</p>
+<p><strong>数据时间范围说明</strong>：
+由于今日（2026-06-17）的实时新闻数据稀少，上述简报综合了过去 <strong>2 周内</strong> 发布的最重要产业信号。部分链接来自聚合源而非官方一手博客（如 VentureBeat、AI News），标注 <code>⚠️ 链接待确认</code> 的项目建议通过主域名直接访问完整文章。</p>
 
     <!-- Archive -->
     <div class="archive-section">
