@@ -15,6 +15,7 @@ import sys
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from typing import Optional
 
 try:
     import markdown as md_lib
@@ -502,12 +503,12 @@ HTML_TEMPLATE = """\
     /* ── Logo — fixed top-left, links to hiwd.com ── */
     #logo {
       position: fixed;
-      top: 15px;
-      left: 15px;
+      top: 30px;
+      left: 20px;
       z-index: 9999;
       display: flex;
       align-items: center;
-      gap: .38rem;
+      gap: 12px;
       text-decoration: none;
       outline: none;
       border: none;
@@ -517,7 +518,7 @@ HTML_TEMPLATE = """\
     }
     #logo-hiwd {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 2rem;
+      font-size: 22px;
       font-weight: 400;
       letter-spacing: -0.02em;
       color: #1d1d1f;
@@ -540,17 +541,17 @@ HTML_TEMPLATE = """\
     }
     #logo-rule {
       width: 1px;
-      height: .9em;
+      height: 14px;
       background: rgba(29,29,31,.18);
       flex-shrink: 0;
-      align-self: center;
     }
     #logo-sub {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 2rem;
+      font-size: 22px;
       font-weight: 400;
       letter-spacing: -0.02em;
       color: #1d1d1f;
+      line-height: 1;
     }
 
     /* ── Content card — same as hiwd #content ── */
@@ -668,36 +669,19 @@ HTML_TEMPLATE = """\
       margin-bottom: 12px;
     }
 
-    .hero-meta {
+    .hero-title-row {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0 4px;
-      padding-left: 15px;
-      font-size: 17px;
-      line-height: 1.72;
-      color: #6e6e73;
+      align-items: baseline;
+      gap: 14px;
     }
-
-    .hero-meta a {
-      color: #008F84;
-      text-decoration: none;
-    }
-
-    .hero-divider {
-      margin: 0 2px;
-      color: #8e8e93;
-    }
+    .hero-title-row h1 { margin: 0; }
 
     .hero-date {
-      margin-left: 10px;
+      font-size: 15px;
+      font-weight: 400;
       color: #6e6e73;
       white-space: nowrap;
-    }
-
-    .hero h1 {
-      margin-top: 20px;
-      margin-bottom: 0;
+      letter-spacing: 0;
     }
 
     .theme-observation {
@@ -832,27 +816,25 @@ HTML_TEMPLATE = """\
 
     /* ── Responsive — mirrors hiwd breakpoints ── */
     @media (max-width: 1150px) {
-      #logo { position: absolute !important; top: 15px; left: 15px; }
+      #logo { position: absolute !important; top: 30px; left: 20px; }
       #content { margin-top: 110px; padding: 34px 28px 28px; }
     }
     @media (max-width: 767px) {
       #content { margin-top: 108px; width: calc(100% - 32px); padding: 28px 18px 24px; border-radius: 20px; }
       .hero { margin-bottom: 14px; }
-      .hero-meta {
-        padding-left: 12px;
-        font-size: 17px;
-      }
       h1 { font-size: 28px; }
       h2 { font-size: 24px; }
       h3 { font-size: 18px; margin-top: 20px; }
       p, li { line-height: 1.82; }
+      .hero-title-row { display: block; }
+      .hero-date { display: block; margin-top: 6px; padding-left: 15px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo links back to hiwd main site -->
-  <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站">
+  <!-- Logo links back to daily site -->
+  <a href="https://daily.hiwd.com/" id="logo" aria-label="返回 daily 首页">
     <span id="logo-hiwd">h<span id="logo-i">ı</span>wd</span>
     <span id="logo-rule"></span>
     <span id="logo-sub">daily</span>
@@ -861,8 +843,10 @@ HTML_TEMPLATE = """\
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a><span class="hero-divider">｜</span><a href="/">daily</a><span class="hero-date">[[DATE_CN]] [[WEEKDAY]]</span></div>
-      <h1>AI 行业每日简报</h1>
+      <div class="hero-title-row">
+        <h1>AI 行业每日简报</h1>
+        <span class="hero-date">[[DATE_CN]] [[WEEKDAY]]</span>
+      </div>
     </div>
 
     <!-- Briefing body -->
@@ -901,7 +885,7 @@ HTML_TEMPLATE = """\
 """
 
 
-def render_page(briefing_md: str, archive_entries: list[dict], page_title: str | None = None) -> str:
+def render_page(briefing_md: str, archive_entries: list[dict], page_title: Optional[str] = None) -> str:
     content_html = md_to_html(briefing_md)
     archive_html = build_archive_nav(archive_entries)
     generated_at = NOW.strftime("%Y-%m-%d %H:%M CST")
