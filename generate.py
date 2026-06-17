@@ -947,7 +947,7 @@ def migrate_archive(docs_dir: Path) -> None:
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main() -> None:
-    docs = Path("docs")
+    docs = Path(__file__).parent / "docs"
     archive_dir = docs / "archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
 
