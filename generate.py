@@ -473,7 +473,7 @@ HTML_TEMPLATE = """\
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>[[PAGE_TITLE]]</title>
   <meta name="description" content="AI 行业每日精选 [[DATE_CN]] [[WEEKDAY]]" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
