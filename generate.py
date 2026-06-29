@@ -992,6 +992,7 @@ def build_rss(archive_dir: Path, archive_entries: list[dict],
 
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<?xml-stylesheet type="text/xsl" href="/rss.xsl"?>\n'
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
         '  <channel>\n'
         f'    <title>{xml_escape(RSS_TITLE)}</title>\n'
