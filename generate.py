@@ -14,8 +14,10 @@ import re
 import sys
 import time
 from datetime import datetime, timezone, timedelta
+from email.utils import format_datetime
 from pathlib import Path
 from typing import Optional
+from xml.sax.saxutils import escape as xml_escape
 
 try:
     import markdown as md_lib
@@ -475,6 +477,7 @@ HTML_TEMPLATE = """\
   <title>[[PAGE_TITLE]]</title>
   <meta name="description" content="AI 行业每日精选 [[DATE_CN]] [[WEEKDAY]]" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
+  <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
@@ -861,8 +864,8 @@ HTML_TEMPLATE = """\
   </div>
 
   <div id="footer">
-    <div class="footer-meta">由 Claude + Web Search 自动生成</div>
-    <div>© 2026 hiwd · All rights reserved.</div>
+    <div class="footer-meta">由 Claude + Web Search 自动生成 ｜ <a href="/rss.xml">RSS</a></div>
+    <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved.</div>
   </div>
   <script>
     // Dynamically mark today's entry in the archive nav.
@@ -901,6 +904,106 @@ def render_page(briefing_md: str, archive_entries: list[dict], page_title: Optio
         .replace("[[CONTENT]]", content_html)
         .replace("[[ARCHIVE]]", archive_html)
         .replace("[[GENERATED_AT]]", generated_at)
+    )
+
+
+# ── RSS feed ──────────────────────────────────────────────────────────────────
+RSS_SITE_URL = "https://daily.hiwd.com/"
+RSS_FEED_URL = "https://daily.hiwd.com/rss.xml"
+RSS_TITLE = "hiwd daily · AI 行业每日简报"
+RSS_DESCRIPTION = "由 Claude + Web Search 自动生成的 AI 行业每日精选"
+RSS_COPYRIGHT = "© 2026 hiwd · All rights reserved. https://hiwd.com/"
+RSS_ITEM_LIMIT = 14
+
+# Match the briefing body emitted by HTML_TEMPLATE between these two markers.
+_BRIEFING_BODY_RE = re.compile(
+    r"<!-- Briefing body -->\s*(.*?)\s*<!-- Archive -->",
+    re.DOTALL,
+)
+
+
+def extract_briefing_body(archive_file: Path) -> Optional[str]:
+    """Pull just the briefing HTML out of an archived day page.
+
+    The archive pages embed the full template (logo, footer, archive nav).
+    For RSS we only want the inner briefing — between the
+    `<!-- Briefing body -->` and `<!-- Archive -->` markers.
+    """
+    try:
+        html = archive_file.read_text("utf-8")
+    except OSError:
+        return None
+    match = _BRIEFING_BODY_RE.search(html)
+    if not match:
+        return None
+    return match.group(1).strip()
+
+
+def build_rss(archive_dir: Path, archive_entries: list[dict],
+              today_html: Optional[str] = None) -> str:
+    """Build an RSS 2.0 feed from the most recent archived briefings.
+
+    today_html, when provided, is the just-rendered briefing body for the
+    current day — it lets us include today's entry without re-reading the
+    archive file (which is identical in content but a tick stale on disk).
+    """
+    # Newest dates first; cap at RSS_ITEM_LIMIT.
+    sorted_entries = sorted(archive_entries, key=lambda e: e["date"], reverse=True)
+    selected = sorted_entries[:RSS_ITEM_LIMIT]
+
+    items_xml: list[str] = []
+    for entry in selected:
+        date_iso = entry["date"]
+        # 23:59 CST so the published time always lies within the calendar day
+        # in the user's likely timezones.
+        try:
+            pub_dt = datetime.strptime(date_iso, "%Y-%m-%d").replace(
+                hour=23, minute=59, tzinfo=CST,
+            )
+        except ValueError:
+            continue
+        pub_date = format_datetime(pub_dt)
+
+        if date_iso == TODAY_ISO and today_html:
+            body_html = today_html
+        else:
+            body_html = extract_briefing_body(
+                archive_dir / date_iso[:7] / f"{date_iso}.html"
+            )
+        if not body_html:
+            continue
+
+        link = f"{RSS_SITE_URL}archive/{date_iso[:7]}/{date_iso}.html"
+        title = f"AI 行业每日简报 · {date_iso}"
+        guid = link
+
+        items_xml.append(
+            "    <item>\n"
+            f"      <title>{xml_escape(title)}</title>\n"
+            f"      <link>{xml_escape(link)}</link>\n"
+            f"      <guid isPermaLink=\"true\">{xml_escape(guid)}</guid>\n"
+            f"      <pubDate>{pub_date}</pubDate>\n"
+            f"      <description><![CDATA[{body_html}]]></description>\n"
+            "    </item>"
+        )
+
+    last_build = format_datetime(NOW)
+    items_block = "\n".join(items_xml)
+
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        '  <channel>\n'
+        f'    <title>{xml_escape(RSS_TITLE)}</title>\n'
+        f'    <link>{xml_escape(RSS_SITE_URL)}</link>\n'
+        f'    <description>{xml_escape(RSS_DESCRIPTION)}</description>\n'
+        '    <language>zh-CN</language>\n'
+        f'    <copyright>{xml_escape(RSS_COPYRIGHT)}</copyright>\n'
+        f'    <lastBuildDate>{last_build}</lastBuildDate>\n'
+        f'    <atom:link href="{xml_escape(RSS_FEED_URL)}" rel="self" type="application/rss+xml" />\n'
+        f'{items_block}\n'
+        '  </channel>\n'
+        '</rss>\n'
     )
 
 
@@ -1013,6 +1116,12 @@ def main() -> None:
             encoding="utf-8",
         )
         print(f"✅ Updated → docs/archive.json")
+
+    # Build RSS feed (most recent N briefings, full HTML in CDATA)
+    today_body = md_to_html(briefing_md)
+    rss_xml = build_rss(archive_dir, archive_entries, today_html=today_body)
+    (docs / "rss.xml").write_text(rss_xml, encoding="utf-8")
+    print(f"✅ Updated → docs/rss.xml")
 
 
 if __name__ == "__main__":
