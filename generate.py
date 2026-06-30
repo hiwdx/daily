@@ -1067,8 +1067,13 @@ def main() -> None:
     if archive_json.exists():
         try:
             archive_entries = json.loads(archive_json.read_text("utf-8"))
-        except json.JSONDecodeError:
-            archive_entries = []
+        except json.JSONDecodeError as e:
+            # Refuse to silently wipe history — fail the workflow loudly so
+            # we don't lose months of archive entries to a transient corruption.
+            raise RuntimeError(
+                f"docs/archive.json is corrupted ({e}). Refusing to overwrite. "
+                f"Restore from git history (git log -- docs/archive.json) and re-run."
+            ) from e
 
     # Collect recently-covered article URLs for deduplication (before generation)
     recent_urls = get_recent_article_urls(archive_dir)

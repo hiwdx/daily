@@ -77,8 +77,9 @@ jobs:
           )
 
       - name: Verify briefing and alert on missing
-        # 仅定时触发时检查，手动触发无需告警
-        if: github.event_name == 'schedule'
+        # 仅定时触发时检查；用 always() 保证即使前面 step 失败，告警 step 仍会跑
+        # （否则一旦 generate.py 抛异常，verify 自动 skip → issue 永远建不出来）
+        if: always() && github.event_name == 'schedule'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
