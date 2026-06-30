@@ -74,62 +74,53 @@
           background-color: #00C2B3; border-radius: 2px;
         }
 
+        h2 {
+          position: relative; padding-left: 15px;
+          font-weight: bold; line-height: 1.2; color: #333;
+          font-size: 24px; margin-top: 36px; margin-bottom: 14px;
+        }
+        h2::before {
+          content: ""; position: absolute;
+          left: 0; top: 50%; transform: translateY(-50%);
+          width: 2px; height: 18px;
+          background-color: rgba(0, 194, 179, 0.35); border-radius: 1px;
+        }
+
         .lede {
-          color: #555; font-size: 15px; line-height: 1.7;
-          margin: 6px 0 22px;
+          color: #555;
+          margin: 6px 0 28px;
         }
 
-        .subscribe-card {
-          margin: 0 0 14px;
-          padding: 14px 16px;
-          border: 1px solid rgba(0, 194, 179, 0.18);
-          border-left: 3px solid rgba(0, 194, 179, 0.6);
-          border-radius: 10px;
-          background: linear-gradient(180deg, #fafdfd 0%, #f7fbfb 100%);
-          font-size: 17px; line-height: 1.7; color: #333;
-        }
-        .subscribe-card .url {
-          display: inline-block;
-          margin-top: 6px;
-          padding: 6px 10px;
-          background: #fff;
-          border: 1px solid #e5e7eb;
-          border-radius: 6px;
-          font-family: "SF Mono", "Fira Code", monospace;
-          font-size: 15px; color: #008F84;
-          user-select: all;
+        p { margin: 10px 0 16px; color: #333; }
+
+        hr {
+          border: none; border-top: 1px solid #eee;
+          margin: 32px 0;
         }
 
-        .email-card {
-          margin: 0 0 14px;
-          padding: 14px 16px;
-          border: 1px solid rgba(0, 194, 179, 0.18);
-          border-left: 3px solid rgba(0, 194, 179, 0.6);
-          border-radius: 10px;
-          background: linear-gradient(180deg, #fafdfd 0%, #f7fbfb 100%);
-          font-size: 17px; line-height: 1.7; color: #333;
+        /* Email subscribe form */
+        .sub-form {
+          display: flex; gap: 10px; flex-wrap: wrap;
+          margin: 14px 0 0;
         }
-        .email-card form {
-          display: flex; gap: 8px; flex-wrap: wrap;
-          margin-top: 10px;
-        }
-        .email-card input[type="email"] {
-          flex: 1 1 220px;
+        .sub-form input[type="email"] {
+          flex: 1 1 240px;
           min-width: 0;
-          padding: 9px 14px;
+          padding: 10px 14px;
           background: #fff;
-          border: 1px solid #e5e7eb;
+          border: 1px solid #d2d2d7;
           border-radius: 8px;
           font-size: 17px; color: #1d1d1f;
           font-family: inherit;
-          outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+          outline: none;
+          transition: border-color 0.15s, box-shadow 0.15s;
         }
-        .email-card input[type="email"]:focus {
+        .sub-form input[type="email"]:focus {
           border-color: #00C2B3;
-          box-shadow: 0 0 0 3px rgba(0, 194, 179, 0.18);
+          box-shadow: 0 0 0 3px rgba(0, 194, 179, 0.15);
         }
-        .email-card button {
-          padding: 9px 22px;
+        .sub-form button {
+          padding: 10px 24px;
           background: #00C2B3;
           color: #fff;
           border: none;
@@ -139,10 +130,20 @@
           font-family: inherit;
           transition: background 0.15s;
         }
-        .email-card button:hover { background: #00A89B; }
-        .email-card button:disabled { background: #b8d9d6; cursor: not-allowed; }
-        .email-card .hint {
-          margin-top: 10px; font-size: 17px; color: #555; line-height: 1.7;
+        .sub-form button:hover { background: #00A89B; }
+        .sub-form button:disabled { background: #b8d9d6; cursor: not-allowed; }
+
+        /* RSS URL display */
+        .rss-url {
+          display: inline-block;
+          margin-top: 6px;
+          padding: 8px 14px;
+          background: #f5f5f7;
+          border-radius: 8px;
+          font-family: "SF Mono", "Fira Code", Menlo, monospace;
+          font-size: 15px; color: #008F84;
+          user-select: all;
+          word-break: break-all;
         }
 
         a { color: #008F84; text-decoration: none; transition: opacity 0.2s; }
@@ -200,23 +201,23 @@
         <h1>订阅 hiwd daily</h1>
         <p class="lede"><xsl:value-of select="description" /></p>
 
-        <div class="email-card">
-          <strong>📬 邮箱订阅</strong>　每天早上 9 点收到一封当日 AI 简报。
-          <form id="email-sub" onsubmit="return false;">
-            <input type="email" id="email-input" placeholder="your@email.com" required="required" />
-            <button type="submit" id="email-submit">订阅</button>
-          </form>
-          <div class="hint">
-            点击订阅会自动调起你本机的邮件应用并预填一封确认邮件，发送即可完成订阅；
-            随时可在邮件底部链接退订。
-          </div>
-        </div>
+        <h2>邮箱订阅</h2>
+        <p>每天早上 9 点收到一封当日 AI 简报。</p>
+        <form class="sub-form" id="email-sub" onsubmit="return false;">
+          <input type="email" id="email-input" placeholder="your@email.com" required="required" />
+          <button type="submit" id="email-submit">订阅</button>
+        </form>
+        <p class="lede">点击订阅会自动调起你本机的邮件应用并预填一封确认邮件，发送即可完成订阅；随时可在邮件底部链接退订。</p>
 
-        <div class="subscribe-card">
-          <strong>📡 RSS 订阅</strong>　复制下面的地址粘到你的 RSS 阅读器（Feedly / NetNewsWire / Reeder / Inoreader / Follow 等）：
-          <br />
-          <span class="url"><xsl:value-of select="atom:link/@href" /></span>
-        </div>
+        <hr />
+
+        <h2>RSS 订阅</h2>
+        <p>复制下面的地址粘到你的 RSS 阅读器（Feedly / NetNewsWire / Reeder / Inoreader / Follow 等）：</p>
+        <p><span class="rss-url"><xsl:value-of select="atom:link/@href" /></span></p>
+
+        <hr />
+
+        <h2>历史简报</h2>
 
         <ol class="entries">
           <xsl:for-each select="item">
