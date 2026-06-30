@@ -17,6 +17,8 @@ from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from pathlib import Path
 from typing import Optional
+
+from x_signal import build_x_signal_prompt_block, fetch_x_leads
 from xml.sax.saxutils import escape as xml_escape
 
 try:
@@ -38,7 +40,7 @@ WEEKDAY_CN = f"周{WEEKDAYS[NOW.weekday()]}"
 _SKIP_DOMAINS = {"hiwd.com", "daily.hiwd.com"}
 
 
-def get_recent_article_urls(archive_dir: Path, days: int = 2) -> list[str]:
+def get_recent_article_urls(archive_dir: Path, days: int = 3) -> list[str]:
     """Return external article URLs found in the last `days` archived HTML files.
 
     These are passed to the prompt so Claude avoids re-reporting the same stories.
@@ -119,7 +121,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 
 **排除**：
 - 纯营销稿、一句话新闻、股价波动、名人 Twitter 口水战
-- 超过 24 小时的旧新闻
+- 超过 3 天的旧新闻；优先选择最近 24 小时内发生或更新的内容
 - 未经证实的传言
 - 涉及中国敏感内容或明显地缘政治争议的内容，包括但不限于中美对抗叙事、涉台涉港涉疆、人权与制裁等
 - 如果一条新闻的主叙事是中国敏感议题或地缘政治对抗，即使与 AI 相关也不要收录；一般性的政府部门、公共部门项目、政策讨论或海外政治人物表述可保留
@@ -158,10 +160,11 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 - **语言规则**：标题、摘要、分析、观察等所有内容一律用**中文**写，让读者看懂；公司名（Google/Meta/OpenAI）、产品名（Gemini/Claude/GPT）、通用技术术语（agent/LLM/RAG/fine-tuning 等）可保留英文
 - 总长度控制在 1000 字以内（精炼）
 - 不要在末尾输出字数统计或任何自我评估（如"总字数：XXX 字"）
-- **绝对不要向用户提问或请求确认**：不得询问"是否要更精准的搜索"、"您希望我如何处理"等。直接执行，用搜索到的最佳信息生成完整简报。若今日数据不足，覆盖最近 48 小时内最重要的内容，并在"⚠️ 信息来源说明"中注明数据时间范围"""
+- **绝对不要向用户提问或请求确认**：不得询问"是否要更精准的搜索"、"您希望我如何处理"等。直接执行，用搜索到的最佳信息生成完整简报。若今日数据不足，覆盖最近 72 小时内最重要的内容，并在"⚠️ 信息来源说明"中注明数据时间范围
+- **时效与去重**：所有收录内容必须发生、发布或有重要更新于最近 3 天内；不得重复前几天已报道过的同一事件"""
 
 
-def build_user_prompt(recent_urls=None) -> str:
+def build_user_prompt(recent_urls=None, x_signal_block: str = "") -> str:
     """Build the user prompt, optionally injecting a deduplication block.
 
     `recent_urls` should be the list returned by `get_recent_article_urls()`.
@@ -169,11 +172,13 @@ def build_user_prompt(recent_urls=None) -> str:
     section so Claude skips stories already covered in recent briefings.
     """
     prompt = _USER_PROMPT_TEMPLATE
+    if x_signal_block:
+        prompt = prompt.replace("## 输出格式", x_signal_block + "\n\n## 输出格式")
     if recent_urls:
         url_list = "\n".join(f"- {u}" for u in recent_urls)
         dedup_block = (
             "\n\n## 已报道内容（严格排除）\n\n"
-            "以下链接来自**前 2 天**已发布的简报。"
+            "以下链接来自**前 3 天**已发布的简报。"
             "请**严格排除**这些 URL 及同一事件的任何其他报道，不得重复收录：\n\n"
             f"{url_list}"
         )
@@ -1080,8 +1085,15 @@ def main() -> None:
     if recent_urls:
         print(f"🔍 Loaded {len(recent_urls)} recent URLs for deduplication")
 
+    # Fetch X trend-radar leads before generation. This is best-effort only:
+    # X must never become a hard dependency for publishing the Daily.
+    x_leads = fetch_x_leads()
+    x_signal_block = build_x_signal_prompt_block(x_leads)
+    if x_leads:
+        print(f"📡 Loaded {len(x_leads)} X trend-radar leads for verification")
+
     # Build prompt and generate briefing via Claude
-    user_prompt = build_user_prompt(recent_urls)
+    user_prompt = build_user_prompt(recent_urls, x_signal_block=x_signal_block)
     briefing_md = fetch_briefing(user_prompt)
     print(f"✅ Received {len(briefing_md)} chars from Claude")
 

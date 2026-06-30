@@ -61,6 +61,7 @@ jobs:
         if: steps.check.outputs.skip == 'false'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
         run: python generate.py
 
       - name: Commit and push
