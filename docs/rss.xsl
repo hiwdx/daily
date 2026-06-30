@@ -86,7 +86,7 @@
           border-left: 3px solid rgba(0, 194, 179, 0.6);
           border-radius: 10px;
           background: linear-gradient(180deg, #fafdfd 0%, #f7fbfb 100%);
-          font-size: 14px; color: #444;
+          font-size: 17px; line-height: 1.7; color: #333;
         }
         .subscribe-card .url {
           display: inline-block;
@@ -96,7 +96,7 @@
           border: 1px solid #e5e7eb;
           border-radius: 6px;
           font-family: "SF Mono", "Fira Code", monospace;
-          font-size: 13px; color: #008F84;
+          font-size: 15px; color: #008F84;
           user-select: all;
         }
 
@@ -107,7 +107,7 @@
           border-left: 3px solid rgba(0, 194, 179, 0.6);
           border-radius: 10px;
           background: linear-gradient(180deg, #fafdfd 0%, #f7fbfb 100%);
-          font-size: 14px; color: #444;
+          font-size: 17px; line-height: 1.7; color: #333;
         }
         .email-card form {
           display: flex; gap: 8px; flex-wrap: wrap;
@@ -116,11 +116,11 @@
         .email-card input[type="email"] {
           flex: 1 1 220px;
           min-width: 0;
-          padding: 8px 12px;
+          padding: 9px 14px;
           background: #fff;
           border: 1px solid #e5e7eb;
           border-radius: 8px;
-          font-size: 14px; color: #1d1d1f;
+          font-size: 17px; color: #1d1d1f;
           font-family: inherit;
           outline: none; transition: border-color 0.15s, box-shadow 0.15s;
         }
@@ -129,12 +129,12 @@
           box-shadow: 0 0 0 3px rgba(0, 194, 179, 0.18);
         }
         .email-card button {
-          padding: 8px 18px;
+          padding: 9px 22px;
           background: #00C2B3;
           color: #fff;
           border: none;
           border-radius: 8px;
-          font-size: 14px; font-weight: 500;
+          font-size: 17px; font-weight: 500;
           cursor: pointer;
           font-family: inherit;
           transition: background 0.15s;
