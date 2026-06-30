@@ -142,7 +142,7 @@
         .email-card button:hover { background: #00A89B; }
         .email-card button:disabled { background: #b8d9d6; cursor: not-allowed; }
         .email-card .hint {
-          margin-top: 8px; font-size: 12px; color: #6b7280; line-height: 1.6;
+          margin-top: 10px; font-size: 17px; color: #555; line-height: 1.7;
         }
 
         a { color: #008F84; text-decoration: none; transition: opacity 0.2s; }
