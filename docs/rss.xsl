@@ -103,15 +103,15 @@
         .email-card {
           margin: 0 0 14px;
           padding: 14px 16px;
-          border: 1px solid rgba(99, 102, 241, 0.18);
-          border-left: 3px solid rgba(99, 102, 241, 0.6);
+          border: 1px solid rgba(0, 194, 179, 0.18);
+          border-left: 3px solid rgba(0, 194, 179, 0.6);
           border-radius: 10px;
-          background: linear-gradient(180deg, #fafbff 0%, #f6f8ff 100%);
+          background: linear-gradient(180deg, #fafdfd 0%, #f7fbfb 100%);
           font-size: 14px; color: #444;
         }
         .email-card form {
           display: flex; gap: 8px; flex-wrap: wrap;
-          margin-top: 8px;
+          margin-top: 10px;
         }
         .email-card input[type="email"] {
           flex: 1 1 220px;
@@ -125,12 +125,12 @@
           outline: none; transition: border-color 0.15s, box-shadow 0.15s;
         }
         .email-card input[type="email"]:focus {
-          border-color: #6366f1;
-          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+          border-color: #00C2B3;
+          box-shadow: 0 0 0 3px rgba(0, 194, 179, 0.18);
         }
         .email-card button {
           padding: 8px 18px;
-          background: #6366f1;
+          background: #00C2B3;
           color: #fff;
           border: none;
           border-radius: 8px;
@@ -139,14 +139,10 @@
           font-family: inherit;
           transition: background 0.15s;
         }
-        .email-card button:hover { background: #4f46e5; }
-        .email-card button:disabled { background: #c7c9d9; cursor: not-allowed; }
+        .email-card button:hover { background: #00A89B; }
+        .email-card button:disabled { background: #b8d9d6; cursor: not-allowed; }
         .email-card .hint {
           margin-top: 8px; font-size: 12px; color: #6b7280; line-height: 1.6;
-        }
-        .email-card .hint code {
-          padding: 1px 5px; background: #fff; border: 1px solid #e5e7eb;
-          border-radius: 4px; font-size: 12px; color: #4338ca;
         }
 
         a { color: #008F84; text-decoration: none; transition: opacity 0.2s; }
@@ -205,14 +201,14 @@
         <p class="lede"><xsl:value-of select="description" /></p>
 
         <div class="email-card">
-          <strong>📬 邮箱订阅</strong>　每天早上 9 点送一份当日 AI 简报到你的邮箱。
+          <strong>📬 邮箱订阅</strong>　每天早上 9 点收到一封当日 AI 简报。
           <form id="email-sub" onsubmit="return false;">
             <input type="email" id="email-input" placeholder="your@email.com" required="required" />
             <button type="submit" id="email-submit">订阅</button>
           </form>
           <div class="hint">
-            点击订阅会用你本机的邮件客户端给 <code>iworld@agent.qq.com</code> 发一封确认邮件，
-            收到后自动加入名单。退订请发送 <code>[AGENT] unsubscribe</code> 到同一地址。
+            点击订阅会自动调起你本机的邮件应用并预填一封确认邮件，发送即可完成订阅；
+            随时可在邮件底部链接退订。
           </div>
         </div>
 
@@ -258,8 +254,8 @@
             }
             var subject = encodeURIComponent('[AGENT] subscribe');
             var body = encodeURIComponent(
-              'email: ' + v + '\n\n' +
-              '（请保留这行不要修改，发送即可订阅 hiwd daily 每日邮件）'
+              'Hi，我想订阅 hiwd daily 每日 AI 简报。\n\n' +
+              'email: ' + v + '\n'
             );
             window.location.href = 'mailto:iworld@agent.qq.com?subject=' + subject + '&body=' + body;
             btn.textContent = '已打开邮件客户端';
