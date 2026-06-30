@@ -10,7 +10,7 @@
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title><xsl:value-of select="title" /> · RSS</title>
+      <title><xsl:value-of select="title" /> · 订阅</title>
       <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
@@ -80,7 +80,7 @@
         }
 
         .subscribe-card {
-          margin: 0 0 30px;
+          margin: 0 0 14px;
           padding: 14px 16px;
           border: 1px solid rgba(0, 194, 179, 0.18);
           border-left: 3px solid rgba(0, 194, 179, 0.6);
@@ -98,6 +98,55 @@
           font-family: "SF Mono", "Fira Code", monospace;
           font-size: 13px; color: #008F84;
           user-select: all;
+        }
+
+        .email-card {
+          margin: 0 0 14px;
+          padding: 14px 16px;
+          border: 1px solid rgba(99, 102, 241, 0.18);
+          border-left: 3px solid rgba(99, 102, 241, 0.6);
+          border-radius: 10px;
+          background: linear-gradient(180deg, #fafbff 0%, #f6f8ff 100%);
+          font-size: 14px; color: #444;
+        }
+        .email-card form {
+          display: flex; gap: 8px; flex-wrap: wrap;
+          margin-top: 8px;
+        }
+        .email-card input[type="email"] {
+          flex: 1 1 220px;
+          min-width: 0;
+          padding: 8px 12px;
+          background: #fff;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          font-size: 14px; color: #1d1d1f;
+          font-family: inherit;
+          outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .email-card input[type="email"]:focus {
+          border-color: #6366f1;
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+        .email-card button {
+          padding: 8px 18px;
+          background: #6366f1;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          font-size: 14px; font-weight: 500;
+          cursor: pointer;
+          font-family: inherit;
+          transition: background 0.15s;
+        }
+        .email-card button:hover { background: #4f46e5; }
+        .email-card button:disabled { background: #c7c9d9; cursor: not-allowed; }
+        .email-card .hint {
+          margin-top: 8px; font-size: 12px; color: #6b7280; line-height: 1.6;
+        }
+        .email-card .hint code {
+          padding: 1px 5px; background: #fff; border: 1px solid #e5e7eb;
+          border-radius: 4px; font-size: 12px; color: #4338ca;
         }
 
         a { color: #008F84; text-decoration: none; transition: opacity 0.2s; }
@@ -152,11 +201,23 @@
       </a>
 
       <div id="content">
-        <h1>RSS 订阅源</h1>
+        <h1>订阅 hiwd daily</h1>
         <p class="lede"><xsl:value-of select="description" /></p>
 
+        <div class="email-card">
+          <strong>📬 邮箱订阅</strong>　每天早上 9 点送一份当日 AI 简报到你的邮箱。
+          <form id="email-sub" onsubmit="return false;">
+            <input type="email" id="email-input" placeholder="your@email.com" required="required" />
+            <button type="submit" id="email-submit">订阅</button>
+          </form>
+          <div class="hint">
+            点击订阅会用你本机的邮件客户端给 <code>iworld@agent.qq.com</code> 发一封确认邮件，
+            收到后自动加入名单。退订请发送 <code>[AGENT] unsubscribe</code> 到同一地址。
+          </div>
+        </div>
+
         <div class="subscribe-card">
-          这是机器可读的订阅源（RSS 2.0）。复制下面的地址粘到你的 RSS 阅读器（Feedly / NetNewsWire / Reeder / Inoreader / Follow 等）即可订阅每日更新：
+          <strong>📡 RSS 订阅</strong>　复制下面的地址粘到你的 RSS 阅读器（Feedly / NetNewsWire / Reeder / Inoreader / Follow 等）：
           <br />
           <span class="url"><xsl:value-of select="atom:link/@href" /></span>
         </div>
@@ -179,9 +240,37 @@
       </div>
 
       <div id="footer">
-        <div class="footer-meta">由 Claude + Web Search 自动生成 ｜ <a href="/rss.xml">RSS</a></div>
+        <div class="footer-meta">由 Claude + Web Search 自动生成 ｜ <a href="/rss.xml">订阅</a></div>
         <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved.</div>
       </div>
+      <script><![CDATA[
+        (function () {
+          var form = document.getElementById('email-sub');
+          var input = document.getElementById('email-input');
+          var btn = document.getElementById('email-submit');
+          if (!form || !input || !btn) return;
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var v = (input.value || '').trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+              input.focus();
+              return;
+            }
+            var subject = encodeURIComponent('[AGENT] subscribe');
+            var body = encodeURIComponent(
+              'email: ' + v + '\n\n' +
+              '（请保留这行不要修改，发送即可订阅 hiwd daily 每日邮件）'
+            );
+            window.location.href = 'mailto:iworld@agent.qq.com?subject=' + subject + '&body=' + body;
+            btn.textContent = '已打开邮件客户端';
+            btn.disabled = true;
+            setTimeout(function () {
+              btn.textContent = '订阅';
+              btn.disabled = false;
+            }, 4000);
+          });
+        })();
+      ]]></script>
     </body>
     </html>
   </xsl:template>
