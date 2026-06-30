@@ -133,6 +133,17 @@
         .sub-form button:hover { background: #00A89B; }
         .sub-form button:disabled { background: #b8d9d6; cursor: not-allowed; }
 
+        .sub-status {
+          margin: 12px 0 0;
+          padding: 10px 14px;
+          border-radius: 8px;
+          font-size: 15px;
+          line-height: 1.6;
+        }
+        .sub-status[data-kind="ok"]   { background: #f0fdfa; color: #008F84; border: 1px solid #ccf2ec; }
+        .sub-status[data-kind="warn"] { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+        .sub-status[data-kind="err"]  { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
         /* RSS URL display */
         .rss-url {
           display: inline-block;
@@ -207,7 +218,8 @@
           <input type="email" id="email-input" placeholder="your@email.com" required="required" />
           <button type="submit" id="email-submit">订阅</button>
         </form>
-        <p class="lede">点击订阅会自动调起你本机的邮件应用并预填一封确认邮件，发送即可完成订阅；随时可在邮件底部链接退订。</p>
+        <p class="sub-status" id="email-status" hidden="hidden"></p>
+        <p class="lede">订阅后会向该邮箱发一封确认邮件，点击其中链接即生效；任何时候都可在邮件底部退订。</p>
 
         <hr />
 
@@ -242,29 +254,62 @@
       </div>
       <script><![CDATA[
         (function () {
+          var API = 'https://mail.hiwd.com/subscribe';
           var form = document.getElementById('email-sub');
           var input = document.getElementById('email-input');
           var btn = document.getElementById('email-submit');
-          if (!form || !input || !btn) return;
-          form.addEventListener('submit', function (e) {
+          var status = document.getElementById('email-status');
+          if (!form || !input || !btn || !status) return;
+
+          function showStatus(kind, msg) {
+            status.hidden = false;
+            status.setAttribute('data-kind', kind);
+            status.textContent = msg;
+          }
+          function setBusy(busy) {
+            btn.disabled = busy;
+            btn.textContent = busy ? '提交中…' : '订阅';
+          }
+          var MESSAGES = {
+            subscribed:        ['ok',   '已订阅成功，明早起每天送达。'],
+            confirmation_sent: ['ok',   '已向该邮箱发送确认邮件，点击其中链接即生效（5 分钟内未到请检查垃圾箱）。'],
+            already_subscribed:['warn', '该邮箱已在订阅列表中，无需重复。'],
+            resubscribed:      ['ok',   '欢迎回来，已恢复订阅。'],
+            invalid_email:     ['err',  '邮箱格式无效，请检查后重试。'],
+          };
+
+          form.addEventListener('submit', async function (e) {
             e.preventDefault();
-            var v = (input.value || '').trim();
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+            var email = (input.value || '').trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+              showStatus('err', '请输入有效的邮箱地址。');
               input.focus();
               return;
             }
-            var subject = encodeURIComponent('[AGENT] subscribe');
-            var body = encodeURIComponent(
-              'Hi，我想订阅 hiwd daily 每日 AI 简报。\n\n' +
-              'email: ' + v + '\n'
-            );
-            window.location.href = 'mailto:iworld@agent.qq.com?subject=' + subject + '&body=' + body;
-            btn.textContent = '已打开邮件客户端';
-            btn.disabled = true;
-            setTimeout(function () {
-              btn.textContent = '订阅';
-              btn.disabled = false;
-            }, 4000);
+            setBusy(true);
+            try {
+              var r = await fetch(API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+              });
+              var j = {};
+              try { j = await r.json(); } catch (_) {}
+              if (r.ok && j.ok) {
+                var pair = MESSAGES[j.status] || ['ok', '订阅请求已提交。'];
+                showStatus(pair[0], pair[1]);
+                if (j.status === 'subscribed' || j.status === 'confirmation_sent' || j.status === 'resubscribed') {
+                  input.value = '';
+                }
+              } else {
+                var errPair = MESSAGES[j.error] || ['err', '提交失败：' + (j.error || ('HTTP ' + r.status)) + '，请稍后再试。'];
+                showStatus(errPair[0], errPair[1]);
+              }
+            } catch (err) {
+              showStatus('err', '网络错误，请检查连接后重试。');
+            } finally {
+              setBusy(false);
+            }
           });
         })();
       ]]></script>

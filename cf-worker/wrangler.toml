@@ -1,0 +1,25 @@
+name = "hiwd-mail"
+main = "src/worker.js"
+compatibility_date = "2026-06-01"
+workers_dev = false
+
+# Custom domain — wrangler will create a route + DNS record (CNAME with proxy)
+# pointing mail.hiwd.com to this Worker. Requires the zone (hiwd.com) to be
+# already on Cloudflare, which it is.
+routes = [
+  { pattern = "mail.hiwd.com/*", custom_domain = true },
+]
+
+# Non-secret config — committed to repo. Edit GITHUB_REPO if forking.
+[vars]
+GITHUB_REPO   = "ilivecom/daily"
+GITHUB_BRANCH = "main"
+FILE_PATH     = "agent_mail/subscribers.json"
+FROM_EMAIL    = "iworld@agent.qq.com"
+FROM_NAME     = "hiwd daily"
+SITE_BASE     = "https://daily.hiwd.com"
+
+# Secrets (set with `wrangler secret put NAME` — never committed):
+#   GITHUB_TOKEN    : GitHub fine-grained PAT, "Contents: read & write" on ilivecom/daily
+#   CONFIRM_SECRET  : any random string >= 32 chars (used for HMAC token signing)
+#   RESEND_API_KEY  : optional; without it, subscribe is single-step (no double opt-in)
