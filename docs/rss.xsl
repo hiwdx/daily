@@ -202,7 +202,7 @@
         <p class="lede"><xsl:value-of select="description" /></p>
 
         <h2>邮箱订阅</h2>
-        <p>每天早上 9 点收到一封当日 AI 简报。</p>
+        <p>每天早上一封当日 AI 简报，直接送到你的邮箱。</p>
         <form class="sub-form" id="email-sub" onsubmit="return false;">
           <input type="email" id="email-input" placeholder="your@email.com" required="required" />
           <button type="submit" id="email-submit">订阅</button>
