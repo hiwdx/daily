@@ -1,0 +1,93 @@
+name: Agent Mail · Daily Digest
+
+on:
+  schedule:
+    # GitHub Actions cron 在 UTC 整点 + 高峰期会延迟 5–30 分钟。
+    # 同一天三档发车 + state.last_digest_date 幂等：哪一档最先发完，后续档跳过。
+    # 主档：UTC 00:35 → CST 08:35 (期望落点 09:00 左右)
+    - cron: '35 0 * * *'
+    # 兜底1：UTC 01:10 → CST 09:10
+    - cron: '10 1 * * *'
+    # 兜底2：UTC 01:40 → CST 09:40 (最迟也能在 10 点前送达)
+    - cron: '40 1 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "YYYY-MM-DD (空 = 今日 CST)"
+        required: false
+      dry_run:
+        description: "true 时只生成 .eml 草稿，不真正发送"
+        required: false
+        default: 'false'
+      force:
+        description: "true 时忽略 state.last_digest_date 重发"
+        required: false
+        default: 'false'
+      limit:
+        description: "限制收件人数量 (0=不限)"
+        required: false
+        default: '0'
+
+concurrency:
+  group: agent-mail-digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Send digest
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_FROM_NAME: ${{ secrets.SMTP_FROM_NAME }}
+          SENDER_BACKEND: ${{ secrets.SENDER_BACKEND }}
+        run: |
+          ARGS=()
+          if [ -n "${{ github.event.inputs.date }}" ]; then ARGS+=(--date "${{ github.event.inputs.date }}"); fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS+=(--dry-run); fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS+=(--force); fi
+          if [ "${{ github.event.inputs.limit }}" != "0" ] && [ -n "${{ github.event.inputs.limit }}" ]; then
+            ARGS+=(--limit "${{ github.event.inputs.limit }}")
+          fi
+          python scripts/digest.py "${ARGS[@]}"
+
+      - name: Persist state.json
+        # Only commit if state changed; never push drafts/ (they may contain bodies).
+        run: |
+          git config user.name  "Agent Mail Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add agent_mail/state/state.json
+          if git diff --staged --quiet; then
+            echo "no state change"
+          else
+            git commit -m "chore(agent-mail): update digest state $(TZ=Asia/Shanghai date +'%F')"
+            git pull --rebase -X ours origin ${{ github.ref_name }}
+            git push
+          fi
+
+      - name: Upload drafts (dry-run only)
+        if: ${{ github.event.inputs.dry_run == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: drafts-${{ github.run_id }}
+          path: agent_mail/drafts/*.eml
+          if-no-files-found: ignore
+          retention-days: 7

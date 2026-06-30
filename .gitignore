@@ -8,3 +8,9 @@ __pycache__/
 .env
 venv/
 .venv/
+
+# Agent Mail — never commit drafts (may contain personal-mail bodies)
+agent_mail/drafts/*.eml
+
+# Agent Mail — never commit drafts (may contain personal-mail bodies)
+agent_mail/drafts/*.eml

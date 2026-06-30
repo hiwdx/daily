@@ -1,0 +1,3 @@
+# Drafts created by the inbox handler land here as `<utc-iso>__<short-id>.eml`.
+# Personal-mail tasks default to drafts only — never auto-sent unless the request
+# subject includes `CONFIRM_SEND` (see agent_mail/inbox.py).
