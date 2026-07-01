@@ -18,9 +18,8 @@ DRAFTS_DIR = PKG_DIR / "drafts"
 
 SITE_URL = "https://daily.hiwd.com"
 SITE_NAME = "hiwd daily · AI 行业每日简报"
-UNSUBSCRIBE_HINT = (
-    "如需退订，请回复本邮件，标题以 [UNSUBSCRIBE] 开头。"
-)
+UNSUBSCRIBE_URL_BASE = "https://mail.hiwd.com/unsubscribe"
+UNSUBSCRIBE_HINT = f"取消订阅：访问 {UNSUBSCRIBE_URL_BASE} 输入你的邮箱"
 
 
 def _env(name: str, default: str | None = None, *, required: bool = False) -> str:
@@ -31,59 +30,26 @@ def _env(name: str, default: str | None = None, *, required: bool = False) -> st
 
 
 @dataclass(frozen=True)
-class SmtpConf:
-    host: str
-    port: int
-    user: str
-    password: str
+class AgentlyConf:
     from_addr: str
     from_name: str
-
-
-@dataclass(frozen=True)
-class ImapConf:
-    host: str
-    port: int
-    user: str
-    password: str
+    cli_bin: str
+    send_timeout: int
 
 
 @dataclass(frozen=True)
 class RuntimeConf:
-    smtp: SmtpConf
-    imap: ImapConf | None
-    personal_email: str            # where idle-summary is forwarded
-    auto_send_personal: bool       # default False — personal mail stays as drafts
-    forward_idle_days: int         # default 3
-    dry_run: bool                  # default False; --dry-run flips it on
-    sender_backend: str            # "smtp" | "agently" — agently is a TODO stub
+    agently: AgentlyConf
+    dry_run: bool
 
 
 def load() -> RuntimeConf:
-    smtp = SmtpConf(
-        host=_env("SMTP_HOST", "smtp.qq.com"),
-        port=int(_env("SMTP_PORT", "465")),
-        user=_env("SMTP_USER", required=True),
-        password=_env("SMTP_PASS", required=True),
-        from_addr=_env("SMTP_FROM", _env("SMTP_USER", required=True)),
-        from_name=_env("SMTP_FROM_NAME", "hiwd daily"),
-    )
-    imap_user = _env("IMAP_USER", _env("SMTP_USER", ""))
-    imap_pass = _env("IMAP_PASS", _env("SMTP_PASS", ""))
-    imap = None
-    if imap_user and imap_pass:
-        imap = ImapConf(
-            host=_env("IMAP_HOST", "imap.qq.com"),
-            port=int(_env("IMAP_PORT", "993")),
-            user=imap_user,
-            password=imap_pass,
-        )
     return RuntimeConf(
-        smtp=smtp,
-        imap=imap,
-        personal_email=_env("PERSONAL_EMAIL", ""),
-        auto_send_personal=_env("AUTO_SEND_PERSONAL", "1") != "0",
-        forward_idle_days=int(_env("FORWARD_IDLE_DAYS", "3")),
+        agently=AgentlyConf(
+            from_addr=_env("MAIL_FROM", "iworld@agent.qq.com"),
+            from_name=_env("MAIL_FROM_NAME", "hiwd daily"),
+            cli_bin=_env("AGENTLY_CLI_BIN", "agently-cli"),
+            send_timeout=int(_env("AGENTLY_SEND_TIMEOUT", "60")),
+        ),
         dry_run=_env("DRY_RUN", "0") == "1",
-        sender_backend=_env("SENDER_BACKEND", "smtp"),
     )

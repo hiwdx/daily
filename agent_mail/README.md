@@ -1,20 +1,18 @@
 # Agent Mail · GitHub Actions 版
 
-零 VPS 的轻量邮件自动化。两件事：
+零 VPS、零 Mac、纯云的日报邮件自动化。
 
-1. **每天 09:00（CST）发送** `daily.hiwd.com` 的当日简报给订阅者。
-2. **守住你的私人邮箱**：除非主题以 `[AGENT]` / `[SEND_EMAIL]` / `[DAILY]` / `[UNSUBSCRIBE]` 开头，否则邮件**完全不被读取、不被标记、不被移动**。
+**每天 09:00（CST）** 从 `docs/rss.xml` 或 `docs/archive/*.html` 取当日 `daily.hiwd.com` 简报，通过 **`agent.qq.com` (agently-cli) HTTP API** 发送给 `agent_mail/subscribers.json` 里的订阅者。
 
 ---
 
-## 设计要点（必读）
+## 关键设计
 
-* **内容源**：`docs/rss.xml` → fallback 到 `docs/archive/YYYY-MM/YYYY-MM-DD.html`。两者都没有就**不发**，避免发空邮件。
-* **发送**：默认走 **QQ 邮箱 SMTP** —— 文档化、CI 友好、可单测。`agent.qq.com` CLI 在 `agent_mail/send.py:_send_agently()` 留了占位与两阶段确认骨架，待官方文档明确 send 命令后替换两行即可。
-* **个人邮件防误发**：`[SEND_EMAIL]` 任务**默认仅写草稿**到 `agent_mail/drafts/`，不发出去。即使主题里写了 `CONFIRM_SEND`，也只在 Secret `AUTO_SEND_PERSONAL=1` 时才真正发送。
-* **`drafts/*.eml` 不进 git**（已在 `.gitignore`），避免私人正文上链。
-* **3 天未读转发**：只转发主题不转发正文。`PERSONAL_EMAIL` 未配置则功能关闭。
-* **state.json**：`last_digest_date`、`processed_message_ids`、`unread_first_seen`、`forwarded_unread_ids` 等都在这一个文件里。每次 workflow 跑完 commit 回 main —— 这是状态持久化的唯一手段。
+* **发送后端**：`agently-cli message +send`（Tencent Agent Mail），两阶段确认（先拿 `confirmation_token`、再确认发出，全部脚本自动完成）。**不用 SMTP、不用 IMAP、不用邮件服务器**。
+* **CI 认证**：`bootstrap_token.enc` + keychain `master.key` 从本机一次性导出到 GitHub Secrets；每次 workflow 起 `dbus + gnome-keyring` 还原 keychain → `agently-cli auth refresh` 拿短期 access token → 发送。
+* **内容源**：`docs/rss.xml` → fallback `docs/archive/YYYY-MM/YYYY-MM-DD.html`；两者都没有则**不发**（避免发空邮件）。
+* **幂等**：`state.last_digest_date` 记录当日已发；同一天重跑跳过（`--force` 覆盖）。三档 cron（08:35 / 09:10 / 09:40 CST）确保 GitHub 高峰期延迟不影响送达。
+* **`drafts/*.eml` 不进 git**（`.gitignore`）。dry-run 生成的草稿由 `actions/upload-artifact` 收集。
 
 ---
 
@@ -23,53 +21,35 @@
 ```
 agent_mail/
   __init__.py
-  config.py            # 读环境变量
+  config.py            # 读 env → RuntimeConf(agently, dry_run)
   state.py             # state.json 读写
   subscribers.py       # 订阅者列表 IO
   content.py           # RSS / archive 取当日内容
   render.py            # 邮件 HTML/text 模板
-  send.py              # SMTP 主路径 + agently CLI 占位
-  inbox.py             # IMAP 任务路由 + 3 天未读摘要
+  send.py              # agently-cli 两阶段发送 + drafts 写 .eml
   subscribers.json     # ← 编辑这个文件管理订阅者
   state/state.json     # workflow 写回，请勿手改
   drafts/.gitkeep      # *.eml 不进 git
 scripts/
-  digest.py            # 09:00 调用
-  inbox_run.py         # 每 30 分钟调用
+  digest.py            # 每日 09:00 调用
 .github/workflows/
   agent-mail-digest.yml
-  agent-mail-inbox.yml
 ```
 
 ---
 
-## 配置 GitHub Secrets
+## 一次性配置：GitHub Secrets
 
 进入 **Settings → Secrets and variables → Actions**，添加：
 
-### 必填（发送 digest）
-
-| Secret | 值 | 说明 |
+| Secret | 从哪来 | 说明 |
 |---|---|---|
-| `SMTP_HOST` | `smtp.qq.com` | QQ 邮箱 SMTP |
-| `SMTP_PORT` | `465` | SSL |
-| `SMTP_USER` | `iworld@agent.qq.com` | 登录用户名 |
-| `SMTP_PASS` | *授权码* | **不是登录密码**，是 QQ 邮箱设置里生成的"授权码" |
-| `SMTP_FROM` | `iworld@agent.qq.com` | 通常同 `SMTP_USER` |
-| `SMTP_FROM_NAME` | `hiwd daily` | 显示名 |
+| `AGENTLY_BOOTSTRAP_ENC_B64` | `base64 -i "$HOME/Library/Application Support/agently-cli/bootstrap_token.enc"` | 加密的长期 refresh token |
+| `AGENTLY_MASTER_KEY` | `security find-generic-password -s agently-cli -a master.key -w` | 解密 refresh token 的对称密钥（保留 `go-keyring-base64:` 前缀） |
 
-### 选填（开启 inbox 任务路由）
+⚠️ **导出前提**：本机已跑过 `agently-cli auth login` 完成扫码授权。
 
-| Secret | 值 | 说明 |
-|---|---|---|
-| `IMAP_HOST` | `imap.qq.com` | |
-| `IMAP_PORT` | `993` | |
-| `IMAP_USER` | 同 `SMTP_USER` 即可 | |
-| `IMAP_PASS` | 同 `SMTP_PASS` 即可 | |
-| `PERSONAL_EMAIL` | `you@gmail.com` | 3 天未读摘要的转发目标，不填则不转发 |
-| `AUTO_SEND_PERSONAL` | `0` | 默认 `0`（仅草稿）。设 `1` 才允许 `[SEND_EMAIL]+CONFIRM_SEND` 自动发出 |
-| `FORWARD_IDLE_DAYS` | `3` | 调整闲置天数 |
-| `SENDER_BACKEND` | `smtp` | 不要设成 `agently`，除非你已经填好了 `_send_agently()` |
+⚠️ **敏感度**：这两个 Secret 加起来 = 你的 agent.qq.com 账号完全控制权。除了 GitHub Secrets 外不要留副本、不要贴到聊天/云笔记里。
 
 ---
 
@@ -85,68 +65,58 @@ scripts/
 ```
 
 * `paused: true` → 跳过但不删除。
-* 用户回复一封主题以 `[UNSUBSCRIBE]` 开头的邮件，inbox poller 会自动从列表移除（仅当 IMAP 已配置）。
-
-订阅入口：在 `https://daily.hiwd.com/rss.xml` 的页面附近放一个 `mailto:iworld@agent.qq.com?subject=[AGENT]%20subscribe` 链接，或单独做个静态表单都行。
+* 从网站前端订阅：Cloudflare Worker 收到订阅请求 → PR 到本仓库 `subscribers.json`。
+* 从网站前端退订：`https://mail.hiwd.com/unsubscribe`。
 
 ---
 
 ## 测试
 
-### 1. 本地 dry-run（不发邮件，生成 .eml 文件）
+### 本地 dry-run（不发邮件，生成 .eml）
 
 ```bash
-# 设最少必要变量
-export SMTP_HOST=smtp.qq.com SMTP_PORT=465 \
-       SMTP_USER=iworld@agent.qq.com SMTP_PASS=xxx \
-       SMTP_FROM=iworld@agent.qq.com SMTP_FROM_NAME='hiwd daily'
-
-# 把 subscribers.json 里改成你自己的邮箱测试
-python scripts/digest.py --dry-run --force --limit 1
-ls agent_mail/drafts/    # 查看生成的 .eml，可在 Apple Mail / Thunderbird 里打开
+DRY_RUN=1 python scripts/digest.py --force --limit 1
+ls agent_mail/drafts/
 ```
 
-### 2. CI dry-run（GitHub UI 手动触发）
+.eml 文件可用 Apple Mail / Thunderbird 打开预览。dry-run 不需要 agently 凭证。
 
-* 打开 **Actions → Agent Mail · Daily Digest → Run workflow**
-* `dry_run = true`，跑完到 **Artifacts** 下载 `drafts-<run-id>` 包
-* 满意之后再 `dry_run = false` 真发，或等明早 09:00 自动执行
+### CI dry-run（GitHub UI 手动触发）
 
-### 3. 测试 inbox 路由
+* **Actions → Agent Mail · Daily Digest → Run workflow**
+* `dry_run = true`
+* 跑完到 **Artifacts** 下载 `drafts-<run-id>` 检查内容
 
-给 `iworld@agent.qq.com` 发一封：
+### CI 真发（手动触发）
 
-* 主题 `[SEND_EMAIL] to:test@example.com hello world` → 应该进 `drafts/`，不会发出
-* 主题 `[SEND_EMAIL] to:test@example.com CONFIRM_SEND hello` + Secret `AUTO_SEND_PERSONAL=1` → 真正发出
-* 主题 `[UNSUBSCRIBE]` 来自订阅者 → 自动移除 + state.json commit
-
----
-
-## 手动触发
-
-* **重发某天**：`workflow_dispatch` → 填 `date=2026-06-29` + `force=true`
-* **暂停**：把对应 workflow 文件改名为 `*.yml.disabled`，或在 Actions 设置里 disable
-* **跳过转发**：手动触发 inbox workflow 时 `no_forward=true`
+* `dry_run = false`, `force = true`（可选，忽略当日幂等）
+* `date = 2026-06-29`（可选，重发某一天）
 
 ---
 
-## 把 SMTP 替换成 agent.qq.com CLI
+## 手动触发常见场景
 
-`agent_mail/send.py:_send_agently()` 已经写好骨架，包含两阶段确认（先调一次拿 `confirmation_token`，第二次带 `--confirmation-token` 确认）。落地步骤：
-
-1. 在本机跑一次 `agently-cli auth login`，确认能发邮件
-2. 找到真实的发送命令语法（例如 `agently-cli send-mail --to ... --subject ... --body-file ...`）和 token 字段名（`confirmation_token` 还是 `ctk`），把 `_send_agently()` 顶部的 `raise NotImplementedError` 删掉、把 `cmd1` / `cmd2` 改成真实 flag
-3. 解决 CI 鉴权 —— 通常需要把本地登录后的 token 文件（如 `~/.config/agently/credentials.json`）作为 base64 Secret 注入，workflow 里恢复到 runner 同样路径
-4. 设 Secret `SENDER_BACKEND=agently`
-
-在 step 3 没解决之前**不要**把 `SENDER_BACKEND` 切到 `agently` —— OAuth 交互式登录在 GitHub Actions 的 headless 环境里会卡死。
+* **重发某一天**：`workflow_dispatch` → `date=2026-06-29 force=true`
+* **补发今天**：`workflow_dispatch` → 三档 cron 都错过了 → `force=true`
+* **暂停自动发**：把 `agent-mail-digest.yml` 改名 `.disabled`，或在 Actions 页 disable
 
 ---
 
-## 安全保证（默认值复述一遍）
+## 凭证维护
 
-* 私人邮件：**永远不读 body，永远不 mark seen**（IMAP 用 `BODY.PEEK`）
-* `[SEND_EMAIL]` 任务：默认仅草稿
-* 3 天未读转发：默认只发主题
-* 草稿不进 git
-* 所有凭证在 Secrets，代码里没有任何硬编码
+`bootstrap_token.enc` 里存的是**长期** refresh token（月级别有效），access token 由 CI 每次自己 `auth refresh` 现取现用（1 小时过期，不用管）。
+
+如果 CI 跑到 `auth refresh` 步骤开始报 `expired_token` / `invalid_grant`：
+
+1. 本机 `agently-cli auth login` 重新扫码
+2. 重新导出 `AGENTLY_BOOTSTRAP_ENC_B64` 覆盖 GitHub Secret
+3. 如果本机 keychain 有变（重装/重置过），也重新导出 `AGENTLY_MASTER_KEY`
+
+---
+
+## 调试提示
+
+* workflow 的 `Refresh access token + send digest` 步骤跑了 `agently-cli auth status` 和 `+me`，日志能看到 token 有效期和账号邮箱
+* 如果 `secret-tool store` 不报错但 `auth refresh` 依然说未登录，检查 `AGENTLY_MASTER_KEY` 是否忘了 `go-keyring-base64:` 前缀
+* CLI 日志加 `AGENTLY_CLI_DEBUG_HTTP=1` 会打印所有 HTTP 请求
+* Beta 限额（截至 2026-07）：**50 封/天**、**1 MB/封**、**1 GB/账号**

@@ -49,4 +49,4 @@ def render_text(content: dict, subscriber: dict) -> str:
 
 
 def from_header(c: config.RuntimeConf) -> str:
-    return formataddr((c.smtp.from_name, c.smtp.from_addr))
+    return formataddr((c.agently.from_name, c.agently.from_addr))

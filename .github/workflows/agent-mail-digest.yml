@@ -2,14 +2,11 @@ name: Agent Mail · Daily Digest
 
 on:
   schedule:
-    # GitHub Actions cron 在 UTC 整点 + 高峰期会延迟 5–30 分钟。
-    # 同一天三档发车 + state.last_digest_date 幂等：哪一档最先发完，后续档跳过。
-    # 主档：UTC 00:35 → CST 08:35 (期望落点 09:00 左右)
-    - cron: '35 0 * * *'
-    # 兜底1：UTC 01:10 → CST 09:10
-    - cron: '10 1 * * *'
-    # 兜底2：UTC 01:40 → CST 09:40 (最迟也能在 10 点前送达)
-    - cron: '40 1 * * *'
+    # GitHub Actions cron 在 UTC 整点 + 高峰期常延迟 5–30 分钟。
+    # 三档发车 + state.last_digest_date 幂等：最先跑通的档发出去，后续档跳过。
+    - cron: '35 0 * * *'   # 主档：UTC 00:35 → CST 08:35 (期望落点 09:00)
+    - cron: '10 1 * * *'   # 兜底1：UTC 01:10 → CST 09:10
+    - cron: '40 1 * * *'   # 兜底2：UTC 01:40 → CST 09:40
   workflow_dispatch:
     inputs:
       date:
@@ -37,6 +34,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      # agently-cli honours these
+      AGENTLY_CLI_CONFIG_DIR: ${{ github.workspace }}/.agently
+      MAIL_FROM: iworld@agent.qq.com
+      MAIL_FROM_NAME: hiwd daily
+      DIGEST_DATE: ${{ github.event.inputs.date }}
+      DIGEST_DRY_RUN: ${{ github.event.inputs.dry_run }}
+      DIGEST_FORCE: ${{ github.event.inputs.force }}
+      DIGEST_LIMIT: ${{ github.event.inputs.limit }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,30 +53,84 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install deps
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install agently-cli + keychain shim
+        run: |
+          npm install -g @tencent-qqmail/agently-cli
+          agently-cli --version
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            libsecret-1-0 libsecret-tools dbus-x11 gnome-keyring
+
+      - name: Restore agently credentials
+        env:
+          AGENTLY_BOOTSTRAP_ENC_B64: ${{ secrets.AGENTLY_BOOTSTRAP_ENC_B64 }}
+          AGENTLY_MASTER_KEY: ${{ secrets.AGENTLY_MASTER_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${AGENTLY_BOOTSTRAP_ENC_B64:-}" ] || [ -z "${AGENTLY_MASTER_KEY:-}" ]; then
+            echo "::error::AGENTLY_BOOTSTRAP_ENC_B64 or AGENTLY_MASTER_KEY not set"
+            exit 1
+          fi
+          mkdir -p "$AGENTLY_CLI_CONFIG_DIR"
+          chmod 700 "$AGENTLY_CLI_CONFIG_DIR"
+          printf '%s' "$AGENTLY_BOOTSTRAP_ENC_B64" | base64 -d > "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
+          chmod 600 "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
+          echo "bootstrap_token.enc restored ($(wc -c < "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc") bytes)"
+
+      - name: Install Python deps
         run: pip install -r requirements.txt
 
-      - name: Send digest
-        env:
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          SMTP_FROM: ${{ secrets.SMTP_FROM }}
-          SMTP_FROM_NAME: ${{ secrets.SMTP_FROM_NAME }}
-          SENDER_BACKEND: ${{ secrets.SENDER_BACKEND }}
+      - name: Build digest arg string
+        id: args
         run: |
-          ARGS=()
-          if [ -n "${{ github.event.inputs.date }}" ]; then ARGS+=(--date "${{ github.event.inputs.date }}"); fi
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS+=(--dry-run); fi
-          if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS+=(--force); fi
-          if [ "${{ github.event.inputs.limit }}" != "0" ] && [ -n "${{ github.event.inputs.limit }}" ]; then
-            ARGS+=(--limit "${{ github.event.inputs.limit }}")
+          set -euo pipefail
+          ARGS=""
+          [ -n "${DIGEST_DATE:-}" ]  && ARGS="$ARGS --date $DIGEST_DATE"
+          [ "${DIGEST_DRY_RUN:-}" = "true" ] && ARGS="$ARGS --dry-run"
+          [ "${DIGEST_FORCE:-}" = "true" ]   && ARGS="$ARGS --force"
+          if [ -n "${DIGEST_LIMIT:-}" ] && [ "${DIGEST_LIMIT}" != "0" ]; then
+            ARGS="$ARGS --limit $DIGEST_LIMIT"
           fi
-          python scripts/digest.py "${ARGS[@]}"
+          echo "args=$ARGS" >> "$GITHUB_OUTPUT"
+          echo "computed args: $ARGS"
+
+      - name: Dry-run digest (no CLI needed)
+        if: ${{ github.event.inputs.dry_run == 'true' }}
+        env:
+          DRY_RUN: '1'
+        run: python scripts/digest.py ${{ steps.args.outputs.args }}
+
+      - name: Refresh access token + send digest
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        env:
+          AGENTLY_MASTER_KEY: ${{ secrets.AGENTLY_MASTER_KEY }}
+          DIGEST_ARGS: ${{ steps.args.outputs.args }}
+        run: |
+          set -euo pipefail
+          # dbus-run-session gives us a session bus; gnome-keyring-daemon
+          # provides the Secret Service that go-keyring talks to. We store
+          # the CLI's master key under the exact (service, account) it reads,
+          # then let it refresh + send.
+          dbus-run-session -- bash -euxo pipefail -c '
+            eval "$(printf "\n" | gnome-keyring-daemon --unlock --components=secrets)"
+            eval "$(gnome-keyring-daemon --start --components=secrets)"
+            export GNOME_KEYRING_CONTROL SSH_AUTH_SOCK
+
+            printf "%s" "$AGENTLY_MASTER_KEY" | secret-tool store --label="agently-cli master key" service agently-cli account master.key
+
+            agently-cli auth refresh
+            agently-cli auth status
+            agently-cli +me
+
+            python scripts/digest.py '"$DIGEST_ARGS"'
+          '
 
       - name: Persist state.json
-        # Only commit if state changed; never push drafts/ (they may contain bodies).
+        # Only commit if state changed; never push drafts/.
         run: |
           git config user.name  "Agent Mail Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
