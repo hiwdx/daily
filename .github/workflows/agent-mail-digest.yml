@@ -100,41 +100,56 @@ jobs:
       - name: Diagnose Linux CLI (see what it needs beyond bootstrap_token.enc)
         if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
-          set -euxo pipefail
+          # DO NOT use `set -e` here — pipes to head/grep can SIGPIPE and
+          # abort the whole diagnostic. We WANT to see every command's output.
+          set -x
           echo "--- config dir before CLI run ---"
-          ls -la "$AGENTLY_CLI_CONFIG_DIR/"
+          ls -la "$AGENTLY_CLI_CONFIG_DIR/" || true
 
           echo "--- CLI binary ---"
-          agently-cli --version
-          which agently-cli
-          # find the actual platform binary and dump strings around 'master.key'
-          NM_ROOT=$(dirname "$(readlink -f "$(which agently-cli)")")/../lib/node_modules/@tencent-qqmail || true
-          find "$NM_ROOT" -type f -name agently-cli 2>/dev/null | head -3
-          BIN=$(find "$NM_ROOT" -type f -name agently-cli 2>/dev/null | grep linux | head -1 || echo "")
+          agently-cli --version || true
+          which agently-cli || true
+
+          # Locate the platform-specific binary shipped in optionalDependencies.
+          NM_ROOT="$(dirname "$(readlink -f "$(which agently-cli)")")/../lib/node_modules/@tencent-qqmail"
+          echo "NM_ROOT=$NM_ROOT"
+          ls -la "$NM_ROOT/" 2>/dev/null || true
+          BIN=""
+          for cand in "$NM_ROOT"/agently-cli-linux-x64/bin/agently-cli "$NM_ROOT"/agently-cli-linux-arm64/bin/agently-cli; do
+            if [ -f "$cand" ]; then BIN="$cand"; break; fi
+          done
+          echo "linux binary: $BIN"
+
           if [ -n "$BIN" ]; then
-            echo "--- linux binary: $BIN ---"
             file "$BIN" || true
-            echo "--- master.key context in linux binary ---"
-            strings -a "$BIN" | grep -B1 -A1 "master\.key" | head -40 || true
-            echo "--- config-dir related strings ---"
-            strings -a "$BIN" | grep -iE "AGENTLY_CLI|\.agently|master\.key\.file|/keyring|libsecret|gnome-keyring|secret_service|kdewallet" | sort -u | head -40 || true
+            echo "--- master.key context (Linux binary) ---"
+            strings -a "$BIN" | grep -B2 -A2 "master\.key" > /tmp/mk.txt || true
+            head -80 /tmp/mk.txt
+            echo "--- config-dir / keyring lib strings (Linux binary) ---"
+            strings -a "$BIN" | grep -iE "AGENTLY_CLI|\.agently|master\.key\.file|/keyring|libsecret|gnome-keyring|secret_service|kdewallet|keychain|xdg" | sort -u > /tmp/kw.txt || true
+            head -80 /tmp/kw.txt
+            echo "--- vendor packages (Linux binary) ---"
+            strings -a "$BIN" | grep -oE "github\.com/[a-zA-Z0-9._/-]+" | sort -u > /tmp/vendor.txt || true
+            head -60 /tmp/vendor.txt
+          else
+            echo "!!! no linux binary found under $NM_ROOT"
           fi
 
           echo "--- auth status (fresh, only bootstrap present) ---"
-          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth status || true
+          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth status 2>&1 || true
 
           echo "--- auth refresh (fresh, only bootstrap present) ---"
-          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth refresh || true
+          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth refresh 2>&1 || true
 
-          echo "--- config dir after CLI run (see what CLI wrote/looked for) ---"
+          echo "--- config dir after CLI run ---"
           ls -laR "$AGENTLY_CLI_CONFIG_DIR/" || true
 
           echo "--- other candidate paths ---"
           for p in "$HOME/.config/agently" "$HOME/.config/agently-cli" "$HOME/.local/share/agently" "$HOME/.local/share/agently-cli" "$HOME/.agently"; do
-            [ -e "$p" ] && ls -laR "$p" || echo "  $p: absent"
+            if [ -e "$p" ]; then ls -laR "$p"; else echo "  $p: absent"; fi
           done
 
-          echo "::error::Diagnostic step — see above for what the Linux CLI actually needs"
+          echo "::error::Diagnostic step (intentional exit 1)"
           exit 1
 
       - name: Persist state.json
