@@ -120,19 +120,16 @@ jobs:
           agently-cli --version || true
           which agently-cli || true
 
-          # Locate the platform-specific binary shipped in optionalDependencies.
-          # npm places it at either:
-          #   .../@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli   (sibling)
-          #   .../@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli  (nested)
-          NM_ROOT="$(dirname "$(dirname "$(readlink -f "$(which agently-cli)")")")/lib/node_modules/@tencent-qqmail"
-          echo "NM_ROOT=$NM_ROOT"
-          ls -la "$NM_ROOT/" 2>/dev/null || true
+          # Locate the platform-specific binary. npm places it at:
+          #   $(npm root -g)/@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-{x64,arm64}/bin/agently-cli
+          NPM_ROOT="$(npm root -g)"
+          echo "NPM_ROOT=$NPM_ROOT"
           BIN=""
           for cand in \
-            "$NM_ROOT/agently-cli-linux-x64/bin/agently-cli" \
-            "$NM_ROOT/agently-cli-linux-arm64/bin/agently-cli" \
-            "$NM_ROOT/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli" \
-            "$NM_ROOT/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-arm64/bin/agently-cli"; do
+            "$NPM_ROOT/@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli" \
+            "$NPM_ROOT/@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-arm64/bin/agently-cli" \
+            "$NPM_ROOT/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli" \
+            "$NPM_ROOT/@tencent-qqmail/agently-cli-linux-arm64/bin/agently-cli"; do
             if [ -f "$cand" ]; then BIN="$cand"; break; fi
           done
           echo "linux binary: $BIN"
