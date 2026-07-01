@@ -5,5 +5,10 @@
     "paused": true,
     "subscribed_at": "2026-06-30",
     "_note": "this is a placeholder; remove or set paused=false to receive"
+  },
+  {
+    "email": "azdiwu@gmail.com",
+    "name": "azdiwu",
+    "subscribed_at": "2026-07-01"
   }
 ]
