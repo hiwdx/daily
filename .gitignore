@@ -12,5 +12,7 @@ venv/
 # Agent Mail — never commit drafts (may contain personal-mail bodies)
 agent_mail/drafts/*.eml
 
-# Agent Mail — never commit drafts (may contain personal-mail bodies)
-agent_mail/drafts/*.eml
+# Cloudflare Worker
+cf-worker/node_modules/
+cf-worker/package-lock.json
+cf-worker/.wrangler/

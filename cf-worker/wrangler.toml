@@ -3,11 +3,12 @@ main = "src/worker.js"
 compatibility_date = "2026-06-01"
 workers_dev = false
 
-# Custom domain — wrangler will create a route + DNS record (CNAME with proxy)
-# pointing mail.hiwd.com to this Worker. Requires the zone (hiwd.com) to be
-# already on Cloudflare, which it is.
+# Custom domain — wrangler will bind mail.hiwd.com (as a whole host) to this
+# Worker and auto-create the required DNS record. Custom Domains route ALL
+# traffic on that hostname to the Worker; wildcards / paths are not allowed
+# in this mode (the Worker itself dispatches on url.pathname).
 routes = [
-  { pattern = "mail.hiwd.com/*", custom_domain = true },
+  { pattern = "mail.hiwd.com", custom_domain = true },
 ]
 
 # Non-secret config — committed to repo. Edit GITHUB_REPO if forking.
