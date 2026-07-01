@@ -124,17 +124,28 @@ jobs:
           # Use system python3 (not the actions/setup-python one) so that
           # the apt-installed python3-secretstorage is on sys.path.
           dbus-run-session -- bash -euxo pipefail -c '
-            # Feed a known password to unlock. gnome-keyring will create a
-            # fresh login collection with this password if one does not
-            # exist yet, and leave it unlocked for the rest of the session.
             printf "ci\n" | gnome-keyring-daemon --unlock --components=secrets
             eval "$(printf "ci\n" | gnome-keyring-daemon --start --components=secrets)"
             export GNOME_KEYRING_CONTROL SSH_AUTH_SOCK
 
             /usr/bin/python3 scripts/ci_setup_keyring.py
 
-            agently-cli auth refresh
-            agently-cli auth status
+            echo "=== bootstrap_token.enc info ==="
+            ls -la "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
+            wc -c "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
+
+            echo "=== master.key round-trip via SecretService ==="
+            /usr/bin/python3 scripts/ci_debug_keyring.py
+
+            echo "=== auth status BEFORE refresh ==="
+            agently-cli auth status || true
+
+            echo "=== auth refresh with debug ==="
+            AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth refresh || true
+
+            echo "=== auth status AFTER refresh ==="
+            agently-cli auth status || true
+
             agently-cli +me
 
             python scripts/digest.py '"$DIGEST_ARGS"'
