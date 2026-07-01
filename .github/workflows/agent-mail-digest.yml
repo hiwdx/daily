@@ -2,9 +2,7 @@ name: Agent Mail · Daily Digest
 
 on:
   schedule:
-    # GitHub Actions cron 在 UTC 整点 + 高峰期常延迟 5–30 分钟。
-    # 三档发车 + state.last_digest_date 幂等：最先跑通的档发出去，后续档跳过。
-    - cron: '35 0 * * *'   # 主档：UTC 00:35 → CST 08:35 (期望落点 09:00)
+    - cron: '35 0 * * *'   # 主档：UTC 00:35 → CST 08:35
     - cron: '10 1 * * *'   # 兜底1：UTC 01:10 → CST 09:10
     - cron: '40 1 * * *'   # 兜底2：UTC 01:40 → CST 09:40
   workflow_dispatch:
@@ -35,7 +33,6 @@ jobs:
     permissions:
       contents: write
     env:
-      # agently-cli honours these
       AGENTLY_CLI_CONFIG_DIR: ${{ github.workspace }}/.agently
       MAIL_FROM: iworld@agent.qq.com
       MAIL_FROM_NAME: hiwd daily
@@ -57,22 +54,18 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install agently-cli + keychain shim
+      - name: Install agently-cli
         run: |
           npm install -g @tencent-qqmail/agently-cli
           agently-cli --version
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends \
-            libsecret-1-0 dbus-x11 gnome-keyring python3-secretstorage
 
-      - name: Restore agently credentials
+      - name: Restore agently credentials (bootstrap only)
         env:
           AGENTLY_BOOTSTRAP_ENC_B64: ${{ secrets.AGENTLY_BOOTSTRAP_ENC_B64 }}
-          AGENTLY_MASTER_KEY: ${{ secrets.AGENTLY_MASTER_KEY }}
         run: |
           set -euo pipefail
-          if [ -z "${AGENTLY_BOOTSTRAP_ENC_B64:-}" ] || [ -z "${AGENTLY_MASTER_KEY:-}" ]; then
-            echo "::error::AGENTLY_BOOTSTRAP_ENC_B64 or AGENTLY_MASTER_KEY not set"
+          if [ -z "${AGENTLY_BOOTSTRAP_ENC_B64:-}" ]; then
+            echo "::error::AGENTLY_BOOTSTRAP_ENC_B64 not set"
             exit 1
           fi
           mkdir -p "$AGENTLY_CLI_CONFIG_DIR"
@@ -104,71 +97,47 @@ jobs:
           DRY_RUN: '1'
         run: python scripts/digest.py ${{ steps.args.outputs.args }}
 
-      - name: Send digest via AGENTLY_ACCESS_TOKEN (bypass keyring)
-        if: ${{ github.event.inputs.dry_run != 'true' && env.HAS_ACCESS_TOKEN == 'true' }}
-        env:
-          AGENTLY_ACCESS_TOKEN: ${{ secrets.AGENTLY_ACCESS_TOKEN }}
-          HAS_ACCESS_TOKEN: ${{ secrets.AGENTLY_ACCESS_TOKEN != '' }}
-          DIGEST_ARGS: ${{ steps.args.outputs.args }}
+      - name: Diagnose Linux CLI (see what it needs beyond bootstrap_token.enc)
+        if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
           set -euxo pipefail
-          # AGENTLY_ACCESS_TOKEN is set — CLI honours the env var and skips
-          # keyring lookup entirely. Access tokens live ~1 hour, so this path
-          # requires the secret to be minted right before the workflow run.
-          agently-cli auth status
-          agently-cli +me
-          python scripts/digest.py $DIGEST_ARGS
+          echo "--- config dir before CLI run ---"
+          ls -la "$AGENTLY_CLI_CONFIG_DIR/"
 
-      - name: Refresh access token + send digest (via keyring)
-        if: ${{ github.event.inputs.dry_run != 'true' && env.HAS_ACCESS_TOKEN != 'true' }}
-        env:
-          AGENTLY_MASTER_KEY: ${{ secrets.AGENTLY_MASTER_KEY }}
-          HAS_ACCESS_TOKEN: ${{ secrets.AGENTLY_ACCESS_TOKEN != '' }}
-          DIGEST_ARGS: ${{ steps.args.outputs.args }}
-        run: |
-          set -euo pipefail
-          # zalando/go-keyring (which agently-cli embeds) hardcodes the
-          # SecretService "login" collection. `secret-tool store` writes to
-          # the "default" alias, which on a fresh gnome-keyring is NOT
-          # "login" — hence the earlier auth failure. Use python-secretstorage
-          # to write directly to the login collection with the right
-          # attributes.
-          #
-          # dbus-run-session gives us a session bus; gnome-keyring provides
-          # the Secret Service that both python-secretstorage and go-keyring
-          # talk to.
-          # Use system python3 (not the actions/setup-python one) so that
-          # the apt-installed python3-secretstorage is on sys.path.
-          dbus-run-session -- bash -euxo pipefail -c '
-            printf "ci\n" | gnome-keyring-daemon --unlock --components=secrets
-            eval "$(printf "ci\n" | gnome-keyring-daemon --start --components=secrets)"
-            export GNOME_KEYRING_CONTROL SSH_AUTH_SOCK
+          echo "--- CLI binary ---"
+          agently-cli --version
+          which agently-cli
+          # find the actual platform binary and dump strings around 'master.key'
+          NM_ROOT=$(dirname "$(readlink -f "$(which agently-cli)")")/../lib/node_modules/@tencent-qqmail || true
+          find "$NM_ROOT" -type f -name agently-cli 2>/dev/null | head -3
+          BIN=$(find "$NM_ROOT" -type f -name agently-cli 2>/dev/null | grep linux | head -1 || echo "")
+          if [ -n "$BIN" ]; then
+            echo "--- linux binary: $BIN ---"
+            file "$BIN" || true
+            echo "--- master.key context in linux binary ---"
+            strings -a "$BIN" | grep -B1 -A1 "master\.key" | head -40 || true
+            echo "--- config-dir related strings ---"
+            strings -a "$BIN" | grep -iE "AGENTLY_CLI|\.agently|master\.key\.file|/keyring|libsecret|gnome-keyring|secret_service|kdewallet" | sort -u | head -40 || true
+          fi
 
-            /usr/bin/python3 scripts/ci_setup_keyring.py
+          echo "--- auth status (fresh, only bootstrap present) ---"
+          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth status || true
 
-            echo "=== bootstrap_token.enc info ==="
-            ls -la "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
-            wc -c "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
+          echo "--- auth refresh (fresh, only bootstrap present) ---"
+          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth refresh || true
 
-            echo "=== master.key round-trip via SecretService ==="
-            /usr/bin/python3 scripts/ci_debug_keyring.py
+          echo "--- config dir after CLI run (see what CLI wrote/looked for) ---"
+          ls -laR "$AGENTLY_CLI_CONFIG_DIR/" || true
 
-            echo "=== auth status BEFORE refresh ==="
-            agently-cli auth status || true
+          echo "--- other candidate paths ---"
+          for p in "$HOME/.config/agently" "$HOME/.config/agently-cli" "$HOME/.local/share/agently" "$HOME/.local/share/agently-cli" "$HOME/.agently"; do
+            [ -e "$p" ] && ls -laR "$p" || echo "  $p: absent"
+          done
 
-            echo "=== auth refresh with debug ==="
-            AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth refresh || true
-
-            echo "=== auth status AFTER refresh ==="
-            agently-cli auth status || true
-
-            agently-cli +me
-
-            python scripts/digest.py '"$DIGEST_ARGS"'
-          '
+          echo "::error::Diagnostic step — see above for what the Linux CLI actually needs"
+          exit 1
 
       - name: Persist state.json
-        # Only commit if state changed; never push drafts/.
         run: |
           git config user.name  "Agent Mail Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
