@@ -111,11 +111,18 @@ jobs:
           which agently-cli || true
 
           # Locate the platform-specific binary shipped in optionalDependencies.
-          NM_ROOT="$(dirname "$(readlink -f "$(which agently-cli)")")/../lib/node_modules/@tencent-qqmail"
+          # npm places it at either:
+          #   .../@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli   (sibling)
+          #   .../@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli  (nested)
+          NM_ROOT="$(dirname "$(dirname "$(readlink -f "$(which agently-cli)")")")/lib/node_modules/@tencent-qqmail"
           echo "NM_ROOT=$NM_ROOT"
           ls -la "$NM_ROOT/" 2>/dev/null || true
           BIN=""
-          for cand in "$NM_ROOT"/agently-cli-linux-x64/bin/agently-cli "$NM_ROOT"/agently-cli-linux-arm64/bin/agently-cli; do
+          for cand in \
+            "$NM_ROOT/agently-cli-linux-x64/bin/agently-cli" \
+            "$NM_ROOT/agently-cli-linux-arm64/bin/agently-cli" \
+            "$NM_ROOT/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli" \
+            "$NM_ROOT/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-arm64/bin/agently-cli"; do
             if [ -f "$cand" ]; then BIN="$cand"; break; fi
           done
           echo "linux binary: $BIN"
@@ -123,14 +130,23 @@ jobs:
           if [ -n "$BIN" ]; then
             file "$BIN" || true
             echo "--- master.key context (Linux binary) ---"
-            strings -a "$BIN" | grep -B2 -A2 "master\.key" > /tmp/mk.txt || true
-            head -80 /tmp/mk.txt
+            strings -a "$BIN" | grep -B3 -A3 "master\.key" > /tmp/mk.txt || true
+            head -100 /tmp/mk.txt
+            echo "--- 'no stored token' context ---"
+            strings -a "$BIN" | grep -B3 -A3 "no stored token\|not logged\|Not logged\|Authorization required\|authorization required" > /tmp/auth.txt || true
+            head -80 /tmp/auth.txt
             echo "--- config-dir / keyring lib strings (Linux binary) ---"
             strings -a "$BIN" | grep -iE "AGENTLY_CLI|\.agently|master\.key\.file|/keyring|libsecret|gnome-keyring|secret_service|kdewallet|keychain|xdg" | sort -u > /tmp/kw.txt || true
             head -80 /tmp/kw.txt
             echo "--- vendor packages (Linux binary) ---"
             strings -a "$BIN" | grep -oE "github\.com/[a-zA-Z0-9._/-]+" | sort -u > /tmp/vendor.txt || true
             head -60 /tmp/vendor.txt
+
+            echo "--- STRACE: what files does CLI open during auth status? ---"
+            sudo apt-get install -y --no-install-recommends strace >/dev/null 2>&1 || true
+            strace -f -e trace=openat -o /tmp/strace.txt "$BIN" auth status 2>&1 | head -20 || true
+            echo "  (strace log:)"
+            grep -vE "\.so|\.mo|/proc/|/sys/|hostedtoolcache|locale|zoneinfo|/dev/urandom|/dev/null" /tmp/strace.txt 2>/dev/null | head -60 || true
           else
             echo "!!! no linux binary found under $NM_ROOT"
           fi
