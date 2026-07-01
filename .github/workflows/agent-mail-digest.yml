@@ -120,7 +120,8 @@ jobs:
             eval "$(gnome-keyring-daemon --start --components=secrets)"
             export GNOME_KEYRING_CONTROL SSH_AUTH_SOCK
 
-            printf "%s" "$AGENTLY_MASTER_KEY" | secret-tool store --label="agently-cli master key" service agently-cli account master.key
+            printf "%s" "$AGENTLY_MASTER_KEY" | secret-tool store --label="agently-cli master key" service agently-cli username master.key
+            secret-tool lookup service agently-cli username master.key >/dev/null && echo "keyring: master.key stored ok"
 
             agently-cli auth refresh
             agently-cli auth status
