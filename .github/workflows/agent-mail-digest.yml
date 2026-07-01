@@ -63,7 +63,7 @@ jobs:
           agently-cli --version
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends \
-            libsecret-1-0 libsecret-tools dbus-x11 gnome-keyring
+            libsecret-1-0 dbus-x11 gnome-keyring python3-secretstorage
 
       - name: Restore agently credentials
         env:
@@ -111,17 +111,27 @@ jobs:
           DIGEST_ARGS: ${{ steps.args.outputs.args }}
         run: |
           set -euo pipefail
-          # dbus-run-session gives us a session bus; gnome-keyring-daemon
-          # provides the Secret Service that go-keyring talks to. We store
-          # the CLI's master key under the exact (service, account) it reads,
-          # then let it refresh + send.
+          # zalando/go-keyring (which agently-cli embeds) hardcodes the
+          # SecretService "login" collection. `secret-tool store` writes to
+          # the "default" alias, which on a fresh gnome-keyring is NOT
+          # "login" — hence the earlier auth failure. Use python-secretstorage
+          # to write directly to the login collection with the right
+          # attributes.
+          #
+          # dbus-run-session gives us a session bus; gnome-keyring provides
+          # the Secret Service that both python-secretstorage and go-keyring
+          # talk to.
+          # Use system python3 (not the actions/setup-python one) so that
+          # the apt-installed python3-secretstorage is on sys.path.
           dbus-run-session -- bash -euxo pipefail -c '
-            eval "$(printf "\n" | gnome-keyring-daemon --unlock --components=secrets)"
-            eval "$(gnome-keyring-daemon --start --components=secrets)"
+            # Feed a known password to unlock. gnome-keyring will create a
+            # fresh login collection with this password if one does not
+            # exist yet, and leave it unlocked for the rest of the session.
+            printf "ci\n" | gnome-keyring-daemon --unlock --components=secrets
+            eval "$(printf "ci\n" | gnome-keyring-daemon --start --components=secrets)"
             export GNOME_KEYRING_CONTROL SSH_AUTH_SOCK
 
-            printf "%s" "$AGENTLY_MASTER_KEY" | secret-tool store --label="agently-cli master key" service agently-cli username master.key
-            secret-tool lookup service agently-cli username master.key >/dev/null && echo "keyring: master.key stored ok"
+            /usr/bin/python3 scripts/ci_setup_keyring.py
 
             agently-cli auth refresh
             agently-cli auth status
