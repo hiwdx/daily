@@ -1,0 +1,68 @@
+name: Agent Mail · One-time Linux Login
+
+# One-time helper. Run this workflow once, complete OAuth via your phone,
+# then copy the printed base64 into a NEW GitHub Secret named
+# AGENTLY_CONFIG_TAR_B64. After that, the daily-digest workflow will use
+# that secret and never touch keychain/dbus.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    env:
+      AGENTLY_CLI_CONFIG_DIR: ${{ github.workspace }}/.agently
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install agently-cli
+        run: npm install -g @tencent-qqmail/agently-cli
+
+      - name: Prepare config dir
+        run: mkdir -p "$AGENTLY_CLI_CONFIG_DIR"
+
+      - name: Interactive login
+        run: |
+          set -uxo pipefail
+          echo ""
+          echo "======================================================"
+          echo "  Look for a URL like https://agent.qq.com/device"
+          echo "  in the output below. Open it in your browser and"
+          echo "  scan with WeChat to authorise."
+          echo "  This step will WAIT until authorisation completes."
+          echo "======================================================"
+          echo ""
+          # `auth login` prints the device auth URL, then long-polls the
+          # server. Runs interactively but on a runner has no user input
+          # anyway — it just waits. We give it 10 minutes to complete.
+          timeout 600 agently-cli auth login --verbose || true
+
+          echo ""
+          echo "--- config dir contents after login ---"
+          ls -laR "$AGENTLY_CLI_CONFIG_DIR/" || true
+          agently-cli auth status || true
+
+      - name: Package config dir into base64
+        run: |
+          set -euo pipefail
+          if ! ls "$AGENTLY_CLI_CONFIG_DIR"/*.enc >/dev/null 2>&1 && ! ls "$AGENTLY_CLI_CONFIG_DIR"/*.json >/dev/null 2>&1; then
+            echo "::error::No credentials generated — did you complete the OAuth flow?"
+            exit 1
+          fi
+          tar -C "$AGENTLY_CLI_CONFIG_DIR" -czf /tmp/agently-config.tgz .
+          echo ""
+          echo "======================================================"
+          echo "COPY EVERYTHING BETWEEN THE MARKERS BELOW INTO"
+          echo "GitHub Secret named AGENTLY_CONFIG_TAR_B64."
+          echo "IMPORTANT: it's on ONE long line."
+          echo "======================================================"
+          echo ""
+          echo "===AGENTLY_CONFIG_TAR_B64_START==="
+          base64 -w0 /tmp/agently-config.tgz
+          echo ""
+          echo "===AGENTLY_CONFIG_TAR_B64_END==="
+          echo ""
+          echo "Length: $(base64 -w0 /tmp/agently-config.tgz | wc -c) chars"
