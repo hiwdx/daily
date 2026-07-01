@@ -56,8 +56,18 @@ jobs:
 
       - name: Install agently-cli
         run: |
+          set -x
           npm install -g @tencent-qqmail/agently-cli
           agently-cli --version
+          echo "=== find any linux binary anywhere on runner ==="
+          find / -name 'agently-cli-linux-*' -type d 2>/dev/null || true
+          find / -path '*agently-cli/bin/agently-cli' -type f 2>/dev/null || true
+          echo "=== npm root -g ==="
+          NPM_ROOT=$(npm root -g)
+          echo "NPM_ROOT=$NPM_ROOT"
+          ls -la "$NPM_ROOT/@tencent-qqmail/" || true
+          echo "=== npm ls -g @tencent-qqmail/agently-cli ==="
+          npm ls -g @tencent-qqmail/agently-cli || true
 
       - name: Restore agently credentials (bootstrap only)
         env:
