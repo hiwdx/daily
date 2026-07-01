@@ -104,10 +104,26 @@ jobs:
           DRY_RUN: '1'
         run: python scripts/digest.py ${{ steps.args.outputs.args }}
 
-      - name: Refresh access token + send digest
-        if: ${{ github.event.inputs.dry_run != 'true' }}
+      - name: Send digest via AGENTLY_ACCESS_TOKEN (bypass keyring)
+        if: ${{ github.event.inputs.dry_run != 'true' && env.HAS_ACCESS_TOKEN == 'true' }}
+        env:
+          AGENTLY_ACCESS_TOKEN: ${{ secrets.AGENTLY_ACCESS_TOKEN }}
+          HAS_ACCESS_TOKEN: ${{ secrets.AGENTLY_ACCESS_TOKEN != '' }}
+          DIGEST_ARGS: ${{ steps.args.outputs.args }}
+        run: |
+          set -euxo pipefail
+          # AGENTLY_ACCESS_TOKEN is set — CLI honours the env var and skips
+          # keyring lookup entirely. Access tokens live ~1 hour, so this path
+          # requires the secret to be minted right before the workflow run.
+          agently-cli auth status
+          agently-cli +me
+          python scripts/digest.py $DIGEST_ARGS
+
+      - name: Refresh access token + send digest (via keyring)
+        if: ${{ github.event.inputs.dry_run != 'true' && env.HAS_ACCESS_TOKEN != 'true' }}
         env:
           AGENTLY_MASTER_KEY: ${{ secrets.AGENTLY_MASTER_KEY }}
+          HAS_ACCESS_TOKEN: ${{ secrets.AGENTLY_ACCESS_TOKEN != '' }}
           DIGEST_ARGS: ${{ steps.args.outputs.args }}
         run: |
           set -euo pipefail
