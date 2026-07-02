@@ -9,7 +9,12 @@ on:
     - cron: '30 21 * * *'
     # 兜底2：UTC 22:00（北京时间次日 06:00，延迟后约 CST 09:30）
     - cron: '0 22 * * *'
-  workflow_dispatch:    # 手动触发：始终生成，不做幂等检查
+  workflow_dispatch:    # 手动触发：默认走幂等检查；勾选 force 才强制重跑
+    inputs:
+      force:
+        description: "true 时忽略幂等检查，强制重新生成（默认 false）"
+        required: false
+        default: 'false'
 
 jobs:
   generate:
@@ -27,17 +32,17 @@ jobs:
       - name: Check if today's briefing already exists
         id: check
         run: |
-          # 手动触发时始终生成，不做幂等检查
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          # 手动触发且勾选 force 时才跳过幂等检查
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.force }}" = "true" ]; then
             echo "skip=false" >> $GITHUB_OUTPUT
-            echo "🔄 手动触发，跳过幂等检查，直接生成"
+            echo "🔄 手动触发（force=true），跳过幂等检查，强制生成"
             exit 0
           fi
 
           TODAY=$(TZ=Asia/Shanghai date +'%Y-%m-%d')
           echo "今日日期（CST）: ${TODAY}"
 
-          # 定时任务：用 archive.json 判断今日是否已生成
+          # 定时任务 & 未勾 force 的手动触发：用 archive.json 判断今日是否已生成
           if python3 -c "import json,sys; d=json.load(open('docs/archive.json')); sys.exit(0 if '${TODAY}' in [e.get('date','') for e in d] else 1)" 2>/dev/null; then
             echo "skip=true" >> $GITHUB_OUTPUT
             echo "✅ 今日简报已存在（${TODAY}），跳过生成"

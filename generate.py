@@ -201,7 +201,12 @@ def _api_create_with_retry(client, system: str, messages: list, max_retries: int
                 model="claude-haiku-4-5",
                 max_tokens=4000,
                 system=system,
-                tools=[{"type": "web_search_20260209", "name": "web_search", "allowed_callers": ["direct"]}],
+                tools=[{
+                    "type": "web_search_20260209",
+                    "name": "web_search",
+                    "allowed_callers": ["direct"],
+                    "max_uses": 3,
+                }],
                 messages=messages,
             )
         except anthropic.AuthenticationError as e:
