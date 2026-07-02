@@ -7,10 +7,9 @@ Two-phase confirmation flow (mandatory, not skippable):
   2. `agently-cli message +send --confirmation-token <ctk>`
      → JSON with `queued=true`
 
-The CLI honours `AGENTLY_ACCESS_TOKEN` env var (bypasses keychain) and reads
-`AGENTLY_CLI_CONFIG_DIR` for the encrypted refresh-token bundle. On CI we
-restore both the encrypted bundle and the keychain master key ahead of the
-call, then let the CLI mint a fresh access token itself via `auth refresh`.
+The workflow restores the Linux agently-cli credential bundle into
+`AGENTLY_CLI_CONFIG_DIR` before calling this module. No SMTP/IMAP credentials
+or mail server are used.
 """
 from __future__ import annotations
 
@@ -96,15 +95,30 @@ def _run_cli(cmd: list[str], *, timeout: int) -> dict:
         timeout=timeout,
         cwd=str(config.REPO_ROOT),
     )
+    parsed = _parse_cli_json(r.stdout)
     if r.returncode != 0:
+        message = _dig(parsed or {}, "error", "message") if parsed else ""
         raise RuntimeError(
             f"agently-cli exit {r.returncode}: "
-            f"stderr={r.stderr.strip()[:400]!r} stdout={r.stdout.strip()[:200]!r}"
+            f"{message or r.stderr.strip()[:400] or r.stdout.strip()[:200]!r}"
         )
+    if parsed is None:
+        raise RuntimeError(f"agently-cli non-JSON stdout: {r.stdout[:400]!r}")
+    return parsed
+
+
+def _parse_cli_json(stdout: str) -> dict | None:
+    """Parse the first JSON object from CLI stdout, allowing notices/tips."""
+    start = stdout.find("{")
+    if start < 0:
+        return None
     try:
-        return json.loads(r.stdout)
+        data, _ = json.JSONDecoder().raw_decode(stdout[start:])
     except json.JSONDecodeError as e:
-        raise RuntimeError(f"agently-cli non-JSON stdout: {e}: {r.stdout[:400]!r}")
+        raise RuntimeError(f"agently-cli non-JSON stdout: {e}: {stdout[:400]!r}")
+    if not isinstance(data, dict):
+        raise RuntimeError(f"agently-cli JSON stdout is not an object: {stdout[:400]!r}")
+    return data
 
 
 def _dig(d: dict, *path: str):

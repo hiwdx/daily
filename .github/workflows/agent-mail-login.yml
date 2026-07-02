@@ -13,7 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AGENTLY_CLI_CONFIG_DIR: ${{ github.workspace }}/.agently
+      MAIL_FROM: iworld@agent.qq.com
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -26,7 +33,7 @@ jobs:
 
       - name: Interactive login
         run: |
-          set -uxo pipefail
+          set -euxo pipefail
           echo ""
           echo "======================================================"
           echo "  Look for a URL like https://agent.qq.com/device"
@@ -38,12 +45,15 @@ jobs:
           # `auth login` prints the device auth URL, then long-polls the
           # server. Runs interactively but on a runner has no user input
           # anyway — it just waits. We give it 10 minutes to complete.
-          timeout 600 agently-cli auth login --verbose || true
+          timeout 600 agently-cli auth login --verbose
 
           echo ""
           echo "--- config dir contents after login ---"
           ls -laR "$AGENTLY_CLI_CONFIG_DIR/" || true
-          agently-cli auth status || true
+          agently-cli auth status
+
+      - name: Verify agently account
+        run: python scripts/check_agently_me.py "$MAIL_FROM"
 
       - name: Package config dir into base64
         run: |

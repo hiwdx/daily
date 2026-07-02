@@ -9,9 +9,9 @@
 ## 关键设计
 
 * **发送后端**：`agently-cli message +send`（Tencent Agent Mail），两阶段确认（先拿 `confirmation_token`、再确认发出，全部脚本自动完成）。**不用 SMTP、不用 IMAP、不用邮件服务器**。
-* **CI 认证**：`bootstrap_token.enc` + keychain `master.key` 从本机一次性导出到 GitHub Secrets；每次 workflow 起 `dbus + gnome-keyring` 还原 keychain → `agently-cli auth refresh` 拿短期 access token → 发送。
+* **CI 认证**：先跑一次 `Agent Mail · One-time Linux Login`，在 Linux runner 上完成 `agently-cli auth login`，把生成的完整配置包保存为 GitHub Secret `AGENTLY_CONFIG_TAR_B64`；每天 workflow 只恢复这个包并调用 CLI。
 * **内容源**：`docs/rss.xml` → fallback `docs/archive/YYYY-MM/YYYY-MM-DD.html`；两者都没有则**不发**（避免发空邮件）。
-* **幂等**：`state.last_digest_date` 记录当日已发；同一天重跑跳过（`--force` 覆盖）。三档 cron（08:35 / 09:10 / 09:40 CST）确保 GitHub 高峰期延迟不影响送达。
+* **幂等**：`state.last_digest_date` 记录当日已完整发送；同一天重跑跳过（`--force` 覆盖）。三档 cron（09:00 / 09:15 / 09:30 CST）配合按收件人记录，失败重跑时不会误跳过未发送用户。
 * **`drafts/*.eml` 不进 git**（`.gitignore`）。dry-run 生成的草稿由 `actions/upload-artifact` 收集。
 
 ---
@@ -44,12 +44,16 @@ scripts/
 
 | Secret | 从哪来 | 说明 |
 |---|---|---|
-| `AGENTLY_BOOTSTRAP_ENC_B64` | `base64 -i "$HOME/Library/Application Support/agently-cli/bootstrap_token.enc"` | 加密的长期 refresh token |
-| `AGENTLY_MASTER_KEY` | `security find-generic-password -s agently-cli -a master.key -w` | 解密 refresh token 的对称密钥（保留 `go-keyring-base64:` 前缀） |
+| `AGENTLY_CONFIG_TAR_B64` | Actions → `Agent Mail · One-time Linux Login` 跑完后日志里的 `AGENTLY_CONFIG_TAR_B64` | Linux 版 agently-cli 的完整授权配置包 |
 
-⚠️ **导出前提**：本机已跑过 `agently-cli auth login` 完成扫码授权。
+步骤：
 
-⚠️ **敏感度**：这两个 Secret 加起来 = 你的 agent.qq.com 账号完全控制权。除了 GitHub Secrets 外不要留副本、不要贴到聊天/云笔记里。
+1. 打开 **Actions → Agent Mail · One-time Linux Login → Run workflow**。
+2. 在日志中找到 `https://agent.qq.com/...` 授权链接，按提示完成 `iworld@agent.qq.com` 授权。
+3. 复制日志里 `AGENTLY_CONFIG_TAR_B64_START/END` 之间的一整行，保存到 **Settings → Secrets and variables → Actions → New repository secret**，名称为 `AGENTLY_CONFIG_TAR_B64`。
+4. 手动触发 **Agent Mail · Daily Digest**，先用 `dry_run=true` 检查草稿，再用 `dry_run=false force=true limit=1` 试发。
+
+⚠️ **敏感度**：`AGENTLY_CONFIG_TAR_B64` = 你的 agent.qq.com 账号发信权限。除了 GitHub Secrets 外不要留副本、不要贴到聊天/云笔记里。
 
 ---
 
@@ -75,7 +79,7 @@ scripts/
 ### 本地 dry-run（不发邮件，生成 .eml）
 
 ```bash
-DRY_RUN=1 python scripts/digest.py --force --limit 1
+DRY_RUN=1 python3 scripts/digest.py --force --limit 1
 ls agent_mail/drafts/
 ```
 
@@ -104,19 +108,17 @@ ls agent_mail/drafts/
 
 ## 凭证维护
 
-`bootstrap_token.enc` 里存的是**长期** refresh token（月级别有效），access token 由 CI 每次自己 `auth refresh` 现取现用（1 小时过期，不用管）。
+`AGENTLY_CONFIG_TAR_B64` 里存的是 Linux runner 上 `agently-cli auth login` 生成的授权配置。daily workflow 会先 `agently-cli auth refresh`，再校验 `+me` 返回的邮箱包含 `iworld@agent.qq.com`，最后发信。
 
-如果 CI 跑到 `auth refresh` 步骤开始报 `expired_token` / `invalid_grant`：
+如果 CI 跑到 `Verify agently account` 步骤开始报 `expired_token` / `invalid_grant`：
 
-1. 本机 `agently-cli auth login` 重新扫码
-2. 重新导出 `AGENTLY_BOOTSTRAP_ENC_B64` 覆盖 GitHub Secret
-3. 如果本机 keychain 有变（重装/重置过），也重新导出 `AGENTLY_MASTER_KEY`
+1. 重新跑 **Agent Mail · One-time Linux Login**
+2. 用新的日志输出覆盖 GitHub Secret `AGENTLY_CONFIG_TAR_B64`
 
 ---
 
 ## 调试提示
 
-* workflow 的 `Refresh access token + send digest` 步骤跑了 `agently-cli auth status` 和 `+me`，日志能看到 token 有效期和账号邮箱
-* 如果 `secret-tool store` 不报错但 `auth refresh` 依然说未登录，检查 `AGENTLY_MASTER_KEY` 是否忘了 `go-keyring-base64:` 前缀
+* workflow 的 `Verify agently account` 步骤会跑 `agently-cli auth status` 和 `+me`，日志能看到授权状态；如果不是 `iworld@agent.qq.com` 会直接失败
 * CLI 日志加 `AGENTLY_CLI_DEBUG_HTTP=1` 会打印所有 HTTP 请求
 * Beta 限额（截至 2026-07）：**50 封/天**、**1 MB/封**、**1 GB/账号**

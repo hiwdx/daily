@@ -2,9 +2,9 @@ name: Agent Mail · Daily Digest
 
 on:
   schedule:
-    - cron: '35 0 * * *'   # 主档：UTC 00:35 → CST 08:35
-    - cron: '10 1 * * *'   # 兜底1：UTC 01:10 → CST 09:10
-    - cron: '40 1 * * *'   # 兜底2：UTC 01:40 → CST 09:40
+    - cron: '0 1 * * *'    # UTC 01:00 → CST 09:00
+    - cron: '15 1 * * *'   # 兜底1：UTC 01:15 → CST 09:15
+    - cron: '30 1 * * *'   # 兜底2：UTC 01:30 → CST 09:30
   workflow_dispatch:
     inputs:
       date:
@@ -56,126 +56,69 @@ jobs:
 
       - name: Install agently-cli
         run: |
-          set -x
+          set -euo pipefail
           npm install -g @tencent-qqmail/agently-cli
           agently-cli --version
-          echo "=== find any linux binary anywhere on runner ==="
-          find / -name 'agently-cli-linux-*' -type d 2>/dev/null || true
-          find / -path '*agently-cli/bin/agently-cli' -type f 2>/dev/null || true
-          echo "=== npm root -g ==="
-          NPM_ROOT=$(npm root -g)
-          echo "NPM_ROOT=$NPM_ROOT"
-          ls -la "$NPM_ROOT/@tencent-qqmail/" || true
-          echo "=== npm ls -g @tencent-qqmail/agently-cli ==="
-          npm ls -g @tencent-qqmail/agently-cli || true
 
-      - name: Restore agently credentials (bootstrap only)
+      - name: Restore agently credentials
+        if: ${{ github.event.inputs.dry_run != 'true' }}
         env:
-          AGENTLY_BOOTSTRAP_ENC_B64: ${{ secrets.AGENTLY_BOOTSTRAP_ENC_B64 }}
+          AGENTLY_CONFIG_TAR_B64: ${{ secrets.AGENTLY_CONFIG_TAR_B64 }}
         run: |
           set -euo pipefail
-          if [ -z "${AGENTLY_BOOTSTRAP_ENC_B64:-}" ]; then
-            echo "::error::AGENTLY_BOOTSTRAP_ENC_B64 not set"
+
+          if [ -z "${AGENTLY_CONFIG_TAR_B64:-}" ]; then
+            echo "::error::AGENTLY_CONFIG_TAR_B64 is not set. Run 'Agent Mail · One-time Linux Login' once, then save its output as this secret."
             exit 1
           fi
           mkdir -p "$AGENTLY_CLI_CONFIG_DIR"
           chmod 700 "$AGENTLY_CLI_CONFIG_DIR"
-          printf '%s' "$AGENTLY_BOOTSTRAP_ENC_B64" | base64 -d > "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
-          chmod 600 "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc"
-          echo "bootstrap_token.enc restored ($(wc -c < "$AGENTLY_CLI_CONFIG_DIR/bootstrap_token.enc") bytes)"
+          printf '%s' "$AGENTLY_CONFIG_TAR_B64" | base64 -d > /tmp/agently-config.tgz
+          tar -xzf /tmp/agently-config.tgz -C "$AGENTLY_CLI_CONFIG_DIR"
+          find "$AGENTLY_CLI_CONFIG_DIR" -type d -exec chmod 700 {} +
+          find "$AGENTLY_CLI_CONFIG_DIR" -type f -exec chmod 600 {} +
+          echo "agently config restored into $AGENTLY_CLI_CONFIG_DIR"
 
       - name: Install Python deps
         run: pip install -r requirements.txt
 
-      - name: Build digest arg string
-        id: args
+      - name: Verify agently account
+        if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
           set -euo pipefail
-          ARGS=""
-          [ -n "${DIGEST_DATE:-}" ]  && ARGS="$ARGS --date $DIGEST_DATE"
-          [ "${DIGEST_DRY_RUN:-}" = "true" ] && ARGS="$ARGS --dry-run"
-          [ "${DIGEST_FORCE:-}" = "true" ]   && ARGS="$ARGS --force"
-          if [ -n "${DIGEST_LIMIT:-}" ] && [ "${DIGEST_LIMIT}" != "0" ]; then
-            ARGS="$ARGS --limit $DIGEST_LIMIT"
-          fi
-          echo "args=$ARGS" >> "$GITHUB_OUTPUT"
-          echo "computed args: $ARGS"
+          agently-cli auth refresh
+          agently-cli auth status
+          python scripts/check_agently_me.py "$MAIL_FROM"
 
-      - name: Dry-run digest (no CLI needed)
+      - name: Dry-run digest (no CLI send)
         if: ${{ github.event.inputs.dry_run == 'true' }}
         env:
           DRY_RUN: '1'
-        run: python scripts/digest.py ${{ steps.args.outputs.args }}
+        run: |
+          set -euo pipefail
+          ARGS=()
+          [ -n "${DIGEST_DATE:-}" ]  && ARGS+=(--date "$DIGEST_DATE")
+          ARGS+=(--dry-run)
+          [ "${DIGEST_FORCE:-}" = "true" ]   && ARGS+=(--force)
+          if [ -n "${DIGEST_LIMIT:-}" ] && [ "${DIGEST_LIMIT}" != "0" ]; then
+            ARGS+=(--limit "$DIGEST_LIMIT")
+          fi
+          python scripts/digest.py "${ARGS[@]}"
 
-      - name: Diagnose Linux CLI (see what it needs beyond bootstrap_token.enc)
+      - name: Send digest via agently-cli
         if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
-          # DO NOT use `set -e` here — pipes to head/grep can SIGPIPE and
-          # abort the whole diagnostic. We WANT to see every command's output.
-          set -x
-          echo "--- config dir before CLI run ---"
-          ls -la "$AGENTLY_CLI_CONFIG_DIR/" || true
-
-          echo "--- CLI binary ---"
-          agently-cli --version || true
-          which agently-cli || true
-
-          # Locate the platform-specific binary. npm places it at:
-          #   $(npm root -g)/@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-{x64,arm64}/bin/agently-cli
-          NPM_ROOT="$(npm root -g)"
-          echo "NPM_ROOT=$NPM_ROOT"
-          BIN=""
-          for cand in \
-            "$NPM_ROOT/@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli" \
-            "$NPM_ROOT/@tencent-qqmail/agently-cli/node_modules/@tencent-qqmail/agently-cli-linux-arm64/bin/agently-cli" \
-            "$NPM_ROOT/@tencent-qqmail/agently-cli-linux-x64/bin/agently-cli" \
-            "$NPM_ROOT/@tencent-qqmail/agently-cli-linux-arm64/bin/agently-cli"; do
-            if [ -f "$cand" ]; then BIN="$cand"; break; fi
-          done
-          echo "linux binary: $BIN"
-
-          if [ -n "$BIN" ]; then
-            file "$BIN" || true
-            echo "--- master.key context (Linux binary) ---"
-            strings -a "$BIN" | grep -B3 -A3 "master\.key" > /tmp/mk.txt || true
-            head -100 /tmp/mk.txt
-            echo "--- 'no stored token' context ---"
-            strings -a "$BIN" | grep -B3 -A3 "no stored token\|not logged\|Not logged\|Authorization required\|authorization required" > /tmp/auth.txt || true
-            head -80 /tmp/auth.txt
-            echo "--- config-dir / keyring lib strings (Linux binary) ---"
-            strings -a "$BIN" | grep -iE "AGENTLY_CLI|\.agently|master\.key\.file|/keyring|libsecret|gnome-keyring|secret_service|kdewallet|keychain|xdg" | sort -u > /tmp/kw.txt || true
-            head -80 /tmp/kw.txt
-            echo "--- vendor packages (Linux binary) ---"
-            strings -a "$BIN" | grep -oE "github\.com/[a-zA-Z0-9._/-]+" | sort -u > /tmp/vendor.txt || true
-            head -60 /tmp/vendor.txt
-
-            echo "--- STRACE: what files does CLI open during auth status? ---"
-            sudo apt-get install -y --no-install-recommends strace >/dev/null 2>&1 || true
-            strace -f -e trace=openat -o /tmp/strace.txt "$BIN" auth status 2>&1 | head -20 || true
-            echo "  (strace log:)"
-            grep -vE "\.so|\.mo|/proc/|/sys/|hostedtoolcache|locale|zoneinfo|/dev/urandom|/dev/null" /tmp/strace.txt 2>/dev/null | head -60 || true
-          else
-            echo "!!! no linux binary found under $NM_ROOT"
+          set -euo pipefail
+          ARGS=()
+          [ -n "${DIGEST_DATE:-}" ]  && ARGS+=(--date "$DIGEST_DATE")
+          [ "${DIGEST_FORCE:-}" = "true" ]   && ARGS+=(--force)
+          if [ -n "${DIGEST_LIMIT:-}" ] && [ "${DIGEST_LIMIT}" != "0" ]; then
+            ARGS+=(--limit "$DIGEST_LIMIT")
           fi
-
-          echo "--- auth status (fresh, only bootstrap present) ---"
-          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth status 2>&1 || true
-
-          echo "--- auth refresh (fresh, only bootstrap present) ---"
-          AGENTLY_CLI_DEBUG_HTTP=1 agently-cli auth refresh 2>&1 || true
-
-          echo "--- config dir after CLI run ---"
-          ls -laR "$AGENTLY_CLI_CONFIG_DIR/" || true
-
-          echo "--- other candidate paths ---"
-          for p in "$HOME/.config/agently" "$HOME/.config/agently-cli" "$HOME/.local/share/agently" "$HOME/.local/share/agently-cli" "$HOME/.agently"; do
-            if [ -e "$p" ]; then ls -laR "$p"; else echo "  $p: absent"; fi
-          done
-
-          echo "::error::Diagnostic step (intentional exit 1)"
-          exit 1
+          python scripts/digest.py "${ARGS[@]}"
 
       - name: Persist state.json
+        if: ${{ always() }}
         run: |
           git config user.name  "Agent Mail Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
