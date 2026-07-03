@@ -498,8 +498,10 @@ HTML_TEMPLATE = """\
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a><span class="hero-divider">/</span><a href="/">daily</a><span class="hero-date">[[DATE_CN]] [[WEEKDAY]]</span></div>
-      <h1>AI 行业每日简报</h1>
+      <div class="hero-title-row">
+        <h1>AI 行业每日简报</h1>
+        <span class="hero-date">[[DATE_CN]] [[WEEKDAY]]</span>
+      </div>
     </div>
 
     <!-- Briefing body -->
