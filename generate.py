@@ -103,7 +103,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 - TechCrunch AI 频道
 - The Verge AI 频道
 - Bloomberg Technology
-- The Information（付费墙外可见部分）
+- The Information
 - Ars Technica
 - Wired
 - NYT Technology
@@ -514,8 +514,8 @@ HTML_TEMPLATE = """\
   </div>
 
   <div id="footer">
-    <div class="footer-meta">由 Claude + Web Search 自动生成 · <a href="/rss.xml">订阅</a></div>
-    <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved. · <button class="theme-toggle" type="button" data-theme-toggle>夜间</button></div>
+    <div class="footer-meta">由 Claude + Web Search 自动生成</div>
+    <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved. <button class="theme-toggle" type="button" data-theme-toggle>夜间</button></div>
   </div>
   <script>
     // Dynamically mark today's entry in the archive nav.
