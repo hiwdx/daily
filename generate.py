@@ -488,8 +488,8 @@ HTML_TEMPLATE = """\
   <meta name="description" content="AI 行业每日精选 [[DATE_CN]] [[WEEKDAY]]" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
-  <script src="/theme.js?v=20260703-1"></script>
-  <link rel="stylesheet" type="text/css" href="/style.css?v=20260703-1" />
+  <script src="/theme.js?v=20260704-1"></script>
+  <link rel="stylesheet" type="text/css" href="/style.css?v=20260704-1" />
 </head>
 <body>
 
