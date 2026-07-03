@@ -3,354 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI 行业每日简报 · 2026年06月16日</title>
+  <title>AI 行业每日简报 · 2026年06月16日 | hiwd</title>
   <meta name="description" content="AI 行业每日精选 2026年06月16日 周二" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
-  <style>
-    /* ── Reset ── */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    /* ── Base — identical to hiwd style.css ── */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
-      font-size: 17px;
-      line-height: 1.82;
-      background-color: #f5f5f7;
-      color: #1d1d1f;
-      /* Prevent iOS Safari from auto-scaling font sizes */
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-      /* Break long URLs / mixed CJK+EN strings */
-      overflow-wrap: break-word;
-      word-break: break-word;
-    }
-
-    /* ── Logo — fixed top-left, links to hiwd.com ── */
-    #logo {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      z-index: 9999;
-      display: block;
-      width: 100px;
-      height: 100px;
-      background-image: url('https://hiwd.com/img/logo.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      outline: none;
-      border: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* ── Content card — same as hiwd #content ── */
-    #content {
-      margin-top: 84px;
-      margin-left: auto;
-      margin-right: auto;
-      width: min(90%, 840px);
-      padding: 40px 42px 34px;
-      background-color: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(15, 23, 42, 0.05);
-      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
-      border-radius: 24px;
-      margin-bottom: 26px;
-      backdrop-filter: saturate(180%) blur(18px);
-    }
-
-    /* ── Headings — exact hiwd style ── */
-    h1, h2, h3 {
-      position: relative;
-      padding-left: 15px;
-      font-weight: bold;
-      line-height: 1.2;
-      color: #333;
-    }
-    /* h1: 4px solid teal — same as hiwd */
-    h1::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 50%;
-      transform: translateY(-50%);
-      width: 4px; height: 26px;
-      background-color: #00C2B3;
-      border-radius: 2px;
-    }
-    /* h2: 2px semi-transparent teal — same as hiwd */
-    h2::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 50%;
-      transform: translateY(-50%);
-      width: 2px; height: 18px;
-      background-color: rgba(0, 194, 179, 0.35);
-      border-radius: 1px;
-    }
-    /* h3: same weight as h2 bar — briefing section headers */
-    h3::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 50%;
-      transform: translateY(-50%);
-      width: 2px; height: 14px;
-      background-color: rgba(0, 194, 179, 0.35);
-      border-radius: 1px;
-    }
-
-    h1 { font-size: 32px; margin-top: 0; }
-    h2 { font-size: 24px; margin-top: 35px; }
-    h3 { font-size: 19px; margin-top: 28px; margin-bottom: 6px; }
-
-    /* ── h4/h5/h6 — for AI-generated content ── */
-    h4, h5, h6 {
-      position: relative;
-      padding-left: 15px;
-      font-weight: 600;
-      line-height: 1.4;
-      color: #444;
-      margin-top: 20px;
-      margin-bottom: 6px;
-    }
-    h4 { font-size: 16px; }
-    h5, h6 { font-size: 15px; }
-
-    /* ── Body text & links — identical to hiwd ── */
-    p {
-      line-height: 1.7;
-      margin-top: 10px;
-      margin-bottom: 16px;
-      color: #333;
-    }
-    a { color: #008F84; text-decoration: none; transition: opacity 0.2s; }
-    a:hover { opacity: 0.7; }
-    strong { font-weight: 700; color: #1a1a1a; }
-    em { font-style: italic; color: #555; }
-
-    /* ── Lists ── */
-    ul, ol { padding-left: 1.5em; margin: 8px 0 16px; }
-    li { line-height: 1.7; color: #333; margin: 4px 0; }
-
-    /* ── Inline code ── */
-    code {
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: .85em;
-      background: #f3f4f6;
-      padding: .1em .35em;
-      border-radius: 4px;
-      color: #1a1a1a;
-    }
-
-    /* ── Blockquote ── */
-    blockquote {
-      border-left: 3px solid rgba(0, 194, 179, 0.5);
-      margin: 16px 0;
-      padding: 8px 16px;
-      background: #f9fefe;
-      border-radius: 0 8px 8px 0;
-      color: #555;
-    }
-
-    /* ── HR ── */
-    hr { border: none; border-top: 1px solid #eee; margin: 28px 0; }
-
-    /* ── Header compact block ── */
-    .hero {
-      margin-bottom: 12px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0 4px;
-      padding-left: 15px;
-      font-size: 17px;
-      line-height: 1.72;
-      color: #6e6e73;
-    }
-
-    .hero-meta a {
-      color: #008F84;
-      text-decoration: none;
-    }
-
-    .hero-divider {
-      margin: 0 2px;
-      color: #8e8e93;
-    }
-
-    .hero-date {
-      margin-left: 10px;
-      color: #6e6e73;
-      white-space: nowrap;
-    }
-
-    .hero h1 {
-      margin-top: 20px;
-      margin-bottom: 0;
-    }
-
-    .theme-observation {
-      margin: 8px 0 2px;
-      padding: 14px 16px 14px 18px;
-      border: 1px solid rgba(0, 194, 179, 0.12);
-      border-left: 3px solid rgba(0, 194, 179, 0.28);
-      border-radius: 10px;
-      background: linear-gradient(180deg, #fafdfd 0%, #f7fbfb 100%);
-    }
-
-    .theme-intro {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: #555;
-    }
-
-    .theme-list {
-      margin: 0;
-      padding-left: 1.15em;
-    }
-
-    .theme-list li {
-      margin: 8px 0;
-    }
-
-    /* ── Archive section ── */
-    .archive-section { margin-top: 40px; }
-
-    /* ── Month-grouped collapsible archive nav ── */
-    .archive-nav { margin: 0; }
-
-    details.month-item,
-    details.older-archive {
-      border-bottom: 1px solid #eee;
-    }
-    details.month-item:last-child,
-    details.older-archive:last-child { border-bottom: none; }
-
-    details.month-item > summary,
-    details.older-archive > summary {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      padding: 11px 5px;
-      font-size: 15px;
-      color: #555;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.15s;
-    }
-    details.month-item > summary::-webkit-details-marker,
-    details.older-archive > summary::-webkit-details-marker { display: none; }
-
-    details.month-item > summary::before {
-      content: "▶";
-      font-size: 10px;
-      margin-right: 8px;
-      color: #bbb;
-      transition: transform 0.2s;
-      flex-shrink: 0;
-    }
-    details.month-item[open] > summary::before { transform: rotate(90deg); }
-
-    details.older-archive > summary {
-      color: #008F84;
-      font-size: 14px;
-    }
-    details.older-archive > summary::before {
-      content: "▶";
-      font-size: 10px;
-      margin-right: 8px;
-      color: #00c2b3;
-      transition: transform 0.2s;
-      flex-shrink: 0;
-    }
-    details.older-archive[open] > summary::before { transform: rotate(90deg); }
-
-    details.month-item > summary:hover,
-    details.older-archive > summary:hover { background-color: #fafafa; }
-
-    .month-count {
-      font-size: 12px;
-      color: #bbb;
-      margin-left: 6px;
-    }
-
-    .day-list { list-style: none; padding: 0; margin: 0; }
-    .day-list li { border-top: 1px solid #f5f5f5; }
-    .day-list li a {
-      display: block;
-      padding: 9px 5px 9px 22px;
-      font-size: 14px;
-      color: #555;
-      text-decoration: none;
-      transition: padding-left 0.2s ease, background-color 0.2s ease;
-      font-variant-numeric: tabular-nums;
-    }
-    .day-list li a:hover {
-      background-color: #fafafa;
-      padding-left: 28px;
-    }
-    .day-list li.active a { color: #008F84; font-weight: 600; }
-    .older-months { padding-bottom: 4px; }
-
-    .today-tag {
-      font-size: 11px;
-      background: rgba(0,194,179,.12);
-      color: #00a396;
-      padding: 1px 6px;
-      border-radius: 4px;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-    .no-archive { font-size: 14px; color: #999; }
-
-    /* ── Footer — same as hiwd footer.html ── */
-    #footer {
-      width: min(90%, 840px);
-      margin: 0 auto 28px;
-      padding: 0 8px 8px;
-      text-align: center;
-      font-size: 13px;
-      line-height: 1.65;
-      color: #8e8e93;
-    }
-    #footer a { color: #008F84; }
-
-    .footer-meta {
-      margin-bottom: 4px;
-    }
-
-    /* ── Responsive — mirrors hiwd breakpoints ── */
-    @media (max-width: 1150px) {
-      #logo { position: absolute !important; top: 15px; left: 15px; width: 80px; height: 80px; }
-      #content { margin-top: 110px; padding: 34px 28px 28px; }
-    }
-    @media (max-width: 767px) {
-      #content { margin-top: 108px; width: calc(100% - 32px); padding: 28px 18px 24px; border-radius: 20px; }
-      .hero { margin-bottom: 14px; }
-      .hero-meta {
-        padding-left: 12px;
-        font-size: 17px;
-      }
-      h1 { font-size: 28px; }
-      h2 { font-size: 24px; }
-      h3 { font-size: 18px; margin-top: 20px; }
-      p, li { line-height: 1.82; }
-    }
-  </style>
+  <script src="/theme.js?v=20260703-1"></script>
+  <link rel="stylesheet" type="text/css" href="/style.css?v=20260703-1" />
 </head>
 <body>
 
-  <!-- Logo links back to hiwd main site -->
   <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站"></a>
 
   <div id="content">
 
     <div class="hero">
-      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a><span class="hero-divider">｜</span><a href="/">daily</a><span class="hero-date">2026年06月16日 周二</span></div>
+      <div class="hero-meta"><a href="https://hiwd.com/">hiwd</a><span class="hero-divider">/</span><a href="/">daily</a><span class="hero-date">2026年06月16日 周二</span></div>
       <h1>AI 行业每日简报</h1>
     </div>
 
@@ -419,8 +86,27 @@ Dario Amodei 发文《AI 指数增长的政策》，呼吁四大领域强制第�
     <div class="archive-section">
       <h2>历史存档</h2>
       <div class="archive-nav"><details class="month-item">
-  <summary>2026-06 <span class="month-count">16篇</span></summary>
+  <summary>2026-07 <span class="month-count">2篇</span></summary>
   <ul class="day-list">
+    <li data-date="2026-07-02"><a href="/archive/2026-07/2026-07-02.html">2026-07-02</a></li>
+    <li data-date="2026-07-01"><a href="/archive/2026-07/2026-07-01.html">2026-07-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
+  <summary>2026-06 <span class="month-count">28篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-06-30"><a href="/archive/2026-06/2026-06-30.html">2026-06-30</a></li>
+    <li data-date="2026-06-27"><a href="/archive/2026-06/2026-06-27.html">2026-06-27</a></li>
+    <li data-date="2026-06-26"><a href="/archive/2026-06/2026-06-26.html">2026-06-26</a></li>
+    <li data-date="2026-06-25"><a href="/archive/2026-06/2026-06-25.html">2026-06-25</a></li>
+    <li data-date="2026-06-24"><a href="/archive/2026-06/2026-06-24.html">2026-06-24</a></li>
+    <li data-date="2026-06-23"><a href="/archive/2026-06/2026-06-23.html">2026-06-23</a></li>
+    <li data-date="2026-06-22"><a href="/archive/2026-06/2026-06-22.html">2026-06-22</a></li>
+    <li data-date="2026-06-21"><a href="/archive/2026-06/2026-06-21.html">2026-06-21</a></li>
+    <li data-date="2026-06-20"><a href="/archive/2026-06/2026-06-20.html">2026-06-20</a></li>
+    <li data-date="2026-06-19"><a href="/archive/2026-06/2026-06-19.html">2026-06-19</a></li>
+    <li data-date="2026-06-18"><a href="/archive/2026-06/2026-06-18.html">2026-06-18</a></li>
+    <li data-date="2026-06-17"><a href="/archive/2026-06/2026-06-17.html">2026-06-17</a></li>
     <li data-date="2026-06-16"><a href="/archive/2026-06/2026-06-16.html">2026-06-16</a></li>
     <li data-date="2026-06-15"><a href="/archive/2026-06/2026-06-15.html">2026-06-15</a></li>
     <li data-date="2026-06-14"><a href="/archive/2026-06/2026-06-14.html">2026-06-14</a></li>
@@ -456,12 +142,10 @@ Dario Amodei 发文《AI 指数增长的政策》，呼吁四大领域强制第�
   </div>
 
   <div id="footer">
-    <div class="footer-meta">由 Claude + Web Search 自动生成 ｜ <a href="/rss.xml">RSS</a></div>
-    <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved.</div>
+    <div class="footer-meta">由 Claude + Web Search 自动生成 · <a href="/rss.xml">订阅</a></div>
+    <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved. · <button class="theme-toggle" type="button" data-theme-toggle>夜间</button></div>
   </div>
   <script>
-    // Dynamically mark today's entry in the archive nav.
-    // Using browser time shifted to CST (UTC+8) so it matches the generation timezone.
     (function () {
       const cstNow = new Date(Date.now() + 8 * 3600 * 1000);
       const today = cstNow.toISOString().slice(0, 10);
