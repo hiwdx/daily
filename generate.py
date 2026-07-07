@@ -327,6 +327,14 @@ def clean_briefing(text: str) -> str:
     #    Claude often emits these unintentionally, causing cramped output.
     text = re.sub(r'[ \t]+$', '', text, flags=re.MULTILINE)
 
+    # 0a. Fix malformed reference-style links where the URL was emitted as
+    #     the reference label: [title][https://example.com] -> [title](https://example.com)
+    text = re.sub(
+        r'(?<!!)\[([^\]\n]+)\]\[(https?://[^\]\s]+)\]',
+        r'[\1](\2)',
+        text,
+    )
+
     # 0b. Ensure Top-3 briefing field labels start new paragraphs.
     #     Without a blank line before them, markdown renders everything in one <p>.
     #     Claude outputs **来源**：（colon outside bold），so pattern must include \*\*.
@@ -489,7 +497,7 @@ HTML_TEMPLATE = """\
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
   <script src="/theme.js?v=20260704-1"></script>
-  <link rel="stylesheet" type="text/css" href="/style.css?v=20260704-1" />
+  <link rel="stylesheet" type="text/css" href="/style.css?v=20260707-1" />
 </head>
 <body>
 

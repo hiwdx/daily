@@ -13,7 +13,7 @@
       <title><xsl:value-of select="title" /> · 订阅</title>
       <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
       <script src="/theme.js?v=20260704-1"></script>
-      <link rel="stylesheet" type="text/css" href="/style.css?v=20260704-1" />
+      <link rel="stylesheet" type="text/css" href="/style.css?v=20260707-1" />
     </head>
     <body>
       <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站"></a>

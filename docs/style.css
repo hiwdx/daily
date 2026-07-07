@@ -105,6 +105,7 @@ body {
   margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
+  min-width: 0;
   width: 90%;
   max-width: 840px;
   padding: 30px;
@@ -112,6 +113,7 @@ body {
   border: 1px solid var(--content-border);
   box-shadow: var(--content-shadow);
   border-radius: 12px;
+  overflow-wrap: break-word;
 }
 
 /* --- 4. 标题样式 (一浓一淡) --- */
@@ -167,6 +169,14 @@ a {
 }
 
 a:hover { opacity: 0.7; }
+
+#content p,
+#content li,
+#content a,
+#content strong {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 
 /* --- 6. 图片 (无横线) --- */
 img {
