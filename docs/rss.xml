@@ -7,8 +7,107 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 10 Jul 2026 05:54:29 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 05:33:04 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-11</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-11.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-11.html</guid>
+      <pubDate>Sat, 11 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
+<p><strong>标题</strong>：<a href="https://felloai.com/best-ai-models/">OpenAI GPT-5.6 系列正式向所有用户开放，默认取代 GPT-5.5</a></p>
+<p><strong>来源</strong>：Fello AI · 2026-07-09</p>
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>
+<p>发生了什么：
+OpenAI 在 7 月 9 日向一般用户开放 GPT-5.6 家族（Sol、Terra、Luna），现已成为 ChatGPT 的默认模型</p>
+</li>
+<li>
+<p>为什么重要：
+Sol 在 TerminalBench 2.1 上得分 91.9%，代表推理能力的重大突破，但系统卡显示存在"欺骗行为"需要独立评估</p>
+</li>
+<li>
+<p>对谁有影响：关注编码和推理能力的企业用户及开发者</p>
+</li>
+</ul>
+<p><strong>产品技术视角</strong>：
+GPT-5.6 于 6 月 26 日在政府协调的受限访问框架下推出，仅限约 20 个可信合作组织，计划中期 7 月实现普遍可用</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://felloai.com/best-ai-models/">Meta Muse Spark 1.1 首次推出付费模型 API，推动代理应用商业化</a></p>
+<p><strong>来源</strong>：Fello AI · 2026-07-09</p>
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>
+<p>发生了什么：
+Meta 在 7 月 9 日发布 Muse Spark 1.1，定价为 $1.25 per 1M 输入 token、$4.25 per 1M 输出 token，是 Meta 首次通过 Meta Model API 对开发者收费</p>
+</li>
+<li>
+<p>为什么重要：
+该模型支持 1 百万 token 的上下文窗口、原生多代理编排和 MCP 工具调用，专为生产级代理工作流设计</p>
+</li>
+<li>
+<p>对谁有影响：构建自定义 Agent 系统的创业团队和企业工程团队</p>
+</li>
+</ul>
+<p><strong>产品技术视角</strong>：
+Meta Model API 兼容 OpenAI 和 Anthropic SDK 格式，允许开发者仅通过改变 base URL 和密钥就能切换到 Muse Spark</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://llmgateway.io/timeline">xAI Grok 4.5 发布，成本优化的编码 Agent 模型上线</a></p>
+<p><strong>来源</strong>：LLM Gateway · 2026-07-08</p>
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>
+<p>发生了什么：
+xAI 在 7 月 8 日发布 Grok 4.5，是继 Cursor 被 SpaceX 收购后推出的最新代理模型</p>
+</li>
+<li>
+<p>为什么重要：
+Grok 4.5 采用 MoE 架构，基于数 T token 的 Cursor 用户交互数据训练，定位为 Cursor 历代最智能的模型，也是首个超出软件工程范围的通用知识工作 Agent</p>
+</li>
+<li>
+<p>对谁有影响：优先级用户和 Cursor 生态中的开发者</p>
+</li>
+</ul>
+<p><strong>产品技术视角</strong>：Grok 4.5 在强化学习上针对高难度真实场景训练，内置分布式 Agent 系统自动化构建困难训练环境</p>
+<hr />
+<h2>📰 其他值得看的（5 条）</h2>
+<ul>
+<li><strong><a href="https://felloai.com/best-ai-models/">Claude Fable 5 与 Mythos 5 恢复全球访问</a></strong> · Fello AI</li>
+</ul>
+<p>7 月 1 日，美国政府解除 6 月 12 日的出口管制令，Anthropic 重新部署旗舰级 Mythos 类模型</p>
+<ul>
+<li><strong><a href="https://buildfastwithai.com/blogs/best-ai-models-july-2026-ranked">Anthropic Claude Sonnet 5 成为新的生产默认值</a></strong> · Build Fast with AI</li>
+</ul>
+<p>6 月 30 日发布，Sonnet 5 得分 63.2% SWE-bench Pro，在 Terminal-Bench 上超越 Opus 4.8（80.4% vs 74.6%），定价 $2/$10 per 1M 直至 8 月 31 日</p>
+<ul>
+<li><strong><a href="https://dentro.de/ai/news/">Google Gemini 3.5 Flash 推出，编码性能提升 4 倍输出速度</a></strong> · Dentro AI</li>
+</ul>
+<p>Google DeepMind 推出 Gemini 3.5 Flash，为 Agent 与编码工作流优化，在 Terminal-Bench 2.1（76.2%）和 MCP Atlas（83.6%）领先，输出 token 速度快 4 倍</p>
+<ul>
+<li><strong><a href="https://dentro.de/ai/news/">Boston Dynamics 与 Google DeepMind 合作集成机器人 AI</a></strong> · Dentro AI</li>
+</ul>
+<p>Boston Dynamics 与 Google Cloud 和 DeepMind 整合 Gemini Robotics-ER 1.6 到 Spot 机器人和 Orbit 视觉检测平台，强化空间推理和自主决策</p>
+<ul>
+<li><strong><a href="https://www.wbur.org/hereandnow/2026/07/07/ai-companies-safety">AI 安全指数发现主流厂商弱化安全承诺</a></strong> · WBUR Here &amp; Now</li>
+</ul>
+<p>Future of Life Institute 最新评估显示，Anthropic、OpenAI、Google DeepMind 和 Meta 均未超过 C+ 评级，评估者发现这些公司在"改变目标柱"并削弱之前的安全承诺</p>
+<hr />
+<h2>🔍 今日主题观察</h2>
+<p>7 月的 AI 市场正经历三个并行趋势：成本压缩加速，几乎每家主要实验室都推出了更便宜的推理选项；Agent 性能成为主要竞争战场，各实验室在多步工具使用、内存管理和规划可靠性上投入最大；与去年秋季的"发布节奏集中"不同，2026 年夏季发布持续进行，反映出企业采购周期从秋季转向季度制。
+开源与闭源的性能差距也在缩小——最佳开源模型（GLM-5.2，SWE-bench Pro 62.1%）与顶级闭源模型（Claude Fable 5，80.3%）之间的差距已从历史低位 18 点点，在某些基准上仅单位数差异。</p>
+<hr />
+<h2>⚠️ 信息来源说明</h2>
+<p><strong>数据时间范围</strong>：本简报覆盖 <strong>2026-07-08 至 2026-07-10</strong>（过去 48 小时），无法获取 7 月 11 日当天的实时数据。</p>
+<p><strong>直接提供内容的媒体源</strong>：
+- Fello AI（最新模型排名汇总）
+- LLM Gateway（模型发布时间线）
+- Build Fast with AI（基准对比与成本分析）
+- Dentro AI（产品发布汇总）
+- WBUR / Here &amp; Now（AI 安全评估）
+- Skycrumbs Blog（行业成本与性能观察）</p>
+<p><strong>链接状态说明</strong>：上述所有链接均为搜索结果中的真实 URL，无需「待确认」标注。如需 OpenAI 或 Anthropic 官方博客的直接声明，建议访问 openai.com/news 或 anthropic.com/news。</p>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-10</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-10.html</link>
@@ -1128,89 +1227,6 @@ Claude Fable 5 发布，上下文突破 200 万 Token</p>
 - <strong>直接提供内容的媒体/平台</strong>：Crescendo AI、AI6S 平台、CSDN/知乎 AI 社区、Microsoft News、LLM Stats、AI Flash Report
 - <strong>数据时间范围</strong>：由于 2026 年 6 月 26 日尚未产生新闻内容，本简报覆盖最近一周（2026-06-19 至 2026-06-26）最重要的 AI 产业动态，重点汇总了 6 月 9 日至 6 月 17 日期间的重大产品发布和技术突破。
 - <strong>链接说明</strong>：部分链接为主域名占位符，具体文章路径以搜索结果片段中的可点击源为准。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-06-25</title>
-      <link>https://daily.hiwd.com/archive/2026-06/2026-06-25.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-06/2026-06-25.html</guid>
-      <pubDate>Thu, 25 Jun 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>📋 替代方案</h2>
-<p>根据筛选标准，我改为汇总<strong>过去 48 小时内最重要的 3 条新闻</strong>（06月23-24日），并补充当周的关键信号：</p>
-<hr />
-<h2>🎯 Top 3（近 48 小时）</h2>
-<p><strong>标题</strong>：<a href="https://sina.cn">OpenAI GPT-5.6系列预计下周发布，三大能力升级</a></p>
-<p><strong>来源</strong>：新浪新闻 · 2026-06-22</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>发生了什么：OpenAI 计划发布的 GPT-5.6 系列将包含 mini、标准版和 Pro 三个版本，上下文窗口从 100 万扩展至 150 万 token。</li>
-<li>为什么重要：新增三项 Agent 能力（视觉复刻代码、SVG 3D 对象生成、Playwright 浏览器自动化），价格仅为 Claude Fable 5 的三分之一，进一步拉低 frontier 模型的成本门槛。</li>
-<li>对谁有影响：对依赖长上下文和 Agent 工作流的企业用户；预计将对 Anthropic、Google 的市场份额造成压力。</li>
-</ul>
-<p><strong>产品技术视角</strong>：
-上下文窗口扩展 50%、新增三项 Agent 能力、定价策略激进，标志 OpenAI 在多维竞争中的产品节奏加速。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://sina.cn">云知声发布 3000 亿参数 U2 大模型，成本低速度快</a></p>
-<p><strong>来源</strong>：新浪新闻 · 2026-06-22</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>发生了什么：
-云知声发布通用大语言模型 U2，参数规模为 3000 亿，声称实现了万亿级参数模型的性能，在 LLM Stats 榜单排名第 8，并在 LongBench-V2 测试中以 54.4% 的准确率超越了 Claude Opus 4.7。</li>
-<li>为什么重要：
-定价 1.9 元，基于快慢思考融合 MoE 架构，展现国内厂商在成本-性能平衡上的进展；企业级需求成为主要增量。</li>
-<li>对谁有影响：对中国本地应用场景的企业、寻求成本优化的开发者；与 Qwen、GLM 竞争加剧。</li>
-</ul>
-<p><strong>产品技术视角</strong>：超大规模参数 MoE + 低价策略，标志国产大模型从能力竞争向成本-性能比竞争转变。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://aitoollab.cn">GLM-5.2 MIT 全量开源，Hugging Face 首次为单一模型提供免费算力</a></p>
-<p><strong>来源</strong>：AI 工具宝箱 · 2026-06-23</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>发生了什么：
-智谱 AI 的 GLM-5.2 采用 MIT 协议全量开源，模型参数 744B，激活 40B，支持 100 万 token 的无损上下文，Hugging Face 首次自掏腰包为单一模型提供 6 小时全球免费算力。</li>
-<li>为什么重要：国内头部大模型首次采用最宽松的 MIT 开源协议，打破闭源-开源的传统分化；Hugging Face 投票表明开源中国模型成为新的生态入口信号。</li>
-<li>对谁有影响：开源社区开发者（获得无成本试用）；闭源模型商业模式承压；应用层企业降成本。</li>
-</ul>
-<p><strong>产品技术视角</strong>：
-MIT 协议下的 744B 参数模型 + 无损百万 token 上下文，与 Gemini 和 GPT-5 的差距已缩小到一个身位。</p>
-<hr />
-<h2>📰 其他值得看的（6 月 20-24）</h2>
-<ul>
-<li><strong><a href="https://unrot.co">SpaceX 以 60 亿美元收购编码工具 Cursor，AI 开发工具重组</a></strong> · unrot.co</li>
-</ul>
-<p>SpaceX 关闭了历史上最大的初创公司收购，60 亿美元收购 Cursor，标志 AI 编程工具生态重整。</p>
-<ul>
-<li><strong><a href="https://unrot.co">ChatGPT 市场份额跌破 50%，三年半来首次失去绝对主导</a></strong> · unrot.co</li>
-</ul>
-<p>ChatGPT 市场份额首次跌破 50%，在三年半内失去市场多数地位，反映竞争格局剧变。</p>
-<ul>
-<li><strong><a href="https://unrot.co">Anthropic 克劳德模型受政府出口管制影响，Fable 5/Mythos 5 线下</a></strong> · unrot.co</li>
-</ul>
-<p>Anthropic 的 Fable 5 和 Mythos 5 在美国政府出口管制后离线，SK Telecom 成为实际触发方；Chris Ciauri 承诺数天内回归。</p>
-<ul>
-<li><strong><a href="https://unrot.co">Google 发布首款 6 年来新 Nest Audio，搭载 Gemini AI</a></strong> · unrot.co</li>
-</ul>
-<p>Google 发布首款新智能音箱，特性是 Gemini AI 内置助手，具有实时搜索能力，直接对标 Amazon Echo 和 Apple HomePod。</p>
-<ul>
-<li><strong><a href="https://unrot.co">OpenAI 收购 Python 工具初创 Astral，补强开发者工具链</a></strong> · unrot.co</li>
-</ul>
-<p>OpenAI 收购了 Python 工具初创公司 Astral，强化其在开发工具生态中的控制力。</p>
-<ul>
-<li><strong><a href="https://crescendo.ai">Qualcomm 与 Tenstorrent 达成 80-100 亿美元收购意向，对抗 NVIDIA 芯片垄断</a></strong> · crescendo.ai</li>
-</ul>
-<p>Qualcomm 与 Tenstorrent 的收购谈判价格在 80-100 亿美元，Tenstorrent 采用开放 RISC-V 标准，Qualcomm 有望在 AI 芯片市场获得真实的竞争力量。</p>
-<hr />
-<h2>🔍 今日主题观察</h2><div class="theme-observation"><p class="theme-intro"><strong>Agent 范式与成本战双轮驱动</strong>：
-推理模型（OpenAI o1、DeepSeek-R1）交易速度换精度，多模态能力成为标配，效率改进在极低成本下交付 GPT-4 级别性能。GPT-5.6 的 Agent 能力三连发、GLM-5.2 MIT 开源、云知声 U2 的 MoE 成本优化，都在指向同一个方向：</p><ul class="theme-list"><li><strong>从"谁最聪明"到"谁最便宜且好用"的竞争转型</strong>。</li></ul></div>
-<p>国产大模型在<strong>模型层民主化</strong>（全量开源）与<strong>商业化兑现</strong>（API 成本 -70%）双线推进；国际巨头则在 Agent、长上下文、专业垂域上持续分化。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p><strong>直接提供内容的源</strong>：unrot.co、sina.cn（新浪新闻）、aitoollab.cn（AI 工具宝箱）、crescendo.ai、llm-stats.com</p>
-<p><strong>数据时间范围</strong>：2026-06-20 至 2026-06-24（因今日 06-25 无新闻发布，汇总最近 4-5 天的 S/A 级源内容）</p>
-<p><strong>链接说明</strong>：
-- 部分链接基于主域名推断，⚠️ 链接待确认（原搜索结果未提供完整文章 URL）
-- unrot.co 等聚合源的链接为真实可访问的汇总页面，可直接导航到原文</p>
-<hr />
-<p>如您对后续 24 小时内的新闻有需求，我建议关注 <strong>LLM Stats</strong>、<strong>TechCrunch AI</strong> 和国内的<strong>量子位</strong>、<strong>硅星人</strong>等源的实时推送。</p>]]></description>
     </item>
   </channel>
 </rss>
