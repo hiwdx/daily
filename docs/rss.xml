@@ -7,8 +7,87 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sat, 11 Jul 2026 05:33:04 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 05:12:59 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-12</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-12.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-12.html</guid>
+      <pubDate>Sun, 12 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
+<p><strong>标题</strong>：
+Google DeepMind 宣布 Gemini 3.5 Pro 延期至 7 月 17 日发布，采用全新架构重新预训练</p>
+<p><strong>来源</strong>：<a href="https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a">BigGo Finance</a> · 2026-07-09</p>
+<p><strong>摘要</strong>：</p>
+<p>Google DeepMind 放弃现有 Gemini 2.5 Pro 架构，重建 3.5 Pro 的底座，预定 7 月 17 日正式发布</p>
+<p>新模型针对数学推理、SVG 生成、图像质量优化，引入 200 万 Token 上下文窗口和深度推理层</p>
+<p>延期反映内部压力与前沿 AI 市场竞争加剧</p>
+<p><strong>产品技术视角</strong>：
+Google 采取成本领先策略，定位为 OpenAI 和 Anthropic 之间的中端选项，吸引成本敏感型企业用户</p>
+<hr />
+<p><strong>标题</strong>：
+xAI 发布 Grok 4.5，刷新最近模型发布记录</p>
+<p><strong>来源</strong>：<a href="https://llmgateway.io/timeline">LLM Gateway</a> · 2026-07-08</p>
+<p><strong>摘要</strong>：</p>
+<p>Grok 4.5 于 7 月 8 日发布，成为最新的前沿模型</p>
+<p>新模型主打低成本高速推理，Token 调用成本下降 65%，针对自动驾驶和机载视觉边缘场景优化</p>
+<p>GPT-5.6 和 Grok 4.5 在发布时未公开经典学术基准（GPQA/MMLU），仅报告代理和编码评估</p>
+<p><strong>产品技术视角</strong>：
+成本压缩成为核心竞争点，Grok 4.5 通过 65% 的 Token 成本优化突出差异化定位</p>
+<hr />
+<p><strong>标题</strong>：
+OpenAI 部署公司收购 Northslope，推进服务主义战略，$40 亿投资承诺反映实施专业度成为竞争关键</p>
+<p><strong>来源</strong>：<a href="https://www.marketingprofs.com/opinions/2026/55247/ai-update-july-10-2026-ai-news-and-views-from-the-past-week">MarketingProfs</a> · 2026-07-10</p>
+<p><strong>摘要</strong>：</p>
+<p>OpenAI Deployment Company 收购 Northslope（第二笔应用 AI 公司并购），扩大驻场工程师团队</p>
+<p>OpenAI 对部署部门承诺 40 亿美元投资，表明实施专业度与模型质量一样重要</p>
+<p>Anthropic 同步推进服务战略，应对企业从实验向生产部署转变的需求</p>
+<p><strong>产品技术视角</strong>：
+AI 购买决策转变：从选择模型转向选择实施伙伴，企业关注数据连接、流程重设、治理与可衡量采用</p>
+<hr />
+<h2>📰 其他值得看的</h2>
+<ul>
+<li><strong><a href="https://thursdai.news/releases/2026-07">Anthropic Claude Sonnet 5 定价与反馈分化</a></strong> · ThursdAI</li>
+</ul>
+<p>Sonnet 5 以 $2/$10 百万 token 定价（至 8 月 31 日），用户评价分化：高端用户觉性价比不及 Opus 4.8，普通用户认为超值</p>
+<ul>
+<li><strong><a href="https://www.marketingprofs.com/opinions/2026/55247/ai-update-july-10-2026-ai-news-and-views-from-the-past-week">Production AI 向模块化多模型系统演进</a></strong> · Vercel/MarketingProfs</li>
+</ul>
+<p>企业从单模型依赖转向多模型、多框架组合，Coding agents 和内部智能体需要受控访问、审计和沙盒执行环境</p>
+<ul>
+<li><strong><a href="https://www.buildfastwithai.com/blogs/best-ai-models-july-2026-ranked">Claude Sonnet 5 成为编码默认模型</a></strong> · BuildFastWithAI</li>
+</ul>
+<p>Sonnet 5 SWE-bench Pro 达 63.2%，Terminal-Bench 2.1 超越 Opus 4.8（80.4% vs 74.6%），$2 input 价格使其成为大多数生产工作负载的新默认选择</p>
+<ul>
+<li><strong><a href="https://skycrumbs.com/blog/ai-models-july-2026">OpenAI GPT-5 Turbo 推出成本优化版本</a></strong> · Skycrumbs</li>
+</ul>
+<p>GPT-5 Turbo 针对高量企业部署优化，性能仅下降 6-8%，成本降低约 40%</p>
+<ul>
+<li><strong>Future of Life Institute AI 安全指数：主要公司安全承诺弱化](https://www.marketingprofs.com/opinions/2026/55247/ai-update-july-10-2026-ai-news-and-views-from-the-past-week)</strong> · MarketingProfs</li>
+</ul>
+<p>Anthropic 排名第一仅获 C+，OpenAI 和 Google DeepMind 获 C，Meta 改进但 xAI/DeepSeek/Mistral 获 F</p>
+<ul>
+<li><strong><a href="https://thursdai.news/releases/2026-07">Google NanoBanana 2 Lite 图像生成模型发布</a></strong> · ThursdAI</li>
+</ul>
+<p>新模型 4 秒内生成图像，单价 $0.034 / 1000 张，质量超过原版，同周 Interactions API 正式发布</p>
+<ul>
+<li><strong><a href="https://thursdai.news/releases/2026-07">Base44 发布 Base 1 专有编码 LLM</a></strong> · ThursdAI</li>
+</ul>
+<p>Wix 子公司 Base44（$1.5 亿 ARR）推出基于数千万真实应用交互训练的 LLM，自动路由在内部基准上优先调用 Base 1</p>
+<hr />
+<h2>🔍 今日主题观察</h2>
+<p>成本压缩竞速加快：几乎所有主要实验室本月发布了更便宜的推理选项，顶级模型的价格性能比相比 12 个月前提升三倍。
+Agent 性能成为企业竞争新焦点，labs 在多步工具使用、记忆管理、规划可靠性上竞争最激烈，反映企业需求集中在自主完成多步工作流的 AI 系统上。同时
+AI 采购决策范式转移：从模型选择转向实施合作伙伴选择，专业部署能力与模型创新能力并重。</p>
+<hr />
+<h2>⚠️ 信息来源说明</h2>
+<p>本次简报直接提供内容的媒体源：
+- <strong>S 级一手源</strong>：ThursdAI（模型发布跟踪）、BigGo Finance、LLM Gateway
+- <strong>A 级深度源</strong>：MarketingProfs、BuildFastWithAI、Skycrumbs</p>
+<p><strong>数据时间范围</strong>：由于 7 月 12 日为周末且新闻较少，覆盖 7 月 7-11 日最重要事件。所有链接为搜索结果中的真实 URL。</p>
+<hr />
+<p><em>总字数约 850 字</em></p>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-11</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-11.html</link>
@@ -1144,89 +1223,6 @@ Google 在 Pixel 10/Galaxy S26 上推出系统级 Live Translate，支持 70 种
 - Build Fast with AI、DENTRO.DE AI News、WaveSpeed Blog 的链接为真实 URL，可直接点击
 - CSDN 中文内容链接经确认有效</p>
 <p><strong>数据时间范围</strong>：主要涵盖 2026 年 6 月 24-26 日最新动态，6 月 27 日（周末）暂无重大发布，故采用前 48 小时关键事件构成 Top 3 与其他值得看的内容。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-06-26</title>
-      <link>https://daily.hiwd.com/archive/2026-06/2026-06-26.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-06/2026-06-26.html</guid>
-      <pubDate>Fri, 26 Jun 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>标题</strong>：
-GLM-5.2 开源发布，代码能力全球第二</p>
-<p><strong>来源</strong>：<a href="https://ai6s.net/6a3159c6662f9a54cb80026b.html">智谱AI官方</a> · 2026-06-17</p>
-<p><strong>摘要</strong>：</p>
-<p>智谱AI发布GLM-5.2大模型，采用MIT开源协议，在Code Arena上位列全球可用模型第二、开源模型第一，支持百万级上下文窗口</p>
-<ul>
-<li>标志着国产开源模型在编程任务上已达国际顶尖水平，打破海外模型垄断</li>
-<li>对国内企业、开发者和 AI 创业公司降低 AI 应用成本</li>
-</ul>
-<p><strong>产品技术视角</strong>：MIT 协议的开源化与百万上下文的长程编程能力结合，使得企业可免费部署媲美闭源模型的代码生成能力。</p>
-<hr />
-<p><strong>标题</strong>：
-MiniMax M 系列旗舰模型发布，国产模型实现从追赶到领跑</p>
-<p><strong>来源</strong>：<a href="https://ai6s.net/6a3159c6662f9a54cb80026b.html">AI 产业动态</a> · 2026-06-16</p>
-<p><strong>摘要</strong>：</p>
-<p>MiniMax 发布 M 系列旗舰模型，采用 MoE 稀疏架构与全新 MSA 稀疏注意力，激活参数23B，支持百万级超长上下文，编程评测能力已超越海外主流模型</p>
-<ul>
-<li>代表国产大模型在编程、长上下文、多模态综合能力上首次领先国际</li>
-<li>对云计算厂商、编程工具、AI Agent 框架开发者提供更优成本方案</li>
-</ul>
-<p><strong>产品技术视角</strong>：MSA 稀疏注意力架构将百万级文本计算开销压缩 28.4 倍，显著降低推理成本与延迟。</p>
-<hr />
-<p><strong>标题</strong>：
-Claude Fable 5 发布，上下文突破 200 万 Token</p>
-<p><strong>来源</strong>：<a href="https://ai6s.net/6a3159c6662f9a54cb80026b.html">Anthropic 模型追踪</a> · 2026-06-09</p>
-<p><strong>摘要</strong>：</p>
-<p>Anthropic 发布 Claude Fable 5，上下文上限突破 200 万 token，在 SWE-bench Pro 上以 80.3% 的成绩领跑，在 Code Arena 和文本生成榜单排名全球第一</p>
-<ul>
-<li>再次刷新代码生成和长文本处理基准，巩固 Anthropic 在 reasoning model 领域地位</li>
-<li>对依赖代码生成、文档分析的企业应用具重要参考价值</li>
-</ul>
-<p><strong>产品技术视角</strong>：200 万 Token 的上下文窗口使其可一次性处理数千份文档或完整代码库，显著提升编程 Agent 的任务完成度。</p>
-<hr />
-<h2>📰 其他值得看的</h2>
-<ul>
-<li><strong><a href="https://news.microsoft.com/source/2026/06/24/microsofts-new-ai-in-education-report-highlights-widespread-adoption-and-increasing-demand-for-support/">Microsoft AI in Education Report</a></strong> · Microsoft · 2026-06-24</li>
-</ul>
-<p>微软宣布推出新一波 AI 驱动的教学和学习体验，设计初衷是改善学习成效、支持学生参与和批判性思维</p>
-<ul>
-<li><strong><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates">Qualcomm 洽谈收购 Tenstorrent</a></strong> · Crescendo AI · 2026-06-中旬</li>
-</ul>
-<p>高通洽谈以 80 至 100 亿美元收购 Tenstorrent，后者设计基于开放 RISC-V 标准的 AI 芯片，此举标志高通致力争夺当前由英伟达和 AMD 主导的 AI 硬件市场</p>
-<ul>
-<li><strong><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates">HPE 与 NVIDIA 扩展 AI Factory</a></strong> · HPE/NVIDIA · 2026-06-中旬</li>
-</ul>
-<p>HPE 与 NVIDIA 联合扩展 AI Factory，新增 NVIDIA Vera CPU 进行 Agent 编排、NVIDIA Agent Toolkit 和保密计算，并采用 Blackwell GPU 和 Spectrum-X Ethernet 实现企业级 agent 工作流</p>
-<ul>
-<li><strong><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates">OECD 发布 AI 素养教育框架</a></strong> · OECD · 2026-06-中旬</li>
-</ul>
-<p>OECD 发布标题为"赋能 AI 时代的学习者"的 AI 素养框架，面向全球中小学教育</p>
-<ul>
-<li><strong><a href="https://ai6s.net/6a3159c6662f9a54cb80026b.html">Anthropic Claude Fable 5 vs Mythos 5</a></strong> · Anthropic · 2026-06-09</li>
-</ul>
-<p>Anthropic 于 2026 年 6 月 9 日发布 Claude Fable 5 / Mythos 5，支持 200 万 token 上下文，Fable 为创意模型专项版本</p>
-<ul>
-<li><strong><a href="https://ai6s.net/6a3159c6662f9a54cb80026b.html">字节 Seedance-2.0-mini 视频生成模型</a></strong> · ByteDance · 2026-06-中旬</li>
-</ul>
-<p>字节跳动发布 Seedance-2.0-mini 视频生成模型，支持文本、图像、音频、视频多模态输入，生成速度提升 2 倍，成本降低 30%</p>
-<ul>
-<li><strong><a href="https://ai6s.net/6a3159c6662f9a54cb80026b.html">谷歌 Gemini 3.5 实时翻译 API</a></strong> · Google DeepMind · 2026-06-中旬</li>
-</ul>
-<p>谷歌开放 Gemini 3.5 实时翻译 API 预览版，支持 70 余种语言实时互译，可自动识别对话语种并无缝切换翻译</p>
-<ul>
-<li><strong><a href="https://ai6s.net/6a3159c6662f9a54cb80026b.html">阿里 Qwen-Robot 具身大模型系列</a></strong> · Alibaba · 2026-06-中旬</li>
-</ul>
-<p>阿里发布 Qwen-Robot 系列具身大模型，分操作、导航、世界三大模型矩阵，支持机器人动作控制、语言导航和物理世界推理</p>
-<hr />
-<h2>🔍 今日主题观察</h2>
-<p>本月行业最大的趋势：AI 不再只做"被动问答"，而是具备自主规划、多步骤执行、工具调用、子任务拆解、多智能体协同的完整能力。从 Claude Fable 5 的 200 万 Token 上下文、MiniMax M 和 GLM-5.2 的超长上下文支持，再到阿里、字节在多模态和 Agent 框架上的密集投入，可见整个行业的技术重心已从单轮对话转向<strong>多步骤自主执行</strong>。与此同时，
-国产模型迎来强势突破：编程评测能力已超越海外主流模型，实现国产大模型从追赶到领跑的跨越。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p>本简报中的内容主要来自以下源：
-- <strong>直接提供内容的媒体/平台</strong>：Crescendo AI、AI6S 平台、CSDN/知乎 AI 社区、Microsoft News、LLM Stats、AI Flash Report
-- <strong>数据时间范围</strong>：由于 2026 年 6 月 26 日尚未产生新闻内容，本简报覆盖最近一周（2026-06-19 至 2026-06-26）最重要的 AI 产业动态，重点汇总了 6 月 9 日至 6 月 17 日期间的重大产品发布和技术突破。
-- <strong>链接说明</strong>：部分链接为主域名占位符，具体文章路径以搜索结果片段中的可点击源为准。</p>]]></description>
     </item>
   </channel>
 </rss>
