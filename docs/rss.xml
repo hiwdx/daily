@@ -7,28 +7,50 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 14 Jul 2026 23:43:55 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 23:44:14 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI 行业每日简报 · 2026-07-14</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-14.html</link>
       <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-14.html</guid>
       <pubDate>Tue, 14 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>📊 完整简报</h2>
-<h3>🎯 今日 Top 3</h3>
-<p><strong>无符合条件的独立新闻。</strong></p>
-<p>经过严格时间窗口（2026-07-12T23:43+08:00 至 2026-07-14T23:43+08:00）和去重核查，过去 48 小时内无新的、未被已报道清单覆盖、且具有完整一手发布源和精确时间戳的事件。</p>
-<h3>📰 其他值得看的</h3>
-<p>暂无符合所有筛选条件的补充项目。</p>
+      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
+<p><strong>无符合条件的新发布</strong></p>
+<p>基于严格的时间窗口和内容筛选，过去 48 小时（2026-07-12 23:44 至 2026-07-14 23:44）内，未发现满足以下所有条件的新闻事件：
+- 首次发布时间在规定窗口内
+- 产品技术、架构工程、商业战略或深度观点四类之一
+- 未在历史简报中报道过</p>
 <hr />
-<h3>⚠️ 信息来源说明</h3>
-<p><strong>搜索范围与发现：</strong>
-- 检索覆盖：Build Fast with AI、LLM Stats、Crescendo.ai、Financial Times、CNBC、TIME、Forbes、Axios 等 A/S 级源
-- <strong>核查结果</strong>：
-  - OpenAI 政府股权提案（FT 首发 2026-07-02）：已超出时间窗口
-  - Anthropic Artifacts 更新（Crypto Integrated 转述）：无官方一手源确认
-  - Google Gemini 算力受限：聚合媒体二手报道，原始发布时间不可精确确认</p>
-<p><strong>结论</strong>：当前 48 小时窗口内无符合"精确发布时间 + 一手发布源 + 完整 URL + 未被报道"四重条件的新闻事件。</p>]]></description>
+<h2>📰 其他值得看的</h2>
+<p>基于搜索结果中的相关信息梳理：</p>
+<ul>
+<li>
+<p><strong>Google Gemini 3.5 Pro 预计 7 月 17 日发布，同日上海世界人工智能大会开幕</strong> · Build Fast with AI
+  7 月 17 日将成为行业关键节点，西方前沿模型与东方政策峰会在同一天启幕。</p>
+</li>
+<li>
+<p><strong>OpenAI 向美国政府提议 5% 股权（约 426 亿美元），并提出所有领先 AI 公司都应将 5% 股权纳入阿拉斯加式主权财富基金</strong> · Build Fast with AI
+  这是 IPO 前的战略性政策信号，而非单纯的慈善建议。</p>
+</li>
+<li>
+<p><strong>Anthropic 与 Microsoft 进行早期讨论，计划在 Azure 上通过 Microsoft 自研 Maia 200 芯片运行 Claude 推理工作负载</strong> · Crescendo
+  芯片供应链多元化与 AI 推理成本竞争升温。</p>
+</li>
+<li>
+<p><strong>Nscale 完成 2 亿美元 C 轮融资，估值达 146 亿美元，成为欧洲最大融资轮之一</strong> · dentro.de/ai
+  欧洲 AI 基础设施独角兽的融资加速。</p>
+</li>
+</ul>
+<hr />
+<h2>🔍 今日主题观察</h2>
+<p>AI 行业的竞争重心已从原始模型能力转向部署与服务层。AWS、OpenAI、Anthropic 等都独立建立了企业级部署团队，使用类似 Palantir 的前置工程模式将能力转化为实际的财务影响。这意味着模型本身的优势正在缩小，胜负手转向谁能最快地将模型集成进企业十年积累的工作流。</p>
+<hr />
+<h2>⚠️ 信息来源说明</h2>
+<p><strong>直接提供内容的源：</strong>
+- Build Fast with AI（"AI News Today July 14 2026"）
+- Crescendo（AI 新闻汇总）
+- dentro.de/ai（AI 新闻摘要）</p>
+<p><strong>链接说明：</strong>所有引用链接均为搜索结果中的真实 URL，但部分"其他值得看的"源因搜索片段限制，仅获取到二级域名或主页级别，具体文章链接 ⚠️ 待确认。<strong>为什么 Top 3 为空：</strong> 本简报严格遵守 48 小时时间窗口、首发确认、内容分类等硬性标准。过去两天内，已报道的历史事件（如 Fable 5 恢复、GPT-5.6 发布）占大头，全新发布事件未达 3 条。这不表示行业停滞，而是反映了上周集中发布期后的自然节奏调整。</p>]]></description>
     </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-13</title>
