@@ -1,0 +1,116 @@
+import tempfile
+import unittest
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+import generate
+
+
+def briefing(*entries: tuple[str, str, datetime]) -> str:
+    blocks = []
+    for title, url, published_at in entries:
+        blocks.append(
+            f"""**标题**：[{title}]({url})
+**来源**：[测试源]({url}) · {published_at:%Y-%m-%d}
+<!-- published_at: {published_at.isoformat()} -->
+**摘要**：
+- 发生了什么
+- 为什么重要
+- 对谁有影响
+**产品技术视角**：测试
+"""
+        )
+    return "### 🎯 今日 Top 3\n\n" + "\n".join(blocks) + "\n### 📰 其他值得看的"
+
+
+def briefing_with_source_date(title: str, url: str, published_at: datetime, source_date: str) -> str:
+    return f"""### 🎯 今日 Top 3
+
+**标题**：[{title}]({url})
+**来源**：[测试源]({url}) · {source_date}
+<!-- published_at: {published_at.isoformat()} -->
+**摘要**：测试
+**产品技术视角**：测试
+
+### 📰 其他值得看的
+"""
+
+
+class FreshnessValidationTests(unittest.TestCase):
+    def setUp(self):
+        self.now = datetime(2026, 7, 13, 9, 0, tzinfo=timezone(timedelta(hours=8)))
+
+    def test_accepts_story_inside_48_hour_window(self):
+        text = briefing(("新模型发布", "https://example.com/new?utm_source=x", self.now - timedelta(hours=47)))
+        self.assertEqual(generate.validate_briefing(text, now=self.now), [])
+
+    def test_rejects_story_older_than_48_hours(self):
+        text = briefing(("旧模型发布", "https://example.com/old", self.now - timedelta(hours=49)))
+        errors = generate.validate_briefing(text, now=self.now)
+        self.assertTrue(any("不在" in error for error in errors))
+
+    def test_rejects_old_visible_date_even_with_fresh_hidden_timestamp(self):
+        text = briefing_with_source_date(
+            "伪装成新内容的旧文章",
+            "https://example.com/article",
+            self.now - timedelta(hours=2),
+            "2026-07-09",
+        )
+        errors = generate.validate_briefing(text, now=self.now)
+        self.assertTrue(any("展示的来源日期" in error for error in errors))
+        self.assertTrue(any("不一致" in error for error in errors))
+
+    def test_rejects_homepage_as_top_story_url(self):
+        text = briefing(("无法核验的主页新闻", "https://example.com/blog", self.now - timedelta(hours=2)))
+        errors = generate.validate_briefing(text, now=self.now)
+        self.assertTrue(any("缺少可核验的文章 URL" in error for error in errors))
+
+    def test_rejects_historical_url_after_canonicalization(self):
+        text = briefing(("同一事件的新标题", "https://example.com/story?utm_source=x", self.now - timedelta(hours=2)))
+        history = [{"date": "2026-07-12", "title": "历史标题", "url": "https://example.com/story"}]
+        errors = generate.validate_briefing(text, history, now=self.now)
+        self.assertTrue(any("URL 已在历史" in error for error in errors))
+
+    def test_rejects_highly_similar_historical_title_on_different_url(self):
+        text = briefing(("OpenAI 正式发布 GPT-6 新模型", "https://new.example/gpt-6", self.now - timedelta(hours=2)))
+        history = [{
+            "date": "2026-07-12",
+            "title": "OpenAI 正式发布 GPT-6 新模型！",
+            "url": "https://old.example/gpt-6",
+        }]
+        errors = generate.validate_briefing(text, history, now=self.now)
+        self.assertTrue(any("疑似重复历史事件" in error for error in errors))
+
+    def test_allows_explicit_empty_window_instead_of_old_filler(self):
+        text = "### 🎯 今日 Top 3\n\n过去 48 小时暂无符合条件且未报道的内容。\n\n### 📰 其他值得看的"
+        self.assertEqual(generate.validate_briefing(text, now=self.now), [])
+
+
+class HistoryTests(unittest.TestCase):
+    def test_reads_top_stories_from_all_archive_days(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            archive = Path(temp_dir)
+            for date, title in (("2026-01-01", "第一条"), ("2026-06-30", "第二条")):
+                month = archive / date[:7]
+                month.mkdir(parents=True, exist_ok=True)
+                (month / f"{date}.html").write_text(
+                    f'<h2>🎯 今日 Top 3</h2><p><strong>标题</strong>：'
+                    f'<a href="https://example.com/{date}">{title}</a></p>'
+                    '<h2>📰 其他值得看的</h2>',
+                    encoding="utf-8",
+                )
+            stories = generate.get_previous_stories(archive)
+            self.assertEqual({story["title"] for story in stories}, {"第一条", "第二条"})
+
+    def test_prompt_contains_complete_history_and_no_24_hour_fallback(self):
+        prompt = generate.build_user_prompt([
+            {"date": "2026-01-01", "title": "已经报道", "url": "https://example.com/old"}
+        ])
+        self.assertIn("全部历史简报中已经报道过的内容", prompt)
+        self.assertIn("已经报道", prompt)
+        self.assertIn("过去 48 小时", prompt)
+        self.assertNotIn("最近 48 小时内最重要", prompt)
+
+
+if __name__ == "__main__":
+    unittest.main()

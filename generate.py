@@ -8,6 +8,8 @@ Usage:
 """
 
 import anthropic
+import difflib
+import html
 import json
 import os
 import re
@@ -17,6 +19,7 @@ from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 from pathlib import Path
 from typing import Optional
+from urllib.parse import urlsplit, urlunsplit
 from xml.sax.saxutils import escape as xml_escape
 
 try:
@@ -28,6 +31,8 @@ except ImportError:
 # ── Date (China Standard Time UTC+8) ──────────────────────────────────────────
 CST = timezone(timedelta(hours=8))
 NOW = datetime.now(CST)
+FRESHNESS_HOURS = 48
+WINDOW_START = NOW - timedelta(hours=FRESHNESS_HOURS)
 TODAY_ISO = NOW.strftime("%Y-%m-%d")
 TODAY_CN = NOW.strftime("%Y年%m月%d日")
 WEEKDAYS = "一二三四五六日"
@@ -43,20 +48,62 @@ def format_display_date(date_iso: str) -> tuple[str, str]:
 _SKIP_DOMAINS = {"hiwd.com", "daily.hiwd.com"}
 
 
-def get_recent_article_urls(archive_dir: Path, days: int = 2) -> list[str]:
-    """Return external article URLs found in the last `days` archived HTML files.
+def canonicalize_url(url: str) -> str:
+    """Return a stable article URL for exact duplicate checks."""
+    url = html.unescape(url.strip())
+    parts = urlsplit(url)
+    host = (parts.hostname or "").lower()
+    if parts.port and parts.port not in (80, 443):
+        host = f"{host}:{parts.port}"
+    path = re.sub(r"/{2,}", "/", parts.path).rstrip("/")
+    return urlunsplit((parts.scheme.lower(), host, path, "", ""))
 
-    These are passed to the prompt so Claude avoids re-reporting the same stories.
+
+def get_previous_stories(archive_dir: Path) -> list[dict[str, str]]:
+    """Return every previously published story title and canonical URL.
+
+    Using the complete archive prevents an old story from returning after the
+    former two-day deduplication window. Titles are included because syndicated
+    coverage of the same event often has a different URL.
     """
-    urls: set[str] = set()
-    html_files = sorted(archive_dir.glob("????-??/????-??-??.html"), reverse=True)[:days]
+    stories: dict[str, dict[str, str]] = {}
+    html_files = sorted(archive_dir.glob("????-??/????-??-??.html"), reverse=True)
     for html_file in html_files:
         text = html_file.read_text("utf-8")
-        for url in re.findall(r'href="(https?://[^"]+)"', text):
-            if not any(d in url for d in _SKIP_DOMAINS):
-                # Normalise: strip query strings / tracking params and trailing slash
-                urls.add(re.sub(r"\?.*$", "", url).rstrip("/"))
-    return sorted(urls)
+        body_match = _BRIEFING_BODY_RE.search(text)
+        body = body_match.group(1) if body_match else text
+        for match in re.finditer(
+            r"<strong>标题</strong>\s*[：:]\s*<a\s+href=\"(https?://[^\"]+)\"[^>]*>(.*?)</a>",
+            body,
+            flags=re.DOTALL | re.IGNORECASE,
+        ):
+            url = canonicalize_url(match.group(1))
+            if not url or any(d in urlsplit(url).netloc for d in _SKIP_DOMAINS):
+                continue
+            title = html.unescape(re.sub(r"<[^>]+>", "", match.group(2))).strip()
+            stories.setdefault(url, {
+                "date": html_file.stem,
+                "title": title,
+                "url": url,
+            })
+        # Capture compact-list items and older numbered headings too. setdefault
+        # keeps the descriptive title anchor when its source repeats the URL.
+        for match in re.finditer(
+            r"<a\s+href=\"(https?://[^\"]+)\"[^>]*>(.*?)</a>",
+            body,
+            flags=re.DOTALL | re.IGNORECASE,
+        ):
+            url = canonicalize_url(match.group(1))
+            if not url or any(d in urlsplit(url).netloc for d in _SKIP_DOMAINS):
+                continue
+            title = html.unescape(re.sub(r"<[^>]+>", "", match.group(2))).strip()
+            if title:
+                stories.setdefault(url, {
+                    "date": html_file.stem,
+                    "title": title,
+                    "url": url,
+                })
+    return list(stories.values())
 
 
 # ── Prompts ───────────────────────────────────────────────────────────────────
@@ -116,6 +163,15 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 
 ## 筛选标准（重要）
 
+### 时间窗口（最高优先级，不得放宽）
+
+- 当前生成时间：`{NOW.isoformat(timespec="minutes")}`
+- 最早允许发布时间：`{WINDOW_START.isoformat(timespec="minutes")}`
+- Top 3 的每一条都必须能从原文或搜索结果中确认，首次发布时间处于上述两个时间点之间
+- 转载时间、页面更新日期、榜单收录日期不能代替事件首次发布时间
+- 无法确认精确发布时间（含时区）的内容不得进入 Top 3
+- 过去 48 小时若不足 3 条合格且未报道的新闻，Top 3 可以少于 3 条；严禁用更早的旧闻或重复事件凑数
+
 只收录符合以下之一的内容：
 1. **产品技术突破**：新模型发布、新 API、新功能上线、benchmark 刷新
 2. **架构/工程深度**：推理优化、agent 框架、基础设施变化
@@ -124,7 +180,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 
 **排除**：
 - 纯营销稿、一句话新闻、股价波动、名人 Twitter 口水战
-- 超过 24 小时的旧新闻
+- 超过 48 小时的旧新闻
 - 未经证实的传言
 - 涉及中国敏感内容或明显地缘政治争议的内容，包括但不限于中美对抗叙事、涉台涉港涉疆、人权与制裁等
 - 如果一条新闻的主叙事是中国敏感议题或地缘政治对抗，即使与 AI 相关也不要收录；一般性的政府部门、公共部门项目、政策讨论或海外政治人物表述可保留
@@ -136,6 +192,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 
 **标题**：[中文标题](原文链接)
 **来源**：[媒体名称](原文链接) · 发布日期（用 YYYY-MM-DD 格式，不要用"昨日""今日"等相对表达）
+<!-- published_at: 原文首次发布时间，严格使用 ISO 8601 格式并包含时区，例如 2026-07-13T06:20:00+08:00；此行必须保留 -->
 **摘要**：
 - 发生了什么（一句话，**中文**）
 - 为什么重要（一句话，**中文**）
@@ -157,33 +214,175 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 
 ## 硬性要求
 - 所有链接必须是**真实可点击的原文 URL**，绝对不要编造
-- 如果搜索片段中只有主域名（如 `techcrunch.com`）而没有完整文章路径，可以用主域名作为链接占位，并在"来源"字段后注明 `⚠️ 链接待确认`，不要因为缺少完整 URL 就丢弃重大新闻
+- Top 3 必须使用带文章路径的原文 URL，主页、栏目页或仅有主域名的链接不得进入 Top 3
+- “其他值得看的”如果搜索片段中只有主域名（如 `techcrunch.com`）而没有完整文章路径，可以用主域名作为链接占位，并注明 `⚠️ 链接待确认`
 - 如果某条新闻既无法确认完整 URL、也找不到主域名，才宁可不收录
 - 严禁输出任何涉及中国敏感内容或明显地缘政治对抗的条目、摘要、观察或来源说明；一般性的政府机构、公共部门、企业合规合作、海外政治人物或立法机构表述可保留
 - **语言规则**：标题、摘要、分析、观察等所有内容一律用**中文**写，让读者看懂；公司名（Google/Meta/OpenAI）、产品名（Gemini/Claude/GPT）、通用技术术语（agent/LLM/RAG/fine-tuning 等）可保留英文
 - 总长度控制在 1000 字以内（精炼）
 - 不要在末尾输出字数统计或任何自我评估（如"总字数：XXX 字"）
-- **绝对不要向用户提问或请求确认**：不得询问"是否要更精准的搜索"、"您希望我如何处理"等。直接执行，用搜索到的最佳信息生成完整简报。若今日数据不足，覆盖最近 48 小时内最重要的内容，并在"⚠️ 信息来源说明"中注明数据时间范围"""
+- **绝对不要向用户提问或请求确认**：不得询问"是否要更精准的搜索"、"您希望我如何处理"等。直接执行，用搜索到的最佳信息生成完整简报
+- **绝不允许扩大时间范围**：若合格新闻不足 3 条，就如实输出较少条目，并在“⚠️ 信息来源说明”中注明；不得采用 48 小时以前的内容"""
 
 
-def build_user_prompt(recent_urls=None) -> str:
-    """Build the user prompt, optionally injecting a deduplication block.
-
-    `recent_urls` should be the list returned by `get_recent_article_urls()`.
-    When provided, a "已报道内容" section is inserted before the output-format
-    section so Claude skips stories already covered in recent briefings.
-    """
+def build_user_prompt(previous_stories=None) -> str:
+    """Build the prompt with a complete history-based deduplication block."""
     prompt = _USER_PROMPT_TEMPLATE
-    if recent_urls:
-        url_list = "\n".join(f"- {u}" for u in recent_urls)
+    if previous_stories:
+        story_list = "\n".join(
+            f"- {story['date']} | {story['title']} | {story['url']}"
+            for story in previous_stories
+        )
         dedup_block = (
             "\n\n## 已报道内容（严格排除）\n\n"
-            "以下链接来自**前 2 天**已发布的简报。"
-            "请**严格排除**这些 URL 及同一事件的任何其他报道，不得重复收录：\n\n"
-            f"{url_list}"
+            "以下是**全部历史简报中已经报道过的内容**。请严格排除这些 URL，"
+            "也要排除同一事件的转载、跟进报道和换链接版本；只有确有独立新进展的事件才能收录：\n\n"
+            f"{story_list}"
         )
         prompt = prompt.replace("## 输出格式", dedup_block + "\n\n## 输出格式")
     return prompt
+
+
+# ── Generated-content validation ─────────────────────────────────────────────
+_TOP_MARKDOWN_RE = re.compile(
+    r"^#{1,3}\s+🎯[^\n]*Top\s*3[^\n]*\n(.*?)(?=^#{1,3}\s|\Z)",
+    flags=re.DOTALL | re.MULTILINE | re.IGNORECASE,
+)
+_TITLE_LINE_RE = re.compile(
+    r"^\*\*标题\*\*\s*[：:]\s*\[([^\]\n]+)\]\((https?://[^)\s]+)\)",
+    flags=re.MULTILINE,
+)
+_PUBLISHED_AT_RE = re.compile(
+    r"<!--\s*published_at:\s*([^>]+?)\s*-->",
+    flags=re.IGNORECASE,
+)
+_SOURCE_LINE_RE = re.compile(
+    r"^\*\*来源\*\*\s*[：:](.*)$",
+    flags=re.MULTILINE,
+)
+_ISO_DATE_RE = re.compile(r"(?<!\d)(\d{4}-\d{2}-\d{2})(?!\d)")
+
+
+def parse_top_stories(briefing: str) -> list[dict[str, object]]:
+    """Parse Top-3 title, URL, and machine-checkable publication time."""
+    section_match = _TOP_MARKDOWN_RE.search(briefing)
+    if not section_match:
+        return []
+    section = section_match.group(1)
+    title_matches = list(_TITLE_LINE_RE.finditer(section))
+    stories: list[dict[str, object]] = []
+    for index, match in enumerate(title_matches):
+        block_end = title_matches[index + 1].start() if index + 1 < len(title_matches) else len(section)
+        block = section[match.end():block_end]
+        timestamp_match = _PUBLISHED_AT_RE.search(block)
+        source_match = _SOURCE_LINE_RE.search(block)
+        source_metadata = source_match.group(1).rsplit("·", 1)[-1] if source_match else ""
+        source_dates = _ISO_DATE_RE.findall(source_metadata)
+        published_at = None
+        if timestamp_match:
+            raw_timestamp = timestamp_match.group(1).strip().replace("Z", "+00:00")
+            try:
+                published_at = datetime.fromisoformat(raw_timestamp)
+            except ValueError:
+                pass
+        stories.append({
+            "title": match.group(1).strip(),
+            "url": canonicalize_url(match.group(2)),
+            "published_at": published_at,
+            "source_dates": source_dates,
+        })
+    return stories
+
+
+def _normalise_title(title: str) -> str:
+    return re.sub(r"[^\w\u4e00-\u9fff]+", "", title.lower())
+
+
+def validate_briefing(
+    briefing: str,
+    previous_stories: Optional[list[dict[str, str]]] = None,
+    now: Optional[datetime] = None,
+) -> list[str]:
+    """Return publish-blocking errors for freshness and duplicate violations."""
+    now = now or NOW
+    cutoff = now - timedelta(hours=FRESHNESS_HOURS)
+    section_match = _TOP_MARKDOWN_RE.search(briefing)
+    if not section_match:
+        return ["缺少‘今日 Top 3’章节"]
+
+    stories = parse_top_stories(briefing)
+    if not stories:
+        no_news = re.search(r"(?:没有|暂无|无)\S{0,12}(?:符合|合格|新闻|内容)|0\s*条", section_match.group(1))
+        return [] if no_news else ["Top 3 中没有可解析的条目，也没有明确注明过去 48 小时无合格内容"]
+    if len(stories) > 3:
+        return [f"Top 3 实际包含 {len(stories)} 条，超过 3 条"]
+
+    errors: list[str] = []
+    seen_urls: set[str] = set()
+    seen_titles: list[str] = []
+    previous_stories = previous_stories or []
+    previous_urls = {story["url"] for story in previous_stories}
+    previous_titles = [
+        (_normalise_title(story["title"]), story["title"])
+        for story in previous_stories
+        if story.get("title")
+    ]
+
+    for position, story in enumerate(stories, start=1):
+        title = str(story["title"])
+        url = str(story["url"])
+        published_at = story["published_at"]
+        source_dates = story["source_dates"]
+        if not isinstance(published_at, datetime) or published_at.tzinfo is None:
+            errors.append(f"第 {position} 条《{title}》缺少有效的含时区 published_at")
+        elif not cutoff <= published_at <= now:
+            errors.append(
+                f"第 {position} 条《{title}》发布时间 {published_at.isoformat()} "
+                f"不在 {cutoff.isoformat()} 至 {now.isoformat()} 内"
+            )
+        if not isinstance(source_dates, list) or len(source_dates) != 1:
+            errors.append(f"第 {position} 条《{title}》的来源行必须且只能包含一个 YYYY-MM-DD 发布日期")
+        else:
+            try:
+                source_date = datetime.strptime(source_dates[0], "%Y-%m-%d").date()
+            except ValueError:
+                errors.append(f"第 {position} 条《{title}》的来源日期无效：{source_dates[0]}")
+            else:
+                if source_date < cutoff.date() or source_date > now.date():
+                    errors.append(
+                        f"第 {position} 条《{title}》展示的来源日期 {source_date.isoformat()} "
+                        f"超出 48 小时窗口涉及的日期范围"
+                    )
+                if isinstance(published_at, datetime) and published_at.tzinfo is not None:
+                    if source_date != published_at.date():
+                        errors.append(
+                            f"第 {position} 条《{title}》的来源日期 {source_date.isoformat()} "
+                            f"与 published_at 日期 {published_at.date().isoformat()} 不一致"
+                        )
+
+        path = urlsplit(url).path.rstrip("/").lower()
+        if path in {"", "/blog", "/news", "/research", "/ai"}:
+            errors.append(f"第 {position} 条《{title}》使用主页或栏目页，缺少可核验的文章 URL")
+
+        if url in seen_urls:
+            errors.append(f"第 {position} 条《{title}》与本期其他条目 URL 重复")
+        seen_urls.add(url)
+        if url in previous_urls:
+            errors.append(f"第 {position} 条《{title}》的 URL 已在历史简报中报道")
+
+        normalised_title = _normalise_title(title)
+        if normalised_title in seen_titles:
+            errors.append(f"第 {position} 条《{title}》与本期其他条目标题重复")
+        seen_titles.append(normalised_title)
+        for old_normalised, old_title in previous_titles:
+            if normalised_title == old_normalised or difflib.SequenceMatcher(
+                None, normalised_title, old_normalised
+            ).ratio() >= 0.9:
+                errors.append(
+                    f"第 {position} 条《{title}》疑似重复历史事件《{old_title}》"
+                )
+                break
+    return errors
 
 
 # ── Claude API ────────────────────────────────────────────────────────────────
@@ -237,7 +436,7 @@ def _api_create_with_retry(client, system: str, messages: list, max_retries: int
             time.sleep(wait)
 
 
-def fetch_briefing(user_prompt: str) -> str:
+def fetch_briefing(user_prompt: str, previous_stories=None) -> str:
     """
     Call Claude with the web_search tool and return the briefing markdown.
 
@@ -304,6 +503,25 @@ def fetch_briefing(user_prompt: str) -> str:
                     }
                 )
                 continue
+            validation_errors = validate_briefing(cleaned, previous_stories)
+            if validation_errors:
+                print("  ⚠️ Freshness/deduplication validation failed; requesting rewrite")
+                for error in validation_errors:
+                    print(f"    - {error}")
+                messages.append({"role": "assistant", "content": response.content})
+                messages.append(
+                    {
+                        "role": "user",
+                        "content": (
+                            "上次输出未通过发布前硬校验，不能发布：\n- "
+                            + "\n- ".join(validation_errors)
+                            + "\n请重新核查并完整重写。只能保留精确发布时间处于指定 48 小时窗口内、"
+                              "且未在历史清单出现过的独立事件。若不足 3 条就少输出，"
+                              "不要用旧闻或重复事件补足；每条必须保留有效的 published_at 注释。"
+                        ),
+                    }
+                )
+                continue
             return cleaned
 
         if response.stop_reason == "pause_turn":
@@ -313,10 +531,10 @@ def fetch_briefing(user_prompt: str) -> str:
             messages.append({"role": "assistant", "content": response.content})
             continue
 
-        # stop_reason == "max_tokens" or other — return whatever text we have
-        return text or "（输出被截断，请增大 max_tokens）"
+        # Never publish a truncated response because it bypasses validation.
+        raise RuntimeError(f"Claude stopped before a valid briefing: {response.stop_reason}")
 
-    return "（超出最大轮次，请检查配置）"
+    raise RuntimeError("Claude did not produce a fresh, non-duplicate briefing within 8 turns")
 
 
 # ── Markdown → HTML ───────────────────────────────────────────────────────────
@@ -748,14 +966,15 @@ def main() -> None:
                 f"Restore from git history (git log -- docs/archive.json) and re-run."
             ) from e
 
-    # Collect recently-covered article URLs for deduplication (before generation)
-    recent_urls = get_recent_article_urls(archive_dir)
-    if recent_urls:
-        print(f"🔍 Loaded {len(recent_urls)} recent URLs for deduplication")
+    # Load the complete reporting history so old stories cannot reappear after
+    # a short rolling deduplication window.
+    previous_stories = get_previous_stories(archive_dir)
+    if previous_stories:
+        print(f"🔍 Loaded {len(previous_stories)} previously reported stories for deduplication")
 
     # Build prompt and generate briefing via Claude
-    user_prompt = build_user_prompt(recent_urls)
-    briefing_md = fetch_briefing(user_prompt)
+    user_prompt = build_user_prompt(previous_stories)
+    briefing_md = fetch_briefing(user_prompt, previous_stories)
     print(f"✅ Received {len(briefing_md)} chars from Claude")
 
     # Add today to archive entries BEFORE rendering so it appears in the nav

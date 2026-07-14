@@ -62,6 +62,10 @@ jobs:
         if: steps.check.outputs.skip == 'false'
         run: pip install -r requirements.txt
 
+      - name: Test freshness and deduplication guards
+        if: steps.check.outputs.skip == 'false'
+        run: python -m unittest discover -s tests -v
+
       - name: Generate daily briefing
         if: steps.check.outputs.skip == 'false'
         env:
