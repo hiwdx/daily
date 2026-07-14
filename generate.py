@@ -125,28 +125,37 @@ def contains_sensitive_politics(text: str) -> bool:
 
 _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
 
-## 搜索策略（严格限制 3 次）
+## 搜索策略（严格限制 5 次）
 
-用宽泛关键词一次覆盖多个源，**总搜索次数不超过 3 次**：
-- 搜索 1：`AI news {TODAY_ISO} site:openai.com OR site:anthropic.com OR site:deepmind.google OR site:techcrunch.com OR site:theverge.com`
-- 搜索 2：`AI model release OR product launch OR LLM benchmark OR AI funding OR acquisition {TODAY_ISO}`
-- 搜索 3（中文）：`AI 大模型 发布 {TODAY_CN}`
+用宽泛关键词一次覆盖多个源，**总搜索次数不超过 5 次**：
+- 搜索 1（核心实验室）：`AI model release {TODAY_ISO} site:openai.com OR site:anthropic.com/news OR site:deepmind.google OR site:blog.google/technology/ai OR site:ai.meta.com/blog OR site:mistral.ai/news`
+- 搜索 2（开发者平台）：`AI agent API release {TODAY_ISO} site:github.blog/changelog OR site:developers.googleblog.com OR site:vercel.com/changelog OR site:developers.cloudflare.com/changelog`
+- 搜索 3（云与开源）：`generative AI launch {TODAY_ISO} site:aws.amazon.com/blogs/machine-learning OR site:docs.cloud.google.com/vertex-ai OR site:learn.microsoft.com/azure/ai-foundry OR site:huggingface.co/blog OR site:developer.nvidia.com/blog`
+- 搜索 4（可信媒体）：`AI model product funding acquisition {TODAY_ISO} site:reuters.com OR site:techcrunch.com OR site:theverge.com OR site:arstechnica.com`
+- 搜索 5（中文）：`AI 大模型 产品 API 发布 {TODAY_CN} 机器之心 OR 量子位 OR InfoQ`
 
 ## 信息源优先级
 
 ### S 级（必须覆盖，一手源）
-- OpenAI Blog (openai.com/blog)
+- OpenAI News (openai.com/news)
 - Anthropic News (anthropic.com/news)
 - Google DeepMind Blog (deepmind.google/discover/blog)
+- Google AI / Developers Blog (blog.google/technology/ai、developers.googleblog.com)
 - Meta AI Blog (ai.meta.com/blog)
 - Mistral、xAI、Perplexity、Cohere 官方博客
+- GitHub Copilot Changelog (github.blog/changelog/label/copilot)
+- Vercel Changelog（AI SDK / AI Gateway）
+- Cloudflare AI Changelog（Workers AI / AI Gateway）
+- AWS AI News、Google Vertex AI Release Notes、Microsoft Foundry What's New
+- Hugging Face Blog、NVIDIA Technical Blog
+
+### A 级（深度分析与可信媒体）
 - Stratechery (Ben Thompson)
 - Platformer (Casey Newton)
 - Import AI (Jack Clark)
 - Latent Space (Swyx)
 - 海外独角兽 / 拾象
-
-### A 级（产品技术深度报道）
+- Reuters Technology
 - TechCrunch AI 频道
 - The Verge AI 频道
 - Bloomberg Technology
@@ -171,6 +180,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 - 转载时间、页面更新日期、榜单收录日期不能代替事件首次发布时间
 - 无法确认精确发布时间（含时区）的内容不得进入 Top 3
 - 过去 48 小时若不足 3 条合格且未报道的新闻，Top 3 可以少于 3 条；严禁用更早的旧闻或重复事件凑数
+- 若没有合格内容，Top 3 只输出两句面向普通读者的说明：`**今天暂时没有新的重点动态**`，以及 `过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。`；不要展示时间戳、筛选规则或技术性解释
 
 只收录符合以下之一的内容：
 1. **产品技术突破**：新模型发布、新 API、新功能上线、benchmark 刷新
@@ -192,7 +202,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 
 **标题**：[中文标题](原文链接)
 **来源**：[媒体名称](原文链接) · 发布日期（用 YYYY-MM-DD 格式，不要用"昨日""今日"等相对表达）
-<!-- published_at: 原文首次发布时间，严格使用 ISO 8601 格式并包含时区，例如 2026-07-13T06:20:00+08:00；此行必须保留 -->
+<!-- published_at: 原文首次发布时间，严格使用 ISO 8601 格式并包含时区，例如 YYYY-MM-DDTHH:MM:SS+08:00；此行必须保留 -->
 **摘要**：
 - 发生了什么（一句话，**中文**）
 - 为什么重要（一句话，**中文**）
@@ -215,6 +225,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 ## 硬性要求
 - 所有链接必须是**真实可点击的原文 URL**，绝对不要编造
 - Top 3 必须使用带文章路径的原文 URL，主页、栏目页或仅有主域名的链接不得进入 Top 3
+- 聚合站、新闻摘要页和搜索结果页只能用于发现线索，不能作为 Top 3 的唯一依据；Top 3 必须能回溯到公司官方公告或可信媒体的具体文章
 - “其他值得看的”如果搜索片段中只有主域名（如 `techcrunch.com`）而没有完整文章路径，可以用主域名作为链接占位，并注明 `⚠️ 链接待确认`
 - 如果某条新闻既无法确认完整 URL、也找不到主域名，才宁可不收录
 - 严禁输出任何涉及中国敏感内容或明显地缘政治对抗的条目、摘要、观察或来源说明；一般性的政府机构、公共部门、企业合规合作、海外政治人物或立法机构表述可保留
@@ -261,6 +272,7 @@ _SOURCE_LINE_RE = re.compile(
     flags=re.MULTILINE,
 )
 _ISO_DATE_RE = re.compile(r"(?<!\d)(\d{4}-\d{2}-\d{2})(?!\d)")
+_NO_NEWS_RE = re.compile(r"(?:没有|暂无|无)\S{0,12}(?:符合|合格|新闻|内容|动态|发布)|0\s*条")
 
 
 def parse_top_stories(briefing: str) -> list[dict[str, object]]:
@@ -312,7 +324,7 @@ def validate_briefing(
 
     stories = parse_top_stories(briefing)
     if not stories:
-        no_news = re.search(r"(?:没有|暂无|无)\S{0,12}(?:符合|合格|新闻|内容)|0\s*条", section_match.group(1))
+        no_news = _NO_NEWS_RE.search(section_match.group(1))
         return [] if no_news else ["Top 3 中没有可解析的条目，也没有明确注明过去 48 小时无合格内容"]
     if len(stories) > 3:
         return [f"Top 3 实际包含 {len(stories)} 条，超过 3 条"]
@@ -385,6 +397,29 @@ def validate_briefing(
     return errors
 
 
+def format_empty_top_state(briefing: str) -> str:
+    """Replace technical no-news explanations with concise reader-facing copy.
+
+    This only touches a Top-3 section that contains no parsed stories and an
+    explicit no-news statement. A normal generated briefing passes through
+    unchanged.
+    """
+    section_match = _TOP_MARKDOWN_RE.search(briefing)
+    if not section_match or parse_top_stories(briefing):
+        return briefing
+    if not _NO_NEWS_RE.search(section_match.group(1)):
+        return briefing
+
+    heading = section_match.group(0).splitlines()[0]
+    replacement = (
+        f"{heading}\n\n"
+        "**今天暂时没有新的重点动态**\n\n"
+        "过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。"
+        "我们会继续关注，有重要进展会及时更新。\n\n"
+    )
+    return briefing[:section_match.start()] + replacement + briefing[section_match.end():]
+
+
 # ── Claude API ────────────────────────────────────────────────────────────────
 def _api_create_with_retry(client, system: str, messages: list, max_retries: int = 3):
     """Call client.messages.create with exponential back-off for transient errors.
@@ -409,7 +444,7 @@ def _api_create_with_retry(client, system: str, messages: list, max_retries: int
                     "type": "web_search_20260209",
                     "name": "web_search",
                     "allowed_callers": ["direct"],
-                    "max_uses": 3,
+                    "max_uses": 5,
                 }],
                 messages=messages,
             )
@@ -489,6 +524,7 @@ def fetch_briefing(user_prompt: str, previous_stories=None) -> str:
 
         if response.stop_reason == "end_turn":
             cleaned = clean_briefing(text) or "（本次未生成内容，请检查 API 配置）"
+            cleaned = format_empty_top_state(cleaned)
             if contains_sensitive_politics(cleaned):
                 print("  ⚠️ Sensitive political content detected; requesting rewrite")
                 messages.append({"role": "assistant", "content": response.content})

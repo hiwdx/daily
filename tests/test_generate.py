@@ -85,6 +85,25 @@ class FreshnessValidationTests(unittest.TestCase):
         text = "### 🎯 今日 Top 3\n\n过去 48 小时暂无符合条件且未报道的内容。\n\n### 📰 其他值得看的"
         self.assertEqual(generate.validate_briefing(text, now=self.now), [])
 
+    def test_empty_state_is_rewritten_for_readers(self):
+        text = """### 🎯 今日 Top 3
+
+**无符合条件的新发布**
+
+基于严格的时间窗口和内容筛选，过去 48 小时（2026-07-12 09:00 至 2026-07-14 09:00）内，未发现满足规则的内容。
+
+### 📰 其他值得看的
+"""
+        formatted = generate.format_empty_top_state(text)
+        self.assertIn("今天暂时没有新的重点动态", formatted)
+        self.assertIn("有重要进展会及时更新", formatted)
+        self.assertNotIn("2026-07-12", formatted)
+        self.assertNotIn("严格的时间窗口", formatted)
+
+    def test_non_empty_top_stories_are_not_rewritten(self):
+        text = briefing(("真实的新发布", "https://example.com/article", self.now - timedelta(hours=2)))
+        self.assertEqual(generate.format_empty_top_state(text), text)
+
 
 class HistoryTests(unittest.TestCase):
     def test_reads_top_stories_from_all_archive_days(self):
@@ -110,6 +129,14 @@ class HistoryTests(unittest.TestCase):
         self.assertIn("已经报道", prompt)
         self.assertIn("过去 48 小时", prompt)
         self.assertNotIn("最近 48 小时内最重要", prompt)
+
+    def test_prompt_uses_broader_official_source_searches(self):
+        prompt = generate.build_user_prompt()
+        self.assertIn("严格限制 5 次", prompt)
+        self.assertIn("GitHub Copilot Changelog", prompt)
+        self.assertIn("Cloudflare AI Changelog", prompt)
+        self.assertIn("Google Vertex AI Release Notes", prompt)
+        self.assertIn("聚合站、新闻摘要页和搜索结果页只能用于发现线索", prompt)
 
 
 if __name__ == "__main__":
