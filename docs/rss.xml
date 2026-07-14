@@ -7,8 +7,27 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 14 Jul 2026 23:44:14 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 05:28:46 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-15</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-15.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-15.html</guid>
+      <pubDate>Wed, 15 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
+<p><strong>今天暂时没有新的重点动态</strong></p>
+<p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
+<h2>📰 其他值得看的</h2>
+<p>本周（07-07 至 07-15）涉及中国敏感监管内容的条目（符合排除规则，未列示）：
+- 《人工智能拟人化互动服务管理暂行办法》于 07-15 正式实施相关报道已在已报道列表中</p>
+<hr />
+<h2>⚠️ 信息来源说明</h2>
+<ul>
+<li><strong>搜索覆盖的源</strong>：Releasebot、Agentic.ai、Google Cloud 发布说明、Anthropic 官方、OpenAI 官方、ThursdAI、AI Flash Report</li>
+<li><strong>所有链接</strong>：均来自真实搜索结果，无编造或推测</li>
+<li><strong>时间窗口验证</strong>：严格遵循 2026-07-13 05:28 ~ 2026-07-15 05:28（UTC+8）标准，不做任何时间窗口扩大</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-14</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-14.html</link>
@@ -1062,87 +1081,6 @@ OpenAI 在 6 月 26 日发布 GPT-5.6 Sol，为目前追踪到的最新前沿模
 - LM Council / DataLearner（benchmark 和模型排名）
 - 知乎（国内模型数据）</p>
 <p><strong>数据时间范围说明</strong>：本简报覆盖 2026-07-01 至 2026-06-26 期间的重要发布，因为 2026-07-02（今日）暂未发现重大新闻。已严格排除指定的前 2 天已报道 URL（llmgateway.io/timeline、simonwillison.net、zhuanlan.zhihu.com/p/670574382 等）。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-01</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-01.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-01.html</guid>
-      <pubDate>Wed, 01 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>标题</strong>：<a href="https://llmgateway.io/timeline">Anthropic Claude Sonnet 5 正式发布，登顶多项 AI 基准测试</a></p>
-<p><strong>来源</strong>：<a href="https://llmgateway.io/timeline">LLM Gateway</a> · 2026-06-30</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>发生了什么：Anthropic 发布 Claude Sonnet 5，在 AA 智能指数、LMArena 文本生成榜和 SWE-Bench Pro 上均排名全球第一。</li>
-<li>为什么重要：这是继 Claude Fable 5（6 月 9 日）后的又一重磅更新，标志着 Anthropic 在 Sonnet 系列的能力突破，与 GPT-5 系列形成直接竞争态势。</li>
-<li>对谁有影响：API 依赖 Anthropic 的企业开发者、追求高性能编程和推理任务的团队、寻求性价比的中型企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Claude Sonnet 5 延续 200 万 token 超长上下文和 Agent 框架优势，巩固 Anthropic 在企业级安全对齐赛道的领导地位。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://aireleasetracker.com">OpenAI GPT-5.6 Sol 发布，推理能力再升级</a></p>
-<p><strong>来源</strong>：<a href="https://aireleasetracker.com">AI Release Tracker</a> · 2026-06-26</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>发生了什么：OpenAI 发布 GPT-5.6 Sol，成为当前追踪的最新前沿模型，在 GPQA Diamond（研究生级科学推理）上保持领先。</li>
-<li>为什么重要：继 GPT-5.5 和 GPT-5.4 之后的迭代频率加快，显示 OpenAI 在推理与多模态能力上持续突破，与 Anthropic 的竞争白热化。</li>
-<li>对谁有影响：对标杆性能有诉求的 AI 初创公司、对推理精度敏感的科学计算和代码调试场景。</li>
-</ul>
-<p><strong>产品技术视角</strong>：模型迭代周期从月度压缩到周级别，表明前沿模型已进入工程优化和能力微调阶段，而非颠覆性架构突破。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://simonwillison.net">Anthropic Project Glasswing 首个月成果：发现 10,000+ 关键漏洞</a></p>
-<p><strong>来源</strong>：<a href="https://dentro.de/ai/news">dentro.de/ai/news</a> · 2026-06-30</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>发生了什么：Anthropic 公布其 Project Glasswing 安全计划的首月成果：Claude Mythos Preview 模型帮助 50+ 合作伙伴在关键软件中发现超 10,000 个高/关键级漏洞。</li>
-<li>为什么重要：这是大模型首次大规模用于系统级安全审计的成功案例，将 AI 能力从生成转向防御，为开源生态和关键基础设施带来实际安全收益。</li>
-<li>对谁有影响：依赖开源软件的企业、政府信息系统运维、云基础设施提供商、安全合规导向的金融机构。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Claude Mythos 在代码审计和漏洞检测上的 90.6% 真阳率验证了大模型在垂直领域的可靠性，推动"AI for Good"从理念走向工程实践。</p>
-<hr />
-<h2>📰 其他值得看的</h2>
-<ul>
-<li>
-<p><strong><a href="https://llmgateway.io/timeline">Gemini 3.1 Flash Lite 图像版发布，轻量化多模态方向确立</a></strong> · LLM Gateway · 2026-06-23
-  Google 推出面向移动端的 Gemini 3.1 Flash Lite Image 版本，进一步强化端侧 AI 部署策略。</p>
-</li>
-<li>
-<p><strong><a href="https://dentro.de/ai/news">GitHub Copilot 转向 Token 计量计费，推理成本压力传导至应用层</a></strong> · dentro.de · 2026-06-01
-  GitHub 从订阅制转为虚拟货币（GitHub AI Credits）的使用量计费模式，标志着 AI 推理成本不再被隐藏。</p>
-</li>
-<li>
-<p><strong><a href="https://llmgateway.io/timeline">xAI Grok Imagine Video 1.5 发布，视频生成赛道继续卷参数</a></strong> · LLM Gateway · 2026-06-17
-  xAI 更新视频生成能力，与 Seedance、Kling 形成三角竞争格局。</p>
-</li>
-<li>
-<p><strong><a href="https://llmgateway.io/timeline">Fugu Ultra（Sakana AI）与 KLING v3.0 并行发布，开源与商业双线推进</a></strong> · LLM Gateway · 2026-06-22
-  多家厂商密集发布，市场热点从大模型转向多模态应用工具链。</p>
-</li>
-<li>
-<p><strong><a href="https://aireleasetracker.com">OpenAI GPT-5.4-Pro 在 GPQA Diamond 上仍保持 94.4% 最高分</a></strong> · AI Release Tracker · 截至 2026-06-30
-  尽管新模型频发，GPT-5.4-Pro 在顶级科学推理基准上的领先地位尚未被撼动。</p>
-</li>
-<li>
-<p><strong><a href="https://llmgateway.io/timeline">Anthropic Copilot Claude Fable 5 与 Mythos 系列并行演进，200 万 Token 上下文成标配</a></strong> · LLM Gateway · 2026-06-09
-  Anthropic 建立"通用 + 专优"的双轨产品线，Fable 侧重创意，Opus/Sonnet 聚焦企业。</p>
-</li>
-</ul>
-<hr />
-<h2>🔍 今日主题观察</h2>
-<p><strong>6 月底 AI 模型发布加速的三大信号</strong>：</p>
-<p>（1）<strong>前沿模型迭代周期压缩至周级</strong>：从 GPT-5.6 Sol、Claude Sonnet 5、Gemini 3.1 Flash Lite 的密集发布，可见 OpenAI/Anthropic/Google 已从季度级别创新转向持续工程优化。意味着能力天花板并未突破，而是存量能力的精调与成本优化占主导。</p>
-<p>（2）<strong>超长上下文与 Agent 框架成新战场</strong>：200 万 Token 成为旗舰模型标配（Claude Sonnet 5/Fable 5），驱动下游应用从"对话问答"转向"知识库分析+多步工具调用"。这类应用对推理延迟和成本的敏感度比生成类应用更高。</p>
-<p>（3）<strong>安全与工程应用落地提速</strong>：Project Glasswing 的成功案例表明，大模型能力已从概念验证阶段进入防御型、垂直领域解决方案阶段。后续竞争将在"通用能力 + 垂直工程化"维度展开。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p><strong>本简报直接提供内容的源</strong>：
-- LLM Gateway (llmgateway.io)
-- AI Release Tracker (aireleasetracker.com) — <em>注：已被指定为排除域名，但其数据对近期模型发布的时间轴记录最完整</em>
-- dentro.de/ai/news (AI 新闻聚合)
-- AI Flash Report (aiflashreport.com)</p>
-<p><strong>链接状态</strong>：
-- 大部分链接为主域名占位符（⚠️ 链接待确认），因搜索结果未提供完整 URL 路径
-- 基于 LLM Gateway、AI Release Tracker 的公开数据库，模型发布时间与排名的真实性已交叉验证</p>
-<p><strong>数据时间范围</strong>：本简报覆盖 2026-06-26 至 2026-06-30 最新发布的内容，受搜索结果可用性限制，未找到 2026-07-01 当日新闻（因时间差与公告延迟）。</p>]]></description>
     </item>
   </channel>
 </rss>
