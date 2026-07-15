@@ -140,12 +140,65 @@ def contains_sensitive_politics(text: str) -> bool:
 OFFICIAL_UPDATE_FEEDS = (
     ("GitHub Changelog", "https://github.blog/changelog/feed/"),
     ("Cloudflare Changelog", "https://developers.cloudflare.com/changelog/rss/index.xml"),
+    # /changelog/rss.xml returns HTTP 308; use the canonical Atom endpoint so
+    # older Python urllib versions do not drop the feed at the redirect.
+    ("Vercel Changelog", "https://vercel.com/atom"),
+    ("Hugging Face Blog", "https://huggingface.co/blog/feed.xml"),
+    ("Google AI Blog", "https://blog.google/technology/ai/rss/"),
+    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
 )
 _AI_UPDATE_RE = re.compile(
     r"\b(?:AI|Copilot|agent|agents|MCP|model|models|LLM|inference|embedding|RAG)\b|Chat SDK",
     flags=re.IGNORECASE,
 )
-_DATED_ARTICLE_PATH_RE = re.compile(r"/(20\d{2}-\d{2}-\d{2})(?:-|/)")
+_DATED_ARTICLE_PATH_RE = re.compile(r"/(20\d{2})[-/](\d{2})[-/](\d{2})(?:-|/)")
+
+
+def _parse_feed_date(raw_date: str) -> Optional[datetime]:
+    """Parse RFC 2822 (RSS) and ISO 8601 (Atom) publication dates."""
+    try:
+        published_at = parsedate_to_datetime(raw_date)
+    except (TypeError, ValueError):
+        try:
+            published_at = datetime.fromisoformat(raw_date.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    if published_at.tzinfo is None:
+        published_at = published_at.replace(tzinfo=timezone.utc)
+    return published_at
+
+
+def _feed_entries(root: ElementTree.Element) -> list[tuple[str, str, str]]:
+    """Return title, article URL, and date from RSS or Atom XML."""
+    entries: list[tuple[str, str, str]] = []
+    for item in root.findall(".//item"):
+        entries.append((
+            html.unescape((item.findtext("title") or "").strip()),
+            (item.findtext("link") or "").strip(),
+            (item.findtext("pubDate") or item.findtext("date") or "").strip(),
+        ))
+
+    atom_namespace = "{http://www.w3.org/2005/Atom}"
+    for entry in root.findall(f".//{atom_namespace}entry"):
+        title_element = entry.find(f"{atom_namespace}title")
+        title = "".join(title_element.itertext()).strip() if title_element is not None else ""
+        links = entry.findall(f"{atom_namespace}link")
+        article_link = next(
+            (
+                link.get("href", "")
+                for link in links
+                if link.get("rel", "alternate") == "alternate" and link.get("href")
+            ),
+            next((link.get("href", "") for link in links if link.get("href")), ""),
+        )
+        raw_date = (
+            entry.findtext(f"{atom_namespace}published")
+            or entry.findtext(f"{atom_namespace}updated")
+            or ""
+        ).strip()
+        entries.append((html.unescape(title), article_link.strip(), raw_date))
+    return entries
 
 
 def parse_official_feed(
@@ -153,7 +206,7 @@ def parse_official_feed(
     source: str,
     now: Optional[datetime] = None,
 ) -> list[dict[str, str]]:
-    """Extract fresh AI-related entries from an official RSS feed."""
+    """Extract fresh AI-related entries from an RSS or Atom feed."""
     now = now or NOW
     cutoff = now - timedelta(hours=FRESHNESS_HOURS)
     try:
@@ -162,20 +215,15 @@ def parse_official_feed(
         return []
 
     candidates: list[dict[str, str]] = []
-    for item in root.findall(".//item"):
-        title = (item.findtext("title") or "").strip()
-        link = canonicalize_url(item.findtext("link") or "")
-        raw_pub_date = (item.findtext("pubDate") or "").strip()
+    for title, raw_link, raw_pub_date in _feed_entries(root):
+        link = canonicalize_url(raw_link)
         if not title or not link or not raw_pub_date or not _AI_UPDATE_RE.search(title):
             continue
         if contains_sensitive_politics(title):
             continue
-        try:
-            published_at = parsedate_to_datetime(raw_pub_date)
-        except (TypeError, ValueError):
+        published_at = _parse_feed_date(raw_pub_date)
+        if published_at is None:
             continue
-        if published_at.tzinfo is None:
-            published_at = published_at.replace(tzinfo=timezone.utc)
         if not cutoff <= published_at.astimezone(CST) <= now:
             continue
 
@@ -184,7 +232,7 @@ def parse_official_feed(
         path_date_match = _DATED_ARTICLE_PATH_RE.search(urlsplit(link).path)
         if path_date_match:
             try:
-                path_date = datetime.strptime(path_date_match.group(1), "%Y-%m-%d").date()
+                path_date = datetime.strptime("-".join(path_date_match.groups()), "%Y-%m-%d").date()
             except ValueError:
                 continue
             if not cutoff.date() <= path_date <= now.date():
@@ -218,11 +266,22 @@ def get_official_candidates(
         for candidate in parse_official_feed(xml_data, source, now):
             if candidate["url"] not in previous_urls:
                 candidates[candidate["url"]] = candidate
-    return sorted(
+    # Keep the prompt broad: a high-volume publisher must not occupy every
+    # candidate slot merely because it posted several updates close together.
+    ordered = sorted(
         candidates.values(),
         key=lambda candidate: candidate["published_at"],
         reverse=True,
-    )[:20]
+    )
+    balanced: list[dict[str, str]] = []
+    per_source: dict[str, int] = {}
+    for candidate in ordered:
+        source = candidate["source"]
+        if per_source.get(source, 0) >= 4:
+            continue
+        per_source[source] = per_source.get(source, 0) + 1
+        balanced.append(candidate)
+    return balanced[:24]
 
 _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
 
@@ -328,6 +387,8 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 ## 硬性要求
 - 所有链接必须是**真实可点击的原文 URL**，绝对不要编造
 - Top 3 必须使用带文章路径的原文 URL，主页、栏目页或仅有主域名的链接不得进入 Top 3
+- Top 3 必须来自 3 个不同的发布方，同一发布方最多 1 条；不能用同一家公司的多个更新占满榜单。如果只有不足 3 个发布方有合格内容，宁可少于 3 条
+- “其他值得看的”同一发布方最多 2 条，并尽量不要重复 Top 3 已出现的发布方；当天所有栏目都不能被单一公司或媒体主导
 - 聚合站、新闻摘要页和搜索结果页只能用于发现线索，不能作为 Top 3 的唯一依据；Top 3 必须能回溯到公司官方公告或可信媒体的具体文章
 - “今日 Top 3”“其他值得看的”“主题观察”“信息来源说明”都不得提及被排除的敏感内容、敏感事件名称、筛选命中原因或删除说明；排除后直接不写，不能用“未列示”方式变相展示
 - “其他值得看的”如果搜索片段中只有主域名（如 `techcrunch.com`）而没有完整文章路径，可以用主域名作为链接占位，并注明 `⚠️ 链接待确认`
@@ -350,11 +411,11 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
             for candidate in official_candidates
         )
         candidate_block = (
-            "\n\n## 官方订阅源已确认候选（必须优先选入 Top 3）\n\n"
-            "以下候选由程序直接读取官方 RSS，已通过 48 小时窗口、AI 相关性、"
+            "\n\n## 可信订阅源已确认候选（必须优先选入 Top 3）\n\n"
+            "以下候选由程序直接读取官方与可信媒体的 RSS/Atom，已通过 48 小时窗口、AI 相关性、"
             "历史 URL 去重和敏感内容初筛。请优先打开具体链接核查并从中选出最重要的条目；"
             "只要确有用户或开发者价值，不要因为它来自 changelog 就降级。"
-            "当候选达到 3 条时，Top 3 必须从中选满 3 条，禁止输出空榜；"
+            "当候选覆盖至少 3 个发布方时，Top 3 必须从不同发布方选满 3 条，禁止输出空榜；"
             "当候选为 1–2 条时必须全部收录，再用其他可信来源补充。\n\n"
             f"{candidate_list}"
         )
@@ -389,6 +450,14 @@ _PUBLISHED_AT_RE = re.compile(
 )
 _SOURCE_LINE_RE = re.compile(
     r"^\*\*来源\*\*\s*[：:](.*)$",
+    flags=re.MULTILINE,
+)
+_OTHER_MARKDOWN_RE = re.compile(
+    r"^#{1,3}\s+📰[^\n]*其他值得看的[^\n]*\n(.*?)(?=^#{1,3}\s|\Z)",
+    flags=re.DOTALL | re.MULTILINE | re.IGNORECASE,
+)
+_OTHER_ITEM_RE = re.compile(
+    r"^-\s+\*\*\[([^\]\n]+)\]\((https?://[^)\s]+)\)\*\*\s*·",
     flags=re.MULTILINE,
 )
 _ISO_DATE_RE = re.compile(r"(?<!\d)(\d{4}-\d{2}-\d{2})(?!\d)")
@@ -435,6 +504,39 @@ def parse_top_stories(briefing: str) -> list[dict[str, object]]:
     return stories
 
 
+def _source_family(url: str) -> str:
+    """Return a stable publisher family from an article URL."""
+    host = (urlsplit(url).hostname or "").lower().removeprefix("www.")
+    aliases = {
+        "github.blog": "github",
+        "github.com": "github",
+        "developers.cloudflare.com": "cloudflare",
+        "cloudflare.com": "cloudflare",
+        "vercel.com": "vercel",
+        "huggingface.co": "huggingface",
+        "blog.google": "google",
+        "deepmind.google": "google",
+        "techcrunch.com": "techcrunch",
+        "theverge.com": "theverge",
+    }
+    for domain, family in aliases.items():
+        if host == domain or host.endswith(f".{domain}"):
+            return family
+    parts = host.split(".")
+    return ".".join(parts[-2:]) if len(parts) >= 2 else host
+
+
+def parse_other_stories(briefing: str) -> list[dict[str, str]]:
+    """Parse compact story links from the ‘other worthwhile reads’ section."""
+    section_match = _OTHER_MARKDOWN_RE.search(briefing)
+    if not section_match:
+        return []
+    return [
+        {"title": match.group(1).strip(), "url": canonicalize_url(match.group(2))}
+        for match in _OTHER_ITEM_RE.finditer(section_match.group(1))
+    ]
+
+
 def _normalise_title(title: str) -> str:
     return re.sub(r"[^\w\u4e00-\u9fff]+", "", title.lower())
 
@@ -464,11 +566,36 @@ def validate_briefing(
         return [f"Top 3 实际包含 {len(stories)} 条，超过 3 条"]
 
     errors: list[str] = []
-    required_count = min(3, len(official_candidates or []))
+    candidate_families = {
+        _source_family(candidate.get("url", ""))
+        for candidate in (official_candidates or [])
+        if candidate.get("url")
+    }
+    required_count = min(3, len(candidate_families))
     if len(stories) < required_count:
         errors.append(
-            f"官方订阅源提供 {len(official_candidates or [])} 条新候选，"
+            f"可信订阅源覆盖 {len(candidate_families)} 个发布方，"
             f"Top 3 至少需要 {required_count} 条，实际只有 {len(stories)} 条"
+        )
+    top_families = [_source_family(str(story["url"])) for story in stories]
+    repeated_top_families = {
+        family for family in top_families if top_families.count(family) > 1
+    }
+    if repeated_top_families:
+        errors.append(
+            "Top 3 同一发布方最多 1 条；重复发布方："
+            + "、".join(sorted(repeated_top_families))
+        )
+
+    other_stories = parse_other_stories(briefing)
+    other_families = [_source_family(story["url"]) for story in other_stories]
+    repeated_other_families = {
+        family for family in other_families if other_families.count(family) > 2
+    }
+    if repeated_other_families:
+        errors.append(
+            "‘其他值得看的’同一发布方最多 2 条；超额发布方："
+            + "、".join(sorted(repeated_other_families))
         )
     seen_urls: set[str] = set()
     seen_titles: list[str] = []
@@ -1165,12 +1292,12 @@ def main() -> None:
     if previous_stories:
         print(f"🔍 Loaded {len(previous_stories)} previously reported stories for deduplication")
 
-    # Seed the model with fresh, exact article links from official high-frequency
-    # feeds. Web search still broadens coverage, but is no longer the only way
-    # important changelog entries reach the candidate pool.
+    # Seed the model with fresh, exact article links from official and trusted
+    # media feeds. Web search still broadens coverage, but is no longer the only
+    # way important stories reach the candidate pool.
     official_candidates = get_official_candidates(previous_stories)
     if official_candidates:
-        print(f"📥 Loaded {len(official_candidates)} fresh official feed candidates")
+        print(f"📥 Loaded {len(official_candidates)} fresh trusted feed candidates")
 
     # Build prompt and generate briefing via Claude
     user_prompt = build_user_prompt(previous_stories, official_candidates)

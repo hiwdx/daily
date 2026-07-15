@@ -6,7 +6,7 @@ from pathlib import Path
 import generate
 
 
-def briefing(*entries: tuple[str, str, datetime]) -> str:
+def briefing(*entries: tuple[str, str, datetime], other: str = "") -> str:
     blocks = []
     for title, url, published_at in entries:
         blocks.append(
@@ -20,7 +20,7 @@ def briefing(*entries: tuple[str, str, datetime]) -> str:
 **产品技术视角**：测试
 """
         )
-    return "### 🎯 今日 Top 3\n\n" + "\n".join(blocks) + "\n### 📰 其他值得看的"
+    return "### 🎯 今日 Top 3\n\n" + "\n".join(blocks) + "\n### 📰 其他值得看的\n" + other
 
 
 def briefing_with_source_date(title: str, url: str, published_at: datetime, source_date: str) -> str:
@@ -111,7 +111,7 @@ class FreshnessValidationTests(unittest.TestCase):
     def test_requires_three_stories_when_three_official_candidates_exist(self):
         text = briefing(("只有一条", "https://example.com/one", self.now - timedelta(hours=2)))
         candidates = [
-            {"title": f"候选 {index}", "url": f"https://example.com/{index}"}
+            {"title": f"候选 {index}", "url": f"https://source{index}.example/{index}"}
             for index in range(3)
         ]
         errors = generate.validate_briefing(
@@ -120,6 +120,33 @@ class FreshnessValidationTests(unittest.TestCase):
             official_candidates=candidates,
         )
         self.assertTrue(any("至少需要 3 条" in error for error in errors))
+
+    def test_rejects_same_publisher_filling_top_three(self):
+        text = briefing(*[
+            (f"GitHub 更新 {index}", f"https://github.blog/changelog/2026-07-1{index}-item", self.now - timedelta(hours=index))
+            for index in range(1, 4)
+        ])
+        errors = generate.validate_briefing(text, now=self.now)
+        self.assertTrue(any("同一发布方最多 1 条" in error for error in errors))
+
+    def test_accepts_three_distinct_top_publishers(self):
+        published = self.now - timedelta(hours=2)
+        text = briefing(
+            ("GitHub 更新", "https://github.blog/changelog/2026-07-12-github", published),
+            ("Vercel 更新", "https://vercel.com/changelog/vercel-ai-update", published),
+            ("媒体报道", "https://techcrunch.com/2026/07/12/ai-update/", published),
+        )
+        self.assertEqual(generate.validate_briefing(text, now=self.now), [])
+
+    def test_rejects_one_publisher_dominating_other_reads(self):
+        published = self.now - timedelta(hours=2)
+        other = "\n".join(
+            f"- **[扩展阅读 {index}](https://github.blog/changelog/2026-07-12-other-{index})** · GitHub\n- 简介"
+            for index in range(3)
+        )
+        text = briefing(("Vercel 更新", "https://vercel.com/changelog/update", published), other=other)
+        errors = generate.validate_briefing(text, now=self.now)
+        self.assertTrue(any("其他值得看的" in error and "最多 2 条" in error for error in errors))
 
     def test_empty_state_is_rewritten_for_readers(self):
         text = """### 🎯 今日 Top 3
@@ -184,7 +211,7 @@ class HistoryTests(unittest.TestCase):
             "published_at": "2026-07-14T12:54:12+00:00",
         }]
         prompt = generate.build_user_prompt(official_candidates=candidates)
-        self.assertIn("官方订阅源已确认候选", prompt)
+        self.assertIn("可信订阅源已确认候选", prompt)
         self.assertIn(candidates[0]["title"], prompt)
         self.assertIn(candidates[0]["url"], prompt)
 
@@ -212,6 +239,16 @@ class OfficialFeedTests(unittest.TestCase):
           <pubDate>Tue, 14 Jul 2026 12:00:00 +0000</pubDate>
         </item></channel></rss>"""
         self.assertEqual(generate.parse_official_feed(feed, "Test", self.now), [])
+
+    def test_extracts_atom_entries_and_iso_dates(self):
+        feed = b"""<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><title>AI Gateway adds model leaderboard</title>
+            <link rel="alternate" href="https://vercel.com/changelog/ai-gateway-leaderboard" />
+            <published>2026-07-14T12:00:00Z</published></entry>
+        </feed>"""
+        candidates = generate.parse_official_feed(feed, "Vercel Changelog", self.now)
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["url"], "https://vercel.com/changelog/ai-gateway-leaderboard")
 
 
 class SensitiveContentTests(unittest.TestCase):
