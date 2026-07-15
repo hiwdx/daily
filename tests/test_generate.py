@@ -73,6 +73,16 @@ class FreshnessValidationTests(unittest.TestCase):
         self.assertTrue(any("展示的来源日期" in error for error in errors))
         self.assertTrue(any("不一致" in error for error in errors))
 
+    def test_accepts_one_day_source_date_difference_across_timezones(self):
+        published = datetime(2026, 7, 13, 0, 30, tzinfo=timezone.utc)
+        text = briefing_with_source_date(
+            "媒体在当地前一日发布的更新",
+            "https://techcrunch.com/2026/07/12/timezone-story/",
+            published,
+            "2026-07-12",
+        )
+        self.assertEqual(generate.validate_briefing(text, now=self.now), [])
+
     def test_rejects_homepage_as_top_story_url(self):
         text = briefing(("无法核验的主页新闻", "https://example.com/blog", self.now - timedelta(hours=2)))
         errors = generate.validate_briefing(text, now=self.now)
@@ -249,6 +259,17 @@ class OfficialFeedTests(unittest.TestCase):
         candidates = generate.parse_official_feed(feed, "Vercel Changelog", self.now)
         self.assertEqual(len(candidates), 1)
         self.assertEqual(candidates[0]["url"], "https://vercel.com/changelog/ai-gateway-leaderboard")
+
+    def test_filters_rumours_and_low_value_commentary(self):
+        feed = b"""<rss><channel>
+          <item><title>OpenAI researcher in talks to launch AI startup</title>
+            <link>https://example.com/2026-07-14-rumour</link>
+            <pubDate>Tue, 14 Jul 2026 12:00:00 +0000</pubDate></item>
+          <item><title>Singer says AI glasses are not stylish</title>
+            <link>https://example.com/2026-07-14-comment</link>
+            <pubDate>Tue, 14 Jul 2026 12:00:00 +0000</pubDate></item>
+        </channel></rss>"""
+        self.assertEqual(generate.parse_official_feed(feed, "Media", self.now), [])
 
 
 class SensitiveContentTests(unittest.TestCase):

@@ -152,6 +152,12 @@ _AI_UPDATE_RE = re.compile(
     r"\b(?:AI|Copilot|agent|agents|MCP|model|models|LLM|inference|embedding|RAG)\b|Chat SDK",
     flags=re.IGNORECASE,
 )
+_LOW_VALUE_UPDATE_RE = re.compile(
+    r"\b(?:in talks|reportedly|rumou?rs?|accused|lawsuit|watchdog)\b|"
+    r"\b(?:celebrity|singer|actor|actress)\b|"
+    r"^[^|]{0,40}\bsays\b",
+    flags=re.IGNORECASE,
+)
 _DATED_ARTICLE_PATH_RE = re.compile(r"/(20\d{2})[-/](\d{2})[-/](\d{2})(?:-|/)")
 
 
@@ -219,6 +225,8 @@ def parse_official_feed(
         link = canonicalize_url(raw_link)
         if not title or not link or not raw_pub_date or not _AI_UPDATE_RE.search(title):
             continue
+        if _LOW_VALUE_UPDATE_RE.search(title):
+            continue
         if contains_sensitive_politics(title):
             continue
         published_at = _parse_feed_date(raw_pub_date)
@@ -266,21 +274,25 @@ def get_official_candidates(
         for candidate in parse_official_feed(xml_data, source, now):
             if candidate["url"] not in previous_urls:
                 candidates[candidate["url"]] = candidate
-    # Keep the prompt broad: a high-volume publisher must not occupy every
-    # candidate slot merely because it posted several updates close together.
+    # Keep the prompt broad and interleaved: the model sees one item per source
+    # before any high-volume publisher is allowed to repeat.
     ordered = sorted(
         candidates.values(),
         key=lambda candidate: candidate["published_at"],
         reverse=True,
     )
-    balanced: list[dict[str, str]] = []
-    per_source: dict[str, int] = {}
+    by_source: dict[str, list[dict[str, str]]] = {}
     for candidate in ordered:
-        source = candidate["source"]
-        if per_source.get(source, 0) >= 4:
-            continue
-        per_source[source] = per_source.get(source, 0) + 1
-        balanced.append(candidate)
+        by_source.setdefault(candidate["source"], []).append(candidate)
+    source_order = [
+        source for source, _ in OFFICIAL_UPDATE_FEEDS if source in by_source
+    ]
+    balanced = [
+        by_source[source][position]
+        for position in range(4)
+        for source in source_order
+        if position < len(by_source[source])
+    ]
     return balanced[:24]
 
 _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
@@ -416,7 +428,9 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
             "历史 URL 去重和敏感内容初筛。请优先打开具体链接核查并从中选出最重要的条目；"
             "只要确有用户或开发者价值，不要因为它来自 changelog 就降级。"
             "当候选覆盖至少 3 个发布方时，Top 3 必须从不同发布方选满 3 条，禁止输出空榜；"
-            "当候选为 1–2 条时必须全部收录，再用其他可信来源补充。\n\n"
+            "当候选为 1–2 条时必须全部收录，再用其他可信来源补充。"
+            "使用候选时，published_at 注释必须逐字复制候选给出的完整时间（包括时区），"
+            "不要自行删改为无时区时间。\n\n"
             f"{candidate_list}"
         )
         prompt = prompt.replace("## 信息源优先级", candidate_block + "\n\n## 信息源优先级")
@@ -645,7 +659,10 @@ def validate_briefing(
                         f"第 {position} 条《{title}》展示的来源日期 {source_date.isoformat()} "
                         f"超出 48 小时窗口涉及的日期范围"
                     )
-                if published_date is not None and source_date != published_date:
+                # Feeds commonly store UTC while an article displays the
+                # publisher's local date. A one-day difference is a valid
+                # timezone boundary; larger gaps remain publish-blocking.
+                if published_date is not None and abs((source_date - published_date).days) > 1:
                     errors.append(
                         f"第 {position} 条《{title}》的来源日期 {source_date.isoformat()} "
                         f"与 published_at 日期 {published_date.isoformat()} 不一致"
@@ -814,6 +831,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
                             "上次输出包含不允许公开展示的话题，或提及了相关删除与筛选说明。"
                             "请完全重写整份简报，只保留产品、工程、商业落地、开发者生态相关内容，"
                             "不要解释哪些内容被排除，不要复述被删除的话题，也不要提及筛选命中原因。"
+                            "下一条回复必须直接以 `### 🎯 今日 Top 3` 开始，并完整包含"
+                            "`### 📰 其他值得看的` 和 `### ⚠️ 信息来源说明`；"
+                            "不要回复确认、道歉或修改说明。"
                         ),
                     }
                 )
@@ -835,9 +855,12 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
                             "上次输出未通过发布前硬校验，不能发布：\n- "
                             + "\n- ".join(validation_errors)
                             + "\n请重新核查并完整重写。只能保留发布时间处于指定 48 小时窗口内、"
-                              "且未在历史清单出现过的独立事件。若不足 3 条就少输出，"
-                              "不要用旧闻或重复事件补足。原文有精确时间就保留含时区时间，"
+                            "且未在历史清单出现过的独立事件。若不足 3 条就少输出，"
+                            "不要用旧闻或重复事件补足。原文有精确时间就保留含时区时间，"
                               "原文只有日期就只写日期；严禁编造时刻。每条必须保留有效的 published_at 注释。"
+                              "下一条回复必须直接以 `### 🎯 今日 Top 3` 开始，并完整包含"
+                              "`### 📰 其他值得看的` 和 `### ⚠️ 信息来源说明`；"
+                              "不要回复确认、道歉或修改说明。Top 3 同一发布方只能出现 1 条。"
                         ),
                     }
                 )
