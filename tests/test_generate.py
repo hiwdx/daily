@@ -98,6 +98,29 @@ class FreshnessValidationTests(unittest.TestCase):
         text = "### 🎯 今日 Top 3\n\n过去 48 小时暂无符合条件且未报道的内容。\n\n### 📰 其他值得看的"
         self.assertEqual(generate.validate_briefing(text, now=self.now), [])
 
+    def test_rejects_empty_top_when_official_candidates_exist(self):
+        text = "### 🎯 今日 Top 3\n\n过去 48 小时暂无符合条件且未报道的内容。\n"
+        candidates = [{"title": "官方更新", "url": "https://example.com/new"}]
+        errors = generate.validate_briefing(
+            text,
+            now=self.now,
+            official_candidates=candidates,
+        )
+        self.assertTrue(any("不得为空" in error for error in errors))
+
+    def test_requires_three_stories_when_three_official_candidates_exist(self):
+        text = briefing(("只有一条", "https://example.com/one", self.now - timedelta(hours=2)))
+        candidates = [
+            {"title": f"候选 {index}", "url": f"https://example.com/{index}"}
+            for index in range(3)
+        ]
+        errors = generate.validate_briefing(
+            text,
+            now=self.now,
+            official_candidates=candidates,
+        )
+        self.assertTrue(any("至少需要 3 条" in error for error in errors))
+
     def test_empty_state_is_rewritten_for_readers(self):
         text = """### 🎯 今日 Top 3
 

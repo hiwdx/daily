@@ -350,10 +350,12 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
             for candidate in official_candidates
         )
         candidate_block = (
-            "\n\n## 官方订阅源已确认候选（优先选入 Top 3）\n\n"
+            "\n\n## 官方订阅源已确认候选（必须优先选入 Top 3）\n\n"
             "以下候选由程序直接读取官方 RSS，已通过 48 小时窗口、AI 相关性、"
             "历史 URL 去重和敏感内容初筛。请优先打开具体链接核查并从中选出最重要的条目；"
-            "只要确有用户或开发者价值，不要因为它来自 changelog 就降级。\n\n"
+            "只要确有用户或开发者价值，不要因为它来自 changelog 就降级。"
+            "当候选达到 3 条时，Top 3 必须从中选满 3 条，禁止输出空榜；"
+            "当候选为 1–2 条时必须全部收录，再用其他可信来源补充。\n\n"
             f"{candidate_list}"
         )
         prompt = prompt.replace("## 信息源优先级", candidate_block + "\n\n## 信息源优先级")
@@ -441,6 +443,7 @@ def validate_briefing(
     briefing: str,
     previous_stories: Optional[list[dict[str, str]]] = None,
     now: Optional[datetime] = None,
+    official_candidates: Optional[list[dict[str, str]]] = None,
 ) -> list[str]:
     """Return publish-blocking errors for freshness and duplicate violations."""
     now = now or NOW
@@ -451,12 +454,22 @@ def validate_briefing(
 
     stories = parse_top_stories(briefing)
     if not stories:
+        if official_candidates:
+            return [
+                f"官方订阅源已有 {len(official_candidates)} 条新候选，Top 3 不得为空"
+            ]
         no_news = _NO_NEWS_RE.search(section_match.group(1))
         return [] if no_news else ["Top 3 中没有可解析的条目，也没有明确注明过去 48 小时无合格内容"]
     if len(stories) > 3:
         return [f"Top 3 实际包含 {len(stories)} 条，超过 3 条"]
 
     errors: list[str] = []
+    required_count = min(3, len(official_candidates or []))
+    if len(stories) < required_count:
+        errors.append(
+            f"官方订阅源提供 {len(official_candidates or [])} 条新候选，"
+            f"Top 3 至少需要 {required_count} 条，实际只有 {len(stories)} 条"
+        )
     seen_urls: set[str] = set()
     seen_titles: list[str] = []
     previous_stories = previous_stories or []
@@ -610,7 +623,7 @@ def _api_create_with_retry(client, system: str, messages: list, max_retries: int
             time.sleep(wait)
 
 
-def fetch_briefing(user_prompt: str, previous_stories=None) -> str:
+def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=None) -> str:
     """
     Call Claude with the web_search tool and return the briefing markdown.
 
@@ -678,7 +691,11 @@ def fetch_briefing(user_prompt: str, previous_stories=None) -> str:
                     }
                 )
                 continue
-            validation_errors = validate_briefing(cleaned, previous_stories)
+            validation_errors = validate_briefing(
+                cleaned,
+                previous_stories,
+                official_candidates=official_candidates,
+            )
             if validation_errors:
                 print("  ⚠️ Freshness/deduplication validation failed; requesting rewrite")
                 for error in validation_errors:
@@ -1157,7 +1174,7 @@ def main() -> None:
 
     # Build prompt and generate briefing via Claude
     user_prompt = build_user_prompt(previous_stories, official_candidates)
-    briefing_md = fetch_briefing(user_prompt, previous_stories)
+    briefing_md = fetch_briefing(user_prompt, previous_stories, official_candidates)
     print(f"✅ Received {len(briefing_md)} chars from Claude")
 
     # Add today to archive entries BEFORE rendering so it appears in the nav
