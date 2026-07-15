@@ -44,10 +44,23 @@ class FreshnessValidationTests(unittest.TestCase):
         text = briefing(("新模型发布", "https://example.com/new?utm_source=x", self.now - timedelta(hours=47)))
         self.assertEqual(generate.validate_briefing(text, now=self.now), [])
 
+    def test_accepts_date_only_official_publication(self):
+        published = self.now - timedelta(days=1)
+        text = briefing(("官方更新日志发布新功能", "https://example.com/changelog/new", published))
+        text = text.replace(published.isoformat(), published.strftime("%Y-%m-%d"))
+        self.assertEqual(generate.validate_briefing(text, now=self.now), [])
+
     def test_rejects_story_older_than_48_hours(self):
         text = briefing(("旧模型发布", "https://example.com/old", self.now - timedelta(hours=49)))
         errors = generate.validate_briefing(text, now=self.now)
         self.assertTrue(any("不在" in error for error in errors))
+
+    def test_rejects_old_date_only_publication(self):
+        published = self.now - timedelta(days=3)
+        text = briefing(("过期的官方更新", "https://example.com/changelog/old", published))
+        text = text.replace(published.isoformat(), published.strftime("%Y-%m-%d"))
+        errors = generate.validate_briefing(text, now=self.now)
+        self.assertTrue(any("发布日期" in error and "超出" in error for error in errors))
 
     def test_rejects_old_visible_date_even_with_fresh_hidden_timestamp(self):
         text = briefing_with_source_date(
@@ -132,11 +145,23 @@ class HistoryTests(unittest.TestCase):
 
     def test_prompt_uses_broader_official_source_searches(self):
         prompt = generate.build_user_prompt()
-        self.assertIn("严格限制 5 次", prompt)
+        self.assertIn("严格限制 6 次", prompt)
+        self.assertIn(f"after:{generate.SEARCH_AFTER_ISO}", prompt)
+        self.assertIn(f"before:{generate.SEARCH_BEFORE_ISO}", prompt)
         self.assertIn("GitHub Copilot Changelog", prompt)
         self.assertIn("Cloudflare AI Changelog", prompt)
         self.assertIn("Google Vertex AI Release Notes", prompt)
         self.assertIn("聚合站、新闻摘要页和搜索结果页只能用于发现线索", prompt)
+
+
+class SensitiveContentTests(unittest.TestCase):
+    def test_rejects_sensitive_exclusion_explanation(self):
+        text = "本周涉及中国敏感监管内容的条目符合排除规则，因此未列示。"
+        self.assertTrue(generate.contains_sensitive_politics(text))
+
+    def test_allows_non_political_china_product_news(self):
+        text = "一家中国公司发布了新的多模态模型和开发者 API。"
+        self.assertFalse(generate.contains_sensitive_politics(text))
 
 
 if __name__ == "__main__":

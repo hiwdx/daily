@@ -33,6 +33,10 @@ CST = timezone(timedelta(hours=8))
 NOW = datetime.now(CST)
 FRESHNESS_HOURS = 48
 WINDOW_START = NOW - timedelta(hours=FRESHNESS_HOURS)
+# Search engines often interpret `after:` as exclusive. Include a one-day
+# discovery buffer, then let the publish validator enforce the real 48 hours.
+SEARCH_AFTER_ISO = (WINDOW_START - timedelta(days=1)).strftime("%Y-%m-%d")
+SEARCH_BEFORE_ISO = (NOW + timedelta(days=1)).strftime("%Y-%m-%d")
 TODAY_ISO = NOW.strftime("%Y-%m-%d")
 TODAY_CN = NOW.strftime("%Y年%m月%d日")
 WEEKDAYS = "一二三四五六日"
@@ -116,6 +120,9 @@ SENSITIVE_POLITICS_PATTERNS = [
     r"中美",
     r"地缘政治|制裁",
     r"涉台|台湾|香港|新疆",
+    r"中国.{0,10}(?:敏感|监管|政治|审查|治理)",
+    r"(?:敏感|禁止|排除).{0,10}(?:内容|主题|条目|规则)",
+    r"人工智能拟人化互动服务管理暂行办法",
 ]
 
 
@@ -125,14 +132,15 @@ def contains_sensitive_politics(text: str) -> bool:
 
 _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
 
-## 搜索策略（严格限制 5 次）
+## 搜索策略（严格限制 6 次）
 
-用宽泛关键词一次覆盖多个源，**总搜索次数不超过 5 次**：
-- 搜索 1（核心实验室）：`AI model release {TODAY_ISO} site:openai.com OR site:anthropic.com/news OR site:deepmind.google OR site:blog.google/technology/ai OR site:ai.meta.com/blog OR site:mistral.ai/news`
-- 搜索 2（开发者平台）：`AI agent API release {TODAY_ISO} site:github.blog/changelog OR site:developers.googleblog.com OR site:vercel.com/changelog OR site:developers.cloudflare.com/changelog`
-- 搜索 3（云与开源）：`generative AI launch {TODAY_ISO} site:aws.amazon.com/blogs/machine-learning OR site:docs.cloud.google.com/vertex-ai OR site:learn.microsoft.com/azure/ai-foundry OR site:huggingface.co/blog OR site:developer.nvidia.com/blog`
-- 搜索 4（可信媒体）：`AI model product funding acquisition {TODAY_ISO} site:reuters.com OR site:techcrunch.com OR site:theverge.com OR site:arstechnica.com`
-- 搜索 5（中文）：`AI 大模型 产品 API 发布 {TODAY_CN} 机器之心 OR 量子位 OR InfoQ`
+为避免搜索引擎漏掉窗口边界日期，候选检索统一使用 `after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO}`；这只是发现阶段的日期缓冲，最终收录仍必须通过严格的 48 小时校验。不能只搜索今天的日期。**总搜索次数不超过 6 次**：
+- 搜索 1（高频产品更新）：`AI agent model API changelog after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:github.blog/changelog OR site:vercel.com/changelog OR site:developers.cloudflare.com/changelog`
+- 搜索 2（核心实验室）：`AI model release after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:openai.com OR site:anthropic.com/news OR site:deepmind.google OR site:blog.google/technology/ai OR site:ai.meta.com/blog OR site:mistral.ai/news`
+- 搜索 3（开发工具与开源）：`AI agent framework model release after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:huggingface.co/blog OR site:blog.langchain.com OR site:llamaindex.ai/blog OR site:replicate.com/blog OR site:together.ai/blog OR site:fireworks.ai/blog`
+- 搜索 4（云平台）：`generative AI launch after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:aws.amazon.com/blogs OR site:developers.googleblog.com OR site:docs.cloud.google.com/vertex-ai OR site:learn.microsoft.com/azure/ai-foundry OR site:developer.nvidia.com/blog`
+- 搜索 5（可信媒体）：`AI model product funding acquisition after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:reuters.com OR site:techcrunch.com OR site:theverge.com OR site:arstechnica.com`
+- 搜索 6（中文）：`AI 大模型 产品 API 发布 {SEARCH_AFTER_ISO}..{TODAY_ISO} 机器之心 OR 量子位 OR InfoQ`
 
 ## 信息源优先级
 
@@ -178,7 +186,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 - 最早允许发布时间：`{WINDOW_START.isoformat(timespec="minutes")}`
 - Top 3 的每一条都必须能从原文或搜索结果中确认，首次发布时间处于上述两个时间点之间
 - 转载时间、页面更新日期、榜单收录日期不能代替事件首次发布时间
-- 无法确认精确发布时间（含时区）的内容不得进入 Top 3
+- 优先使用精确发布时间；若官方原文只提供 YYYY-MM-DD 日期，可以保留日期精度，严禁自行编造具体时刻
 - 过去 48 小时若不足 3 条合格且未报道的新闻，Top 3 可以少于 3 条；严禁用更早的旧闻或重复事件凑数
 - 若没有合格内容，Top 3 只输出两句面向普通读者的说明：`**今天暂时没有新的重点动态**`，以及 `过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。`；不要展示时间戳、筛选规则或技术性解释
 
@@ -187,6 +195,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 2. **架构/工程深度**：推理优化、agent 框架、基础设施变化
 3. **商业战略信号**：重要融资、收购、人才流动、合作签约
 4. **行业观点**：有分析深度的评论文章（不是转述新闻）
+5. **开发者生态更新**：官方 changelog 中影响功能、API、模型可用性、成本、性能或工作流的重要更新
 
 **排除**：
 - 纯营销稿、一句话新闻、股价波动、名人 Twitter 口水战
@@ -202,7 +211,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 
 **标题**：[中文标题](原文链接)
 **来源**：[媒体名称](原文链接) · 发布日期（用 YYYY-MM-DD 格式，不要用"昨日""今日"等相对表达）
-<!-- published_at: 原文首次发布时间，严格使用 ISO 8601 格式并包含时区，例如 YYYY-MM-DDTHH:MM:SS+08:00；此行必须保留 -->
+<!-- published_at: 原文首次发布时间；有精确时间时使用含时区的 ISO 8601，原文只有日期时只写 YYYY-MM-DD，严禁补造时刻；此行必须保留 -->
 **摘要**：
 - 发生了什么（一句话，**中文**）
 - 为什么重要（一句话，**中文**）
@@ -226,6 +235,7 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 - 所有链接必须是**真实可点击的原文 URL**，绝对不要编造
 - Top 3 必须使用带文章路径的原文 URL，主页、栏目页或仅有主域名的链接不得进入 Top 3
 - 聚合站、新闻摘要页和搜索结果页只能用于发现线索，不能作为 Top 3 的唯一依据；Top 3 必须能回溯到公司官方公告或可信媒体的具体文章
+- “今日 Top 3”“其他值得看的”“主题观察”“信息来源说明”都不得提及被排除的敏感内容、敏感事件名称、筛选命中原因或删除说明；排除后直接不写，不能用“未列示”方式变相展示
 - “其他值得看的”如果搜索片段中只有主域名（如 `techcrunch.com`）而没有完整文章路径，可以用主域名作为链接占位，并注明 `⚠️ 链接待确认`
 - 如果某条新闻既无法确认完整 URL、也找不到主域名，才宁可不收录
 - 严禁输出任何涉及中国敏感内容或明显地缘政治对抗的条目、摘要、观察或来源说明；一般性的政府机构、公共部门、企业合规合作、海外政治人物或立法机构表述可保留
@@ -291,16 +301,25 @@ def parse_top_stories(briefing: str) -> list[dict[str, object]]:
         source_metadata = source_match.group(1).rsplit("·", 1)[-1] if source_match else ""
         source_dates = _ISO_DATE_RE.findall(source_metadata)
         published_at = None
+        published_date = None
         if timestamp_match:
             raw_timestamp = timestamp_match.group(1).strip().replace("Z", "+00:00")
-            try:
-                published_at = datetime.fromisoformat(raw_timestamp)
-            except ValueError:
-                pass
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw_timestamp):
+                try:
+                    published_date = datetime.strptime(raw_timestamp, "%Y-%m-%d").date()
+                except ValueError:
+                    pass
+            else:
+                try:
+                    published_at = datetime.fromisoformat(raw_timestamp)
+                    published_date = published_at.date()
+                except ValueError:
+                    pass
         stories.append({
             "title": match.group(1).strip(),
             "url": canonicalize_url(match.group(2)),
             "published_at": published_at,
+            "published_date": published_date,
             "source_dates": source_dates,
         })
     return stories
@@ -344,13 +363,26 @@ def validate_briefing(
         title = str(story["title"])
         url = str(story["url"])
         published_at = story["published_at"]
+        published_date = story["published_date"]
         source_dates = story["source_dates"]
-        if not isinstance(published_at, datetime) or published_at.tzinfo is None:
-            errors.append(f"第 {position} 条《{title}》缺少有效的含时区 published_at")
-        elif not cutoff <= published_at <= now:
+        if isinstance(published_at, datetime) and published_at.tzinfo is not None:
+            if not cutoff <= published_at <= now:
+                errors.append(
+                    f"第 {position} 条《{title}》发布时间 {published_at.isoformat()} "
+                    f"不在 {cutoff.isoformat()} 至 {now.isoformat()} 内"
+                )
+        elif published_date is not None:
+            if not cutoff.date() <= published_date <= now.date():
+                errors.append(
+                    f"第 {position} 条《{title}》发布日期 {published_date.isoformat()} "
+                    f"超出 48 小时窗口涉及的日期范围"
+                )
+        else:
+            errors.append(f"第 {position} 条《{title}》缺少有效的 published_at 日期或时间")
+
+        if isinstance(published_at, datetime) and published_at.tzinfo is None:
             errors.append(
-                f"第 {position} 条《{title}》发布时间 {published_at.isoformat()} "
-                f"不在 {cutoff.isoformat()} 至 {now.isoformat()} 内"
+                f"第 {position} 条《{title}》提供了具体时刻但没有时区"
             )
         if not isinstance(source_dates, list) or len(source_dates) != 1:
             errors.append(f"第 {position} 条《{title}》的来源行必须且只能包含一个 YYYY-MM-DD 发布日期")
@@ -365,12 +397,11 @@ def validate_briefing(
                         f"第 {position} 条《{title}》展示的来源日期 {source_date.isoformat()} "
                         f"超出 48 小时窗口涉及的日期范围"
                     )
-                if isinstance(published_at, datetime) and published_at.tzinfo is not None:
-                    if source_date != published_at.date():
-                        errors.append(
-                            f"第 {position} 条《{title}》的来源日期 {source_date.isoformat()} "
-                            f"与 published_at 日期 {published_at.date().isoformat()} 不一致"
-                        )
+                if published_date is not None and source_date != published_date:
+                    errors.append(
+                        f"第 {position} 条《{title}》的来源日期 {source_date.isoformat()} "
+                        f"与 published_at 日期 {published_date.isoformat()} 不一致"
+                    )
 
         path = urlsplit(url).path.rstrip("/").lower()
         if path in {"", "/blog", "/news", "/research", "/ai"}:
@@ -444,7 +475,7 @@ def _api_create_with_retry(client, system: str, messages: list, max_retries: int
                     "type": "web_search_20260209",
                     "name": "web_search",
                     "allowed_callers": ["direct"],
-                    "max_uses": 5,
+                    "max_uses": 6,
                 }],
                 messages=messages,
             )
@@ -532,9 +563,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None) -> str:
                     {
                         "role": "user",
                         "content": (
-                            "上次输出触及禁止主题：中国敏感内容或地缘政治对抗叙事。"
+                            "上次输出包含不允许公开展示的话题，或提及了相关删除与筛选说明。"
                             "请完全重写整份简报，只保留产品、工程、商业落地、开发者生态相关内容，"
-                            "一般性的政府机构、公共部门合作、海外政治人物或立法机构表述可以保留，但不要保留或改写任何涉及中美对抗、地缘政治、涉台涉港涉疆、制裁的条目。"
+                            "不要解释哪些内容被排除，不要复述被删除的话题，也不要提及筛选命中原因。"
                         ),
                     }
                 )
@@ -551,9 +582,10 @@ def fetch_briefing(user_prompt: str, previous_stories=None) -> str:
                         "content": (
                             "上次输出未通过发布前硬校验，不能发布：\n- "
                             + "\n- ".join(validation_errors)
-                            + "\n请重新核查并完整重写。只能保留精确发布时间处于指定 48 小时窗口内、"
+                            + "\n请重新核查并完整重写。只能保留发布时间处于指定 48 小时窗口内、"
                               "且未在历史清单出现过的独立事件。若不足 3 条就少输出，"
-                              "不要用旧闻或重复事件补足；每条必须保留有效的 published_at 注释。"
+                              "不要用旧闻或重复事件补足。原文有精确时间就保留含时区时间，"
+                              "原文只有日期就只写日期；严禁编造时刻。每条必须保留有效的 published_at 注释。"
                         ),
                     }
                 )
