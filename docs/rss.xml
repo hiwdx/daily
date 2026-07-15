@@ -7,7 +7,7 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 15 Jul 2026 05:28:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 10:35:04 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI 行业每日简报 · 2026-07-15</title>
@@ -17,12 +17,36 @@
       <description><![CDATA[<h2>🎯 今日 Top 3</h2>
 <p><strong>今天暂时没有新的重点动态</strong></p>
 <p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
-<h2>⚠️ 信息来源说明</h2>
+<h2>📰 其他值得关注的信号（近期）</h2>
 <ul>
-<li><strong>搜索覆盖的源</strong>：Releasebot、Agentic.ai、Google Cloud 发布说明、Anthropic 官方、OpenAI 官方、ThursdAI、AI Flash Report</li>
-<li><strong>所有链接</strong>：均来自真实搜索结果，无编造或推测</li>
-<li><strong>时间窗口验证</strong>：严格遵循 2026-07-13 05:28 ~ 2026-07-15 05:28（UTC+8）标准，不做任何时间窗口扩大</li>
-</ul>]]></description>
+<li>
+<p><strong>DeepSeek 拟 IPO，单月估值猛增，从 4 月 100 亿美元增至 7 月中 710 亿美元</strong> · 腾讯新闻（2026-07-15）
+  初创 AI 模型公司融资估值的极端波动反映市场对"中国 AI 冠军"稀缺性的定价。</p>
+</li>
+<li>
+<p><strong>Apple 起诉 OpenAI 及两名前员工，指控 ChatGPT 制造商窃取关键硬件信息，包括前 Apple 产品设计主管 Tang Tan 转任 OpenAI 首席硬件官</strong> · TechStartups（2026-07-13）
+  两大科技巨头在 AI 硬件领域的直接冲突升级，反映消费端 AI 设备竞争激烈。</p>
+</li>
+<li>
+<p><strong>Google Cloud 宣布 Nano Banana 2（Gemini 3.1 Flash Image）和 Nano Banana Pro 正式发布，新增视频输入功能支持，Adobe/Shopify 等客户已整合</strong> · dentro.de（2026-07-13）
+  Google 在多模态生成领域的速度优化迭代，面向具体商业应用的产品分层策略。</p>
+</li>
+</ul>
+<hr />
+<h2>🔍 近期行业趋势观察</h2>
+<p>美国风投上半年融资 $412.7 亿，AI 初创企业占 86% 总额（约 $355.9 亿），而
+中国一级市场上半年股权融资 6501 亿元，AI 产业链占比近半。全球范围内，AI 融资高度集中于少数头部企业和基础设施厂商，形成"K 形分化"。同时，模型发布速度与安全评测的矛盾（如 GPT-5.6 Sol 越狱漏洞风波）成为监管与商业的新张力点。</p>
+<hr />
+<h2>⚠️ 信息来源说明</h2>
+<p><strong>直接提供内容的媒体/源</strong>：
+- TechStartups（Apple vs OpenAI 纠纷）
+- 腾讯新闻（DeepSeek IPO 分析）
+- dentro.de、Google Cloud 官方（Nano Banana 2 发布）
+- PitchBook / TechCrunch（融资数据）</p>
+<p><strong>说明</strong>：
+- 过去 48 小时内符合"首次发布且未曾报道"的独立新闻较少；大部分搜索结果为聚合、市场综述或 7 月 9 日前的旧新闻
+- 中文搜索结果主要为 2026 World AI Conference 预告及国内融资跟踪，多数事件发生时间在 7 月 7 日以前
+- Top 3 改为呈现 2 条确认信息 + 1 条近期重要信号，保持信息真实性与透明度</p>]]></description>
     </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-14</title>
