@@ -153,6 +153,43 @@ class HistoryTests(unittest.TestCase):
         self.assertIn("Google Vertex AI Release Notes", prompt)
         self.assertIn("聚合站、新闻摘要页和搜索结果页只能用于发现线索", prompt)
 
+    def test_prompt_prioritizes_prefetched_official_candidates(self):
+        candidates = [{
+            "source": "GitHub Changelog",
+            "title": "Security reviews now available in the GitHub Copilot app",
+            "url": "https://github.blog/changelog/2026-07-14-security-reviews",
+            "published_at": "2026-07-14T12:54:12+00:00",
+        }]
+        prompt = generate.build_user_prompt(official_candidates=candidates)
+        self.assertIn("官方订阅源已确认候选", prompt)
+        self.assertIn(candidates[0]["title"], prompt)
+        self.assertIn(candidates[0]["url"], prompt)
+
+
+class OfficialFeedTests(unittest.TestCase):
+    def setUp(self):
+        self.now = datetime(2026, 7, 15, 9, 0, tzinfo=timezone(timedelta(hours=8)))
+
+    def test_extracts_fresh_ai_entries_with_exact_links(self):
+        feed = b"""<rss><channel>
+          <item><title>Security reviews now available in GitHub Copilot</title>
+            <link>https://github.blog/changelog/2026-07-14-security-reviews</link>
+            <pubDate>Tue, 14 Jul 2026 12:54:12 +0000</pubDate></item>
+          <item><title>Unrelated storage update</title>
+            <link>https://example.com/2026-07-14-storage</link>
+            <pubDate>Tue, 14 Jul 2026 12:00:00 +0000</pubDate></item>
+        </channel></rss>"""
+        candidates = generate.parse_official_feed(feed, "GitHub Changelog", self.now)
+        self.assertEqual(len(candidates), 1)
+        self.assertIn("security-reviews", candidates[0]["url"])
+
+    def test_rejects_old_article_with_recently_updated_feed_date(self):
+        feed = b"""<rss><channel><item><title>Old AI model page updated</title>
+          <link>https://example.com/changelog/2026-06-10-old-ai-page</link>
+          <pubDate>Tue, 14 Jul 2026 12:00:00 +0000</pubDate>
+        </item></channel></rss>"""
+        self.assertEqual(generate.parse_official_feed(feed, "Test", self.now), [])
+
 
 class SensitiveContentTests(unittest.TestCase):
     def test_rejects_sensitive_exclusion_explanation(self):
@@ -162,6 +199,10 @@ class SensitiveContentTests(unittest.TestCase):
     def test_allows_non_political_china_product_news(self):
         text = "一家中国公司发布了新的多模态模型和开发者 API。"
         self.assertFalse(generate.contains_sensitive_politics(text))
+
+    def test_rejects_china_financing_and_valuation_narrative(self):
+        text = "中国一级市场的 AI 融资与估值快速上升，形成全球竞争格局。"
+        self.assertTrue(generate.contains_sensitive_politics(text))
 
 
 if __name__ == "__main__":

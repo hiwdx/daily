@@ -16,10 +16,12 @@ import re
 import sys
 import time
 from datetime import datetime, timezone, timedelta
-from email.utils import format_datetime
+from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
 from typing import Optional
 from urllib.parse import urlsplit, urlunsplit
+from urllib.request import Request, urlopen
+from xml.etree import ElementTree
 from xml.sax.saxutils import escape as xml_escape
 
 try:
@@ -123,12 +125,104 @@ SENSITIVE_POLITICS_PATTERNS = [
     r"中国.{0,10}(?:敏感|监管|政治|审查|治理)",
     r"(?:敏感|禁止|排除).{0,10}(?:内容|主题|条目|规则)",
     r"人工智能拟人化互动服务管理暂行办法",
+    r"(?:中国|国内).{0,24}(?:融资|估值|IPO|监管|政策|市场|冠军)",
+    r"(?:融资|估值|IPO).{0,24}(?:中国|国内)",
+    r"(?:美国.{0,30}中国|中国.{0,30}美国)",
+    r"DeepSeek.{0,24}(?:IPO|估值|监管)",
 ]
 
 
 def contains_sensitive_politics(text: str) -> bool:
     """Return True when the briefing touches disallowed CN/US political topics."""
     return any(re.search(pattern, text, re.IGNORECASE) for pattern in SENSITIVE_POLITICS_PATTERNS)
+
+
+OFFICIAL_UPDATE_FEEDS = (
+    ("GitHub Changelog", "https://github.blog/changelog/feed/"),
+    ("Cloudflare Changelog", "https://developers.cloudflare.com/changelog/rss/index.xml"),
+)
+_AI_UPDATE_RE = re.compile(
+    r"\b(?:AI|Copilot|agent|agents|MCP|model|models|LLM|inference|embedding|RAG)\b|Chat SDK",
+    flags=re.IGNORECASE,
+)
+_DATED_ARTICLE_PATH_RE = re.compile(r"/(20\d{2}-\d{2}-\d{2})(?:-|/)")
+
+
+def parse_official_feed(
+    xml_data: bytes,
+    source: str,
+    now: Optional[datetime] = None,
+) -> list[dict[str, str]]:
+    """Extract fresh AI-related entries from an official RSS feed."""
+    now = now or NOW
+    cutoff = now - timedelta(hours=FRESHNESS_HOURS)
+    try:
+        root = ElementTree.fromstring(xml_data)
+    except ElementTree.ParseError:
+        return []
+
+    candidates: list[dict[str, str]] = []
+    for item in root.findall(".//item"):
+        title = (item.findtext("title") or "").strip()
+        link = canonicalize_url(item.findtext("link") or "")
+        raw_pub_date = (item.findtext("pubDate") or "").strip()
+        if not title or not link or not raw_pub_date or not _AI_UPDATE_RE.search(title):
+            continue
+        if contains_sensitive_politics(title):
+            continue
+        try:
+            published_at = parsedate_to_datetime(raw_pub_date)
+        except (TypeError, ValueError):
+            continue
+        if published_at.tzinfo is None:
+            published_at = published_at.replace(tzinfo=timezone.utc)
+        if not cutoff <= published_at.astimezone(CST) <= now:
+            continue
+
+        # Some feeds bump pubDate when an old page is edited. If the article URL
+        # carries its original date, require that date to overlap the real window.
+        path_date_match = _DATED_ARTICLE_PATH_RE.search(urlsplit(link).path)
+        if path_date_match:
+            try:
+                path_date = datetime.strptime(path_date_match.group(1), "%Y-%m-%d").date()
+            except ValueError:
+                continue
+            if not cutoff.date() <= path_date <= now.date():
+                continue
+
+        candidates.append({
+            "source": source,
+            "title": title,
+            "url": link,
+            "published_at": published_at.isoformat(),
+        })
+    return candidates
+
+
+def get_official_candidates(
+    previous_stories: Optional[list[dict[str, str]]] = None,
+    now: Optional[datetime] = None,
+) -> list[dict[str, str]]:
+    """Fetch fresh candidates from official feeds, failing open per source."""
+    now = now or NOW
+    previous_urls = {story["url"] for story in (previous_stories or [])}
+    candidates: dict[str, dict[str, str]] = {}
+    for source, feed_url in OFFICIAL_UPDATE_FEEDS:
+        try:
+            request = Request(feed_url, headers={"User-Agent": "hiwd-daily/1.0"})
+            with urlopen(request, timeout=15) as response:
+                xml_data = response.read()
+        except Exception as error:
+            print(f"  ⚠️ Could not load {source} feed: {error}")
+            continue
+        for candidate in parse_official_feed(xml_data, source, now):
+            if candidate["url"] not in previous_urls:
+                candidates[candidate["url"]] = candidate
+    return sorted(
+        candidates.values(),
+        key=lambda candidate: candidate["published_at"],
+        reverse=True,
+    )[:20]
 
 _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
 
@@ -246,9 +340,23 @@ _USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完
 - **绝不允许扩大时间范围**：若合格新闻不足 3 条，就如实输出较少条目，并在“⚠️ 信息来源说明”中注明；不得采用 48 小时以前的内容"""
 
 
-def build_user_prompt(previous_stories=None) -> str:
+def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
     """Build the prompt with a complete history-based deduplication block."""
     prompt = _USER_PROMPT_TEMPLATE
+    if official_candidates:
+        candidate_list = "\n".join(
+            f"- {candidate['published_at']} | {candidate['source']} | "
+            f"{candidate['title']} | {candidate['url']}"
+            for candidate in official_candidates
+        )
+        candidate_block = (
+            "\n\n## 官方订阅源已确认候选（优先选入 Top 3）\n\n"
+            "以下候选由程序直接读取官方 RSS，已通过 48 小时窗口、AI 相关性、"
+            "历史 URL 去重和敏感内容初筛。请优先打开具体链接核查并从中选出最重要的条目；"
+            "只要确有用户或开发者价值，不要因为它来自 changelog 就降级。\n\n"
+            f"{candidate_list}"
+        )
+        prompt = prompt.replace("## 信息源优先级", candidate_block + "\n\n## 信息源优先级")
     if previous_stories:
         story_list = "\n".join(
             f"- {story['date']} | {story['title']} | {story['url']}"
@@ -1040,8 +1148,15 @@ def main() -> None:
     if previous_stories:
         print(f"🔍 Loaded {len(previous_stories)} previously reported stories for deduplication")
 
+    # Seed the model with fresh, exact article links from official high-frequency
+    # feeds. Web search still broadens coverage, but is no longer the only way
+    # important changelog entries reach the candidate pool.
+    official_candidates = get_official_candidates(previous_stories)
+    if official_candidates:
+        print(f"📥 Loaded {len(official_candidates)} fresh official feed candidates")
+
     # Build prompt and generate briefing via Claude
-    user_prompt = build_user_prompt(previous_stories)
+    user_prompt = build_user_prompt(previous_stories, official_candidates)
     briefing_md = fetch_briefing(user_prompt, previous_stories)
     print(f"✅ Received {len(briefing_md)} chars from Claude")
 
