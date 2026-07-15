@@ -7,7 +7,7 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 15 Jul 2026 10:35:04 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 10:40:28 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI 行业每日简报 · 2026-07-15</title>
@@ -17,8 +17,17 @@
       <description><![CDATA[<h2>🎯 今日 Top 3</h2>
 <p><strong>今天暂时没有新的重点动态</strong></p>
 <p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
+<h2>📰 其他值得看的</h2>
+<p>暂无符合条件的补充内容。</p>
+<hr />
+<h2>🔍 今日主题观察</h2>
+<p>无。</p>
+<hr />
 <h2>⚠️ 信息来源说明</h2>
-<p>今日内容正在重新核验，稍后更新。</p>]]></description>
+<p>经严格的 48 小时时间窗口校验（2026-07-13 10:40 至 2026-07-15 10:40）和历史去重检查，未发现符合收录标准的独立新闻事件。搜索结果多为：
+- 已在 2026-07-13 及更早报道过的内容（GPT-5.6、Claude Sonnet 5、Gemini 3.5 Flash 等）
+- 聚合站点、changelog 常规更新，或时间戳无法精确验证的内容
+- 发布时间超出 48 小时窗口的新闻</p>]]></description>
     </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-14</title>
