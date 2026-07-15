@@ -24,20 +24,55 @@
     </div>
 
     <!-- Briefing body -->
-    <h2>🎯 今日 Top 3</h2>
-<p><strong>今天暂时没有新的重点动态</strong></p>
-<p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
-<h2>📰 其他值得看的</h2>
-<p>暂无符合条件的补充内容。</p>
+    <h1>🎯 今日 Top 3</h1>
+<p><strong>1. GitHub Copilot 应用推出 /security-review 安全审计功能</strong></p>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-14-security-reviews-now-available-in-the-github-copilot-app">GitHub Copilot 应用公开预览 /security-review 命令，为代码变更提供 AI 驱动的漏洞扫描</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-14-security-reviews-now-available-in-the-github-copilot-app">GitHub Blog</a> · 2026-07-14</p>
+<!-- published_at: 2026-07-14T12:54:12+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<p>/security-review 分析当前工作区代码变更，返回按严重程度评分的高置信度安全发现、可应用的建议，以及针对性的修复视图，让开发者在代码上线前捕获注入漏洞、跨站脚本、不安全数据处理等关键问题</p>
+<ul>
+<li>这是 GitHub 将已有的 Copilot CLI 漏洞扫描能力集成到日常编码工作流的重要举措，补充 code scanning 和 secret scanning 的覆盖</li>
+</ul>
+<p>Copilot Free、Pro、Business、Enterprise 用户都可在公开预览期间使用此功能</p>
+<p><strong>产品技术视角</strong>：
+通过在编码环境内提供轻量级的按需检查，补充 GitHub code scanning、Dependabot 和 secret scanning 的覆盖范围</p>
 <hr />
-<h2>🔍 今日主题观察</h2>
-<p>无。</p>
+<p><strong>2. GitHub Copilot in Visual Studio — June 更新发布</strong></p>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-14-github-copilot-in-visual-studio-june-update">GitHub Copilot in Visual Studio June 更新：自定义 Agent、MCP 治理、Agent 技能支持</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-14-github-copilot-in-visual-studio-june-update">GitHub Blog</a> · 2026-07-15</p>
+<!-- published_at: 2026-07-15T00:01:24+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<p>开发者可定义专用 Copilot Agent 为 .agent.md 文件存储在仓库中，Agent 获得完整工作区感知、代码理解、工具和 MCP 连接能力，自动出现在 Agent 选择器中供团队使用</p>
+<p>MCP 服务器使用现遵循 GitHub 设定的允许名单策略，管理员可指定允许的 MCP 服务器，确保敏感数据控制和安全合规</p>
+<p>Agent 技能作为可复用指令集教导 Agent 执行特定任务，在仓库或用户配置文件中定义，Copilot 自动发现并应用</p>
+<p><strong>产品技术视角</strong>：Visual Studio 中的 Agent 框架演进支持分布式团队工作流，通过 MCP 治理强化企业安全边界</p>
 <hr />
-<h2>⚠️ 信息来源说明</h2>
-<p>经严格的 48 小时时间窗口校验（2026-07-13 10:40 至 2026-07-15 10:40）和历史去重检查，未发现符合收录标准的独立新闻事件。搜索结果多为：
-- 已在 2026-07-13 及更早报道过的内容（GPT-5.6、Claude Sonnet 5、Gemini 3.5 Flash 等）
-- 聚合站点、changelog 常规更新，或时间戳无法精确验证的内容
-- 发布时间超出 48 小时窗口的新闻</p>
+<p><strong>3. GitHub Copilot for JetBrains 扩展 BYOK 能力</strong></p>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-14-github-copilot-for-jetbrains-expands-byok-capabilities">GitHub Copilot for JetBrains 扩展 BYOK 功能，支持自带模型提供商</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-14-github-copilot-for-jetbrains-expands-byok-capabilities">GitHub Blog</a> · 2026-07-14</p>
+<!-- published_at: 2026-07-14T23:37:29+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>JetBrains IDE 用户现可通过 Bring Your Own Key（BYOK）功能连接自有模型提供商，扩大企业对 Copilot 部署的定制空间</li>
+<li>BYOK 能力扩展至 Copilot Business 和 Enterprise，让团队灵活选择底层模型实现</li>
+<li>这一更新强化了 JetBrains 在企业开发工具生态中的灵活性，支持多模型混合部署策略</li>
+</ul>
+<p><strong>产品技术视角</strong>：BYOK 扩展赋予企业更大的模型选择权和数据隐私控制，推进异构模型生态的实际落地</p>
+<hr />
+<h1>📰 其他值得看的（1 条）</h1>
+<ul>
+<li><strong><a href="https://github.blog/changelog/2026-07-14-code-scanning-shows-ai-security-detections-on-pull-requests">GitHub Code Scanning 在 Pull Request 中展示 AI 安全检测</a></strong> · GitHub Blog · 2026-07-14
+  Code scanning 的 pull request 视图现展示 AI 检测的安全发现，提升漏洞发现的端到端可见性和审查效率</li>
+</ul>
+<hr />
+<h1>⚠️ 信息来源说明</h1>
+<p>本次简报基于严格的 48 小时窗口校验（2026-07-13 10:43 至 2026-07-15 10:43）和历史重复排除。</p>
+<p><strong>直接来源</strong>：GitHub Blog（官方产品 changelog）</p>
+<p>过去 48 小时内，官方 RSS 订阅源提供的 4 条候选均通过时间窗口和去重校验，Top 3 从中选取，其余 1 条列入其他值得看。</p>
 
     <!-- Archive -->
     <div class="archive-section">
