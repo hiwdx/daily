@@ -716,6 +716,75 @@ def format_empty_top_state(briefing: str) -> str:
     return briefing[:section_match.start()] + replacement + briefing[section_match.end():]
 
 
+def is_usage_limit_error(error: Exception) -> bool:
+    """Return True for Anthropic's non-retryable monthly usage-limit error."""
+    message = str(error).lower()
+    return "usage limit" in message or "usage limits" in message or "regain access" in message
+
+
+def build_official_feed_fallback(
+    official_candidates: Optional[list[dict[str, str]]] = None,
+) -> str:
+    """Build a conservative briefing from verified feed metadata only.
+
+    This keeps the site current when the text-generation API is unavailable.
+    It deliberately avoids claims that are not present in the feed metadata.
+    """
+    selected: list[dict[str, str]] = []
+    seen_publishers: set[str] = set()
+    for candidate in official_candidates or []:
+        url = candidate.get("url", "")
+        family = _source_family(url)
+        if not url or family in seen_publishers:
+            continue
+        selected.append(candidate)
+        seen_publishers.add(family)
+        if len(selected) == 3:
+            break
+
+    if not selected:
+        return (
+            "### 🎯 今日 Top 3\n\n"
+            "**今天暂时没有新的重点动态**\n\n"
+            "过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。"
+            "我们会继续关注，有重要进展会及时更新。\n\n"
+            "### 📰 其他值得看的\n\n"
+            "### ⚠️ 信息来源说明\n\n"
+            "- 本期检查了官方与可信媒体订阅源，未发现可发布的新条目。\n"
+        )
+
+    blocks: list[str] = []
+    sources: list[str] = []
+    for candidate in selected:
+        source = candidate.get("source", "官方订阅源")
+        title = candidate.get("title", "AI 产品与开发者生态更新")
+        url = candidate["url"]
+        published_at = candidate.get("published_at", "")
+        source_date = published_at[:10]
+        sources.append(source)
+        blocks.append(
+            f"**标题**：[{title}]({url})\n\n"
+            f"**来源**：[{source}]({url}) · {source_date}\n\n"
+            f"<!-- published_at: {published_at} -->\n\n"
+            "**摘要**：\n\n"
+            "- 官方或可信媒体订阅源确认了这项最新动态\n"
+            "- 条目发布于最近 48 小时，具备产品或开发者生态参考价值\n"
+            "- 相关用户与开发者可通过原文了解完整细节\n\n"
+            "**产品技术视角**：本条仅依据已核验的订阅源元数据发布，"
+            "不对原文未提供的细节作额外推断。\n"
+        )
+
+    return (
+        "### 🎯 今日 Top 3\n\n"
+        + "\n---\n\n".join(blocks)
+        + "\n\n### 📰 其他值得看的\n\n"
+        + "### ⚠️ 信息来源说明\n\n"
+        + "- 直接提供内容的源："
+        + "、".join(sources)
+        + "\n- 所有链接均来自已核验的官方或可信媒体订阅源。\n"
+    )
+
+
 # ── Claude API ────────────────────────────────────────────────────────────────
 def _api_create_with_retry(client, system: str, messages: list, max_retries: int = 3):
     """Call client.messages.create with exponential back-off for transient errors.
@@ -749,7 +818,7 @@ def _api_create_with_retry(client, system: str, messages: list, max_retries: int
             raise
         except anthropic.BadRequestError as e:
             msg = str(e)
-            if "usage limits" in msg or "regain access" in msg:
+            if is_usage_limit_error(e):
                 print(f"❌ API usage limit reached — go to console.anthropic.com/settings/limits to increase your monthly spend limit. {e}", file=sys.stderr)
             else:
                 print(f"❌ Bad request error: {e}", file=sys.stderr)
@@ -1324,8 +1393,27 @@ def main() -> None:
 
     # Build prompt and generate briefing via Claude
     user_prompt = build_user_prompt(previous_stories, official_candidates)
-    briefing_md = fetch_briefing(user_prompt, previous_stories, official_candidates)
-    print(f"✅ Received {len(briefing_md)} chars from Claude")
+    try:
+        briefing_md = fetch_briefing(user_prompt, previous_stories, official_candidates)
+        print(f"✅ Received {len(briefing_md)} chars from Claude")
+    except anthropic.BadRequestError as error:
+        if not is_usage_limit_error(error):
+            raise
+        briefing_md = build_official_feed_fallback(official_candidates)
+        fallback_errors = validate_briefing(
+            briefing_md,
+            previous_stories,
+            official_candidates=official_candidates,
+        )
+        if fallback_errors:
+            raise RuntimeError(
+                "Official-feed fallback failed validation: "
+                + "; ".join(fallback_errors)
+            ) from error
+        print(
+            f"⚠️ Claude usage limit reached; publishing {len(parse_top_stories(briefing_md))} "
+            "verified feed item(s) instead"
+        )
 
     # Add today to archive entries BEFORE rendering so it appears in the nav
     # and the JS "今日" highlight can find the entry.

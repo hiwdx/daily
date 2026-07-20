@@ -97,6 +97,10 @@ jobs:
             echo "✅ 验证通过：${TODAY} 简报已存在"
           else
             echo "❌ 验证失败：${TODAY} 简报仍缺失，创建告警 Issue"
+            gh label create "briefing-missing" \
+              --color "D73A4A" \
+              --description "每日简报未能按时生成" \
+              --force
             EXISTING=$(gh issue list --label "briefing-missing" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
             if [ -z "$EXISTING" ]; then
               gh issue create \

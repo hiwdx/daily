@@ -271,6 +271,50 @@ class OfficialFeedTests(unittest.TestCase):
         </channel></rss>"""
         self.assertEqual(generate.parse_official_feed(feed, "Media", self.now), [])
 
+    def test_builds_valid_fallback_from_distinct_publishers(self):
+        candidates = [
+            {
+                "source": "GitHub Changelog",
+                "title": "Copilot usage metrics available",
+                "url": "https://github.blog/changelog/2026-07-15-copilot-metrics",
+                "published_at": "2026-07-15T00:30:00+00:00",
+            },
+            {
+                "source": "Vercel Changelog",
+                "title": "AI Gateway adds a new model",
+                "url": "https://vercel.com/changelog/ai-gateway-new-model",
+                "published_at": "2026-07-15T00:15:00+00:00",
+            },
+        ]
+        text = generate.build_official_feed_fallback(candidates)
+        self.assertEqual(len(generate.parse_top_stories(text)), 2)
+        self.assertEqual(
+            generate.validate_briefing(
+                text,
+                now=self.now,
+                official_candidates=candidates,
+            ),
+            [],
+        )
+
+    def test_fallback_deduplicates_publishers(self):
+        candidates = [
+            {
+                "source": "GitHub Changelog",
+                "title": f"Copilot update {index}",
+                "url": f"https://github.blog/changelog/2026-07-15-copilot-{index}",
+                "published_at": f"2026-07-15T00:0{index}:00+00:00",
+            }
+            for index in range(2)
+        ]
+        text = generate.build_official_feed_fallback(candidates)
+        self.assertEqual(len(generate.parse_top_stories(text)), 1)
+
+    def test_fallback_has_reader_facing_empty_state_without_candidates(self):
+        text = generate.build_official_feed_fallback([])
+        self.assertIn("今天暂时没有新的重点动态", text)
+        self.assertEqual(generate.validate_briefing(text, now=self.now), [])
+
 
 class SensitiveContentTests(unittest.TestCase):
     def test_rejects_sensitive_exclusion_explanation(self):
