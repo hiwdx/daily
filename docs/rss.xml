@@ -7,8 +7,56 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 21 Jul 2026 05:39:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 05:37:38 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-22</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-22.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-22.html</guid>
+      <pubDate>Wed, 22 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-21-gemini-3-6-flash-is-now-available-in-github-copilot">Gemini 3.6 Flash is now available in GitHub Copilot</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-21-gemini-3-6-flash-is-now-available-in-github-copilot">GitHub Changelog</a> · 2026-07-21</p>
+<!-- published_at: 2026-07-21T15:04:31+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/blog/vercel-agent">Introducing the new Vercel Agent</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/blog/vercel-agent">Vercel Changelog</a> · 2026-07-21</p>
+<!-- published_at: 2026-07-21T04:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/nvidia/state-of-simulation-for-physical-ai">The State of Simulation for Physical AI: An Overview</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/nvidia/state-of-simulation-for-physical-ai">Hugging Face Blog</a> · 2026-07-21</p>
+<!-- published_at: 2026-07-21T20:00:27+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<h3>📰 其他值得看的</h3>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：GitHub Changelog、Vercel Changelog、Hugging Face Blog</li>
+<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-21</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-21.html</link>
@@ -838,92 +886,6 @@ Anthropic 推出 Claude Sonnet 5，性能接近 Opus 4.8，前两个月享受优
 - <strong>BigGo Finance</strong>（Google Gemini 延期）
 - <strong>Crescendo.ai、TechStartups、LLM Stats</strong>（产品发布与融资数据）</p>
 <p><strong>注</strong>：搜索结果主要覆盖过去 48 小时内的已确认新闻。7 月 9 日本身未检测到新的重大发布或突破性公告；上述内容聚焦于 7 月 7-9 日期间的关键信号。关于即将发生的事件（如 GPT-5.6 本周发布、Gemini 3.5 Pro 7 月 17 日推出），链接已确认为真实 URL 或主域名。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-08</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-08.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-08.html</guid>
-      <pubDate>Wed, 08 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>标题</strong>：
-Claude Fable 5 开始计费——所有用户从今日起需使用积分支付</p>
-<p><strong>来源</strong>：<a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-7-2026">Build Fast with AI</a> · 2026-07-08</p>
-<p><strong>摘要</strong>：</p>
-<p>从今日起，所有订阅用户访问 Claude Fable 5 需要使用积分支付，不再包含在订阅费中；任何路由至 claude-fable-5 的工作流将生成额外的信用扣费</p>
-<p>Claude Code 在 SWE-bench Pro 上达到 63.2%（Sonnet 5）和 69.2%（Opus 4.8），结合 Anthropic 的 Constitutional AI 安全训练，成为企业信任度最高的 agentic 编程工具</p>
-<p>Google CFO 承认 Anthropic 几乎 100% 使用 AI 完成开发工作，而 Google 仅为 50%，这直接反映了 Claude 在真实生产环境中的竞争优势</p>
-<p><strong>产品技术视角</strong>：
-Claude 的 agentic 编程性能已显著超越竞品，但计费模式变化对开发团队预算有直接冲击</p>
-<hr />
-<p><strong>标题</strong>：
-Gemini 3.5 Pro 开始铺开——Google 最强模型进入开发者预览阶段</p>
-<p><strong>来源</strong>：<a href="https://unrot.co/blogs/today-top-10-ai-news-july-6-2026">Unrot</a> · 2026-07-06</p>
-<p><strong>摘要</strong>：</p>
-<p>Google Gemini 3.5 Pro 在经历五月和六月两次交付延期后，现已开始在 Vertex AI 企业预览阶段扩大推出，并逐步向开发者平台发布</p>
-<p>该模型提供 200 万 token 上下文窗口——全球生产级模型最大，是 Fable 5 和 Claude Opus 4.8 的两倍</p>
-<p>标准层定价约为 $1.25/百万输入 token、$10/百万输出 token，是目前价格最便宜的前沿级模型，显著低于 Sol、Fable 5 和 Opus 4.8</p>
-<p><strong>产品技术视角</strong>：
-200 万 token 上下文窗口配合最低价格定位，Google 试图用规模和成本优势补强性能竞争</p>
-<hr />
-<p><strong>标题</strong>：
-UN AI 治理高层对话在日内瓦启动——全球 169 国共商国际 AI 规则框架</p>
-<p><strong>来源</strong>：<a href="https://unrot.co/blogs/today-top-10-ai-news-july-6-2026">Unrot</a> · 2026-07-06</p>
-<p><strong>摘要</strong>：</p>
-<p>首届联合国全球 AI 治理对话于 7 月 6 日在日内瓦开幕，为期两天，紧接其后是 ITU AI for Good 峰会和 UN AI 委员会首次会议</p>
-<p>新成立的 UN AI for Good Global Commission 首次在同一治理机构中汇聚国家首脑与 AI 公司 CEO，共同主席为 Salesforce CEO Marc Benioff 和卢旺达总统，成员包括 Jensen Huang、Andy Jassy、Brad Smith 及多国政要</p>
-<p>该委员会的使命涵盖负责任的 AI 解决方案、为 22 亿无可靠互联网接入的人口提供 AI 访问权，以及制定国际治理标准</p>
-<p><strong>产品技术视角</strong>：政策与治理层面的突破，多边协调正式纳入 AI 行业框架，长期影响深远</p>
-<hr />
-<h2>📰 其他值得看的（5-8 条）</h2>
-<ul>
-<li><strong><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-7-2026">Z.ai 推出 ZCode——开源 agentic 编程工具挑战 Claude Code</a></strong> · Build Fast with AI</li>
-</ul>
-<p>Zhipu AI 旗下 Z.ai 发布 ZCode，定位为首个开源前沿 agentic 编程环境，API 价格仅 $1.40/$4.40（相比 Sonnet 5 的 $2/$10 便宜 30-50%），明确针对非美国源模型依赖的团队</p>
-<ul>
-<li><strong><a href="https://aifundingtracker.com/meta-ai-news/">Meta 宣布启动 Meta Compute——云基础设施新业务反攻 AWS/Azure</a></strong> · AI Funding Tracker</li>
-</ul>
-<p>Meta 于 7 月 1 日宣布推出 Meta Compute，向外部客户出售闲置 AI 算力，直接与 AWS、Microsoft Azure 和 Google Cloud 竞争，标志着 Meta 从模型消费者转向基础设施提供商</p>
-<ul>
-<li><strong><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-7-2026">Gemini 3.5 Flash 全球发布——速度与成本优化新标杆</a></strong> · 多家媒体</li>
-</ul>
-<p>Google 推出 Gemini 3.5 Flash，并在 GitHub Copilot 中集成开源编码模型 Kimi K2.7，覆盖实时视频理解和高效编程工作流</p>
-<ul>
-<li><strong><a href="https://www.buildfastwithai.com/blogs/best-ai-models-july-2026-ranked">OpenAI GPT-5.6 Terra 系列即将全面上线——中层模型重塑价格战</a></strong> · Build Fast with AI</li>
-</ul>
-<p>OpenAI 承诺在"接下来几周"推出 GPT-5.6 Sol/Terra/Luna 的广泛访问，其中 Terra 定价 $2.50/$15 直接对标 Sonnet 5 介绍价，Luna 以 $1/$6 重新定义成本层</p>
-<ul>
-<li><strong><a href="https://www.aiapps.com/blog/top-ai-news-july-breakthroughs-launches-trends/">xAI Voice Agent Builder 上线——秒级部署语音 AI 代理</a></strong> · AIapps</li>
-</ul>
-<p>xAI 推出零代码 Voice Agent Builder，支持两分钟内部署生产就绪的语音代理，定价 $0.05/音频分钟加 $0.01/电话分钟</p>
-<ul>
-<li><strong><a href="https://www.aiapps.com/blog/top-ai-news-july-breakthroughs-launches-trends/">South Korea 公布 $880 亿 AI 芯片十年投资计划</a></strong> · AIapps</li>
-</ul>
-<p>韩国宣布十年 AI 和半导体战略投资，Samsung 和 SK Hynix 承诺投入 $518 亿用于新芯片制造设施建设</p>
-<ul>
-<li><strong><a href="https://unrot.co/blogs/today-top-10-ai-news-july-6-2026">Claude Mythos 发现 Squidbleed 漏洞——开源代理首次识别重要安全缺陷</a></strong> · Unrot</li>
-</ul>
-<p>CVE-2026-47729（Squidbleed）是开源 Squid 代理中的 29 年历史内存泄漏漏洞，首次由 Anthropic 的 Claude Mythos 在 Project Glasswing 授权安全审计中发现，表明 AI 代理已能执行真实安全研究任务</p>
-<ul>
-<li><strong><a href="https://www.buildfastwithai.com/blogs/best-ai-models-july-2026-ranked">GitLab 集成 Claude Opus 4.8 代码推理能力——企业 DevOps 提速</a></strong> · 多源</li>
-</ul>
-<p>Claude Opus 4.8 在 SWE-bench Pro 上达到 69.2% 的编程能力，成为企业代码工具链的首选集成方案</p>
-<hr />
-<h2>🔍 今日主题观察</h2>
-<p>July 2026 呈现三大并行趋势：agentic AI 从测试转向付费生产（Claude Code、xAI Voice Agent、ZCode 等工具全部上线或更新），访问权限同时收紧（ID 验证、计费机制、受限预览），基础设施支出空前膨胀（Meta Compute、Google Vertex 扩容、韩国 $880 亿投资）。简言之，AI 工具越来越实用，同时越来越贵、越来越严格。</p>
-<p>核心信号：agentic AI 已从演示阶段进入商业化，定价与访问权限成为竞争维度与否一样重要，而底层基础设施与政策框架则成为能否快速迭代的制约因素。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p><strong>直接提供内容的主要源</strong>：
-- Build Fast with AI（日内容追踪最新、最深度）
-- Unrot
-- AIapps
-- AI Funding Tracker
-- Anthropic 官方博客（Claude Fable 5 计费政策）
-- UN News（治理对话官方信息）</p>
-<p><strong>链接来源说明</strong>：
-本简报中的所有链接均来自搜索结果中的真实 URL。部分链接为主域名占位符（如 openai.com、anthropic.com），完整文章路径已在引用中通过明确的日期和事件关联进行定位，可直接访问相关媒体网站获取完整报道。</p>
-<hr />
-<p>✅ <strong>简报已完成</strong> | 覆盖范围：2026-07-06 至 2026-07-08（最近 48 小时核心动态）</p>]]></description>
     </item>
   </channel>
 </rss>
