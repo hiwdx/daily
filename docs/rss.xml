@@ -7,8 +7,56 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 22 Jul 2026 05:37:38 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 05:35:05 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-23</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-23.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-23.html</guid>
+      <pubDate>Thu, 23 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-22-new-copilot-usage-metrics-impact-dashboard">New Copilot usage metrics impact dashboard</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-22-new-copilot-usage-metrics-impact-dashboard">GitHub Changelog</a> · 2026-07-22</p>
+<!-- published_at: 2026-07-22T16:21:47+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-22-mcp-codemode-updates">Agents, Workers - Agents SDK reduces MCP schema conversion, adds exposure controls for MCP in Think and Code Mode SDK adds direct host APIs</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-22-mcp-codemode-updates">Cloudflare Changelog</a> · 2026-07-22</p>
+<!-- published_at: 2026-07-22T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/ai-gateway-now-supports-streaming-transcription">AI Gateway now supports streaming transcription</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/ai-gateway-now-supports-streaming-transcription">Vercel Changelog</a> · 2026-07-22</p>
+<!-- published_at: 2026-07-22T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<h3>📰 其他值得看的</h3>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
+<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-22</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-22.html</link>
@@ -817,75 +865,6 @@ GLM-5.2 在 SWE-bench Pro 上达 62.1% 超越 GPT-5.5 的 58.6%，并携带 MIT 
 - <strong>Skycrumbs Blog</strong>、<strong>LLM Stats</strong>（模型发布跟踪）</p>
 <p>所有链接均为搜索结果中的真实 URL 或已验证的主域名。</p>
 <p><strong>数据时间范围</strong>：由于 2026-07-10 当天具体内容有限，本简报主要整合 2026-07-07 至 2026-07-09 最重要的三大突破，确保信息的时效性和准确性。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-09</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-09.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-09.html</guid>
-      <pubDate>Thu, 09 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>标题</strong>：
-Google DeepMind 将 Gemini 3.5 Pro 发布延期至 7 月 17 日，放弃现有架构进行完全重建</p>
-<p><strong>来源</strong>：<a href="https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a">BigGo Finance</a> · 2026-07-07</p>
-<p><strong>摘要</strong>：</p>
-<p>Google 放弃 Gemini 2.5 Pro 架构，将其新一代模型进行完整重新设计</p>
-<p>新模型目标改善数学推理、SVG 生成与图像质量，引入 200 万 token 上下文窗口与 Deep Think 推理层以应对 OpenAI GPT-5.6 和 Anthropic Fable 5 的竞争</p>
-<p>延迟反映了 DeepMind 内部挑战和前沿 AI 领域的激烈竞争</p>
-<p><strong>产品技术视角</strong>：架构级重建而非迭代升级，说明 Google 对现有方向的根本性调整以及对推理与多模态生成能力的重新定位。</p>
-<hr />
-<p><strong>标题</strong>：
-Future of Life Institute 发布最新 AI 安全指数，Anthropic 排名第一但仅获 C+，OpenAI 从 C+ 下滑至 C</p>
-<p><strong>来源</strong>：<a href="https://time.com/article/2026/07/07/ai-safety-rankings-openai-anthropic-meta/">TIME</a> · 2026-07-07</p>
-<p><strong>摘要</strong>：</p>
-<p>评测机构对 AI 公司从部署前测试到高级系统控制的风险管理进行评分</p>
-<p>包括 Anthropic、OpenAI、Google DeepMind 和 Meta 在内的主要公司在部分安全措施上"改变目标"，削弱了先前的承诺</p>
-<p>没有公司排名超过 C+</p>
-<p><strong>产品技术视角</strong>：即使在规制环境下，行业整体安全承诺呈下降趋势，反映出企业在速度与合规之间的权衡加剧。</p>
-<hr />
-<p><strong>标题</strong>：
-Anthropic 推出 Claude Sonnet 5，性能接近 Opus 4.8，前两个月享受优惠定价</p>
-<p><strong>来源</strong>：<a href="https://thursdai.news/releases/2026-07">ThursdAI</a> · 2026-07-01</p>
-<p><strong>摘要</strong>：</p>
-<p>Sonnet 5 定价为 $2/$10 per million tokens（至 8 月 31 日）</p>
-<p>市场反应分化：高级用户认为其性能与价格不足以替代 Opus，普通用户认为性价比优异；新 tokenizer 可能增加 35% 的 token 消耗</p>
-<p>Fable 5 于 7 月 1 日全球恢复，美国出口管制在 19 天后解除，增强了网络安全分类器</p>
-<p><strong>产品技术视角</strong>：Sonnet 5 策略对标"中端+高速"路线，但新 tokenizer 成本效益待验证；Fable 5 恢复标志着政策驱动的模型访问限制成为常态。</p>
-<hr />
-<h2>📰 其他值得看的</h2>
-<ul>
-<li><strong><a href="https://thursdai.news/releases/2026-07">Google 推出 NanoBanana 2 Lite 图像生成，4秒内生成，成本 $0.034/1000 张</a></strong> · ThursdAI</li>
-</ul>
-<p>质量超越原版 NanoBanana，速度大幅提升，Interactions API 同周正式上线</p>
-<ul>
-<li><strong><a href="https://thursdai.news/releases/2026-07">Base44 发布 Base 1 自有编程 LLM，集成"活力编码"平台</a></strong> · ThursdAI</li>
-</ul>
-<p>基于数千万真实应用交互训练，自动路由已将任务指向 Base 1 处理</p>
-<ul>
-<li><strong><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates">Qualcomm 洽商收购 Tenstorrent，估值 80-100 亿美元</a></strong> · Crescendo.ai</li>
-</ul>
-<p>Tenstorrent 采用开源 RISC-V 芯片设计并拥有 Jim Keller 团队支持，收购将强化 Qualcomm 在 AI 硬件领域的竞争力</p>
-<ul>
-<li><strong><a href="https://techstartups.com/2026/07/03/top-tech-news-today-july-3-2026/">全球风投 H1 2026 融资额创纪录 510 亿美元，OpenAI 和 Anthropic 占比 43%</a></strong> · TechStartups</li>
-</ul>
-<p>AI 主导融资浪潮，头部两家公司融资额占全球初创融资总额近半</p>
-<ul>
-<li><strong><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates">Google 发布 Gemini 2.5 Pro 与 Deep Think 推理模式</a></strong> · Crescendo.ai</li>
-</ul>
-<p>GPQA Diamond 82.4%、MMLU-Pro 89.8%，超越 GPT-5.5 与 Fable 5 科学基准，采用并行思维与 200 万 token 上下文</p>
-<ul>
-<li><strong><a href="https://llm-stats.com/ai-news">OpenAI GPT-5.6 获得美国商务部绿灯，本周预期广泛发布</a></strong> · LLM Stats</li>
-</ul>
-<p>美国商务部已批准 OpenAI 对 GPT-5.6 的全面推出，公司预计本周完成广泛发布</p>
-<hr />
-<h2>🔍 今日主题观察</h2><div class="theme-observation"><p class="theme-intro">过去 48 小时反映出 AI 行业的三大信号：</p><ul class="theme-list"><li><strong>架构重设成为竞争常态</strong>——Google 完全重建 Gemini 3.5 Pro 而非迭代，说明前沿模型的改进已触及现有架构天花板。<strong>安全评分倒退与发布加速的矛盾</strong>——尽管 Future of Life Institute 评分全面下滑，但各家公司的产品发布节奏不减，反映出商业压力对风险管理承诺的侵蚀。<strong>政策驱动的市场分割</strong>——Fable 5 的出口管制与解除、GPT-5.6 的政府协调发布，标志着边界 AI 模型的访问权限正被政府机构逐步纳入战略管制，而非纯市场机制。</li></ul></div>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p>本简报直接提供内容的源头：
-- <strong>ThursdAI</strong>（产品发布汇总）
-- <strong>TIME、WBUR</strong>（AI 安全指数评测）
-- <strong>BigGo Finance</strong>（Google Gemini 延期）
-- <strong>Crescendo.ai、TechStartups、LLM Stats</strong>（产品发布与融资数据）</p>
-<p><strong>注</strong>：搜索结果主要覆盖过去 48 小时内的已确认新闻。7 月 9 日本身未检测到新的重大发布或突破性公告；上述内容聚焦于 7 月 7-9 日期间的关键信号。关于即将发生的事件（如 GPT-5.6 本周发布、Gemini 3.5 Pro 7 月 17 日推出），链接已确认为真实 URL 或主域名。</p>]]></description>
     </item>
   </channel>
 </rss>
