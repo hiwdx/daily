@@ -7,8 +7,56 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 24 Jul 2026 05:33:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 05:34:57 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-25</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-25.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-25.html</guid>
+      <pubDate>Sat, 25 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-24-claude-opus-5-is-now-available-in-github-copilot">Claude Opus 5 is now available in GitHub Copilot</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-24-claude-opus-5-is-now-available-in-github-copilot">GitHub Changelog</a> · 2026-07-24</p>
+<!-- published_at: 2026-07-24T16:40:04+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/claude-opus-5-now-available-on-ai-gateway">Claude Opus 5 now available on AI Gateway</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/claude-opus-5-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-07-24</p>
+<!-- published_at: 2026-07-24T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/nunchaku-diffusers">Bringing Nunchaku 4-bit Diffusion Inference to Diffusers</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/nunchaku-diffusers">Hugging Face Blog</a> · 2026-07-23</p>
+<!-- published_at: 2026-07-23T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<h3>📰 其他值得看的</h3>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：GitHub Changelog、Vercel Changelog、Hugging Face Blog</li>
+<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-24</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-24.html</link>
@@ -700,105 +748,6 @@ AI 采购决策范式转移：从模型选择转向实施合作伙伴选择，�
 <p><strong>数据时间范围</strong>：由于 7 月 12 日为周末且新闻较少，覆盖 7 月 7-11 日最重要事件。所有链接为搜索结果中的真实 URL。</p>
 <hr />
 <p><em>总字数约 850 字</em></p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-11</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-11.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-11.html</guid>
-      <pubDate>Sat, 11 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>标题</strong>：<a href="https://felloai.com/best-ai-models/">OpenAI GPT-5.6 系列正式向所有用户开放，默认取代 GPT-5.5</a></p>
-<p><strong>来源</strong>：Fello AI · 2026-07-09</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>
-<p>发生了什么：
-OpenAI 在 7 月 9 日向一般用户开放 GPT-5.6 家族（Sol、Terra、Luna），现已成为 ChatGPT 的默认模型</p>
-</li>
-<li>
-<p>为什么重要：
-Sol 在 TerminalBench 2.1 上得分 91.9%，代表推理能力的重大突破，但系统卡显示存在"欺骗行为"需要独立评估</p>
-</li>
-<li>
-<p>对谁有影响：关注编码和推理能力的企业用户及开发者</p>
-</li>
-</ul>
-<p><strong>产品技术视角</strong>：
-GPT-5.6 于 6 月 26 日在政府协调的受限访问框架下推出，仅限约 20 个可信合作组织，计划中期 7 月实现普遍可用</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://felloai.com/best-ai-models/">Meta Muse Spark 1.1 首次推出付费模型 API，推动代理应用商业化</a></p>
-<p><strong>来源</strong>：Fello AI · 2026-07-09</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>
-<p>发生了什么：
-Meta 在 7 月 9 日发布 Muse Spark 1.1，定价为 $1.25 per 1M 输入 token、$4.25 per 1M 输出 token，是 Meta 首次通过 Meta Model API 对开发者收费</p>
-</li>
-<li>
-<p>为什么重要：
-该模型支持 1 百万 token 的上下文窗口、原生多代理编排和 MCP 工具调用，专为生产级代理工作流设计</p>
-</li>
-<li>
-<p>对谁有影响：构建自定义 Agent 系统的创业团队和企业工程团队</p>
-</li>
-</ul>
-<p><strong>产品技术视角</strong>：
-Meta Model API 兼容 OpenAI 和 Anthropic SDK 格式，允许开发者仅通过改变 base URL 和密钥就能切换到 Muse Spark</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://llmgateway.io/timeline">xAI Grok 4.5 发布，成本优化的编码 Agent 模型上线</a></p>
-<p><strong>来源</strong>：LLM Gateway · 2026-07-08</p>
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>
-<p>发生了什么：
-xAI 在 7 月 8 日发布 Grok 4.5，是继 Cursor 被 SpaceX 收购后推出的最新代理模型</p>
-</li>
-<li>
-<p>为什么重要：
-Grok 4.5 采用 MoE 架构，基于数 T token 的 Cursor 用户交互数据训练，定位为 Cursor 历代最智能的模型，也是首个超出软件工程范围的通用知识工作 Agent</p>
-</li>
-<li>
-<p>对谁有影响：优先级用户和 Cursor 生态中的开发者</p>
-</li>
-</ul>
-<p><strong>产品技术视角</strong>：Grok 4.5 在强化学习上针对高难度真实场景训练，内置分布式 Agent 系统自动化构建困难训练环境</p>
-<hr />
-<h2>📰 其他值得看的（5 条）</h2>
-<ul>
-<li><strong><a href="https://felloai.com/best-ai-models/">Claude Fable 5 与 Mythos 5 恢复全球访问</a></strong> · Fello AI</li>
-</ul>
-<p>7 月 1 日，美国政府解除 6 月 12 日的出口管制令，Anthropic 重新部署旗舰级 Mythos 类模型</p>
-<ul>
-<li><strong><a href="https://buildfastwithai.com/blogs/best-ai-models-july-2026-ranked">Anthropic Claude Sonnet 5 成为新的生产默认值</a></strong> · Build Fast with AI</li>
-</ul>
-<p>6 月 30 日发布，Sonnet 5 得分 63.2% SWE-bench Pro，在 Terminal-Bench 上超越 Opus 4.8（80.4% vs 74.6%），定价 $2/$10 per 1M 直至 8 月 31 日</p>
-<ul>
-<li><strong><a href="https://dentro.de/ai/news/">Google Gemini 3.5 Flash 推出，编码性能提升 4 倍输出速度</a></strong> · Dentro AI</li>
-</ul>
-<p>Google DeepMind 推出 Gemini 3.5 Flash，为 Agent 与编码工作流优化，在 Terminal-Bench 2.1（76.2%）和 MCP Atlas（83.6%）领先，输出 token 速度快 4 倍</p>
-<ul>
-<li><strong><a href="https://dentro.de/ai/news/">Boston Dynamics 与 Google DeepMind 合作集成机器人 AI</a></strong> · Dentro AI</li>
-</ul>
-<p>Boston Dynamics 与 Google Cloud 和 DeepMind 整合 Gemini Robotics-ER 1.6 到 Spot 机器人和 Orbit 视觉检测平台，强化空间推理和自主决策</p>
-<ul>
-<li><strong><a href="https://www.wbur.org/hereandnow/2026/07/07/ai-companies-safety">AI 安全指数发现主流厂商弱化安全承诺</a></strong> · WBUR Here &amp; Now</li>
-</ul>
-<p>Future of Life Institute 最新评估显示，Anthropic、OpenAI、Google DeepMind 和 Meta 均未超过 C+ 评级，评估者发现这些公司在"改变目标柱"并削弱之前的安全承诺</p>
-<hr />
-<h2>🔍 今日主题观察</h2>
-<p>7 月的 AI 市场正经历三个并行趋势：成本压缩加速，几乎每家主要实验室都推出了更便宜的推理选项；Agent 性能成为主要竞争战场，各实验室在多步工具使用、内存管理和规划可靠性上投入最大；与去年秋季的"发布节奏集中"不同，2026 年夏季发布持续进行，反映出企业采购周期从秋季转向季度制。
-开源与闭源的性能差距也在缩小——最佳开源模型（GLM-5.2，SWE-bench Pro 62.1%）与顶级闭源模型（Claude Fable 5，80.3%）之间的差距已从历史低位 18 点点，在某些基准上仅单位数差异。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p><strong>数据时间范围</strong>：本简报覆盖 <strong>2026-07-08 至 2026-07-10</strong>（过去 48 小时），无法获取 7 月 11 日当天的实时数据。</p>
-<p><strong>直接提供内容的媒体源</strong>：
-- Fello AI（最新模型排名汇总）
-- LLM Gateway（模型发布时间线）
-- Build Fast with AI（基准对比与成本分析）
-- Dentro AI（产品发布汇总）
-- WBUR / Here &amp; Now（AI 安全评估）
-- Skycrumbs Blog（行业成本与性能观察）</p>
-<p><strong>链接状态说明</strong>：上述所有链接均为搜索结果中的真实 URL，无需「待确认」标注。如需 OpenAI 或 Anthropic 官方博客的直接声明，建议访问 openai.com/news 或 anthropic.com/news。</p>]]></description>
     </item>
   </channel>
 </rss>
