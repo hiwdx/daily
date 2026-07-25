@@ -7,8 +7,44 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sat, 25 Jul 2026 05:34:57 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2026 05:23:11 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-26</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-26.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-26.html</guid>
+      <pubDate>Sun, 26 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/25/librarians-are-hosting-viral-avoiding-ai-workshops-for-people-who-are-fed-up-with-big-tech">Librarians are hosting viral ‘Avoiding AI’ workshops for people who are fed up with Big Tech</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/25/librarians-are-hosting-viral-avoiding-ai-workshops-for-people-who-are-fed-up-with-big-tech">TechCrunch AI</a> · 2026-07-25</p>
+<!-- published_at: 2026-07-25T16:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/970570/meta-ai-chatbot-productivity-update">Meta is making its AI chatbot more like an assistant</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/970570/meta-ai-chatbot-productivity-update">The Verge AI</a> · 2026-07-24</p>
+<!-- published_at: 2026-07-24T13:00:00-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<h3>📰 其他值得看的</h3>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：TechCrunch AI、The Verge AI</li>
+<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-25</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-25.html</link>
@@ -669,85 +705,6 @@ Anthropic恢复Fable 5时添加了网络安全分类器作为最强防护措施�
 <p><strong>直接提供内容的源</strong>：LLM Stats、The Crescendo、LLM Gateway、CNBC、dentro.de/ai、Anthropic Research、TechCrunch、Zhihu AI Daily</p>
 <p><strong>数据时间范围</strong>：本简报覆盖 2026-07-08 至 2026-07-13（最近48小时内最重要信息），因当日暂无官方一手新闻发布，已按要求整合最近阶段的关键信号。</p>
 <p><strong>链接说明</strong>：大部分链接为搜索结果中的真实URL；少数来自汇总跟踪平台（如LLM Gateway、LLM Stats）的编辑整理，已注明具体发布日期便于溯源。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-12</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-12.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-12.html</guid>
-      <pubDate>Sun, 12 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>标题</strong>：
-Google DeepMind 宣布 Gemini 3.5 Pro 延期至 7 月 17 日发布，采用全新架构重新预训练</p>
-<p><strong>来源</strong>：<a href="https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a">BigGo Finance</a> · 2026-07-09</p>
-<p><strong>摘要</strong>：</p>
-<p>Google DeepMind 放弃现有 Gemini 2.5 Pro 架构，重建 3.5 Pro 的底座，预定 7 月 17 日正式发布</p>
-<p>新模型针对数学推理、SVG 生成、图像质量优化，引入 200 万 Token 上下文窗口和深度推理层</p>
-<p>延期反映内部压力与前沿 AI 市场竞争加剧</p>
-<p><strong>产品技术视角</strong>：
-Google 采取成本领先策略，定位为 OpenAI 和 Anthropic 之间的中端选项，吸引成本敏感型企业用户</p>
-<hr />
-<p><strong>标题</strong>：
-xAI 发布 Grok 4.5，刷新最近模型发布记录</p>
-<p><strong>来源</strong>：<a href="https://llmgateway.io/timeline">LLM Gateway</a> · 2026-07-08</p>
-<p><strong>摘要</strong>：</p>
-<p>Grok 4.5 于 7 月 8 日发布，成为最新的前沿模型</p>
-<p>新模型主打低成本高速推理，Token 调用成本下降 65%，针对自动驾驶和机载视觉边缘场景优化</p>
-<p>GPT-5.6 和 Grok 4.5 在发布时未公开经典学术基准（GPQA/MMLU），仅报告代理和编码评估</p>
-<p><strong>产品技术视角</strong>：
-成本压缩成为核心竞争点，Grok 4.5 通过 65% 的 Token 成本优化突出差异化定位</p>
-<hr />
-<p><strong>标题</strong>：
-OpenAI 部署公司收购 Northslope，推进服务主义战略，$40 亿投资承诺反映实施专业度成为竞争关键</p>
-<p><strong>来源</strong>：<a href="https://www.marketingprofs.com/opinions/2026/55247/ai-update-july-10-2026-ai-news-and-views-from-the-past-week">MarketingProfs</a> · 2026-07-10</p>
-<p><strong>摘要</strong>：</p>
-<p>OpenAI Deployment Company 收购 Northslope（第二笔应用 AI 公司并购），扩大驻场工程师团队</p>
-<p>OpenAI 对部署部门承诺 40 亿美元投资，表明实施专业度与模型质量一样重要</p>
-<p>Anthropic 同步推进服务战略，应对企业从实验向生产部署转变的需求</p>
-<p><strong>产品技术视角</strong>：
-AI 购买决策转变：从选择模型转向选择实施伙伴，企业关注数据连接、流程重设、治理与可衡量采用</p>
-<hr />
-<h2>📰 其他值得看的</h2>
-<ul>
-<li><strong><a href="https://thursdai.news/releases/2026-07">Anthropic Claude Sonnet 5 定价与反馈分化</a></strong> · ThursdAI</li>
-</ul>
-<p>Sonnet 5 以 $2/$10 百万 token 定价（至 8 月 31 日），用户评价分化：高端用户觉性价比不及 Opus 4.8，普通用户认为超值</p>
-<ul>
-<li><strong><a href="https://www.marketingprofs.com/opinions/2026/55247/ai-update-july-10-2026-ai-news-and-views-from-the-past-week">Production AI 向模块化多模型系统演进</a></strong> · Vercel/MarketingProfs</li>
-</ul>
-<p>企业从单模型依赖转向多模型、多框架组合，Coding agents 和内部智能体需要受控访问、审计和沙盒执行环境</p>
-<ul>
-<li><strong><a href="https://www.buildfastwithai.com/blogs/best-ai-models-july-2026-ranked">Claude Sonnet 5 成为编码默认模型</a></strong> · BuildFastWithAI</li>
-</ul>
-<p>Sonnet 5 SWE-bench Pro 达 63.2%，Terminal-Bench 2.1 超越 Opus 4.8（80.4% vs 74.6%），$2 input 价格使其成为大多数生产工作负载的新默认选择</p>
-<ul>
-<li><strong><a href="https://skycrumbs.com/blog/ai-models-july-2026">OpenAI GPT-5 Turbo 推出成本优化版本</a></strong> · Skycrumbs</li>
-</ul>
-<p>GPT-5 Turbo 针对高量企业部署优化，性能仅下降 6-8%，成本降低约 40%</p>
-<ul>
-<li><strong>Future of Life Institute AI 安全指数：主要公司安全承诺弱化](https://www.marketingprofs.com/opinions/2026/55247/ai-update-july-10-2026-ai-news-and-views-from-the-past-week)</strong> · MarketingProfs</li>
-</ul>
-<p>Anthropic 排名第一仅获 C+，OpenAI 和 Google DeepMind 获 C，Meta 改进但 xAI/DeepSeek/Mistral 获 F</p>
-<ul>
-<li><strong><a href="https://thursdai.news/releases/2026-07">Google NanoBanana 2 Lite 图像生成模型发布</a></strong> · ThursdAI</li>
-</ul>
-<p>新模型 4 秒内生成图像，单价 $0.034 / 1000 张，质量超过原版，同周 Interactions API 正式发布</p>
-<ul>
-<li><strong><a href="https://thursdai.news/releases/2026-07">Base44 发布 Base 1 专有编码 LLM</a></strong> · ThursdAI</li>
-</ul>
-<p>Wix 子公司 Base44（$1.5 亿 ARR）推出基于数千万真实应用交互训练的 LLM，自动路由在内部基准上优先调用 Base 1</p>
-<hr />
-<h2>🔍 今日主题观察</h2>
-<p>成本压缩竞速加快：几乎所有主要实验室本月发布了更便宜的推理选项，顶级模型的价格性能比相比 12 个月前提升三倍。
-Agent 性能成为企业竞争新焦点，labs 在多步工具使用、记忆管理、规划可靠性上竞争最激烈，反映企业需求集中在自主完成多步工作流的 AI 系统上。同时
-AI 采购决策范式转移：从模型选择转向实施合作伙伴选择，专业部署能力与模型创新能力并重。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p>本次简报直接提供内容的媒体源：
-- <strong>S 级一手源</strong>：ThursdAI（模型发布跟踪）、BigGo Finance、LLM Gateway
-- <strong>A 级深度源</strong>：MarketingProfs、BuildFastWithAI、Skycrumbs</p>
-<p><strong>数据时间范围</strong>：由于 7 月 12 日为周末且新闻较少，覆盖 7 月 7-11 日最重要事件。所有链接为搜索结果中的真实 URL。</p>
-<hr />
-<p><em>总字数约 850 字</em></p>]]></description>
     </item>
   </channel>
 </rss>
