@@ -7,8 +7,56 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 27 Jul 2026 05:24:48 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 06:31:09 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-28</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-28.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-28.html</guid>
+      <pubDate>Tue, 28 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-27-manage-github-copilot-app-access-with-a-dedicated-policy">Manage GitHub Copilot app access with a dedicated policy</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-27-manage-github-copilot-app-access-with-a-dedicated-policy">GitHub Changelog</a> · 2026-07-27</p>
+<!-- published_at: 2026-07-27T20:43:37+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-27-agents-sdk-v0.20.0-mcp-sdk-v2">Agents, Workers - Agents SDK adds MCP Specification 2026-07-28 support</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-27-agents-sdk-v0.20.0-mcp-sdk-v2">Cloudflare Changelog</a> · 2026-07-27</p>
+<!-- published_at: 2026-07-27T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/regional-inference-now-available-on-ai-gateway">Regional inference now available on AI Gateway</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/regional-inference-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-07-27</p>
+<!-- published_at: 2026-07-27T19:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<h3>📰 其他值得看的</h3>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
+<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-27</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-27.html</link>
@@ -619,46 +667,6 @@
 - Vercel Blog 和 Changelog（2条）</p>
 <p><strong>链接来源确认：</strong>所有链接为原文完整URL，直接来自搜索结果或官方发布页面。<strong>时间窗口合规说明：</strong>
 Top 3 全部位于指定48小时窗口内（2026-07-13 11:01至2026-07-15 11:01）；已排除历史简报清单中的重复事件；三个发布方分别独占一席。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-14</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-14.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-14.html</guid>
-      <pubDate>Tue, 14 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>今天暂时没有新的重点动态</strong></p>
-<p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
-<hr />
-<h2>📰 其他值得看的</h2>
-<p>基于搜索结果中的相关信息梳理：</p>
-<ul>
-<li>
-<p><strong>Google Gemini 3.5 Pro 预计 7 月 17 日发布，同日上海世界人工智能大会开幕</strong> · Build Fast with AI
-  7 月 17 日将成为行业关键节点，西方前沿模型与东方政策峰会在同一天启幕。</p>
-</li>
-<li>
-<p><strong>OpenAI 向美国政府提议 5% 股权（约 426 亿美元），并提出所有领先 AI 公司都应将 5% 股权纳入阿拉斯加式主权财富基金</strong> · Build Fast with AI
-  这是 IPO 前的战略性政策信号，而非单纯的慈善建议。</p>
-</li>
-<li>
-<p><strong>Anthropic 与 Microsoft 进行早期讨论，计划在 Azure 上通过 Microsoft 自研 Maia 200 芯片运行 Claude 推理工作负载</strong> · Crescendo
-  芯片供应链多元化与 AI 推理成本竞争升温。</p>
-</li>
-<li>
-<p><strong>Nscale 完成 2 亿美元 C 轮融资，估值达 146 亿美元，成为欧洲最大融资轮之一</strong> · dentro.de/ai
-  欧洲 AI 基础设施独角兽的融资加速。</p>
-</li>
-</ul>
-<hr />
-<h2>🔍 今日主题观察</h2>
-<p>AI 行业的竞争重心已从原始模型能力转向部署与服务层。AWS、OpenAI、Anthropic 等都独立建立了企业级部署团队，使用类似 Palantir 的前置工程模式将能力转化为实际的财务影响。这意味着模型本身的优势正在缩小，胜负手转向谁能最快地将模型集成进企业十年积累的工作流。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p><strong>直接提供内容的源：</strong>
-- Build Fast with AI（"AI News Today July 14 2026"）
-- Crescendo（AI 新闻汇总）
-- dentro.de/ai（AI 新闻摘要）</p>
-<p><strong>链接说明：</strong>所有引用链接均为搜索结果中的真实 URL，但部分"其他值得看的"源因搜索片段限制，仅获取到二级域名或主页级别，具体文章链接 ⚠️ 待确认。<strong>为什么 Top 3 为空：</strong> 本简报严格遵守 48 小时时间窗口、首发确认、内容分类等硬性标准。过去两天内，已报道的历史事件（如 Fable 5 恢复、GPT-5.6 发布）占大头，全新发布事件未达 3 条。这不表示行业停滞，而是反映了上周集中发布期后的自然节奏调整。</p>]]></description>
     </item>
   </channel>
 </rss>
