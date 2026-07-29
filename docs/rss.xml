@@ -7,8 +7,56 @@
     <description>由 Claude + Web Search 自动生成的 AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 29 Jul 2026 06:53:19 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 06:54:46 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-30</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-30.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-30.html</guid>
+      <pubDate>Thu, 30 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-29-copilot-code-review-agent-skills-and-mcp-now-generally-available">Copilot code review: Agent skills and MCP now generally available</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-29-copilot-code-review-agent-skills-and-mcp-now-generally-available">GitHub Changelog</a> · 2026-07-29</p>
+<!-- published_at: 2026-07-29T21:26:19+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-28-models-require-workers-paid">Workers AI - Select models now require the Workers Paid plan</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-28-models-require-workers-paid">Cloudflare Changelog</a> · 2026-07-28</p>
+<!-- published_at: 2026-07-28T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/ai-gateway-adds-unified-fast-mode-support">AI Gateway adds unified fast mode support</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/ai-gateway-adds-unified-fast-mode-support">Vercel Changelog</a> · 2026-07-29</p>
+<!-- published_at: 2026-07-29T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>官方或可信媒体订阅源确认了这项最新动态</li>
+<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
+<li>相关用户与开发者可通过原文了解完整细节</li>
+</ul>
+<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
+<h3>📰 其他值得看的</h3>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
+<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-29</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-29.html</link>
@@ -612,82 +660,6 @@
 - 时间校验：全部条目首次发布时间处于 2026-07-15 06:27 至 2026-07-17 06:27 的 48 小时窗口内
 - 历史清单去重：所有条目均未在已报道清单中出现
 - 发布方分布：TechCrunch（1 条 Top 3 + 1 条其他）、Vercel、Hugging Face、The Verge 各 1 条，符合同源发布限制</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-16</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-16.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-16.html</guid>
-      <pubDate>Thu, 16 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/">Thinking Machines 发布开源模型 Inkling，975B 参数支持多模态推理</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/">TechCrunch</a> · 2026-07-15</p>
-<!-- published_at: 2026-07-15T18:04:06+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<p>混合专家模型 975B 总参数，每任务激活约 41B，设计用于控制推理成本</p>
-<p>在 45 万亿 Token 文本、图像、音频、视频混合语料训练，输出限于文本与代码</p>
-<p>相同编码基准下 Token 效率达 NVIDIA Nemotron 3 Ultra 的三倍</p>
-<p><strong>产品技术视角</strong>：
-原生支持"思考难度"可调机制，让用户在推理深度与速度间灵活权衡</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-14-github-copilot-in-visual-studio-june-update/">GitHub Copilot Visual Studio 六月更新：实时成本追踪与 MCP 信任验证</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-14-github-copilot-in-visual-studio-june-update/">GitHub Changelog</a> · 2026-07-15</p>
-<!-- published_at: 2026-07-15T00:01:24+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<p>新增 Copilot Usage 窗口实时跟踪，主动告警接近配额、达到配额、激活超额的三个阶段</p>
-<p>Visual Studio 启动时对 MCP 服务器的配置与资源指纹进行基准验证，强化信任链</p>
-<p>C++ 现代化 Agent 正式推出，MSVC 升级场景可选自动或指导两种模式</p>
-<p><strong>产品技术视角</strong>：
-围绕可见性与信任的六月重点，转向精细化的使用费用与安全双轨管理</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/ibm-research/model-routing-is-simple-until-it-isnt">Hugging Face 发布 IBM 模型路由研究，应对多模型编排复杂性</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/ibm-research/model-routing-is-simple-until-it-isnt">Hugging Face Blog</a> · 2026-07-15</p>
-<!-- published_at: 2026-07-15T17:27:01+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>IBM Research 在 Hugging Face 平台上发布生产环境模型路由的工程化分析</li>
-</ul>
-<p>深度剖析在实际部署中简单的路由策略如何在规模化场景中变得复杂</p>
-<ul>
-<li>为开发者提供多模型编排的最佳实践参考</li>
-</ul>
-<p><strong>产品技术视角</strong>：模型选择的自动化路由需要权衡延迟、成本、准确性等多维约束</p>
-<hr />
-<h3>📰 其他值得看的</h3>
-<ul>
-<li><strong><a href="https://github.blog/changelog/2026-07-14-github-copilot-for-jetbrains-expands-byok-capabilities/">GitHub Copilot for JetBrains 扩展 BYOK 能力，支持本地沙箱与自定义端点</a></strong> · GitHub Changelog</li>
-</ul>
-<p>开发者可配置 OpenAI 兼容自定义端点与 API 密钥，灵活选择模型提供商</p>
-<ul>
-<li><strong><a href="https://techcrunch.com/2026/07/15/anthropic-blackstone-bet-the-next-trillion-dollar-ai-business-is-implementation-not-models/">Anthropic 与 Blackstone 联合成立 Ode，15 亿美元 AI 落地实现公司</a></strong> · TechCrunch</li>
-</ul>
-<p>专业部署团队驻场客户现场，聚焦 AI 实现价值而非模型开发本身</p>
-<ul>
-<li><strong><a href="https://techcrunch.com/2026/07/14/reflection-ai-inks-1b-compute-deal-with-nebius/">Reflection AI 与 Nebius 签署 10 亿美元长期计算协议</a></strong> · TechCrunch</li>
-</ul>
-<p>25 亿美元估值开源 AI 初创获欧洲基础设施商供应最新英伟达芯片</p>
-<ul>
-<li><strong><a href="https://vercel.com/changelog/access-and-share-ai-gateway-leaderboard-data">Vercel 推出实时数据共享仪表板，AI Gateway 用户可发布评测排行</a></strong> · Vercel Changelog</li>
-</ul>
-<p>AI Gateway 用户可在平台发布、分享与追踪模型性能排名，强化社区透明度</p>
-<ul>
-<li><strong><a href="https://vercel.com/changelog/chat-sdk-adds-discord-components-v2-support">Vercel Chat SDK 新增 Discord Components V2 支持</a></strong> · Vercel Changelog</li>
-</ul>
-<p>开发者可直接在 Chat SDK 中使用最新 Discord UI 组件库</p>
-<ul>
-<li><strong><a href="https://huggingface.co/blog/allenai/shippy-tech-blog">Hugging Face 发布 Shippy Agent 技术博客，总结 AI Agent 框架设计经验</a></strong> · Hugging Face Blog</li>
-</ul>
-<p>Allen AI 开源框架在企业生产环境中的工程化设计与可靠性增强方案</p>
-<hr />
-<h3>⚠️ 信息来源说明</h3>
-<p>本次简报直接采用的媒体源：
-- <strong>TechCrunch</strong>（2 条）
-- <strong>GitHub Changelog</strong>（2 条）
-- <strong>Hugging Face Blog</strong>（2 条）
-- <strong>Vercel Changelog</strong>（2 条）</p>
-<p>所有链接均为原文 URL，采自搜索结果与官方出版物。</p>]]></description>
     </item>
   </channel>
 </rss>
