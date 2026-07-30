@@ -194,26 +194,21 @@ class HistoryTests(unittest.TestCase):
             stories = generate.get_previous_stories(archive)
             self.assertEqual({story["title"] for story in stories}, {"第一条", "第二条"})
 
-    def test_prompt_contains_complete_history_and_no_24_hour_fallback(self):
+    def test_prompt_keeps_history_local_to_control_cost(self):
         prompt = generate.build_user_prompt([
             {"date": "2026-01-01", "title": "已经报道", "url": "https://example.com/old"}
         ])
-        self.assertIn("全部历史简报中已经报道过的内容", prompt)
-        self.assertIn("已经报道", prompt)
-        self.assertIn("过去 48 小时", prompt)
-        self.assertNotIn("最近 48 小时内最重要", prompt)
+        self.assertIn("不得搜索", prompt)
+        self.assertIn("只输出一个 JSON 对象", prompt)
+        self.assertNotIn("已经报道", prompt)
 
-    def test_prompt_uses_broader_official_source_searches(self):
+    def test_prompt_disallows_model_search_and_hallucinated_urls(self):
         prompt = generate.build_user_prompt()
-        self.assertIn("严格限制 6 次", prompt)
-        self.assertIn(f"after:{generate.SEARCH_AFTER_ISO}", prompt)
-        self.assertIn(f"before:{generate.SEARCH_BEFORE_ISO}", prompt)
-        self.assertIn("GitHub Copilot Changelog", prompt)
-        self.assertIn("Cloudflare AI Changelog", prompt)
-        self.assertIn("Google Vertex AI Release Notes", prompt)
-        self.assertIn("聚合站、新闻摘要页和搜索结果页只能用于发现线索", prompt)
+        self.assertIn("不得搜索", prompt)
+        self.assertIn("不得补写不存在的链接", prompt)
+        self.assertIn("Hacker News", prompt)
 
-    def test_prompt_prioritizes_prefetched_official_candidates(self):
+    def test_prompt_includes_bounded_prefetched_candidates(self):
         candidates = [{
             "source": "GitHub Changelog",
             "title": "Security reviews now available in the GitHub Copilot app",
@@ -221,7 +216,7 @@ class HistoryTests(unittest.TestCase):
             "published_at": "2026-07-14T12:54:12+00:00",
         }]
         prompt = generate.build_user_prompt(official_candidates=candidates)
-        self.assertIn("可信订阅源已确认候选", prompt)
+        self.assertIn("候选（时间", prompt)
         self.assertIn(candidates[0]["title"], prompt)
         self.assertIn(candidates[0]["url"], prompt)
 
@@ -314,6 +309,25 @@ class OfficialFeedTests(unittest.TestCase):
         text = generate.build_official_feed_fallback([])
         self.assertIn("今天暂时没有新的重点动态", text)
         self.assertEqual(generate.validate_briefing(text, now=self.now), [])
+
+    def test_payload_renderer_rejects_model_invented_top_url(self):
+        candidate = {
+            "source": "GitHub Changelog",
+            "title": "Verified update",
+            "url": "https://github.blog/changelog/2026-07-15-verified",
+            "published_at": "2026-07-15T00:30:00+00:00",
+            "eligible_for_top": "true",
+        }
+        payload = {
+            "top_stories": [{
+                "title": "编造链接", "url": "https://example.com/invented",
+                "what_happened": "发生了什么", "why_it_matters": "为什么重要",
+                "who_is_affected": "谁受影响", "product_angle": "产品视角",
+            }]
+        }
+        text = generate.briefing_from_payload(payload, [candidate])
+        self.assertIn("Verified update", text)
+        self.assertNotIn("example.com/invented", text)
 
 
 class SensitiveContentTests(unittest.TestCase):

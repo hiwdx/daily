@@ -4,17 +4,16 @@ Daily AI News Briefing Generator
 每日 AI 简报生成器
 
 Usage:
-    ANTHROPIC_API_KEY=sk-ant-... python generate.py
+    DEEPSEEK_API_KEY=... python generate.py
 """
 
-import anthropic
 import difflib
 import html
 import json
 import os
 import re
 import sys
-import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
@@ -23,6 +22,8 @@ from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
 from xml.sax.saxutils import escape as xml_escape
+
+from openai import APIConnectionError, APIStatusError, AuthenticationError, OpenAI, RateLimitError
 
 try:
     import markdown as md_lib
@@ -34,6 +35,14 @@ except ImportError:
 CST = timezone(timedelta(hours=8))
 NOW = datetime.now(CST)
 FRESHNESS_HOURS = 48
+MAX_CANDIDATES = 36
+MAX_CANDIDATE_SUMMARY_CHARS = 420
+# Conservative character cap: even for CJK-heavy input it keeps the complete
+# request below roughly 15k input tokens once the fixed prompt is included.
+MAX_MODEL_INPUT_CHARS = 12000
+MAX_MODEL_OUTPUT_TOKENS = 1800
+MAX_MODEL_CALLS = 2
+DEEPSEEK_MODEL = "deepseek-v4-pro"
 WINDOW_START = NOW - timedelta(hours=FRESHNESS_HOURS)
 # Search engines often interpret `after:` as exclusive. Include a one-day
 # discovery buffer, then let the publish validator enforce the real 48 hours.
@@ -175,14 +184,21 @@ def _parse_feed_date(raw_date: str) -> Optional[datetime]:
     return published_at
 
 
-def _feed_entries(root: ElementTree.Element) -> list[tuple[str, str, str]]:
-    """Return title, article URL, and date from RSS or Atom XML."""
-    entries: list[tuple[str, str, str]] = []
+def _plain_text(value: str) -> str:
+    """Turn feed HTML into compact prompt-safe plain text."""
+    value = re.sub(r"<[^>]+>", " ", value or "")
+    return re.sub(r"\s+", " ", html.unescape(value)).strip()
+
+
+def _feed_entries(root: ElementTree.Element) -> list[tuple[str, str, str, str]]:
+    """Return title, article URL, date, and compact summary from RSS or Atom."""
+    entries: list[tuple[str, str, str, str]] = []
     for item in root.findall(".//item"):
         entries.append((
             html.unescape((item.findtext("title") or "").strip()),
             (item.findtext("link") or "").strip(),
             (item.findtext("pubDate") or item.findtext("date") or "").strip(),
+            _plain_text(item.findtext("description") or item.findtext("encoded") or ""),
         ))
 
     atom_namespace = "{http://www.w3.org/2005/Atom}"
@@ -203,7 +219,8 @@ def _feed_entries(root: ElementTree.Element) -> list[tuple[str, str, str]]:
             or entry.findtext(f"{atom_namespace}updated")
             or ""
         ).strip()
-        entries.append((html.unescape(title), article_link.strip(), raw_date))
+        summary = entry.findtext(f"{atom_namespace}summary") or entry.findtext(f"{atom_namespace}content") or ""
+        entries.append((html.unescape(title), article_link.strip(), raw_date, _plain_text(summary)))
     return entries
 
 
@@ -221,7 +238,7 @@ def parse_official_feed(
         return []
 
     candidates: list[dict[str, str]] = []
-    for title, raw_link, raw_pub_date in _feed_entries(root):
+    for title, raw_link, raw_pub_date, summary in _feed_entries(root):
         link = canonicalize_url(raw_link)
         if not title or not link or not raw_pub_date or not _AI_UPDATE_RE.search(title):
             continue
@@ -251,6 +268,8 @@ def parse_official_feed(
             "title": title,
             "url": link,
             "published_at": published_at.isoformat(),
+            "summary": summary[:MAX_CANDIDATE_SUMMARY_CHARS],
+            "eligible_for_top": "true",
         })
     return candidates
 
@@ -295,158 +314,143 @@ def get_official_candidates(
     ]
     return balanced[:24]
 
-_USER_PROMPT_TEMPLATE = f"""你是我的 AI 产品情报分析师。请帮我完成今天（{TODAY_CN} {WEEKDAY_CN}）的 AI 行业每日简报。
 
-## 搜索策略（严格限制 6 次）
+def _fetch_json(url: str) -> object:
+    request = Request(url, headers={"User-Agent": "hiwd-daily/2.0"})
+    with urlopen(request, timeout=12) as response:
+        return json.loads(response.read().decode("utf-8"))
 
-为避免搜索引擎漏掉窗口边界日期，候选检索统一使用 `after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO}`；这只是发现阶段的日期缓冲，最终收录仍必须通过严格的 48 小时校验。不能只搜索今天的日期。**总搜索次数不超过 6 次**：
-- 搜索 1（高频产品更新）：`AI agent model API changelog after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:github.blog/changelog OR site:vercel.com/changelog OR site:developers.cloudflare.com/changelog`
-- 搜索 2（核心实验室）：`AI model release after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:openai.com OR site:anthropic.com/news OR site:deepmind.google OR site:blog.google/technology/ai OR site:ai.meta.com/blog OR site:mistral.ai/news`
-- 搜索 3（开发工具与开源）：`AI agent framework model release after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:huggingface.co/blog OR site:blog.langchain.com OR site:llamaindex.ai/blog OR site:replicate.com/blog OR site:together.ai/blog OR site:fireworks.ai/blog`
-- 搜索 4（云平台）：`generative AI launch after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:aws.amazon.com/blogs OR site:developers.googleblog.com OR site:docs.cloud.google.com/vertex-ai OR site:learn.microsoft.com/azure/ai-foundry OR site:developer.nvidia.com/blog`
-- 搜索 5（可信媒体）：`AI model product funding acquisition after:{SEARCH_AFTER_ISO} before:{SEARCH_BEFORE_ISO} site:reuters.com OR site:techcrunch.com OR site:theverge.com OR site:arstechnica.com`
-- 搜索 6（中文）：`AI 大模型 产品 API 发布 {SEARCH_AFTER_ISO}..{TODAY_ISO} 机器之心 OR 量子位 OR InfoQ`
 
-## 信息源优先级
+def get_hacker_news_candidates(now: Optional[datetime] = None) -> list[dict[str, str]]:
+    """Get fresh AI discussions from HN's public Firebase API.
 
-### S 级（必须覆盖，一手源）
-- OpenAI News (openai.com/news)
-- Anthropic News (anthropic.com/news)
-- Google DeepMind Blog (deepmind.google/discover/blog)
-- Google AI / Developers Blog (blog.google/technology/ai、developers.googleblog.com)
-- Meta AI Blog (ai.meta.com/blog)
-- Mistral、xAI、Perplexity、Cohere 官方博客
-- GitHub Copilot Changelog (github.blog/changelog/label/copilot)
-- Vercel Changelog（AI SDK / AI Gateway）
-- Cloudflare AI Changelog（Workers AI / AI Gateway）
-- AWS AI News、Google Vertex AI Release Notes、Microsoft Foundry What's New
-- Hugging Face Blog、NVIDIA Technical Blog
+    HN is discovery-only: its post timestamp cannot prove the publication time
+    of an external article, so these entries never qualify for Top 3.
+    """
+    now = now or NOW
+    cutoff = now - timedelta(hours=FRESHNESS_HOURS)
+    try:
+        ids = _fetch_json("https://hacker-news.firebaseio.com/v0/topstories.json")
+        if not isinstance(ids, list):
+            return []
+    except Exception as error:
+        print(f"  ⚠️ Could not load Hacker News: {error}")
+        return []
 
-### A 级（深度分析与可信媒体）
-- Stratechery (Ben Thompson)
-- Platformer (Casey Newton)
-- Import AI (Jack Clark)
-- Latent Space (Swyx)
-- 海外独角兽 / 拾象
-- Reuters Technology
-- TechCrunch AI 频道
-- The Verge AI 频道
-- Bloomberg Technology
-- The Information
-- Ars Technica
-- Wired
-- NYT Technology
-- Semafor Tech
-- 机器之心、量子位、硅星人、36Kr AI、InfoQ 中国 AI
+    def fetch_item(item_id: int) -> object:
+        try:
+            return _fetch_json(f"https://hacker-news.firebaseio.com/v0/item/{item_id}.json")
+        except Exception:
+            return None
 
-### B 级（辅助，信号筛选）
-- Hacker News 今日 Top 20（只挑 AI 相关）
-- Ben's Bites、The Batch（Andrew Ng）
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        items = list(pool.map(fetch_item, ids[:36]))
 
-## 筛选标准（重要）
+    candidates: list[dict[str, str]] = []
+    for item in items:
+        if not isinstance(item, dict) or item.get("type") != "story":
+            continue
+        title = _plain_text(str(item.get("title", "")))
+        timestamp = item.get("time")
+        if not title or not isinstance(timestamp, (int, float)) or not _AI_UPDATE_RE.search(title):
+            continue
+        published_at = datetime.fromtimestamp(timestamp, timezone.utc)
+        if not cutoff <= published_at.astimezone(CST) <= now:
+            continue
+        discussion_url = f"https://news.ycombinator.com/item?id={item.get('id')}"
+        candidates.append({
+            "source": "Hacker News",
+            "title": title,
+            "url": discussion_url,
+            "published_at": published_at.isoformat(),
+            "summary": f"HN discussion score {item.get('score', 0)}. " + _plain_text(str(item.get("text", "")))[:260],
+            "eligible_for_top": "false",
+        })
+    return candidates[:8]
 
-### 时间窗口（最高优先级，不得放宽）
 
-- 当前生成时间：`{NOW.isoformat(timespec="minutes")}`
-- 最早允许发布时间：`{WINDOW_START.isoformat(timespec="minutes")}`
-- Top 3 的每一条都必须能从原文或搜索结果中确认，首次发布时间处于上述两个时间点之间
-- 转载时间、页面更新日期、榜单收录日期不能代替事件首次发布时间
-- 优先使用精确发布时间；若官方原文只提供 YYYY-MM-DD 日期，可以保留日期精度，严禁自行编造具体时刻
-- 过去 48 小时若不足 3 条合格且未报道的新闻，Top 3 可以少于 3 条；严禁用更早的旧闻或重复事件凑数
-- 若没有合格内容，Top 3 只输出两句面向普通读者的说明：`**今天暂时没有新的重点动态**`，以及 `过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。`；不要展示时间戳、筛选规则或技术性解释
+def get_github_release_candidates(now: Optional[datetime] = None) -> list[dict[str, str]]:
+    """Use GitHub's public Events API for newly released AI developer tools."""
+    now = now or NOW
+    cutoff = now - timedelta(hours=FRESHNESS_HOURS)
+    try:
+        events = _fetch_json("https://api.github.com/events?per_page=100")
+    except Exception as error:
+        print(f"  ⚠️ Could not load GitHub public events: {error}")
+        return []
+    if not isinstance(events, list):
+        return []
+    candidates: list[dict[str, str]] = []
+    for event in events:
+        if not isinstance(event, dict) or event.get("type") != "ReleaseEvent":
+            continue
+        payload = event.get("payload") or {}
+        release = payload.get("release") or {}
+        repo = event.get("repo") or {}
+        title = _plain_text(str(release.get("name") or release.get("tag_name") or ""))
+        repo_name = _plain_text(str(repo.get("name", "")))
+        text = f"{repo_name} {title} {_plain_text(str(release.get('body', '')))}"
+        if not title or not _AI_UPDATE_RE.search(text):
+            continue
+        try:
+            published_at = datetime.fromisoformat(str(event["created_at"]).replace("Z", "+00:00"))
+        except (KeyError, ValueError):
+            continue
+        if not cutoff <= published_at.astimezone(CST) <= now:
+            continue
+        url = str(release.get("html_url", ""))
+        if not url:
+            continue
+        candidates.append({
+            "source": f"GitHub Release · {repo_name}",
+            "title": title,
+            "url": canonicalize_url(url),
+            "published_at": published_at.isoformat(),
+            "summary": _plain_text(str(release.get("body", "")))[:MAX_CANDIDATE_SUMMARY_CHARS],
+            "eligible_for_top": "true",
+        })
+    return candidates[:8]
 
-只收录符合以下之一的内容：
-1. **产品技术突破**：新模型发布、新 API、新功能上线、benchmark 刷新
-2. **架构/工程深度**：推理优化、agent 框架、基础设施变化
-3. **商业战略信号**：重要融资、收购、人才流动、合作签约
-4. **行业观点**：有分析深度的评论文章（不是转述新闻）
-5. **开发者生态更新**：官方 changelog 中影响功能、API、模型可用性、成本、性能或工作流的重要更新
-
-**排除**：
-- 纯营销稿、一句话新闻、股价波动、名人 Twitter 口水战
-- 超过 48 小时的旧新闻
-- 未经证实的传言
-- 涉及中国敏感内容或明显地缘政治争议的内容，包括但不限于中美对抗叙事、涉台涉港涉疆、人权与制裁等
-- 如果一条新闻的主叙事是中国敏感议题或地缘政治对抗，即使与 AI 相关也不要收录；一般性的政府部门、公共部门项目、政策讨论或海外政治人物表述可保留
-
-## 输出格式
-
-### 🎯 今日 Top 3
-每条格式严格如下（必须用标准 markdown，不要用分号做分隔）：
-
-**标题**：[中文标题](原文链接)
-**来源**：[媒体名称](原文链接) · 发布日期（用 YYYY-MM-DD 格式，不要用"昨日""今日"等相对表达）
-<!-- published_at: 原文首次发布时间；有精确时间时使用含时区的 ISO 8601，原文只有日期时只写 YYYY-MM-DD，严禁补造时刻；此行必须保留 -->
-**摘要**：
-- 发生了什么（一句话，**中文**）
-- 为什么重要（一句话，**中文**）
-- 对谁有影响（一句话，**中文**）
-**产品技术视角**：一句话点出技术或产品层面的关键点（**中文**）
-
-### 📰 其他值得看的（5-8 条）
-简洁版，每条 2 行：
-- **[标题](链接)** · 来源
-- 一句话说清楚这是什么（**中文**）
-
-### 🔍 今日主题观察（可选）
-如果今天的新闻呈现某个趋势（例如"多家公司都在做 agent 框架"），给出 2-3 句话的观察。
-
-### ⚠️ 信息来源说明
-只需告诉我：
-- 本次简报中，哪些源**直接提供了内容**（列出媒体名即可）
-- 上述内容中的链接，是搜索结果中的真实 URL，还是根据主域名推测的（注明 `⚠️ 链接待确认`）
-
-## 硬性要求
-- 所有链接必须是**真实可点击的原文 URL**，绝对不要编造
-- Top 3 必须使用带文章路径的原文 URL，主页、栏目页或仅有主域名的链接不得进入 Top 3
-- Top 3 必须来自 3 个不同的发布方，同一发布方最多 1 条；不能用同一家公司的多个更新占满榜单。如果只有不足 3 个发布方有合格内容，宁可少于 3 条
-- “其他值得看的”同一发布方最多 2 条，并尽量不要重复 Top 3 已出现的发布方；当天所有栏目都不能被单一公司或媒体主导
-- 聚合站、新闻摘要页和搜索结果页只能用于发现线索，不能作为 Top 3 的唯一依据；Top 3 必须能回溯到公司官方公告或可信媒体的具体文章
-- “今日 Top 3”“其他值得看的”“主题观察”“信息来源说明”都不得提及被排除的敏感内容、敏感事件名称、筛选命中原因或删除说明；排除后直接不写，不能用“未列示”方式变相展示
-- “其他值得看的”如果搜索片段中只有主域名（如 `techcrunch.com`）而没有完整文章路径，可以用主域名作为链接占位，并注明 `⚠️ 链接待确认`
-- 如果某条新闻既无法确认完整 URL、也找不到主域名，才宁可不收录
-- 严禁输出任何涉及中国敏感内容或明显地缘政治对抗的条目、摘要、观察或来源说明；一般性的政府机构、公共部门、企业合规合作、海外政治人物或立法机构表述可保留
-- **语言规则**：标题、摘要、分析、观察等所有内容一律用**中文**写，让读者看懂；公司名（Google/Meta/OpenAI）、产品名（Gemini/Claude/GPT）、通用技术术语（agent/LLM/RAG/fine-tuning 等）可保留英文
-- 总长度控制在 1000 字以内（精炼）
-- 不要在末尾输出字数统计或任何自我评估（如"总字数：XXX 字"）
-- **绝对不要向用户提问或请求确认**：不得询问"是否要更精准的搜索"、"您希望我如何处理"等。直接执行，用搜索到的最佳信息生成完整简报
-- **绝不允许扩大时间范围**：若合格新闻不足 3 条，就如实输出较少条目，并在“⚠️ 信息来源说明”中注明；不得采用 48 小时以前的内容"""
 
 
 def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
-    """Build the prompt with a complete history-based deduplication block."""
-    prompt = _USER_PROMPT_TEMPLATE
-    if official_candidates:
-        candidate_list = "\n".join(
-            f"- {candidate['published_at']} | {candidate['source']} | "
-            f"{candidate['title']} | {candidate['url']}"
-            for candidate in official_candidates
-        )
-        candidate_block = (
-            "\n\n## 可信订阅源已确认候选（必须优先选入 Top 3）\n\n"
-            "以下候选由程序直接读取官方与可信媒体的 RSS/Atom，已通过 48 小时窗口、AI 相关性、"
-            "历史 URL 去重和敏感内容初筛。请优先打开具体链接核查并从中选出最重要的条目；"
-            "只要确有用户或开发者价值，不要因为它来自 changelog 就降级。"
-            "当候选覆盖至少 3 个发布方时，Top 3 必须从不同发布方选满 3 条，禁止输出空榜；"
-            "当候选为 1–2 条时必须全部收录，再用其他可信来源补充。"
-            "使用候选时，published_at 注释必须逐字复制候选给出的完整时间（包括时区），"
-            "不要自行删改为无时区时间。\n\n"
-            f"{candidate_list}"
-        )
-        prompt = prompt.replace("## 信息源优先级", candidate_block + "\n\n## 信息源优先级")
-    if previous_stories:
-        story_list = "\n".join(
-            f"- {story['date']} | {story['title']} | {story['url']}"
-            for story in previous_stories
-        )
-        dedup_block = (
-            "\n\n## 已报道内容（严格排除）\n\n"
-            "以下是**全部历史简报中已经报道过的内容**。请严格排除这些 URL，"
-            "也要排除同一事件的转载、跟进报道和换链接版本；只有确有独立新进展的事件才能收录：\n\n"
-            f"{story_list}"
-        )
-        prompt = prompt.replace("## 输出格式", dedup_block + "\n\n## 输出格式")
-    return prompt
+    """Build a bounded editing prompt from pre-validated public candidates.
+
+    Historical de-duplication is deterministic and local.  Never sending the
+    entire archive to the model prevents prompt growth as the site ages.
+    """
+    candidates = (official_candidates or [])[:MAX_CANDIDATES]
+    candidate_list = "\n".join(
+        " | ".join((
+            candidate.get("published_at", ""),
+            candidate.get("source", ""),
+            candidate.get("title", ""),
+            candidate.get("url", ""),
+            candidate.get("summary", "")[:MAX_CANDIDATE_SUMMARY_CHARS],
+            f"top={candidate.get('eligible_for_top', 'true')}",
+        ))
+        for candidate in candidates
+    )[:MAX_MODEL_INPUT_CHARS]
+    return f"""请把以下已验证候选整理为 hiwd daily。只依据候选中提供的事实、日期和 URL，不得搜索、不得补写不存在的链接或细节。
+
+读者是关心 AI 时代变化的普通人。优先选择真正改变产品能力、开发者工作流、成本、基础设施或商业格局的信号；不要堆砌新闻，不要写无意义摘要，不要过度技术化。所有正文使用简洁、有观点的中文。
+
+硬规则：
+- Top 3 只能选择 `top=true` 的候选，最多 3 条，且发布方不同；URL、来源和 published_at 必须逐字使用候选值。
+- `top=false` 是 Hacker News 讨论线索，只能作为“其他值得看的”，不可进入 Top 3。
+- 不足 3 条时宁缺毋滥；没有合格内容时 top_stories 返回空数组。
+- 排除传言、营销、超过 48 小时的内容及敏感政治叙事。
+- 只输出一个 JSON 对象，不要 markdown、不要解释。JSON 格式：
+{{
+  "top_stories": [{{"title":"中文标题","url":"候选 URL","source":"候选来源","published_at":"候选时间","what_happened":"一句","why_it_matters":"一句","who_is_affected":"一句","product_angle":"一句"}}],
+  "other_stories": [{{"title":"中文标题","url":"候选 URL","source":"候选来源","summary":"一句"}}],
+  "theme_observation": "可选的 2-3 句主题观察；没有则空字符串",
+  "source_note": "直接提供内容的来源名称，用顿号分隔"
+}}
+
+候选（时间 | 来源 | 标题 | URL | 摘要 | 是否可进 Top 3）：
+{candidate_list}
+"""
 
 
 # ── Generated-content validation ─────────────────────────────────────────────
@@ -583,7 +587,7 @@ def validate_briefing(
     candidate_families = {
         _source_family(candidate.get("url", ""))
         for candidate in (official_candidates or [])
-        if candidate.get("url")
+        if candidate.get("url") and candidate.get("eligible_for_top", "true") == "true"
     }
     required_count = min(3, len(candidate_families))
     if len(stories) < required_count:
@@ -716,237 +720,153 @@ def format_empty_top_state(briefing: str) -> str:
     return briefing[:section_match.start()] + replacement + briefing[section_match.end():]
 
 
-def is_usage_limit_error(error: Exception) -> bool:
-    """Return True for Anthropic's non-retryable monthly usage-limit error."""
-    message = str(error).lower()
-    return "usage limit" in message or "usage limits" in message or "regain access" in message
-
-
-def build_official_feed_fallback(
-    official_candidates: Optional[list[dict[str, str]]] = None,
-) -> str:
-    """Build a conservative briefing from verified feed metadata only.
-
-    This keeps the site current when the text-generation API is unavailable.
-    It deliberately avoids claims that are not present in the feed metadata.
-    """
+def build_official_feed_fallback(official_candidates: Optional[list[dict[str, str]]] = None) -> str:
+    """Publish verified metadata when DeepSeek is unavailable or invalid."""
     selected: list[dict[str, str]] = []
     seen_publishers: set[str] = set()
     for candidate in official_candidates or []:
         url = candidate.get("url", "")
         family = _source_family(url)
-        if not url or family in seen_publishers:
+        if not url or candidate.get("eligible_for_top", "true") != "true" or family in seen_publishers:
             continue
         selected.append(candidate)
         seen_publishers.add(family)
         if len(selected) == 3:
             break
-
     if not selected:
         return (
-            "### 🎯 今日 Top 3\n\n"
-            "**今天暂时没有新的重点动态**\n\n"
+            "### 🎯 今日 Top 3\n\n**今天暂时没有新的重点动态**\n\n"
             "过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。"
             "我们会继续关注，有重要进展会及时更新。\n\n"
-            "### 📰 其他值得看的\n\n"
-            "### ⚠️ 信息来源说明\n\n"
-            "- 本期检查了官方与可信媒体订阅源，未发现可发布的新条目。\n"
+            "### 📰 其他值得看的\n\n### ⚠️ 信息来源说明\n\n"
+            "- 本期检查了公开订阅源，未发现可发布的新条目。\n"
         )
-
-    blocks: list[str] = []
-    sources: list[str] = []
+    blocks = []
     for candidate in selected:
-        source = candidate.get("source", "官方订阅源")
-        title = candidate.get("title", "AI 产品与开发者生态更新")
-        url = candidate["url"]
-        published_at = candidate.get("published_at", "")
-        source_date = published_at[:10]
-        sources.append(source)
         blocks.append(
-            f"**标题**：[{title}]({url})\n\n"
-            f"**来源**：[{source}]({url}) · {source_date}\n\n"
-            f"<!-- published_at: {published_at} -->\n\n"
-            "**摘要**：\n\n"
-            "- 官方或可信媒体订阅源确认了这项最新动态\n"
+            f"**标题**：[{candidate['title']}]({candidate['url']})\n\n"
+            f"**来源**：[{candidate['source']}]({candidate['url']}) · {candidate['published_at'][:10]}\n\n"
+            f"<!-- published_at: {candidate['published_at']} -->\n\n"
+            "**摘要**：\n\n- 官方或可信媒体订阅源确认了这项最新动态\n"
             "- 条目发布于最近 48 小时，具备产品或开发者生态参考价值\n"
             "- 相关用户与开发者可通过原文了解完整细节\n\n"
-            "**产品技术视角**：本条仅依据已核验的订阅源元数据发布，"
-            "不对原文未提供的细节作额外推断。\n"
+            "**产品技术视角**：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。"
         )
-
+    sources = "、".join(candidate["source"] for candidate in selected)
     return (
-        "### 🎯 今日 Top 3\n\n"
-        + "\n---\n\n".join(blocks)
-        + "\n\n### 📰 其他值得看的\n\n"
-        + "### ⚠️ 信息来源说明\n\n"
-        + "- 直接提供内容的源："
-        + "、".join(sources)
-        + "\n- 所有链接均来自已核验的官方或可信媒体订阅源。\n"
+        "### 🎯 今日 Top 3\n\n" + "\n\n---\n\n".join(blocks)
+        + "\n\n### 📰 其他值得看的\n\n### ⚠️ 信息来源说明\n\n"
+        + f"- 直接提供内容的源：{sources}\n- 所有链接均来自已核验的公开数据源。\n"
     )
 
 
-# ── Claude API ────────────────────────────────────────────────────────────────
-def _api_create_with_retry(client, system: str, messages: list, max_retries: int = 3):
-    """Call client.messages.create with exponential back-off for transient errors.
+def _api_create_with_retry(client: OpenAI, messages: list[dict[str, str]]):
+    """Make exactly one bounded request; the caller owns the two-call budget."""
+    try:
+        return client.chat.completions.create(
+            model=DEEPSEEK_MODEL,
+            messages=messages,
+            max_tokens=MAX_MODEL_OUTPUT_TOKENS,
+            response_format={"type": "json_object"},
+            extra_body={"thinking": {"type": "disabled"}},
+        )
+    except AuthenticationError:
+        print("❌ Authentication error — check DEEPSEEK_API_KEY", file=sys.stderr)
+        raise
+    except (APIConnectionError, RateLimitError, APIStatusError):
+        raise
 
-    Retries on connection errors, rate-limit errors, and 5xx server errors.
-    Fails immediately on authentication errors (retrying won't help).
-    """
-    _retryable = (
-        anthropic.APIConnectionError,
-        anthropic.RateLimitError,
-        anthropic.InternalServerError,
-    )
-    delays = [10, 30, 60]  # seconds between successive attempts
 
-    for attempt in range(max_retries + 1):
-        try:
-            return client.messages.create(
-                model="claude-haiku-4-5",
-                max_tokens=4000,
-                system=system,
-                tools=[{
-                    "type": "web_search_20260209",
-                    "name": "web_search",
-                    "allowed_callers": ["direct"],
-                    "max_uses": 6,
-                }],
-                messages=messages,
-            )
-        except anthropic.AuthenticationError as e:
-            print(f"❌ Authentication error — check ANTHROPIC_API_KEY: {e}", file=sys.stderr)
-            raise
-        except anthropic.BadRequestError as e:
-            msg = str(e)
-            if is_usage_limit_error(e):
-                print(f"❌ API usage limit reached — go to console.anthropic.com/settings/limits to increase your monthly spend limit. {e}", file=sys.stderr)
-            else:
-                print(f"❌ Bad request error: {e}", file=sys.stderr)
-            raise
-        except _retryable as e:
-            if attempt >= max_retries:
-                print(
-                    f"❌ API error after {max_retries} retries: {type(e).__name__}: {e}",
-                    file=sys.stderr,
-                )
-                raise
-            wait = delays[attempt]
-            print(f"  ⚠️ Transient API error (attempt {attempt + 1}/{max_retries}): {type(e).__name__}: {e}")
-            print(f"  ⏳ Retrying in {wait}s…")
-            time.sleep(wait)
+def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str, str]]) -> str:
+    """Render JSON and enforce candidate URL/date/source allow-lists locally."""
+    by_url = {candidate["url"]: candidate for candidate in candidates if candidate.get("url")}
+    selected: list[dict[str, str]] = []
+    families: set[str] = set()
+    for item in payload.get("top_stories", []) if isinstance(payload.get("top_stories"), list) else []:
+        if not isinstance(item, dict):
+            continue
+        candidate = by_url.get(canonicalize_url(str(item.get("url", ""))))
+        fields = ("title", "what_happened", "why_it_matters", "who_is_affected", "product_angle")
+        if (not candidate or candidate.get("eligible_for_top") != "true"
+                or _source_family(candidate["url"]) in families
+                or not all(_plain_text(str(item.get(field, ""))) for field in fields)):
+            continue
+        selected.append({
+            "title": _plain_text(str(item["title"]))[:120],
+            "url": candidate["url"], "source": candidate["source"],
+            "published_at": candidate["published_at"],
+            **{field: _plain_text(str(item[field]))[:130] for field in fields[1:]},
+        })
+        families.add(_source_family(candidate["url"]))
+        if len(selected) == 3:
+            break
+    if not selected:
+        return build_official_feed_fallback(candidates)
+
+    def render(story: dict[str, str]) -> str:
+        return (
+            f"**标题**：[{story['title']}]({story['url']})\n\n"
+            f"**来源**：[{story['source']}]({story['url']}) · {story['published_at'][:10]}\n\n"
+            f"<!-- published_at: {story['published_at']} -->\n\n**摘要**：\n\n"
+            f"- {story['what_happened']}\n- {story['why_it_matters']}\n- {story['who_is_affected']}\n\n"
+            f"**产品技术视角**：{story['product_angle']}"
+        )
+    other: list[str] = []
+    counts: dict[str, int] = {}
+    selected_urls = {story["url"] for story in selected}
+    for item in payload.get("other_stories", []) if isinstance(payload.get("other_stories"), list) else []:
+        if not isinstance(item, dict):
+            continue
+        candidate = by_url.get(canonicalize_url(str(item.get("url", ""))))
+        family = _source_family(candidate["url"]) if candidate else ""
+        title, summary = _plain_text(str(item.get("title", "")))[:120], _plain_text(str(item.get("summary", "")))[:150]
+        if not candidate or candidate["url"] in selected_urls or counts.get(family, 0) >= 2 or not title or not summary:
+            continue
+        other.append(f"- **[{title}]({candidate['url']})** · {candidate['source']}\n- {summary}")
+        counts[family] = counts.get(family, 0) + 1
+        if len(other) == 8:
+            break
+    theme = _plain_text(str(payload.get("theme_observation", "")))[:360]
+    sources = "、".join(dict.fromkeys(story["source"] for story in selected))
+    briefing = "### 🎯 今日 Top 3\n\n" + "\n\n---\n\n".join(render(story) for story in selected)
+    briefing += "\n\n### 📰 其他值得看的\n\n" + "\n\n".join(other)
+    if theme:
+        briefing += "\n\n### 🔍 今日主题观察\n\n" + theme
+    return briefing + f"\n\n### ⚠️ 信息来源说明\n\n- 直接提供内容的源：{sources}\n- 所有链接均来自程序已核验的公开数据源。\n"
 
 
 def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=None) -> str:
-    """
-    Call Claude with the web_search tool and return the briefing markdown.
-
-    The web_search tool (type: "web_search_20260209") is server-side:
-    Anthropic executes searches automatically and injects results back into
-    the conversation. Claude may perform multiple searches before finishing,
-    so we run an agentic loop until stop_reason == "end_turn".
-    If the server-side loop hits its iteration limit it returns "pause_turn";
-    we re-send the conversation to resume.
-    """
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    """Use at most two DeepSeek calls; fall back to verified source metadata."""
+    api_key = os.environ.get("DEEPSEEK_API_KEY", "")
     if not api_key:
-        raise EnvironmentError("ANTHROPIC_API_KEY environment variable is not set")
-
-    client = anthropic.Anthropic(api_key=api_key)
-
-    # Wrap user prompt in a content block so we can attach cache_control.
-    # On the first turn this primes the cache; subsequent turns (pause_turn loop)
-    # read from cache at ~10% of normal input token cost.
-    messages: list = [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": user_prompt,
-                    "cache_control": {"type": "ephemeral"},
-                }
-            ],
-        }
+        raise EnvironmentError("DEEPSEEK_API_KEY environment variable is not set")
+    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
+    messages: list[dict[str, str]] = [
+        {"role": "system", "content": SYSTEM_PROMPT + " 只输出有效 JSON。"},
+        {"role": "user", "content": user_prompt},
     ]
-
-    # Cache the system prompt too (it's stable across all turns).
-    system = [{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}]
-
-    print(f"📡 Calling Claude API for {TODAY_ISO}...")
-
-    for turn in range(8):  # safety cap (was 15)
-        response = _api_create_with_retry(client, system, messages)
-
-        print(
-            f"  turn {turn + 1} | stop_reason={response.stop_reason} | "
-            f"blocks={[b.type for b in response.content]}"
-        )
-
-        # Collect any text already present in this response
-        text = "\n".join(
-            b.text for b in response.content if getattr(b, "type", "") == "text" and b.text
-        )
-
-        if response.stop_reason == "end_turn":
-            cleaned = clean_briefing(text) or "（本次未生成内容，请检查 API 配置）"
-            cleaned = format_empty_top_state(cleaned)
-            if contains_sensitive_politics(cleaned):
-                print("  ⚠️ Sensitive political content detected; requesting rewrite")
-                messages.append({"role": "assistant", "content": response.content})
-                messages.append(
-                    {
-                        "role": "user",
-                        "content": (
-                            "上次输出包含不允许公开展示的话题，或提及了相关删除与筛选说明。"
-                            "请完全重写整份简报，只保留产品、工程、商业落地、开发者生态相关内容，"
-                            "不要解释哪些内容被排除，不要复述被删除的话题，也不要提及筛选命中原因。"
-                            "下一条回复必须直接以 `### 🎯 今日 Top 3` 开始，并完整包含"
-                            "`### 📰 其他值得看的` 和 `### ⚠️ 信息来源说明`；"
-                            "不要回复确认、道歉或修改说明。"
-                        ),
-                    }
-                )
-                continue
-            validation_errors = validate_briefing(
-                cleaned,
-                previous_stories,
-                official_candidates=official_candidates,
-            )
-            if validation_errors:
-                print("  ⚠️ Freshness/deduplication validation failed; requesting rewrite")
-                for error in validation_errors:
-                    print(f"    - {error}")
-                messages.append({"role": "assistant", "content": response.content})
-                messages.append(
-                    {
-                        "role": "user",
-                        "content": (
-                            "上次输出未通过发布前硬校验，不能发布：\n- "
-                            + "\n- ".join(validation_errors)
-                            + "\n请重新核查并完整重写。只能保留发布时间处于指定 48 小时窗口内、"
-                            "且未在历史清单出现过的独立事件。若不足 3 条就少输出，"
-                            "不要用旧闻或重复事件补足。原文有精确时间就保留含时区时间，"
-                              "原文只有日期就只写日期；严禁编造时刻。每条必须保留有效的 published_at 注释。"
-                              "下一条回复必须直接以 `### 🎯 今日 Top 3` 开始，并完整包含"
-                              "`### 📰 其他值得看的` 和 `### ⚠️ 信息来源说明`；"
-                              "不要回复确认、道歉或修改说明。Top 3 同一发布方只能出现 1 条。"
-                        ),
-                    }
-                )
-                continue
-            return cleaned
-
-        if response.stop_reason == "pause_turn":
-            # web_search_20260209 runs searches in a server-side loop (max 10
-            # iterations). When it hits the limit it returns "pause_turn" with
-            # partial content. Re-send the conversation to let it continue.
-            messages.append({"role": "assistant", "content": response.content})
-            continue
-
-        # Never publish a truncated response because it bypasses validation.
-        raise RuntimeError(f"Claude stopped before a valid briefing: {response.stop_reason}")
-
-    raise RuntimeError("Claude did not produce a fresh, non-duplicate briefing within 8 turns")
+    print(f"📡 Calling DeepSeek {DEEPSEEK_MODEL} for {TODAY_ISO} (max {MAX_MODEL_CALLS} calls)...")
+    for attempt in range(MAX_MODEL_CALLS):
+        response = _api_create_with_retry(client, messages)
+        content = response.choices[0].message.content or "{}"
+        try:
+            payload = json.loads(content)
+        except json.JSONDecodeError:
+            payload = {}
+        briefing = format_empty_top_state(clean_briefing(briefing_from_payload(payload, official_candidates or [])))
+        errors = validate_briefing(briefing, previous_stories, official_candidates=official_candidates)
+        if not contains_sensitive_politics(briefing) and not errors:
+            return briefing
+        if attempt + 1 < MAX_MODEL_CALLS:
+            reason = "敏感内容" if contains_sensitive_politics(briefing) else "；".join(errors)
+            messages += [{"role": "assistant", "content": content},
+                         {"role": "user", "content": f"上次 JSON 未通过发布校验：{reason}。仅用给定候选重做完整 JSON。"}]
+    fallback = build_official_feed_fallback(official_candidates)
+    errors = validate_briefing(fallback, previous_stories, official_candidates=official_candidates)
+    if errors:
+        raise RuntimeError("DeepSeek output and feed fallback both failed validation: " + "; ".join(errors))
+    print("⚠️ DeepSeek output did not pass validation; publishing verified-source fallback")
+    return fallback
 
 
 # ── Markdown → HTML ───────────────────────────────────────────────────────────
@@ -954,7 +874,7 @@ def clean_briefing(text: str) -> str:
     """Strip LLM preamble and fix common markdown formatting issues."""
     # 0. Strip trailing whitespace on every line FIRST.
     #    Markdown treats "line  \n" (two trailing spaces) as a hard <br>.
-    #    Claude often emits these unintentionally, causing cramped output.
+    #    Models may emit these unintentionally, causing cramped output.
     text = re.sub(r'[ \t]+$', '', text, flags=re.MULTILINE)
 
     # 0a. Fix malformed reference-style links where the URL was emitted as
@@ -967,7 +887,7 @@ def clean_briefing(text: str) -> str:
 
     # 0b. Ensure Top-3 briefing field labels start new paragraphs.
     #     Without a blank line before them, markdown renders everything in one <p>.
-    #     Claude outputs **来源**：（colon outside bold），so pattern must include \*\*.
+    #     Model output may place the colon outside bold, so pattern must include \*\*.
     text = re.sub(
         r'(?m)(?<!\n)\n(\*\*(?:来源|摘要|产品技术视角)\*\*\s*[：:])',
         r'\n\n\1',
@@ -977,7 +897,7 @@ def clean_briefing(text: str) -> str:
     # 0c. Ensure a blank line between **摘要**： and the first bullet item.
     #     sane_lists requires a blank line before any list that follows text;
     #     without it, "- item" is treated as plain text inside the label's <p>.
-    #     Claude outputs **摘要**：（colon outside bold），pattern corrected accordingly.
+    #     Model output may place the colon outside bold, so pattern handles it.
     text = re.sub(
         r'(\*\*摘要\*\*\s*[：:])\n(-\s)',
         r'\1\n\n\2',
@@ -1039,7 +959,7 @@ def md_to_html(text: str) -> str:
     )
     # Fallback: if any <br> + bold field label combos remain, split into proper <p>.
     # Handles cases where clean_briefing didn't add blank lines (e.g., older content).
-    # Claude outputs **来源**：→ HTML: <strong>来源</strong>：，pattern matches closing </strong>.
+    # The rendered label becomes <strong>来源</strong>：, so match the closing tag.
     html = re.sub(
         r'<br\s*/?>\s*\n(<strong>(?:来源|摘要)</strong>\s*[：：])',
         r'</p>\n<p>\1',
@@ -1051,7 +971,7 @@ def md_to_html(text: str) -> str:
         html,
     )
     # Remove stray newlines before Chinese punctuation.
-    # Claude sometimes splits a sentence mid-line; in HTML a bare \n followed
+    # Model output can split a sentence mid-line; in HTML a bare \n followed
     # by ，。；etc. renders as " ，" (space + punctuation) which looks wrong.
     html = re.sub(r'[ \t]*\n[ \t]*([，。；：！？、—])', r'\1', html)
     html = re.sub(
@@ -1154,7 +1074,7 @@ HTML_TEMPLATE = """\
   </div>
 
   <div id="footer">
-    <div class="footer-meta">由 Claude + Web Search 自动生成</div>
+    <div class="footer-meta">由 hiwd daily 自动整理</div>
     <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved. <button class="theme-toggle" type="button" data-theme-toggle>夜间</button></div>
   </div>
   <script>
@@ -1214,7 +1134,7 @@ def render_page(briefing_md: str, archive_entries: list[dict],
 RSS_SITE_URL = "https://daily.hiwd.com/"
 RSS_FEED_URL = "https://daily.hiwd.com/rss.xml"
 RSS_TITLE = "hiwd daily · AI 行业每日简报"
-RSS_DESCRIPTION = "由 Claude + Web Search 自动生成的 AI 行业每日精选"
+RSS_DESCRIPTION = "由 hiwd daily 自动整理的 AI 行业每日精选"
 RSS_COPYRIGHT = "© 2026 hiwd · All rights reserved. https://hiwd.com/"
 RSS_ITEM_LIMIT = 14
 
@@ -1384,36 +1304,23 @@ def main() -> None:
     if previous_stories:
         print(f"🔍 Loaded {len(previous_stories)} previously reported stories for deduplication")
 
-    # Seed the model with fresh, exact article links from official and trusted
-    # media feeds. Web search still broadens coverage, but is no longer the only
-    # way important stories reach the candidate pool.
+    # Collect public-source candidates before one bounded DeepSeek editing call.
+    # Historical de-duplication remains local and is never sent in full to the model.
     official_candidates = get_official_candidates(previous_stories)
+    official_candidates += get_github_release_candidates()
+    official_candidates += get_hacker_news_candidates()
+    unique_candidates: dict[str, dict[str, str]] = {}
+    previous_urls = {story["url"] for story in previous_stories}
+    for candidate in official_candidates:
+        if candidate.get("url") and candidate["url"] not in previous_urls:
+            unique_candidates[candidate["url"]] = candidate
+    official_candidates = list(unique_candidates.values())[:MAX_CANDIDATES]
     if official_candidates:
-        print(f"📥 Loaded {len(official_candidates)} fresh trusted feed candidates")
+        print(f"📥 Loaded {len(official_candidates)} fresh public-source candidates")
 
-    # Build prompt and generate briefing via Claude
-    user_prompt = build_user_prompt(previous_stories, official_candidates)
-    try:
-        briefing_md = fetch_briefing(user_prompt, previous_stories, official_candidates)
-        print(f"✅ Received {len(briefing_md)} chars from Claude")
-    except anthropic.BadRequestError as error:
-        if not is_usage_limit_error(error):
-            raise
-        briefing_md = build_official_feed_fallback(official_candidates)
-        fallback_errors = validate_briefing(
-            briefing_md,
-            previous_stories,
-            official_candidates=official_candidates,
-        )
-        if fallback_errors:
-            raise RuntimeError(
-                "Official-feed fallback failed validation: "
-                + "; ".join(fallback_errors)
-            ) from error
-        print(
-            f"⚠️ Claude usage limit reached; publishing {len(parse_top_stories(briefing_md))} "
-            "verified feed item(s) instead"
-        )
+    user_prompt = build_user_prompt(official_candidates=official_candidates)
+    briefing_md = fetch_briefing(user_prompt, previous_stories, official_candidates)
+    print(f"✅ Received {len(briefing_md)} chars from DeepSeek or verified-source fallback")
 
     # Add today to archive entries BEFORE rendering so it appears in the nav
     # and the JS "今日" highlight can find the entry.
