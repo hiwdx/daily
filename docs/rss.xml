@@ -7,8 +7,58 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Thu, 30 Jul 2026 10:35:27 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 05:40:09 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-07-31</title>
+      <link>https://daily.hiwd.com/archive/2026-07/2026-07-31.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-31.html</guid>
+      <pubDate>Fri, 31 Jul 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-30-github-models-is-now-retired">GitHub Models 退役，开发者需迁移至 Azure AI Foundry 或其他替代方案</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-30-github-models-is-now-retired">GitHub Changelog</a> · 2026-07-30</p>
+<!-- published_at: 2026-07-30T19:14:22+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>GitHub Models 于 2026 年 7 月 30 日正式退役，Playground、模型目录、推理 API 和 BYOK 全部停用。</li>
+<li>大量依赖 GitHub 内置模型试验的开发环境直接断裂，影响原型开发与模型对比工作流，迫使团队立即调整工具链。</li>
+<li>使用 GitHub Models 进行快速实验和集成的开发者及小团队，尤其是习惯在 GitHub 内直接测试模型的用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：GitHub 进一步将 AI 能力整合到 Copilot 生态，放弃独立模型市场，引导用户走向 Azure 和 Copilot 代理。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/973384/linkedin-seems-like-ai-slop-button">LinkedIn 新增‘疑似 AI 垃圾内容’举报按钮，并用校对工具替代自家 AI 写作功能</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/973384/linkedin-seems-like-ai-slop-button">The Verge AI</a> · 2026-07-30</p>
+<!-- published_at: 2026-07-30T14:43:26-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>LinkedIn 推出‘疑似 AI slop’举报按钮，同时将自家 AI 写作功能替换为校对工具，以减少平台上的低质量 AI 生成内容。</li>
+<li>平台首次以产品手段明确打击 AI 生成低质内容，可能改变内容创作者的行为，影响职场内容的可信度和分法。</li>
+<li>LinkedIn 内容创作者和阅读者，尤其是经常发布或消费专业帖子的用户，以及使用 AI 辅助写作的营销人员。</li>
+</ul>
+<p><strong>产品技术视角</strong>：LinkedIn 从鼓励 AI 写作转向内容质量管控，通过 UI 层面的举报和工具替换，直接干预用户生成内容的质量标准。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack">Nscale 收购 Anyscale，增强 AI 算力栈控制力</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack">TechCrunch AI</a> · 2026-07-30</p>
+<!-- published_at: 2026-07-30T15:19:15+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>英国 AI 新云公司 Nscale 收购了帮助规模化 AI 工作负载的软件初创公司 Anyscale。</li>
+<li>新云厂商通过收购软件层来垂直整合算力供应与调度，可能降低大规模 AI 部署成本并改变竞争格局。</li>
+<li>寻求弹性 AI 算力和高效工作负载管理的中大型企业，以及使用 Ray 框架的 AI 工程师。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Nscale 将 Anyscale 的软件能力整合进自有基础设施，可能提供更便宜的端到端 AI 计算解决方案。</p>
+<h3>📰 其他值得看的</h3>
+<h3>🔍 今日主题观察</h3>
+<p>平台对 AI 生成内容的治理进入实操阶段，LinkedIn 用举报按钮和工具替换直接干预低质内容；同时开发者工具链加速重构，GitHub Models 退役迫使迁移，而新云商通过收购整合算力与软件层。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：GitHub Changelog、The Verge AI、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-07-30</title>
       <link>https://daily.hiwd.com/archive/2026-07/2026-07-30.html</link>
@@ -595,73 +645,6 @@
 <li>直接提供内容的源：GitHub Changelog、Hugging Face Blog、The Verge</li>
 <li>所有链接均来自官方或可信媒体的完整原文 URL。</li>
 </ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-17</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-17.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-17.html</guid>
-      <pubDate>Fri, 17 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/16/google-vids-now-lets-you-star-in-your-own-ai-videos">Google Vids 现已支持用户化身功能，让用户主演自己的 AI 视频</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/16/google-vids-now-lets-you-star-in-your-own-ai-videos">TechCrunch AI</a> · 2026-07-16</p>
-<!-- published_at: 2026-07-16T18:32:54+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google Vids 推出虚拟化身生成功能，用户可基于自身定制个性化视频角色</li>
-<li>将 AI 视频生成从纯内容合成扩展到个性化人物代理，降低内容创作成本和学习曲线</li>
-<li>对营销、教育、企业传播等领域的内容创作者有直接应用价值</li>
-</ul>
-<p><strong>产品技术视角</strong>：
-通过多模态视觉生成和实时角色合成，强化 Gemini 在端到端媒体创作中的竞争力，与 Nano Banana 2 Lite 和 Gemini Omni Flash 形成完整生成媒体工具链</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/kimi-k3-is-now-available-on-ai-gateway">Vercel AI Gateway 现已接入月之暗面 Kimi K3 模型</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/kimi-k3-is-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-07-16</p>
-<!-- published_at: 2026-07-16T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Kimi K3 加入 Vercel AI Gateway 的模型库，开发者可通过统一接口调用</li>
-<li>扩展了云平台对国产前沿模型的支持，简化跨模型集成复杂度</li>
-<li>对采用多模型策略的应用团队降低切换成本，推动国产大模型国际化部署</li>
-</ul>
-<p><strong>产品技术视角</strong>：统一 API 层在兼容性上的扩展，体现云基础设施对全球多元模型生态的开放姿态，有利于国产模型与海外开发者生态的连接。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/real-world-voiceeq">Hugging Face 发布 Real World VoiceEQ，为语音 AI 建立人类质量量化框架</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/real-world-voiceeq">Hugging Face Blog</a> · 2026-07-15</p>
-<!-- published_at: 2026-07-15T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Hugging Face 推出 Real World VoiceEQ 评测框架，用结构化方法量化语音模型的人类可用性</li>
-<li>填补语音 AI 评测的关键空白（现有基准多聚焦准确度，缺乏真实用户体验的量化标准）</li>
-<li>为语音应用开发者提供可靠的跨模型对标方法，加速语音合成和识别的商用落地</li>
-</ul>
-<p><strong>产品技术视角</strong>：将主观用户体验转换为可量化指标体系，建立语音 AI 领域的行业基准标准，类似于图像和视频领域的 benchmark 作用。</p>
-<hr />
-<h3>📰 其他值得看的</h3>
-<ul>
-<li><strong><a href="https://www.theverge.com/entertainment/965616/ash-koosha-odysseus-the-fall-foundtain-zero-tilly-norwood">AI 电影制作成为新的直接变现渠道</a></strong> · The Verge</li>
-<li>
-<p>AI 生成的低成本视频内容绕过传统电影发行链路，直接面向流媒体平台发行</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/07/16/googles-ai-mode-now-lets-you-link-and-interact-with-select-apps">Google AI Mode 现支持与精选应用的实时集成和交互</a></strong> · TechCrunch</p>
-</li>
-<li>Google Search 的 AI Mode 扩展应用互操作能力，支持直接触发第三方工具完成跨应用任务</li>
-</ul>
-<hr />
-<h3>⚠️ 信息来源说明</h3>
-<p><strong>直接提供内容的源</strong>：
-- TechCrunch AI（Google Vids、Google AI Mode）
-- Vercel Changelog（Kimi K3）
-- Hugging Face Blog（Real World VoiceEQ）
-- The Verge（AI 电影直发）</p>
-<p><strong>说明</strong>：
-- 所有 Top 3 链接均为原文完整 URL 路径，来自官方公告或一手媒体报道
-- 时间校验：全部条目首次发布时间处于 2026-07-15 06:27 至 2026-07-17 06:27 的 48 小时窗口内
-- 历史清单去重：所有条目均未在已报道清单中出现
-- 发布方分布：TechCrunch（1 条 Top 3 + 1 条其他）、Vercel、Hugging Face、The Verge 各 1 条，符合同源发布限制</p>]]></description>
     </item>
   </channel>
 </rss>
