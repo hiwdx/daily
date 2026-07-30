@@ -907,7 +907,7 @@ def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str,
 
 
 def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=None) -> str:
-    """Use at most two DeepSeek calls; fall back to verified source metadata."""
+    """Generate once, then always run a separate final editorial review."""
     api_key = os.environ.get("DEEPSEEK_API_KEY", "")
     if not api_key:
         raise EnvironmentError("DEEPSEEK_API_KEY environment variable is not set")
@@ -917,8 +917,15 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
         {"role": "user", "content": user_prompt},
     ]
     print(f"📡 Calling DeepSeek {DEEPSEEK_MODEL} for {TODAY_ISO} (max {MAX_MODEL_CALLS} calls)...")
+    first_valid_briefing: Optional[str] = None
     for attempt in range(MAX_MODEL_CALLS):
-        response = _api_create_with_retry(client, messages)
+        try:
+            response = _api_create_with_retry(client, messages)
+        except (APIConnectionError, RateLimitError, APIStatusError):
+            if first_valid_briefing:
+                print("⚠️ Review API unavailable; publishing the already validated first draft")
+                return first_valid_briefing
+            raise
         content = response.choices[0].message.content or "{}"
         try:
             payload = json.loads(content)
@@ -927,12 +934,28 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
         briefing = format_empty_top_state(clean_briefing(briefing_from_payload(payload, official_candidates or [])))
         errors = validate_briefing(briefing, previous_stories, official_candidates=official_candidates)
         errors += validate_editorial_quality(briefing)
-        if not contains_sensitive_politics(briefing) and not errors:
+        valid = not contains_sensitive_politics(briefing) and not errors
+        if attempt == 0:
+            if valid:
+                first_valid_briefing = briefing
+                reason = "首稿通过结构校验，但请执行发布前编辑复核"
+            else:
+                reason = "首稿未通过：" + ("敏感内容" if contains_sensitive_politics(briefing) else "；".join(errors))
+            messages += [
+                {"role": "assistant", "content": content},
+                {"role": "user", "content": (
+                    f"{reason}。现在你是最终主编，请输出完整 JSON 修订稿。逐项复核："
+                    "是否为真实、已发生的重要进展；是否把预测和公关愿景错误放进 Top 3；"
+                    "每条是否解释了具体变化；主题观察是否只基于入选条目。"
+                    "保留准确内容，删除或重写空泛内容；不得新增候选外事实、链接或日期。"
+                )},
+            ]
+            continue
+        if valid:
             return briefing
-        if attempt + 1 < MAX_MODEL_CALLS:
-            reason = "敏感内容" if contains_sensitive_politics(briefing) else "；".join(errors)
-            messages += [{"role": "assistant", "content": content},
-                         {"role": "user", "content": f"上次 JSON 未通过发布校验：{reason}。仅用给定候选重做完整 JSON。"}]
+        if first_valid_briefing:
+            print("⚠️ Review draft failed quality gate; publishing the already validated first draft")
+            return first_valid_briefing
     raise RuntimeError(
         "DeepSeek output did not meet editorial quality rules; refusing to publish a low-value fallback"
     )
