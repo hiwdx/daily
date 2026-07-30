@@ -344,5 +344,21 @@ class SensitiveContentTests(unittest.TestCase):
         self.assertTrue(generate.contains_sensitive_politics(text))
 
 
+class EditorialQualityTests(unittest.TestCase):
+    def test_rejects_template_fallback_copy(self):
+        text = """### 🎯 今日 Top 3
+
+**标题**：[更新](https://example.com/update)
+**来源**：[测试](https://example.com/update) · 2026-07-30
+<!-- published_at: 2026-07-30T00:00:00+00:00 -->
+**摘要**：官方或可信媒体订阅源确认了这项最新动态
+"""
+        self.assertTrue(generate.validate_editorial_quality(text))
+
+    def test_rejects_prediction_as_top_story(self):
+        text = briefing(("公司预测未来五年 AI 普及", "https://example.com/prediction", datetime.now(timezone.utc)))
+        self.assertTrue(any("预测或观点" in error for error in generate.validate_editorial_quality(text)))
+
+
 if __name__ == "__main__":
     unittest.main()

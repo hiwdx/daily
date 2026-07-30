@@ -37,6 +37,8 @@ NOW = datetime.now(CST)
 FRESHNESS_HOURS = 48
 MAX_CANDIDATES = 36
 MAX_CANDIDATE_SUMMARY_CHARS = 420
+MAX_ARTICLE_CONTEXT_FETCHES = 12
+MIN_SUBSTANTIVE_CONTEXT_CHARS = 180
 # Conservative character cap: even for CJK-heavy input it keeps the complete
 # request below roughly 15k input tokens once the fixed prompt is included.
 MAX_MODEL_INPUT_CHARS = 12000
@@ -412,6 +414,44 @@ def get_github_release_candidates(now: Optional[datetime] = None) -> list[dict[s
     return candidates[:8]
 
 
+def _extract_article_excerpt(page: str) -> str:
+    """Extract a compact factual excerpt without depending on a scraper SDK."""
+    og_match = re.search(
+        r'<meta[^>]+(?:property|name)=["\'](?:og:description|description)["\'][^>]+content=["\']([^"\']+)',
+        page,
+        re.IGNORECASE,
+    )
+    if og_match:
+        return _plain_text(og_match.group(1))[:900]
+    paragraphs = re.findall(r"<p[^>]*>(.*?)</p>", page, re.IGNORECASE | re.DOTALL)
+    return _plain_text(" ".join(paragraphs[:6]))[:900]
+
+
+def enrich_candidate_context(candidates: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Add short article evidence to the best public candidates before editing.
+
+    Network failures are intentionally non-fatal; RSS metadata remains the
+    fallback. The bounded fetch count avoids turning content quality into cost
+    or reliability risk.
+    """
+    enriched: list[dict[str, str]] = []
+    for candidate in candidates[:MAX_ARTICLE_CONTEXT_FETCHES]:
+        candidate = dict(candidate)
+        if len(candidate.get("summary", "")) < MIN_SUBSTANTIVE_CONTEXT_CHARS:
+            try:
+                request = Request(candidate["url"], headers={"User-Agent": "hiwd-daily/2.0"})
+                with urlopen(request, timeout=12) as response:
+                    raw = response.read(250_000).decode("utf-8", errors="ignore")
+                excerpt = _extract_article_excerpt(raw)
+                if excerpt:
+                    candidate["summary"] = (candidate.get("summary", "") + " " + excerpt).strip()[:900]
+            except Exception as error:
+                print(f"  ⚠️ Could not load article context for {candidate['source']}: {error}")
+        enriched.append(candidate)
+    enriched.extend(candidates[MAX_ARTICLE_CONTEXT_FETCHES:])
+    return enriched
+
+
 
 def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
     """Build a bounded editing prompt from pre-validated public candidates.
@@ -434,6 +474,12 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
     return f"""请把以下已验证候选整理为 hiwd daily。只依据候选中提供的事实、日期和 URL，不得搜索、不得补写不存在的链接或细节。
 
 读者是关心 AI 时代变化的普通人。优先选择真正改变产品能力、开发者工作流、成本、基础设施或商业格局的信号；不要堆砌新闻，不要写无意义摘要，不要过度技术化。所有正文使用简洁、有观点的中文。
+
+编辑标准（比“凑满 Top 3”更重要）：
+- 只把已经上线的产品/API/模型、可核实的工程更新、完成的融资收购或明确落地的合作放进 Top 3。
+- CEO 预测、路线图、愿景、泛泛的行业观点不能进入 Top 3，除非候选同时提供已经发生的具体产品或商业事实。
+- 每条“为什么重要”必须指出一个可观察的变化：能力、成本、分发、工作流、竞争格局或使用者行为；禁止“值得关注”“可能改变行业”等空话。
+- 主题观察只能归纳实际入选条目，不得引入未入选或候选中没有证据的事件。
 
 硬规则：
 - Top 3 只能选择 `top=true` 的候选，最多 3 条，且发布方不同；URL、来源和 published_at 必须逐字使用候选值。
@@ -697,6 +743,31 @@ def validate_briefing(
     return errors
 
 
+_GENERIC_FALLBACK_PHRASES = (
+    "官方或可信媒体订阅源确认了这项最新动态",
+    "具备产品或开发者生态参考价值",
+    "不对原文未提供的细节作额外推断",
+)
+_WEAK_TOP_PATTERNS = (
+    r"(?:预测|预计|认为|表示|将会|未来.{0,8}(?:年|月))",
+)
+
+
+def validate_editorial_quality(briefing: str) -> list[str]:
+    """Reject publishable-but-unhelpful copy before it reaches readers."""
+    errors: list[str] = []
+    if any(phrase in briefing for phrase in _GENERIC_FALLBACK_PHRASES):
+        errors.append("简报包含订阅源元数据模板文案，缺少读者可用的具体解释")
+    for story in parse_top_stories(briefing):
+        title = str(story["title"])
+        if any(re.search(pattern, title, re.IGNORECASE) for pattern in _WEAK_TOP_PATTERNS):
+            errors.append(f"Top 3《{title}》看起来是预测或观点，不是可核实的实际进展")
+    theme_match = re.search(r"^#{1,3}\s+🔍[^\n]*\n(.*?)(?=^#{1,3}\s|\Z)", briefing, re.MULTILINE | re.DOTALL)
+    if theme_match and len(_plain_text(theme_match.group(1))) < 45:
+        errors.append("主题观察过短，未提供可读的归纳")
+    return errors
+
+
 def format_empty_top_state(briefing: str) -> str:
     """Replace technical no-news explanations with concise reader-facing copy.
 
@@ -855,18 +926,16 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
             payload = {}
         briefing = format_empty_top_state(clean_briefing(briefing_from_payload(payload, official_candidates or [])))
         errors = validate_briefing(briefing, previous_stories, official_candidates=official_candidates)
+        errors += validate_editorial_quality(briefing)
         if not contains_sensitive_politics(briefing) and not errors:
             return briefing
         if attempt + 1 < MAX_MODEL_CALLS:
             reason = "敏感内容" if contains_sensitive_politics(briefing) else "；".join(errors)
             messages += [{"role": "assistant", "content": content},
                          {"role": "user", "content": f"上次 JSON 未通过发布校验：{reason}。仅用给定候选重做完整 JSON。"}]
-    fallback = build_official_feed_fallback(official_candidates)
-    errors = validate_briefing(fallback, previous_stories, official_candidates=official_candidates)
-    if errors:
-        raise RuntimeError("DeepSeek output and feed fallback both failed validation: " + "; ".join(errors))
-    print("⚠️ DeepSeek output did not pass validation; publishing verified-source fallback")
-    return fallback
+    raise RuntimeError(
+        "DeepSeek output did not meet editorial quality rules; refusing to publish a low-value fallback"
+    )
 
 
 # ── Markdown → HTML ───────────────────────────────────────────────────────────
@@ -1315,6 +1384,7 @@ def main() -> None:
         if candidate.get("url") and candidate["url"] not in previous_urls:
             unique_candidates[candidate["url"]] = candidate
     official_candidates = list(unique_candidates.values())[:MAX_CANDIDATES]
+    official_candidates = enrich_candidate_context(official_candidates)
     if official_candidates:
         print(f"📥 Loaded {len(official_candidates)} fresh public-source candidates")
 
