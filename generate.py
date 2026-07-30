@@ -1166,7 +1166,6 @@ HTML_TEMPLATE = """\
   </div>
 
   <div id="footer">
-    <div class="footer-meta">由 hiwd daily 自动整理</div>
     <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved. <button class="theme-toggle" type="button" data-theme-toggle>夜间</button></div>
   </div>
   <script>
@@ -1226,7 +1225,7 @@ def render_page(briefing_md: str, archive_entries: list[dict],
 RSS_SITE_URL = "https://daily.hiwd.com/"
 RSS_FEED_URL = "https://daily.hiwd.com/rss.xml"
 RSS_TITLE = "hiwd daily · AI 行业每日简报"
-RSS_DESCRIPTION = "由 hiwd daily 自动整理的 AI 行业每日精选"
+RSS_DESCRIPTION = "AI 行业每日精选"
 RSS_COPYRIGHT = "© 2026 hiwd · All rights reserved. https://hiwd.com/"
 RSS_ITEM_LIMIT = 14
 
