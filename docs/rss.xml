@@ -7,8 +7,46 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sat, 01 Aug 2026 05:35:49 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 05:22:55 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-03</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-03.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-03.html</guid>
+      <pubDate>Mon, 03 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/02/sam-altman-and-ais-decel-debate">Sam Altman 呼吁减缓 AI 发展速度</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/02/sam-altman-and-ais-decel-debate">TechCrunch AI</a> · 2026-08-02</p>
+<!-- published_at: 2026-08-02T20:54:22+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Sam Altman 在公开讨论中呼吁行业“控制 AI 发展速度”。</li>
+<li>OpenAI 的 CEO 首次公开站到减速一方，可能直接影响产品发布节奏、开发者对路线图的预期以及监管讨论。</li>
+<li>依赖 OpenAI API 的开发者、关注 AI 安全的公众以及处于监管讨论中的其他模型厂商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：该声明可能很快表现为 API 发布放缓或更严格的使用政策，改变接入方的产品迭代计划。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/974018/pippa-seedance-artist-royalties">支付版税能说服艺术家拥抱 AI 吗？</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/974018/pippa-seedance-artist-royalties">The Verge AI</a> · 2026-08-02</p>
+<!-- published_at: 2026-08-02T09:00:00-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>插画师持续抗议未经许可训练 AI，生成式 AI 公司开始讨论向艺术家支付版税的模式。</li>
+<li>版税模式若落地将改变数据供应链，影响模型训练成本，并推高图像生成类产品的定价。</li>
+<li>创意工作者、依赖图像生成 API 的开发者和企业用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Midjourney、Stable Diffusion 等产品可能被迫公开训练数据来源并支付费用，改变成本结构和产品策略。</p>
+<h3>📰 其他值得看的</h3>
+<h3>🔍 今日主题观察</h3>
+<p>一边是 OpenAI 掌门人公开主张减速，另一边 AI 生成内容正打入主流排行榜。速度之争不再只是理念分歧，而是直接落在产品节奏和内容规则的真实变化上。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：TechCrunch AI、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-01</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-01.html</link>
@@ -609,43 +647,6 @@
 <li>直接提供内容的源：TechCrunch AI</li>
 <li>过去 48 小时内通过时效、来源和历史去重校验的独立发布方只有 1 个，因此本期不以旧闻补足榜单。</li>
 <li>链接来自可信媒体订阅源并指向完整原文。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-19</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-19.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-19.html</guid>
-      <pubDate>Sun, 19 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-17-github-mobile-fix-pull-request-comments-with-copilot-cloud-agent">GitHub Mobile 可直接让 Copilot cloud agent 修复 PR 评论</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-17-github-mobile-fix-pull-request-comments-with-copilot-cloud-agent">GitHub Changelog</a> · 2026-07-17</p>
-<!-- published_at: 2026-07-17T19:47:45+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>GitHub Mobile 在 Copilot code review 评论中加入“Fix with Copilot”入口</li>
-<li>用户无需手写提示词，即可从 PR 主视图或具体评论启动 cloud agent 修复</li>
-<li>经常在移动端审查代码的开发者可以更快处理反馈并推进合并</li>
-</ul>
-<p><strong>产品技术视角</strong>：agent 入口被嵌入代码审查的具体上下文，减少了从发现问题到委派修复之间的交互成本。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/17/patreon-stops-asking-ai-bots-not-to-scrape-and-starts-blocking-them">Patreon 从请求 AI 爬虫停止抓取转向主动阻断</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/17/patreon-stops-asking-ai-bots-not-to-scrape-and-starts-blocking-them">TechCrunch AI</a> · 2026-07-17</p>
-<!-- published_at: 2026-07-17T15:21:17+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Patreon 与 Cloudflare 合作，使用 AI Crawl Control 主动阻断用于模型训练的爬虫</li>
-<li>测试中，单个训练爬虫每周数千次访问尝试降至零，同时保留可带来访问流量的索引机器人</li>
-<li>创作者和内容平台获得了比 robots.txt 更强的训练数据授权控制</li>
-</ul>
-<p><strong>产品技术视角</strong>：AI 数据治理正在从声明式规则升级为网络层强制执行，并开始区分训练爬虫与搜索索引用途。</p>
-<h3>📰 其他值得看的</h3>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：GitHub Changelog、TechCrunch AI</li>
-<li>过去 48 小时内符合来源、时效和历史去重要求的独立发布方不足 3 个，因此本期保留 2 条。</li>
-<li>所有链接均为已核验的完整原文 URL。</li>
 </ul>]]></description>
     </item>
   </channel>
