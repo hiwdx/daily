@@ -7,8 +7,58 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 03 Aug 2026 05:22:55 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 05:37:31 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-04</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-04.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-04.html</guid>
+      <pubDate>Tue, 04 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer">Cloudflare 发布 @cloudflare/computer：为每个 AI 代理配备专属计算机的开源运行时</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer">Cloudflare Changelog</a> · 2026-08-03</p>
+<!-- published_at: 2026-08-03T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cloudflare 发布开源代理运行时 @cloudflare/computer 早期预览，为每个代理分配独立计算机，动态调度 isolates 与 Linux 容器。</li>
+<li>代理计算从单次函数调用升级为有状态、可切换执行上下文的完整计算机，直接降低构建复杂自动化代理的门槛。</li>
+<li>使用 Cloudflare Workers 构建 AI 代理的开发者，现可将文件系统、计算资源与代理生命周期统一管理。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Workers 生态新增原生代理运行时，提供 SQLite 虚拟文件系统，可从云存储填充数据，实现持久化上下文。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/qwen-3-8-max-now-available-on-vercel-ai-gateway">阿里通义千问 Qwen 3.8 Max 登陆 Vercel AI Gateway</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/qwen-3-8-max-now-available-on-vercel-ai-gateway">Vercel Changelog</a> · 2026-08-02</p>
+<!-- published_at: 2026-08-02T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>阿里最新大模型 Qwen 3.8 Max 通过 Vercel AI Gateway 开放调用，一个 API Key 即可使用，无需注册云商账户。</li>
+<li>中国顶级大模型直接嵌入全球主流前端部署平台，分发路径大幅缩短，开发者零门槛对比模型能力。</li>
+<li>Vercel 上构建 AI 应用的开发者，以及需要一键切换多模型的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：AI Gateway 将 Qwen 3.8 Max 变为即选即用的模型选项，提供自动回退、用量追踪和请求追踪。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/974571/eu-ai-act-transparency-labels-rules-deepfakes">欧盟 AI 透明与标注规则正式生效，强制披露聊天机器人和深度伪造内容</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/974571/eu-ai-act-transparency-labels-rules-deepfakes">The Verge AI</a> · 2026-08-03</p>
+<!-- published_at: 2026-08-03T13:38:45-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>欧盟《AI 法案》新增透明义务于8月2日生效，要求公司必须披露用户是否在与 AI 交互，以及内容是否为 AI 生成。</li>
+<li>AI 产品在欧洲市场的发行合规门槛立即可见，聊天机器人、图像生成等必须内置披露机制，否则面临法律风险。</li>
+<li>所有向欧盟用户提供 AI 聊天、图像、音频、视频产品的公司，需立即改造交互流程。</li>
+</ul>
+<p><strong>产品技术视角</strong>：对内容平台和 AI 工具厂商而言，透明标注不再是可选项，而是产品上架欧洲的必要功能。</p>
+<h3>📰 其他值得看的</h3>
+<h3>🔍 今日主题观察</h3>
+<p>本周 AI 应用层出现两份实物交付：Cloudflare 将代理运行环境下沉到边缘基础设施，Vercel 让大模型直连西方开发者，两者都在降低部署摩擦。与此同时，欧盟透明规则落地撕开合规缺口，对产品形态构成硬约束，AI 输出必须天然携带可解释的标签。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Cloudflare Changelog、Vercel Changelog、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-03</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-03.html</link>
@@ -622,31 +672,6 @@
 <ul>
 <li>直接提供内容的源：GitHub Changelog、TechCrunch AI、The Verge AI</li>
 <li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-20</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-20.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-20.html</guid>
-      <pubDate>Mon, 20 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/19/nonprofit-current-ai-is-racing-to-build-the-world-wide-web-of-ai-free-for-all">非营利组织 Current AI 推进面向所有人的开放 AI 基础设施</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/19/nonprofit-current-ai-is-racing-to-build-the-world-wide-web-of-ai-free-for-all">TechCrunch AI</a> · 2026-07-19</p>
-<!-- published_at: 2026-07-19T14:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Current AI 正建设可免费使用的开放 AI 生态，覆盖设备端能力、AI 对话等方向</li>
-<li>项目强调让不同文化与社区都能参与和受益，避免基础能力只集中在少数平台</li>
-<li>开放技术研究者、公共机构和服务多语言用户的开发者将重点受益</li>
-</ul>
-<p><strong>产品技术视角</strong>：其核心思路是把模型、数据和应用能力组织成公共基础设施，降低不同地区接入 AI 的门槛。</p>
-<h3>📰 其他值得看的</h3>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：TechCrunch AI</li>
-<li>过去 48 小时内通过时效、来源和历史去重校验的独立发布方只有 1 个，因此本期不以旧闻补足榜单。</li>
-<li>链接来自可信媒体订阅源并指向完整原文。</li>
 </ul>]]></description>
     </item>
   </channel>
