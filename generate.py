@@ -480,6 +480,7 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
 - CEO 预测、路线图、愿景、泛泛的行业观点不能进入 Top 3，除非候选同时提供已经发生的具体产品或商业事实。
 - 每条“为什么重要”必须指出一个可观察的变化：能力、成本、分发、工作流、竞争格局或使用者行为；禁止“值得关注”“可能改变行业”等空话。
 - 主题观察只能归纳实际入选条目，不得引入未入选或候选中没有证据的事件。
+- “其他值得看的”不是留白区：在未入选的候选中有 5 条或以上可用时，必须输出 5-8 条；不足 5 条时，输出全部可用条目。每条都应是有具体变化或实用价值的独立信号。
 
 硬规则：
 - Top 3 只能选择 `top=true` 的候选，最多 3 条，且发布方不同；URL、来源和 published_at 必须逐字使用候选值。
@@ -652,6 +653,25 @@ def validate_briefing(
         )
 
     other_stories = parse_other_stories(briefing)
+    selected_urls = {str(story["url"]) for story in stories}
+    # The model is expected to use the remaining verified candidates for the
+    # compact list. Count the slots it can legally occupy under the existing
+    # two-items-per-publisher rule, then require up to five of them. This keeps
+    # quiet news days valid while preventing a silently empty section when the
+    # discovery pipeline did find enough material.
+    remaining_by_family: dict[str, int] = {}
+    for candidate in official_candidates or []:
+        url = canonicalize_url(str(candidate.get("url", "")))
+        if not url or url in selected_urls:
+            continue
+        family = _source_family(url)
+        remaining_by_family[family] = remaining_by_family.get(family, 0) + 1
+    available_other_slots = sum(min(2, count) for count in remaining_by_family.values())
+    required_other_count = min(5, available_other_slots)
+    if len(other_stories) < required_other_count:
+        errors.append(
+            f"‘其他值得看的’至少需要 {required_other_count} 条可用候选，实际只有 {len(other_stories)} 条"
+        )
     other_families = [_source_family(story["url"]) for story in other_stories]
     repeated_other_families = {
         family for family in other_families if other_families.count(family) > 2
@@ -824,9 +844,26 @@ def build_official_feed_fallback(official_candidates: Optional[list[dict[str, st
             "**产品技术视角**：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。"
         )
     sources = "、".join(candidate["source"] for candidate in selected)
+    selected_urls = {candidate["url"] for candidate in selected}
+    other: list[str] = []
+    other_by_family: dict[str, int] = {}
+    for candidate in official_candidates or []:
+        url = candidate.get("url", "")
+        family = _source_family(url)
+        if not url or url in selected_urls or other_by_family.get(family, 0) >= 2:
+            continue
+        title = _plain_text(str(candidate.get("title", "")))
+        summary = _plain_text(str(candidate.get("summary", "")))
+        if not title or not summary:
+            continue
+        other.append(f"- **[{title}]({url})** · {candidate.get('source', '')}\n- {summary[:150]}")
+        other_by_family[family] = other_by_family.get(family, 0) + 1
+        if len(other) == 8:
+            break
     return (
         "### 🎯 今日 Top 3\n\n" + "\n\n---\n\n".join(blocks)
-        + "\n\n### 📰 其他值得看的\n\n### ⚠️ 信息来源说明\n\n"
+        + "\n\n### 📰 其他值得看的\n\n" + "\n\n".join(other)
+        + "\n\n### ⚠️ 信息来源说明\n\n"
         + f"- 直接提供内容的源：{sources}\n- 所有链接均来自已核验的公开数据源。\n"
     )
 

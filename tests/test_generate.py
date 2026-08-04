@@ -158,6 +158,18 @@ class FreshnessValidationTests(unittest.TestCase):
         errors = generate.validate_briefing(text, now=self.now)
         self.assertTrue(any("其他值得看的" in error and "最多 2 条" in error for error in errors))
 
+    def test_rejects_empty_other_reads_when_verified_candidates_are_available(self):
+        published = self.now - timedelta(hours=2)
+        candidates = [
+            {"title": f"候选 {index}", "url": f"https://source{index}.example/{index}"}
+            for index in range(6)
+        ]
+        text = briefing(("Top 候选", candidates[0]["url"], published))
+        errors = generate.validate_briefing(
+            text, now=self.now, official_candidates=candidates
+        )
+        self.assertTrue(any("至少需要 5 条" in error for error in errors))
+
     def test_empty_state_is_rewritten_for_readers(self):
         text = """### 🎯 今日 Top 3
 
