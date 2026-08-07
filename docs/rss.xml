@@ -7,8 +7,104 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Thu, 06 Aug 2026 05:42:31 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 08:56:14 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-07</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-07.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-07.html</guid>
+      <pubDate>Fri, 07 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot">GitHub Copilot 短暂集成 Kimi K3 模型后暂停推出</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot">GitHub Changelog</a> · 2026-08-06</p>
+<!-- published_at: 2026-08-06T17:27:25+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>GitHub 在 Copilot 中上线 Kimi K3 模型，但因 GitHub Actions 事件临时暂停推广。</li>
+<li>模型选项直接进入全球最大开发者平台，改变了 AI 编程助手的底层模型供应格局。</li>
+<li>使用 GitHub Copilot 的开发者将获得新模型选择，可能影响编码方式与效率。</li>
+</ul>
+<p><strong>产品技术视角</strong>：首次将外部模型深度集成进 Copilot，标志着开发者工作流中模型多样化的开端。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-06-public-endpoint-custom-domains-and-namespaces">Cloudflare 发布 AI Search 完整功能：自定义域名与认证</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-06-public-endpoint-custom-domains-and-namespaces">Cloudflare Changelog</a> · 2026-08-06</p>
+<!-- published_at: 2026-08-06T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>AI Search 新增自定义域名、认证、多实例统一端点及站点爬取，直接面向用户提供服务。</li>
+<li>大幅降低从数据到可上线搜索的工程门槛，使任何开发者都能快速交付搜索产品。</li>
+<li>需要为自有数据构建搜索的后端与全栈开发者，尤其是缺乏搜索团队的小团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：将搜索基础设施打包成即刻可用的 API，简化了向量嵌入与索引管理的复杂度。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/blog/introducing-agent-plugins">Vercel 发布 Agent Plugins 1.0.0 开放规范</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/blog/introducing-agent-plugins">Vercel Changelog</a> · 2026-08-06</p>
+<!-- published_at: 2026-08-06T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Vercel 推出供应商中立的 Agent Plugins 规范，用于打包 Agent Skills 和 MCP 服务器。</li>
+<li>为 AI 智能体提供可发现的插件机制，有望统一碎片化的工具扩展方式。</li>
+<li>各平台的 AI 智能体开发者与用户，可以获得更一致的技能发现与加载体验。</li>
+</ul>
+<p><strong>产品技术视角</strong>：以开放标准降低智能体生态的接入成本，加速插件分发与复用。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li><strong><a href="https://huggingface.co/blog/baseten">Baseten 加入 Hugging Face 推理提供商阵营</a></strong> · Hugging Face Blog</li>
+<li>
+<p>Baseten 成为 Hugging Face 推理提供商，进一步扩展了开源模型的部署与调用渠道。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/06/gen-z-dating-apps-like-ditto-ditch-swiping-in-favor-of-ai-matchmaking">Gen Z 约会应用 Ditto 用 AI 匹配取代滑动</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p>新型约会应用转向 AI 驱动的匹配机制，反映年轻用户对传统交互的厌倦与行为变迁。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/976289/suno-ai-music-spam-watermark">Suno 公布打击 AI 音乐盗用的水印技术</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p>Suno 宣布部署新水印与下载策略，以提升透明度并限制 AI 生成音乐的滥发。</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-08-06-kitesurf">Cloudflare 推出 Kitesurf：专为 AI 智能体设计的无状态浏览器</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p>Kitesurf 基于 Workers 构建，比 Chromium 节省 3-7 倍 CPU 与内存，适合突发型智能体负载。</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/ling-3-0-tiny-is-now-available-on-ai-gateway">Vercel AI Gateway 新增 Ling 3.0 Tiny 模型</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p>AI Gateway 加入 inclusionAI 的轻量模型，提供三周免费试用与自动故障转移。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/06/ex-spotify-employees-raise-10m-to-bring-the-ai-behind-its-recommendations-to-e-commerce">前 Spotify 员工融资 1000 万美元，将推荐 AI 带入电商</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p>初创公司利用实时行为微调技术，预测购物者需求，将推荐系统经验跨行业复制。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/976108/google-ai-leadership-shakeup-jeff-dean-demis-hassabis-deepmind">Google 最大规模的 AI 组织架构重组</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p>Google 宣布内部 AI 团队重大调整，虽表面统一但存在复杂博弈，影响未来产品路线。</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-08-05-user-insights">Cloudflare AI Gateway 新增用户洞察：追踪支出与异常</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>新面板提供组织级 AI 支出可视化，并主动标记用量突变的用户，增强成本与安全控制。</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>头部平台正密集开放模型接入与插件生态：GitHub Copilot 短暂引入 Kimi K3，Vercel 发布 Agent Plugins，Cloudflare 将搜索和浏览器能力产品化。这显示 AI 基础设施正在从单一的 API 调用转向嵌入式、可组合的智能体工作流，开发者工具链的竞争已聚焦于模型多样性与集成便利性。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-06</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-06.html</link>
@@ -689,54 +785,6 @@
 <p><strong>标题</strong>：<a href="https://vercel.com/changelog/ling-3-0-flash-is-now-available-on-ai-gateway">Ling 3.0 Flash is now available on AI Gateway</a></p>
 <p><strong>来源</strong>：<a href="https://vercel.com/changelog/ling-3-0-flash-is-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-07-23</p>
 <!-- published_at: 2026-07-23T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<h3>📰 其他值得看的</h3>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-23</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-23.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-23.html</guid>
-      <pubDate>Thu, 23 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-22-new-copilot-usage-metrics-impact-dashboard">New Copilot usage metrics impact dashboard</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-22-new-copilot-usage-metrics-impact-dashboard">GitHub Changelog</a> · 2026-07-22</p>
-<!-- published_at: 2026-07-22T16:21:47+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-22-mcp-codemode-updates">Agents, Workers - Agents SDK reduces MCP schema conversion, adds exposure controls for MCP in Think and Code Mode SDK adds direct host APIs</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-22-mcp-codemode-updates">Cloudflare Changelog</a> · 2026-07-22</p>
-<!-- published_at: 2026-07-22T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/ai-gateway-now-supports-streaming-transcription">AI Gateway now supports streaming transcription</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/ai-gateway-now-supports-streaming-transcription">Vercel Changelog</a> · 2026-07-22</p>
-<!-- published_at: 2026-07-22T00:00:00+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
