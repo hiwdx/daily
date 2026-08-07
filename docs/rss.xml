@@ -7,8 +7,92 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 07 Aug 2026 08:56:14 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2026 05:07:45 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-08</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-08.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-08.html</guid>
+      <pubDate>Sat, 08 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-07-workers-ai-unified-billing">Cloudflare 推出统一模型访问和计费，AI Gateway 与 Workers AI 打通</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-07-workers-ai-unified-billing">Cloudflare Changelog</a> · 2026-08-07</p>
+<!-- published_at: 2026-08-07T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Workers AI 和 AI Gateway 现在统一了模型访问和计费，开发者可用同一套 API 调用 Cloudflare 托管的模型和第三方模型，并获得统一的观测、缓存、安全和计费控制。</li>
+<li>这直接简化了多模型接入和推理流量的管理，开发者不再需要为不同供应商维护多套对接逻辑，降低工程开销并改善成本可见性。</li>
+<li>在 Cloudflare 上构建 AI 应用的开发者，以及希望统一管理和监控推理调用成本与性能的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过一个 AI binding 和 REST API 即可访问 Workers AI 与第三方模型，AI Gateway 提供统一的观测、缓存和安全层，显著降低多模型运维复杂度。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/seedance-2-5-now-available-on-vercel-ai-gateway">Vercel AI Gateway 上线字节跳动 Seedance 2.5，支持 30 秒视频生成</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/seedance-2-5-now-available-on-vercel-ai-gateway">Vercel Changelog</a> · 2026-08-06</p>
+<!-- published_at: 2026-08-06T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>字节跳动的视频生成模型 Seedance 2.5 现在在 Vercel AI Gateway 上可用，单次可生成最长 30 秒视频，支持多模态参考、定向编辑和异步生成。</li>
+<li>将先进的视频生成模型通过 serverless 网关分发，让前端和全栈开发者能直接在应用中加入 30 秒视频生成能力，无需管理 GPU 基础设施。</li>
+<li>在 Vercel 上构建交互式视频应用的开发者，以及希望快速集成视频生成功能的产品团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Seedance 2.5 的多模态参考和定向编辑能力，加上 Vercel 边缘平台的异步生成支持，意味着开发者可以构建更复杂的视频创作工作流，并让生成任务突破 serverless 超时限制。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity">Copilot 用量指标 API 新增 Agent App 活动追踪</a></p>
+<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity">GitHub Changelog</a> · 2026-08-07</p>
+<!-- published_at: 2026-08-07T18:20:47+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>GitHub Copilot 的用量指标 API 现在可以返回 Agent App（如 Claude 和 Codex）的活动数据，组织可以量化这些应用在开发工作流中的使用情况。</li>
+<li>团队能够根据实际数据评估不同 AI 代理对开发效率的影响，从而优化工具选择和资源分配，推动代理在开发流程中的落地。</li>
+<li>使用 GitHub Copilot 的企业和团队管理者，尤其是那些已在工作流中集成第三方 AI 代理的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过 API 提供 Agent App 的活动追踪，Copilot 让企业可以像监控开发者工具一样量化 AI 代理的参与度，这为采购和使用决策提供了数据支撑。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li><strong><a href="https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents">Cloudflare 为 AI Agent 推出专用浏览器 Kitesurf</a></strong> · TechCrunch AI</li>
+<li>
+<p>Kitesurf 是 Cloudflare 为 AI 代理设计的云托管浏览器，比传统 Chromium 更省计算资源，便于构建浏览器自动化代理。</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/introducing-agent-plugins-1-0-0">Vercel 发布 Agent Plugins 1.0.0，统一 AI Agent 插件规范</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p>Agent Plugins 1.0.0 提供开放、厂商中立的规范，让 Agent Skills 和 MCP 服务器可打包为可发现、可加载的便携插件。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/976801/fenix-flexin-rubberz-ai-song-treblo">AI 音乐检测：Fenix Flexin 被指用 Treblo 生成歌曲，公司推出检测器</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p>说唱歌手 Fenix Flexin 疑似承认用 AI 工具 Treblo 制作歌曲，该公司随后发布 AI 生成内容检测器，凸显 AI 音乐真实性争议。</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer">GitHub Code Quality 不再让 Copilot 自动成为 Reviewer</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p>启用 GitHub Code Quality 后不再自动请求 Copilot 审查 PR，现有仓库的规则集仍可手动删除以调整。</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-08-06-mcp-allowlists-in-enterprise-managed-settings">MCP 服务器允许列表上线，企业可集中管控 Copilot 使用的 MCP</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p>企业管理者可通过 allowedMcpServers 和 deniedMcpServers 键集中控制哪些 MCP 服务器可以被 Copilot 客户端使用。</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/chat-sdk-durable-approvals">Vercel Chat SDK 支持审批工作流暂停，点击即可恢复</a></strong> · Vercel Changelog</p>
+</li>
+<li>Chat SDK 新增 requestApproval 方法，工作流可暂停等待用户点击 Approve 或 Deny 后继续执行。</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 开发工具链加速走向统一和受控：Cloudflare 统一模型计费与接入、Vercel 发布 Agent 插件规范并集成视频生成模型、GitHub 强化企业侧对 MCP 和 Agent 活动的管控。与此同时，AI 生成内容（音乐、代码）的真实性与合规性争议持续升温。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Cloudflare Changelog、Vercel Changelog、GitHub Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-07</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-07.html</link>
@@ -749,54 +833,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：GitHub Changelog、Vercel Changelog、Hugging Face Blog</li>
-<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-24</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-24.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-24.html</guid>
-      <pubDate>Fri, 24 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-23-github-mcp-server-supports-the-next-mcp-specification">GitHub MCP Server supports the next MCP specification</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-23-github-mcp-server-supports-the-next-mcp-specification">GitHub Changelog</a> · 2026-07-23</p>
-<!-- published_at: 2026-07-23T20:38:22+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-23-ai-sdk-v6-v7-support">Agents - Agents SDK packages support AI SDK v6 and v7</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-23-ai-sdk-v6-v7-support">Cloudflare Changelog</a> · 2026-07-23</p>
-<!-- published_at: 2026-07-23T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/ling-3-0-flash-is-now-available-on-ai-gateway">Ling 3.0 Flash is now available on AI Gateway</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/ling-3-0-flash-is-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-07-23</p>
-<!-- published_at: 2026-07-23T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<h3>📰 其他值得看的</h3>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
 <li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
 </ul>]]></description>
     </item>
