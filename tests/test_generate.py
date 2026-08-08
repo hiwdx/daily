@@ -139,6 +139,16 @@ class FreshnessValidationTests(unittest.TestCase):
         errors = generate.validate_briefing(text, now=self.now)
         self.assertTrue(any("同一发布方最多 1 条" in error for error in errors))
 
+    def test_github_changelog_is_supplementary_only(self):
+        feed = b"""<?xml version='1.0'?><rss><channel><item>
+          <title>New AI feature</title>
+          <link>https://github.blog/changelog/2026-07-12-ai-feature/</link>
+          <pubDate>Sun, 12 Jul 2026 02:00:00 +0000</pubDate>
+          <description>Available now.</description>
+        </item></channel></rss>"""
+        candidates = generate.parse_official_feed(feed, "GitHub Changelog", self.now)
+        self.assertEqual(candidates[0]["eligible_for_top"], "false")
+
     def test_accepts_three_distinct_top_publishers(self):
         published = self.now - timedelta(hours=2)
         text = briefing(
@@ -169,6 +179,26 @@ class FreshnessValidationTests(unittest.TestCase):
             text, now=self.now, official_candidates=candidates
         )
         self.assertTrue(any("至少需要 5 条" in error for error in errors))
+
+    def test_other_stories_render_as_a_single_line(self):
+        candidate = {
+            "source": "TechCrunch AI", "title": "可信候选", "url": "https://techcrunch.com/story",
+            "published_at": self.now.isoformat(), "eligible_for_top": "true",
+        }
+        payload = {
+            "top_stories": [{
+                "title": "可信候选", "url": candidate["url"], "source": candidate["source"],
+                "published_at": candidate["published_at"], "what_happened": "发生", "why_it_matters": "重要",
+                "who_is_affected": "用户", "product_angle": "产品",
+            }],
+            "other_stories": [{
+                "title": "扩展阅读", "url": "https://example.com/other", "source": "来源", "summary": "不应出现",
+            }],
+        }
+        other_candidate = {"source": "来源", "title": "原始扩展", "url": "https://example.com/other", "published_at": self.now.isoformat(), "eligible_for_top": "false"}
+        text = generate.briefing_from_payload(payload, [candidate, other_candidate])
+        self.assertIn("- **[扩展阅读](https://example.com/other)** · 来源", text)
+        self.assertNotIn("不应出现", text)
 
     def test_empty_state_is_rewritten_for_readers(self):
         text = """### 🎯 今日 Top 3

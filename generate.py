@@ -271,7 +271,10 @@ def parse_official_feed(
             "url": link,
             "published_at": published_at.isoformat(),
             "summary": summary[:MAX_CANDIDATE_SUMMARY_CHARS],
-            "eligible_for_top": "true",
+            # Changelog entries are useful reference material, but readers do
+            # not treat routine GitHub product updates as the day's leading AI
+            # industry signal. Keep them in the supplementary list instead.
+            "eligible_for_top": "false" if source == "GitHub Changelog" else "true",
         })
     return candidates
 
@@ -409,7 +412,7 @@ def get_github_release_candidates(now: Optional[datetime] = None) -> list[dict[s
             "url": canonicalize_url(url),
             "published_at": published_at.isoformat(),
             "summary": _plain_text(str(release.get("body", "")))[:MAX_CANDIDATE_SUMMARY_CHARS],
-            "eligible_for_top": "true",
+            "eligible_for_top": "false",
         })
     return candidates[:8]
 
@@ -481,6 +484,7 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
 - 每条“为什么重要”必须指出一个可观察的变化：能力、成本、分发、工作流、竞争格局或使用者行为；禁止“值得关注”“可能改变行业”等空话。
 - 主题观察只能归纳实际入选条目，不得引入未入选或候选中没有证据的事件。
 - “其他值得看的”不是留白区：在未入选的候选中有 5 条或以上可用时，必须输出 5-8 条；不足 5 条时，输出全部可用条目。每条都应是有具体变化或实用价值的独立信号。
+- “其他值得看的”每条只输出一行：标题链接与来源；不要摘要、解释或第二行文字。
 
 硬规则：
 - Top 3 只能选择 `top=true` 的候选，最多 3 条，且发布方不同；URL、来源和 published_at 必须逐字使用候选值。
@@ -853,10 +857,9 @@ def build_official_feed_fallback(official_candidates: Optional[list[dict[str, st
         if not url or url in selected_urls or other_by_family.get(family, 0) >= 2:
             continue
         title = _plain_text(str(candidate.get("title", "")))
-        summary = _plain_text(str(candidate.get("summary", "")))
-        if not title or not summary:
+        if not title:
             continue
-        other.append(f"- **[{title}]({url})** · {candidate.get('source', '')}\n- {summary[:150]}")
+        other.append(f"- **[{title}]({url})** · {candidate.get('source', '')}")
         other_by_family[family] = other_by_family.get(family, 0) + 1
         if len(other) == 8:
             break
@@ -927,10 +930,10 @@ def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str,
             continue
         candidate = by_url.get(canonicalize_url(str(item.get("url", ""))))
         family = _source_family(candidate["url"]) if candidate else ""
-        title, summary = _plain_text(str(item.get("title", "")))[:120], _plain_text(str(item.get("summary", "")))[:150]
-        if not candidate or candidate["url"] in selected_urls or counts.get(family, 0) >= 2 or not title or not summary:
+        title = _plain_text(str(item.get("title", "")))[:120]
+        if not candidate or candidate["url"] in selected_urls or counts.get(family, 0) >= 2 or not title:
             continue
-        other.append(f"- **[{title}]({candidate['url']})** · {candidate['source']}\n- {summary}")
+        other.append(f"- **[{title}]({candidate['url']})** · {candidate['source']}")
         counts[family] = counts.get(family, 0) + 1
         if len(other) == 8:
             break
