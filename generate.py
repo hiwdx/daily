@@ -159,11 +159,16 @@ def contains_sensitive_politics(text: str) -> bool:
 #   top_eligible=False → keep the source in "其他值得看的" but out of Top 3
 #                      (routine developer-infra changelogs are reference, not
 #                      the day's leading AI signal).
-Feed = namedtuple("Feed", "source url ai_native top_eligible")
+#   filter_opinion=True → drop opinion / policy essays from this source, keeping
+#                      only product and research posts.
+Feed = namedtuple("Feed", "source url ai_native top_eligible filter_opinion")
+Feed.__new__.__defaults__ = (False,)
 OFFICIAL_UPDATE_FEEDS = (
     # AI-native companies: first-party product and research announcements.
     Feed("OpenAI", "https://openai.com/news/rss.xml", True, True),
-    Feed("Anthropic", "https://openrss.org/feed/anthropic.com/news", True, True),
+    # Keep Anthropic's product/research, but filter out founder opinion / policy
+    # essays, which carry political framing rather than shipped-product signal.
+    Feed("Anthropic", "https://openrss.org/feed/anthropic.com/news", True, True, True),
     # Cursor's changelog has no native feed; openrss.org renders a valid RSS.
     Feed("Cursor", "https://openrss.org/feed/cursor.com/changelog", True, True),
     Feed("Hugging Face Blog", "https://huggingface.co/blog/feed.xml", True, True),
@@ -183,6 +188,15 @@ OFFICIAL_UPDATE_FEEDS = (
 _AI_UPDATE_RE = re.compile(
     r"\b(?:AI|Copilot|agent|agents|MCP|model|models|LLM|inference|embedding|RAG"
     r"|GPT|Claude|Gemini|Llama|Mistral|Grok|Qwen|DeepSeek|Sora)\b|Chat SDK",
+    flags=re.IGNORECASE,
+)
+# Opinion / policy framing — dropped from sources flagged filter_opinion so a
+# founder's political essays do not enter the briefing.
+_OPINION_POLICY_RE = re.compile(
+    r"\b(?:policy|policies|regulation|regulatory|governance|testimony|congress|"
+    r"senate|election|democracy|democratic|geopolitic|sovereignty|"
+    r"essay|manifesto|op-?ed|opinion|vision|the case for|thoughts on|reflections|"
+    r"we believe|our view|interview|podcast)\b|executive order",
     flags=re.IGNORECASE,
 )
 _TOP_INELIGIBLE_SOURCES = {"GitHub Changelog", "Cloudflare Changelog", "Vercel Changelog"}
@@ -255,6 +269,7 @@ def parse_official_feed(
     now: Optional[datetime] = None,
     ai_native: bool = False,
     top_eligible: Optional[bool] = None,
+    filter_opinion: bool = False,
 ) -> list[dict[str, str]]:
     """Extract fresh AI-related entries from an RSS or Atom feed."""
     now = now or NOW
@@ -274,6 +289,8 @@ def parse_official_feed(
         # AI-native sources are on-topic by definition; only broad sources need
         # the keyword gate to weed out off-topic headlines.
         if not ai_native and not _AI_UPDATE_RE.search(title):
+            continue
+        if filter_opinion and _OPINION_POLICY_RE.search(title):
             continue
         if _LOW_VALUE_UPDATE_RE.search(title):
             continue
@@ -327,7 +344,7 @@ def get_official_candidates(
             print(f"  ⚠️ Could not load {feed.source} feed: {error}")
             continue
         for candidate in parse_official_feed(
-            xml_data, feed.source, now, feed.ai_native, feed.top_eligible
+            xml_data, feed.source, now, feed.ai_native, feed.top_eligible, feed.filter_opinion
         ):
             if candidate["url"] not in previous_urls:
                 candidates[candidate["url"]] = candidate
@@ -690,25 +707,10 @@ def validate_briefing(
         )
 
     other_stories = parse_other_stories(briefing)
-    selected_urls = {str(story["url"]) for story in stories}
-    # The model is expected to use the remaining verified candidates for the
-    # compact list. Count the slots it can legally occupy under the existing
-    # two-items-per-publisher rule, then require up to five of them. This keeps
-    # quiet news days valid while preventing a silently empty section when the
-    # discovery pipeline did find enough material.
-    remaining_by_family: dict[str, int] = {}
-    for candidate in official_candidates or []:
-        url = canonicalize_url(str(candidate.get("url", "")))
-        if not url or url in selected_urls:
-            continue
-        family = _source_family(url)
-        remaining_by_family[family] = remaining_by_family.get(family, 0) + 1
-    available_other_slots = sum(min(2, count) for count in remaining_by_family.values())
-    required_other_count = min(5, available_other_slots)
-    if len(other_stories) < required_other_count:
-        errors.append(
-            f"‘其他值得看的’至少需要 {required_other_count} 条可用候选，实际只有 {len(other_stories)} 条"
-        )
+    # The compact list is quality-first and variable-length: whatever the model
+    # judges genuinely worth reading, from zero up to the per-publisher cap. We
+    # deliberately do NOT require a minimum count — padding the section to hit a
+    # quota is exactly the filler this briefing exists to avoid.
     other_families = [_source_family(story["url"]) for story in other_stories]
     repeated_other_families = {
         family for family in other_families if other_families.count(family) > 2
@@ -979,24 +981,6 @@ def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str,
         counts[family] = counts.get(family, 0) + 1
         if len(other) == 8:
             break
-    # Backfill the compact list from the remaining verified candidates when the
-    # model under-fills it — a recurring cause of publish failures, since the
-    # gate requires up to five items here. This section is a plain verified-link
-    # roundup (title + source, no analysis), so completing it from the same
-    # allow-listed candidates keeps it populated without relaxing the Top-3
-    # editorial standard.
-    for candidate in candidates:
-        if len(other) >= 8:
-            break
-        url = candidate.get("url", "")
-        family = _source_family(url)
-        title = _plain_text(str(candidate.get("title", "")))[:120]
-        if (not url or url in selected_urls or url in other_urls
-                or counts.get(family, 0) >= 2 or not title):
-            continue
-        other.append(f"- **[{title}]({url})** · {candidate.get('source', '')}")
-        other_urls.add(url)
-        counts[family] = counts.get(family, 0) + 1
     theme = _plain_text(str(payload.get("theme_observation", "")))[:360]
     sources = "、".join(dict.fromkeys(story["source"] for story in selected))
     briefing = "### 🎯 今日 Top 3\n\n" + "\n\n---\n\n".join(render(story) for story in selected)

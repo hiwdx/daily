@@ -168,17 +168,22 @@ class FreshnessValidationTests(unittest.TestCase):
         errors = generate.validate_briefing(text, now=self.now)
         self.assertTrue(any("其他值得看的" in error and "最多 2 条" in error for error in errors))
 
-    def test_rejects_empty_other_reads_when_verified_candidates_are_available(self):
+    def test_allows_empty_other_reads_quality_first(self):
+        # The compact list is quality-first and variable-length: an empty
+        # "其他值得看的" must NOT be rejected just because more candidates exist.
+        # Padding to a quota is the filler this briefing avoids.
         published = self.now - timedelta(hours=2)
+        # Same-family candidates so the Top-3 count rule is satisfied with one
+        # story; this isolates the compact-list behaviour under test.
         candidates = [
-            {"title": f"候选 {index}", "url": f"https://source{index}.example/{index}"}
+            {"title": f"候选 {index}", "url": f"https://example.com/{index}"}
             for index in range(6)
         ]
         text = briefing(("Top 候选", candidates[0]["url"], published))
         errors = generate.validate_briefing(
             text, now=self.now, official_candidates=candidates
         )
-        self.assertTrue(any("至少需要 5 条" in error for error in errors))
+        self.assertFalse(any("至少需要" in error for error in errors))
 
     def test_other_stories_render_as_a_single_line(self):
         candidate = {
