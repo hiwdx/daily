@@ -914,7 +914,13 @@ def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str,
         families.add(_source_family(candidate["url"]))
         if len(selected) == 3:
             break
+    model_top = payload.get("top_stories") if isinstance(payload.get("top_stories"), list) else []
+    print(f"📊 Top-3 选择：模型返回 {len(model_top)} 条，命中候选且合格 {len(selected)} 条", file=sys.stderr)
     if not selected:
+        model_urls = [str(i.get("url", "")) for i in model_top if isinstance(i, dict)]
+        eligible_urls = [c["url"] for c in candidates if c.get("eligible_for_top") == "true"]
+        print(f"   模型给的 Top URL：{model_urls}", file=sys.stderr)
+        print(f"   候选中 top=true 的 URL：{eligible_urls}", file=sys.stderr)
         return build_official_feed_fallback(candidates)
 
     def render(story: dict[str, str]) -> str:
