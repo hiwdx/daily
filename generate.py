@@ -926,6 +926,7 @@ def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str,
             f"**产品技术视角**：{story['product_angle']}"
         )
     other: list[str] = []
+    other_urls: set[str] = set()
     counts: dict[str, int] = {}
     selected_urls = {story["url"] for story in selected}
     for item in payload.get("other_stories", []) if isinstance(payload.get("other_stories"), list) else []:
@@ -934,12 +935,32 @@ def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str,
         candidate = by_url.get(canonicalize_url(str(item.get("url", ""))))
         family = _source_family(candidate["url"]) if candidate else ""
         title = _plain_text(str(item.get("title", "")))[:120]
-        if not candidate or candidate["url"] in selected_urls or counts.get(family, 0) >= 2 or not title:
+        if (not candidate or candidate["url"] in selected_urls or candidate["url"] in other_urls
+                or counts.get(family, 0) >= 2 or not title):
             continue
         other.append(f"- **[{title}]({candidate['url']})** · {candidate['source']}")
+        other_urls.add(candidate["url"])
         counts[family] = counts.get(family, 0) + 1
         if len(other) == 8:
             break
+    # Backfill the compact list from the remaining verified candidates when the
+    # model under-fills it — a recurring cause of publish failures, since the
+    # gate requires up to five items here. This section is a plain verified-link
+    # roundup (title + source, no analysis), so completing it from the same
+    # allow-listed candidates keeps it populated without relaxing the Top-3
+    # editorial standard.
+    for candidate in candidates:
+        if len(other) >= 8:
+            break
+        url = candidate.get("url", "")
+        family = _source_family(url)
+        title = _plain_text(str(candidate.get("title", "")))[:120]
+        if (not url or url in selected_urls or url in other_urls
+                or counts.get(family, 0) >= 2 or not title):
+            continue
+        other.append(f"- **[{title}]({url})** · {candidate.get('source', '')}")
+        other_urls.add(url)
+        counts[family] = counts.get(family, 0) + 1
     theme = _plain_text(str(payload.get("theme_observation", "")))[:360]
     sources = "、".join(dict.fromkeys(story["source"] for story in selected))
     briefing = "### 🎯 今日 Top 3\n\n" + "\n\n---\n\n".join(render(story) for story in selected)
