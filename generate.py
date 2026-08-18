@@ -13,6 +13,7 @@ import json
 import os
 import re
 import sys
+from collections import namedtuple
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime, parsedate_to_datetime
@@ -151,21 +152,40 @@ def contains_sensitive_politics(text: str) -> bool:
     return any(re.search(pattern, text, re.IGNORECASE) for pattern in SENSITIVE_POLITICS_PATTERNS)
 
 
+# A feed is (source label, URL, ai_native, top_eligible).
+#   ai_native=True   → every fresh post is on-topic, so skip the AI-keyword
+#                      title filter (e.g. Cursor's "Origin Code Hosting" has no
+#                      AI keyword yet is core AI-tooling news).
+#   top_eligible=False → keep the source in "其他值得看的" but out of Top 3
+#                      (routine developer-infra changelogs are reference, not
+#                      the day's leading AI signal).
+Feed = namedtuple("Feed", "source url ai_native top_eligible")
 OFFICIAL_UPDATE_FEEDS = (
-    ("GitHub Changelog", "https://github.blog/changelog/feed/"),
-    ("Cloudflare Changelog", "https://developers.cloudflare.com/changelog/rss/index.xml"),
+    # AI-native companies: first-party product and research announcements.
+    Feed("OpenAI", "https://openai.com/news/rss.xml", True, True),
+    Feed("Anthropic", "https://openrss.org/feed/anthropic.com/news", True, True),
+    # Cursor's changelog has no native feed; openrss.org renders a valid RSS.
+    Feed("Cursor", "https://openrss.org/feed/cursor.com/changelog", True, True),
+    Feed("Hugging Face Blog", "https://huggingface.co/blog/feed.xml", True, True),
+    Feed("Google AI Blog", "https://blog.google/technology/ai/rss/", True, True),
+    # AI-category media: keep the keyword filter to drop off-topic headlines.
+    Feed("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/", False, True),
+    Feed("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", False, True),
+    # Developer-infra changelogs: supplementary only, never Top 3.
+    Feed("GitHub Changelog", "https://github.blog/changelog/feed/", False, False),
+    Feed("Cloudflare Changelog", "https://developers.cloudflare.com/changelog/rss/index.xml", False, False),
     # /changelog/rss.xml returns HTTP 308; use the canonical Atom endpoint so
     # older Python urllib versions do not drop the feed at the redirect.
-    ("Vercel Changelog", "https://vercel.com/atom"),
-    ("Hugging Face Blog", "https://huggingface.co/blog/feed.xml"),
-    ("Google AI Blog", "https://blog.google/technology/ai/rss/"),
-    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/"),
-    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    Feed("Vercel Changelog", "https://vercel.com/atom", False, False),
 )
+# Distinctive AI product / model family names, so headlines that name a release
+# ("Gemini 3.7 Flash", "GPT-5.6") pass even without a generic AI keyword.
 _AI_UPDATE_RE = re.compile(
-    r"\b(?:AI|Copilot|agent|agents|MCP|model|models|LLM|inference|embedding|RAG)\b|Chat SDK",
+    r"\b(?:AI|Copilot|agent|agents|MCP|model|models|LLM|inference|embedding|RAG"
+    r"|GPT|Claude|Gemini|Llama|Mistral|Grok|Qwen|DeepSeek|Sora)\b|Chat SDK",
     flags=re.IGNORECASE,
 )
+_TOP_INELIGIBLE_SOURCES = {"GitHub Changelog", "Cloudflare Changelog", "Vercel Changelog"}
 _LOW_VALUE_UPDATE_RE = re.compile(
     r"\b(?:in talks|reportedly|rumou?rs?|accused|lawsuit|watchdog)\b|"
     r"\b(?:celebrity|singer|actor|actress)\b|"
@@ -233,9 +253,13 @@ def parse_official_feed(
     xml_data: bytes,
     source: str,
     now: Optional[datetime] = None,
+    ai_native: bool = False,
+    top_eligible: Optional[bool] = None,
 ) -> list[dict[str, str]]:
     """Extract fresh AI-related entries from an RSS or Atom feed."""
     now = now or NOW
+    if top_eligible is None:
+        top_eligible = source not in _TOP_INELIGIBLE_SOURCES
     cutoff = now - timedelta(hours=FRESHNESS_HOURS)
     try:
         root = ElementTree.fromstring(xml_data)
@@ -245,7 +269,11 @@ def parse_official_feed(
     candidates: list[dict[str, str]] = []
     for title, raw_link, raw_pub_date, summary in _feed_entries(root):
         link = canonicalize_url(raw_link)
-        if not title or not link or not raw_pub_date or not _AI_UPDATE_RE.search(title):
+        if not title or not link or not raw_pub_date:
+            continue
+        # AI-native sources are on-topic by definition; only broad sources need
+        # the keyword gate to weed out off-topic headlines.
+        if not ai_native and not _AI_UPDATE_RE.search(title):
             continue
         if _LOW_VALUE_UPDATE_RE.search(title):
             continue
@@ -290,15 +318,17 @@ def get_official_candidates(
     now = now or NOW
     previous_urls = {story["url"] for story in (previous_stories or [])}
     candidates: dict[str, dict[str, str]] = {}
-    for source, feed_url in OFFICIAL_UPDATE_FEEDS:
+    for feed in OFFICIAL_UPDATE_FEEDS:
         try:
-            request = Request(feed_url, headers={"User-Agent": "hiwd-daily/1.0"})
+            request = Request(feed.url, headers={"User-Agent": "hiwd-daily/1.0"})
             with urlopen(request, timeout=15) as response:
                 xml_data = response.read()
         except Exception as error:
-            print(f"  ⚠️ Could not load {source} feed: {error}")
+            print(f"  ⚠️ Could not load {feed.source} feed: {error}")
             continue
-        for candidate in parse_official_feed(xml_data, source, now):
+        for candidate in parse_official_feed(
+            xml_data, feed.source, now, feed.ai_native, feed.top_eligible
+        ):
             if candidate["url"] not in previous_urls:
                 candidates[candidate["url"]] = candidate
     # Keep the prompt broad and interleaved: the model sees one item per source
@@ -312,7 +342,7 @@ def get_official_candidates(
     for candidate in ordered:
         by_source.setdefault(candidate["source"], []).append(candidate)
     source_order = [
-        source for source, _ in OFFICIAL_UPDATE_FEEDS if source in by_source
+        feed.source for feed in OFFICIAL_UPDATE_FEEDS if feed.source in by_source
     ]
     balanced = [
         by_source[source][position]
