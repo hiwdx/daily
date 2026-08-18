@@ -7,8 +7,78 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 12 Aug 2026 06:09:15 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 17:32:57 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-18</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-18.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-18.html</guid>
+      <pubDate>Tue, 18 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-17-qwen-3.8-27b-workers-ai">Cloudflare Workers AI 上线 Qwen 3.8 27B 视觉推理模型</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-17-qwen-3.8-27b-workers-ai">Cloudflare Changelog</a> · 2026-08-17</p>
+<!-- published_at: 2026-08-17T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cloudflare Workers AI 新增 @cf/qwen/qwen3.8-27b 模型。</li>
+<li>该 270 亿参数模型同时支持图像输入和文本输出，并具备思考模式与函数调用能力，使开发者无需自建基础设施即可构建代理式视觉应用。</li>
+<li>在 Cloudflare 平台上构建多模态 AI 应用的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：边缘 AI 推理服务扩展至视觉推理，进一步降低复杂 Agent 工作流的门槛。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/gpt-5-6-sol-is-50-off-on-ai-gateway-for-the-next-month">Vercel AI Gateway 对 GPT-5.6 Sol 提供五折优惠</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/gpt-5-6-sol-is-50-off-on-ai-gateway-for-the-next-month">Vercel Changelog</a> · 2026-08-17</p>
+<!-- published_at: 2026-08-17T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Vercel AI Gateway 从 8 月 17 日到 9 月 18 日对 GPT-5.6 Sol 的所有请求打五折。</li>
+<li>优惠直接降低开发者使用前沿模型的推理成本，可能促使更多生产流量迁移至该网关。</li>
+<li>通过 Vercel AI Gateway 调用 GPT-5.6 Sol 的开发者和企业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：云平台以折扣吸引开发者使用最新模型，加剧 AI 推理成本竞争。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team">AI 自动化初创公司 Relay 关闭，团队加入 Google Chrome</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team">TechCrunch AI</a> · 2026-08-17</p>
+<!-- published_at: 2026-08-17T21:27:05+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>AI 自动化公司 Relay 停止运营，其员工加入 Google Chrome 团队。</li>
+<li>人才流向浏览器团队预示 AI 自动化能力将更深入地嵌入日常工具，可能改变用户的工作流。</li>
+<li>Relay 用户及关注浏览器 AI 集成的普通用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：科技巨头通过收购人才加速 AI 功能在核心产品中的落地。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/978323/whisker-litter-robot-5-pro-review">AI 自动铲屎机评测：Whisker Litter Robot 5 Pro 的猫识别可能出错</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models">亚马逊销毁稀有书籍用于 AI 训练引发争议</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/column/980337/rogue-ai-science-fiction-openai">专栏：失控 AI 已不是科幻小说</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/17/groq-raises-350m-to-fuel-its-pivot-from-ai-chips-to-neocloud">Groq 融资 3.5 亿美元，从 AI 芯片转向新云服务</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49331423">AI-Generated GitHub Copilot “Autofix” Allowed Compromise of Snowflake's Jira</a></strong> · Hacker News</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49337392">Israel creates fake think tank in likely attempt to dupe AI chatbots</a></strong> · Hacker News</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 基础设施竞争从模型层延伸到分发层：Cloudflare 和 Vercel 等平台通过提供新模型或降价吸引开发者，同时模型能力向视觉、推理和代理工作流快速扩展。人才并购和初创公司关闭显示行业整合加速，浏览器等入口成为 AI 集成新战场。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Cloudflare Changelog、Vercel Changelog、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-12</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-12.html</link>
@@ -879,30 +949,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-27</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-27.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-27.html</guid>
-      <pubDate>Mon, 27 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/26/making-sense-of-the-panic-over-chinese-ai">Making sense of the panic over Chinese AI</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/26/making-sense-of-the-panic-over-chinese-ai">TechCrunch AI</a> · 2026-07-26</p>
-<!-- published_at: 2026-07-26T19:40:57+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<h3>📰 其他值得看的</h3>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：TechCrunch AI</li>
 <li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
 </ul>]]></description>
     </item>
