@@ -7,8 +7,84 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 18 Aug 2026 17:32:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 05:43:26 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-19</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-19.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-19.html</guid>
+      <pubDate>Wed, 19 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://cursor.com/changelog/origin-code-hosting">Cursor 推出 Origin 代码托管服务：内置 Git 锻造功能进入早期测试</a></p>
+<p><strong>来源</strong>：<a href="https://cursor.com/changelog/origin-code-hosting">Cursor</a> · 2026-08-18</p>
+<!-- published_at: 2026-08-18T09:40:56+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cursor 开始向所有付费计划用户推出 Origin 代码托管，支持创建仓库、Pull Request、代码浏览和 GitHub 同步。</li>
+<li>将代码托管直接融入 AI 编码环境，开发者无需离开 Cursor 即可管理项目，可能改变现有 Git 工作流。</li>
+<li>使用 Cursor 的开发者与团队，尤其是依赖 AI 辅助开发的软件项目。</li>
+</ul>
+<p><strong>产品技术视角</strong>：内置代码托管降低了工具切换成本，强化了 Cursor 作为以 AI 为中心的开发平台定位。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development">Warp 推出 Warp Factories：开箱即用的 AI 软件工厂基础设施</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development">TechCrunch AI</a> · 2026-08-18</p>
+<!-- published_at: 2026-08-18T14:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Warp 发布新基础设施系统 Warp Factories，旨在让构建 AI 软件工厂尽可能简单。</li>
+<li>抽象化 AI 开发基础设施的复杂性，可能加速企业采用 AI 软件工厂模式。</li>
+<li>希望规模化开发 AI 应用的团队和企业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：提供开箱即用的系统，降低了搭建 AI 开发流水线的门槛。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/981283/mozilla-firefox-smart-window-ai-features">Firefox Smart Window 新增实时网络信息和智能标签分组</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/981283/mozilla-firefox-smart-window-ai-features">The Verge AI</a> · 2026-08-18</p>
+<!-- published_at: 2026-08-18T09:00:00-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Firefox Smart Window AI 浏览模式现在可获取当前网页信息并在回复中显示来源链接，还支持自动建议标签分组和搜索历史视觉预览。</li>
+<li>浏览器 AI 助手从独立对话框转向与网页内容和用户行为深度集成，提升信息获取效率。</li>
+<li>使用 Firefox 并依赖 AI 辅助浏览的用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过集成实时网络信息和标签管理，增强浏览器作为 AI 入口的实用性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://openai.com/index/strengthening-democratic-oversight-in-national-security">OpenAI 发起民主监督国家安全 AI 的倡议</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/ibm-research/altk-evolve-hmm">IBM Research 在 Hugging Face 发布关于 Agent 内存需求的博客</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships">Google Gemini 与 Pixel 合作五大足球俱乐部提升球迷体验</a></strong> · Google AI Blog</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/entertainment/981644/robin-williams-instagram-account-ai">Robin Williams 子女重启其 Instagram 以对抗 AI 滥用</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/cline-harness-adapter">Cline 现通过 AI SDK harness 层适配器可用</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/partnering-with-codeai">OpenAI 与 CodeAI 合作培养第一代 AI 素养</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/18/perplexitys-free-ai-offer-left-it-with-millions-more-users-in-india">Perplexity 免费 AI 优惠在印度带来数百万新用户</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/981640/openai-security-changes-ai-hugging-face-hack">OpenAI 宣布安全更新应对 AI 攻击 Hugging Face 事件</a></strong> · The Verge AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 开发工具正从代码辅助向全栈平台演进，Cursor 和 Warp 分别通过内置代码托管和软件工厂基础设施降低 AI 应用开发门槛。同时，浏览器与 AI 助手深度融合，Firefox Smart Window 的实时网络信息集成标志着 AI 从独立对话框转向内容感知的浏览体验。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Cursor、TechCrunch AI、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-18</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-18.html</link>
@@ -903,54 +979,6 @@
 - The Verge（独立科技媒体）
 - Cloudflare Developer Changelog（官方 changelog）</p>
 <p><strong>所有 Top 3 和其他值得看的条目中的链接均为原文 URL</strong>，来自搜索结果中的可信源或官方公告页面，不存在链接推测或补造。</p>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-28</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-28.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-28.html</guid>
-      <pubDate>Tue, 28 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-27-manage-github-copilot-app-access-with-a-dedicated-policy">Manage GitHub Copilot app access with a dedicated policy</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-27-manage-github-copilot-app-access-with-a-dedicated-policy">GitHub Changelog</a> · 2026-07-27</p>
-<!-- published_at: 2026-07-27T20:43:37+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-27-agents-sdk-v0.20.0-mcp-sdk-v2">Agents, Workers - Agents SDK adds MCP Specification 2026-07-28 support</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-27-agents-sdk-v0.20.0-mcp-sdk-v2">Cloudflare Changelog</a> · 2026-07-27</p>
-<!-- published_at: 2026-07-27T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/regional-inference-now-available-on-ai-gateway">Regional inference now available on AI Gateway</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/regional-inference-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-07-27</p>
-<!-- published_at: 2026-07-27T19:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>官方或可信媒体订阅源确认了这项最新动态</li>
-<li>条目发布于最近 48 小时，具备产品或开发者生态参考价值</li>
-<li>相关用户与开发者可通过原文了解完整细节</li>
-</ul>
-<p><strong>产品技术视角</strong>：本条仅依据已核验的订阅源元数据发布，不对原文未提供的细节作额外推断。</p>
-<h3>📰 其他值得看的</h3>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自已核验的官方或可信媒体订阅源。</li>
-</ul>]]></description>
     </item>
   </channel>
 </rss>
