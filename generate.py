@@ -43,7 +43,10 @@ MIN_SUBSTANTIVE_CONTEXT_CHARS = 180
 # request below roughly 15k input tokens once the fixed prompt is included.
 MAX_MODEL_INPUT_CHARS = 12000
 MAX_MODEL_OUTPUT_TOKENS = 1800
-MAX_MODEL_CALLS = 2
+# One initial draft + one mandatory editorial review = 2 calls on easy days.
+# Hard days (first draft fails the strict gate) spend the remaining calls on
+# additional repair rounds, each fed the concrete validation errors.
+MAX_MODEL_CALLS = 4
 DEEPSEEK_MODEL = "deepseek-v4-pro"
 WINDOW_START = NOW - timedelta(hours=FRESHNESS_HOURS)
 # Search engines often interpret `after:` as exclusive. Include a one-day
@@ -958,6 +961,7 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
     ]
     print(f"📡 Calling DeepSeek {DEEPSEEK_MODEL} for {TODAY_ISO} (max {MAX_MODEL_CALLS} calls)...")
     first_valid_briefing: Optional[str] = None
+    last_blockers: list[str] = []
     for attempt in range(MAX_MODEL_CALLS):
         try:
             response = _api_create_with_retry(client, messages)
@@ -972,30 +976,55 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
         except json.JSONDecodeError:
             payload = {}
         briefing = format_empty_top_state(clean_briefing(briefing_from_payload(payload, official_candidates or [])))
-        errors = validate_briefing(briefing, previous_stories, official_candidates=official_candidates)
-        errors += validate_editorial_quality(briefing)
-        valid = not contains_sensitive_politics(briefing) and not errors
-        if attempt == 0:
+        sensitive = contains_sensitive_politics(briefing)
+        errors = [] if sensitive else (
+            validate_briefing(briefing, previous_stories, official_candidates=official_candidates)
+            + validate_editorial_quality(briefing)
+        )
+        last_blockers = ["敏感内容"] if sensitive else errors
+        valid = not sensitive and not errors
+        is_last = attempt == MAX_MODEL_CALLS - 1
+
+        # Once we hold any publishable draft, the next turn is the mandatory
+        # editorial review: publish the reviewed draft if it also passes,
+        # otherwise fall back to the already-validated first draft.
+        if first_valid_briefing is not None:
             if valid:
-                first_valid_briefing = briefing
-                reason = "首稿通过结构校验，但请执行发布前编辑复核"
-            else:
-                reason = "首稿未通过：" + ("敏感内容" if contains_sensitive_politics(briefing) else "；".join(errors))
-            messages += [
-                {"role": "assistant", "content": content},
-                {"role": "user", "content": (
-                    f"{reason}。现在你是最终主编，请输出完整 JSON 修订稿。逐项复核："
-                    "是否为真实、已发生的重要进展；是否把预测和公关愿景错误放进 Top 3；"
-                    "每条是否解释了具体变化；主题观察是否只基于入选条目。"
-                    "保留准确内容，删除或重写空泛内容；不得新增候选外事实、链接或日期。"
-                )},
-            ]
-            continue
-        if valid:
-            return briefing
-        if first_valid_briefing:
+                return briefing
             print("⚠️ Review draft failed quality gate; publishing the already validated first draft")
             return first_valid_briefing
+
+        if valid:
+            first_valid_briefing = briefing
+            if is_last:
+                return briefing
+            reason = "首稿通过结构校验，但请执行发布前编辑复核"
+        elif is_last:
+            break
+        else:
+            # Feed the concrete blockers back so the model repairs this exact
+            # draft instead of guessing. Strictness is unchanged; the model
+            # simply gets more targeted attempts to satisfy the same rules.
+            print(f"↻ 第 {attempt + 1} 稿未通过（{len(last_blockers)} 项），回喂错误重试", file=sys.stderr)
+            reason = "本稿未通过：" + "；".join(last_blockers)
+
+        messages += [
+            {"role": "assistant", "content": content},
+            {"role": "user", "content": (
+                f"{reason}。现在你是最终主编，请输出完整 JSON 修订稿。逐项复核："
+                "是否为真实、已发生的重要进展；是否把预测和公关愿景错误放进 Top 3；"
+                "每条是否解释了具体变化；主题观察是否只基于入选条目。"
+                "保留准确内容，删除或重写空泛内容；不得新增候选外事实、链接或日期。"
+            )},
+        ]
+
+    if first_valid_briefing:
+        return first_valid_briefing
+    print(
+        f"❌ DeepSeek 连续 {MAX_MODEL_CALLS} 稿仍未通过校验；最后一稿的阻断项："
+        + "；".join(last_blockers or ["未知"]),
+        file=sys.stderr,
+    )
     raise RuntimeError(
         "DeepSeek output did not meet editorial quality rules; refusing to publish a low-value fallback"
     )
