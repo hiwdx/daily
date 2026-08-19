@@ -7,8 +7,84 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 19 Aug 2026 05:43:26 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 04:52:04 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-20</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-20.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-20.html</guid>
+      <pubDate>Thu, 20 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://cursor.com/docs/origin">Cursor 推出代码托管平台 Origin</a></p>
+<p><strong>来源</strong>：<a href="https://cursor.com/docs/origin">Cursor</a> · 2026-08-18</p>
+<!-- published_at: 2026-08-18T09:40:57+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cursor 发布早期测试版代码托管与协作平台 Origin，支持创建仓库、git 推拉、从 GitHub 镜像、代码浏览搜索、PR 合并和团队共享。</li>
+<li>开发者可直接在 Cursor 内完成代码托管与协作，减少对 GitHub 等外部平台的依赖，形成更完整的 AI 开发闭环。</li>
+<li>使用 Cursor 的开发者与团队，尤其是希望简化工作流的个人和小型团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：IDE 向开发基础设施延伸，增强用户粘性与生态控制力。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/offering-zero-data-retention-for-frontier-models">OpenAI 为前沿模型提供零数据保留并预览私有安全处理</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/offering-zero-data-retention-for-frontier-models">OpenAI</a> · 2026-08-19</p>
+<!-- published_at: 2026-08-19T19:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 重申符合资格的 API 客户可启用零数据保留，并预览用于高级安全审核的私有安全处理。</li>
+<li>企业可在不牺牲数据隐私的前提下使用前沿模型，降低合规风险，推动 AI 在敏感行业的采用。</li>
+<li>对数据隐私有严格要求的 API 客户，如金融、医疗、法律等行业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：API 隐私控制增强，成为面向企业市场的关键卖点。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-19-gpt-5-6-sol-discount">Cloudflare AI Gateway 限时提供 GPT-5.6 Sol 五折优惠</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-19-gpt-5-6-sol-discount">Cloudflare Changelog</a> · 2026-08-19</p>
+<!-- published_at: 2026-08-19T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>通过 Cloudflare AI Gateway 调用 OpenAI 的 GPT-5.6 Sol 模型可享受 50% 折扣，仅限统一计费用户。</li>
+<li>直接降低先进模型的使用成本，可能推动更多开发者通过 AI Gateway 访问 GPT-5.6 Sol，并加剧云服务商之间的价格竞争。</li>
+<li>使用 Cloudflare AI Gateway 统一计费的开发者和企业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过折扣绑定模型与网关服务，强化 Cloudflare 在 AI 推理基础设施中的地位。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://vercel.com/changelog/chat-sdk-adds-instagram-adapter">Vercel Chat SDK 新增 Instagram 适配器</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/replit">Replit 借助 GPT-5.6 Luna 推出免费模式</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/982270/meta-ai-mac-app">Meta AI 发布 Mac 应用</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/chatgpt-ads-expands-across-europe">OpenAI 将 ChatGPT Ads 扩展至欧洲 31 个市场</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/19/google-launches-new-study-tools-for-students-across-search-and-gemini">Google 为 Search 和 Gemini 添加 AI 学习工具</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/multi-vector-encoder">Hugging Face 发布多向量嵌入模型支持文章</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/LiquidAI/qad">Liquid AI 发布 LFM2.5 Q4_0 量化感知蒸馏检查点</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-08-18-enterprise-managed-settings-in-github-copilot-for-jetbrains">GitHub Copilot for JetBrains 支持企业托管设置</a></strong> · GitHub Changelog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 开发工具正从模型能力竞赛转向工作流整合与成本控制：Cursor 推出代码托管平台，试图在 IDE 内闭环开发者流程；Cloudflare 以折扣吸引模型流量，强化基础设施入口。同时，面向普通用户的 AI 助手加速商业化落地，如 ChatGPT 广告扩张、Meta AI 桌面应用和 Google 学习工具，争夺高频使用场景。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Cursor、OpenAI、Cloudflare Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-19</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-19.html</link>
@@ -900,85 +976,6 @@
 <li>直接提供内容的源：The Verge AI、TechCrunch AI、GitHub Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-29</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-29.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-29.html</guid>
-      <pubDate>Wed, 29 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h2>🎯 今日 Top 3</h2>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-28-grok-4-5-is-now-available-in-github-copilot">xAI Grok 4.5 现已接入 GitHub Copilot，强化编码助手多模型选择</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-28-grok-4-5-is-now-available-in-github-copilot">GitHub Changelog</a> · 2026-07-28</p>
-<!-- published_at: 2026-07-28T19:10:45+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Grok 4.5 成为 GitHub Copilot 的新推理模型选项，与 Claude Opus 5、Gemini 3.6 Flash 并列供开发者选择。</li>
-<li>为开发工作流引入多模型竞争，特别是强化实时信息处理和推理能力，用户可按需切换模型以优化成本或性能。</li>
-<li>对 GitHub Copilot 用户和依赖编码助手的企业团队，扩大了模型选择灵活性。</li>
-</ul>
-<p><strong>产品技术视角</strong>：多模型接入加剧 IDE 集成竞争，Grok 4.5 的引入标志着 xAI 在开发者工具链中的角色确立。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks">Google 发布 Gemini API Managed Agents：3.6 Flash、hooks 与上下文对话</a></p>
-<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks">Google AI Blog</a> · 2026-07-28</p>
-<!-- published_at: 2026-07-28T16:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 扩展 Managed Agents 能力，引入 Gemini API 中的 hooks（拦截器）与对话持久化，加强 agentic 工作流的可控性。</li>
-<li>为开发者提供声明式 agent 框架，降低复杂多步工作流的构建难度，支持状态管理和条件执行。</li>
-<li>对构建生产级 AI agent 的企业和 API 集成开发者，大幅简化编排复杂度。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Managed Agents 作为 Google 的 agentic 竞争杠杆，与 Vertex AI 平台整合形成完整企业 AI 栈。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises">Fish Audio 融资 $52M：开发用于创意工作者的 AI 声音模型</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises">TechCrunch</a> · 2026-07-28</p>
-<!-- published_at: 2026-07-28T14:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Fish Audio 完成 $52M seed 轮融资，聚焦构建面向内容创意者和企业的 AI 语音模型及推理基础设施。</li>
-<li>语音 AI 作为 agent 生态的关键输出层，融资规模与投资方阵容（a16z 等）反映市场对语音交互的看好。</li>
-<li>对 YouTuber、播主、配音工作室以及需要语音 agent 的企业 SaaS，打开新的配音和交互层。</li>
-</ul>
-<p><strong>产品技术视角</strong>：专业语音模型的商业化窗口打开，标志着 AI agent 向多模态交互的关键演进，而非纯文本范式。</p>
-<hr />
-<h2>📰 其他值得看的</h2>
-<ul>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-07-28-cloudflare-mcp-servers-mcp-2026-07-28">Cloudflare MCP servers 支持新 MCP 2026-07-28 规范</a></strong> · Cloudflare
-  Workers AI 底层框架升级，MCP 规范迭代为 agentic 互操作奠定基础。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/allenai/olmoearth-infrastructure">Hugging Face OlmoEarth：星球级地球物理推理平台</a></strong> · Hugging Face
-  Allen AI 开源大规模地球物理模型基础设施，展示开源 frontier 模型在特定领域的竞争力。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/971750/perplexity-personal-computer-windows-ai-agents">Perplexity Personal Computer 赋能 Windows AI agent</a></strong> · The Verge
-  端侧 AI 智能体产品成型，个人电脑重塑为多 agent 编排平台。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/972161/ai-leaders-us-government-openai-anthropic-google-meta">AI 领导者呼吁政府采取行动监管自动化 AI</a></strong> · The Verge
-  OpenAI、Anthropic、Google、Meta 等企业领袖发起联署，建议美国政府建立框架规范 AI 自主决策系统。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/07/27/microsoft-launches-its-first-cyber-model-and-a-new-agentic-cybersecurity-system">Microsoft 推出首款网络安全专用模型与 agentic 防护系统</a></strong> · TechCrunch
-  Microsoft 发布自研网络安全模型和 agentic 自动化防护架构，强化企业防护堆栈。</p>
-</li>
-</ul>
-<hr />
-<h2>🔍 今日主题观察</h2>
-<p>过去 48 小时内的新闻呈现出<strong>多模型 IDE 集成加速</strong>和<strong>企业级 agentic 基础设施升级</strong>两大信号：GitHub Copilot 新增 Grok 4.5、Google 强化 Managed Agents、Cloudflare 升级 MCP 规范，都指向开发者工具链向"多模型选择 + 可控 agent 编排"的方向演进。同时，Fish Audio 融资和 Perplexity 端侧产品的推进，反映语音 AI 和本地运行的智能体正成为商业化热点。</p>
-<hr />
-<h2>⚠️ 信息来源说明</h2>
-<p><strong>本次简报直接提供内容的媒体源</strong>：
-- GitHub Changelog（官方 changelog）
-- Google AI Blog（官方博客）
-- TechCrunch（独立科技媒体）
-- Hugging Face Blog（开源社区官方博客）
-- The Verge（独立科技媒体）
-- Cloudflare Developer Changelog（官方 changelog）</p>
-<p><strong>所有 Top 3 和其他值得看的条目中的链接均为原文 URL</strong>，来自搜索结果中的可信源或官方公告页面，不存在链接推测或补造。</p>]]></description>
     </item>
   </channel>
 </rss>
