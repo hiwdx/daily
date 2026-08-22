@@ -7,8 +7,84 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 21 Aug 2026 05:49:33 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 05:41:48 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-23</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-23.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-23.html</guid>
+      <pubDate>Sun, 23 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/983502/linkedin-ai-slop-button-one-million-people-message">LinkedIn 的“AI 垃圾内容”按钮已被点击超百万次</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/983502/linkedin-ai-slop-button-one-million-people-message">The Verge AI</a> · 2026-08-21</p>
+<!-- published_at: 2026-08-21T17:25:50-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>LinkedIn 首席产品官宣布，自 7 月 30 日上线以来，“似乎像 AI 垃圾内容”按钮已被超过 100 万人点击。</li>
+<li>百万级真实用户主动标记，证明 AI 生成的低质内容已泛滥到平台需要提供显性反制工具，内容分发的信任机制正在被改写。</li>
+<li>LinkedIn 内容创作者、普通用户，以及其他社交平台的产品团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：平台首次将用户对 AI 内容的反感量化为功能使用数据，为内容治理和推荐算法提供直接反馈信号。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/gpt-5-6-sol-is-now-50-percent-off-a-lower-price">Vercel AI Gateway 大幅降价：GPT-5.6 Sol 降 50%，DeepSeek V4 Flash Vision 上线</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/gpt-5-6-sol-is-now-50-percent-off-a-lower-price">Vercel Changelog</a> · 2026-08-21</p>
+<!-- published_at: 2026-08-21T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>GPT-5.6 Sol 降价 50% 至每百万 token 4 美元（输入）和 20 美元（输出），同时 DeepSeek V4 Flash Vision Experimental 上线 AI Gateway，支持图像输入和 1M token 上下文。</li>
+<li>高级模型价格大幅下降，视觉多模态模型通过统一 API 分发，直接降低 AI 应用构建与运行成本，加速多模态功能普及。</li>
+<li>使用 Vercel AI Gateway 的开发者、使用 GPT-5.6 Sol 或 DeepSeek 模型的企业与个人。</li>
+</ul>
+<p><strong>产品技术视角</strong>：AI Gateway 作为模型分发层，通过聚合多家模型并优化定价，成为 AI 应用成本控制与能力获取的关键入口。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero">Nvidia 研究显示：智能体表现关键在“训练支架”而非模型本身</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero">TechCrunch AI</a> · 2026-08-21</p>
+<!-- published_at: 2026-08-21T19:43:39+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Nvidia 研究表明，通过微调智能体的“训练支架”（harness），即使基础模型能力一般，智能体也能表现良好且不偏离预期。</li>
+<li>模型能力不再是智能体性能的唯一决定因素，工程化调优可以弥补模型短板，改变企业选择模型与构建智能体的策略。</li>
+<li>AI 智能体开发者、企业 AI 团队、模型供应商的竞争定位。</li>
+</ul>
+<p><strong>产品技术视角</strong>：智能体平台和工具链的重要性上升，企业可能更关注调优和集成能力而非追求最新模型。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model">前沿 AI 实验室仍不愿透露如何遏制失控模型</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-08-21-the-new-github-copilot-experience-in-slack">GitHub Copilot 新体验进入 Slack 公开预览</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-08-21-shared-agentic-work-with-github-copilot-in-microsoft-teams">GitHub Copilot 在 Microsoft Teams 推出共享智能体协作</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-08-22-wrangler-mcp-optional-oauth-scopes">Cloudflare 允许为 Wrangler 和 MCP 服务器选择 OAuth 权限范围</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/blog/how-ora-benchmarks-every-major-ai-agent-on-vercel">Ora 在 Vercel 上基准测试主流 AI 智能体</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/983181/matti-haapoja-sam-kold-kolder-higgsfield-seedance-backlash">YouTube 大创作者因接受 AI 合作遭粉丝反弹</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/983088/google-discover-ai-chatbot-feed">Google Discover 将推出 AI 聊天机器人调优的个性化信息流</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/asr-benchmark-optimization">语音识别基准优化测量</a></strong> · Hugging Face Blog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>平台与工具链正在成为 AI 价值链的关键：LinkedIn 用数据揭示用户对 AI 内容的态度，Vercel 通过降价和聚合分发降低模型使用成本，Nvidia 则强调智能体调优支架的重要性。这些变化共同表明，AI 的落地重心正从单一模型能力转向工程集成、成本控制和用户体验。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：The Verge AI、Vercel Changelog、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-21</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-21.html</link>
@@ -938,56 +1014,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-07-31</title>
-      <link>https://daily.hiwd.com/archive/2026-07/2026-07-31.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-07/2026-07-31.html</guid>
-      <pubDate>Fri, 31 Jul 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-30-github-models-is-now-retired">GitHub Models 退役，开发者需迁移至 Azure AI Foundry 或其他替代方案</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-30-github-models-is-now-retired">GitHub Changelog</a> · 2026-07-30</p>
-<!-- published_at: 2026-07-30T19:14:22+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>GitHub Models 于 2026 年 7 月 30 日正式退役，Playground、模型目录、推理 API 和 BYOK 全部停用。</li>
-<li>大量依赖 GitHub 内置模型试验的开发环境直接断裂，影响原型开发与模型对比工作流，迫使团队立即调整工具链。</li>
-<li>使用 GitHub Models 进行快速实验和集成的开发者及小团队，尤其是习惯在 GitHub 内直接测试模型的用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：GitHub 进一步将 AI 能力整合到 Copilot 生态，放弃独立模型市场，引导用户走向 Azure 和 Copilot 代理。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/973384/linkedin-seems-like-ai-slop-button">LinkedIn 新增‘疑似 AI 垃圾内容’举报按钮，并用校对工具替代自家 AI 写作功能</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/973384/linkedin-seems-like-ai-slop-button">The Verge AI</a> · 2026-07-30</p>
-<!-- published_at: 2026-07-30T14:43:26-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>LinkedIn 推出‘疑似 AI slop’举报按钮，同时将自家 AI 写作功能替换为校对工具，以减少平台上的低质量 AI 生成内容。</li>
-<li>平台首次以产品手段明确打击 AI 生成低质内容，可能改变内容创作者的行为，影响职场内容的可信度和分法。</li>
-<li>LinkedIn 内容创作者和阅读者，尤其是经常发布或消费专业帖子的用户，以及使用 AI 辅助写作的营销人员。</li>
-</ul>
-<p><strong>产品技术视角</strong>：LinkedIn 从鼓励 AI 写作转向内容质量管控，通过 UI 层面的举报和工具替换，直接干预用户生成内容的质量标准。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack">Nscale 收购 Anyscale，增强 AI 算力栈控制力</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/07/30/nscale-buys-anyscale-as-it-seeks-to-own-more-of-the-ai-compute-stack">TechCrunch AI</a> · 2026-07-30</p>
-<!-- published_at: 2026-07-30T15:19:15+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>英国 AI 新云公司 Nscale 收购了帮助规模化 AI 工作负载的软件初创公司 Anyscale。</li>
-<li>新云厂商通过收购软件层来垂直整合算力供应与调度，可能降低大规模 AI 部署成本并改变竞争格局。</li>
-<li>寻求弹性 AI 算力和高效工作负载管理的中大型企业，以及使用 Ray 框架的 AI 工程师。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Nscale 将 Anyscale 的软件能力整合进自有基础设施，可能提供更便宜的端到端 AI 计算解决方案。</p>
-<h3>📰 其他值得看的</h3>
-<h3>🔍 今日主题观察</h3>
-<p>平台对 AI 生成内容的治理进入实操阶段，LinkedIn 用举报按钮和工具替换直接干预低质内容；同时开发者工具链加速重构，GitHub Models 退役迫使迁移，而新云商通过收购整合算力与软件层。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：GitHub Changelog、The Verge AI、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
