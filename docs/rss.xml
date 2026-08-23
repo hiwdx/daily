@@ -7,8 +7,34 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 23 Aug 2026 05:41:48 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 04:45:59 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-24</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-24.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-24.html</guid>
+      <pubDate>Mon, 24 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha">神秘新模型 Ox Alpha 引发网络猜测</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha">TechCrunch AI</a> · 2026-08-23</p>
+<!-- published_at: 2026-08-23T20:01:36+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>一个名为 Ox Alpha 的新 AI 模型出现，但其背后团队未知，引发互联网上的大量猜测。</li>
+<li>神秘模型可能代表新的能力突破或竞争格局变化，但缺乏可验证信息，实际影响尚不明确。</li>
+<li>AI 模型市场和关注前沿模型的用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：模型本身尚未公开细节，暂无法评估其产品能力。</p>
+<h3>📰 其他值得看的</h3>
+<h3>🔍 今日主题观察</h3>
+<p>AI 领域同时出现神秘新模型引发猜测、教育产品应用 AI 化身以及模型训练法律争议，显示行业在技术突破、应用落地和合规挑战中快速演进。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-23</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-23.html</link>
@@ -964,56 +990,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：TechCrunch AI、The Verge AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-01</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-01.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-01.html</guid>
-      <pubDate>Sat, 01 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview">GitHub Enterprise 推出用户级模型策略，精准管控 Copilot 使用</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview">GitHub Changelog</a> · 2026-07-31</p>
-<!-- published_at: 2026-07-31T18:11:50+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>GitHub 为 Copilot Business/Enterprise 上线用户模型策略公共预览，管理员可按团队或用户设定基线模型。</li>
-<li>大型企业首次能对内部不同团队细化 AI 模型权限，既推动规模化采用，又守住合规底线。</li>
-<li>受监管行业的 IT 管理员、使用 GitHub Enterprise 的大型开发组织。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Copilot 企业版从“全员同一模型”升级为“精细角色策略”，直击大客户的安全与成本痛点。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-31-mcp-portal-manual-oauth">Cloudflare Access 支持静态 OAuth 凭证，MCP 服务门户直连 Slack、GitHub</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-07-31-mcp-portal-manual-oauth">Cloudflare Changelog</a> · 2026-07-31</p>
-<!-- published_at: 2026-07-31T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cloudflare 的 MCP 服务门户现在可通过手动输入 OAuth 客户端 ID 和密钥，连接不支持动态注册的上游服务。</li>
-<li>打通了 Slack、GitHub 等主流 SaaS 的 MCP 服务，企业可直接将内部工具接入 AI 代理，无需等待服务商支持动态注册。</li>
-<li>使用 Cloudflare Access 构建 AI 代理入口的开发者和安全团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：以“静态凭证”补足生态缺口，让 MCP 门户从实验性网关变成可落地的企业集成中枢。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/ai-gateway-spend-budgets-and-alerts">Vercel AI Gateway 新增团队与项目级消费预算，硬阻断超支请求</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/ai-gateway-spend-budgets-and-alerts">Vercel Changelog</a> · 2026-07-31</p>
-<!-- published_at: 2026-07-31T17:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Vercel AI Gateway 上线按团队或项目设置消费上限的功能，并在 50%、75%、100% 预算时邮件告警，超支后直接拒绝请求。</li>
-<li>首次将硬性成本控制嵌入 API 网关层，团队不再仅靠事后账单，可以放心让开发者调用昂贵模型。</li>
-<li>使用 Vercel 部署 AI 应用的前端团队和初创公司。</li>
-</ul>
-<p><strong>产品技术视角</strong>：将预算管理从“被动看报表”变为“实时硬阻断”，降低实验新模型的财务风险。</p>
-<h3>📰 其他值得看的</h3>
-<h3>🔍 今日主题观察</h3>
-<p>企业级 AI 管控从“纸面策略”走向“工程落地”：GitHub 以用户为粒度执行模型权限，Vercel 在网关层实现硬预算阻断，Cloudflare 用静态凭证打通 Slack/GitHub 等顽固缺口。三者共同指向 AI 代理在组织内的规模化部署已触发安全、成本与集成的连锁反应。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
