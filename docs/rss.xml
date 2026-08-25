@@ -7,8 +7,81 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 25 Aug 2026 04:56:45 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 06:18:36 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-26</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-26.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-26.html</guid>
+      <pubDate>Wed, 26 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/jalapeno-first-results">OpenAI 公布定制推理芯片 Jalapeño 首批结果：高吞吐、低延迟、更省电</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/jalapeno-first-results">OpenAI</a> · 2026-08-25</p>
+<!-- published_at: 2026-08-25T07:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 发布自研推理芯片 Jalapeño 的首批基准测试结果，显示其在 token 吞吐量和单位功耗吞吐量上均领先现有方案。</li>
+<li>若该芯片投入规模化使用，将直接降低 OpenAI 模型推理的单位成本，并可能重塑 AI 推理硬件竞争格局。</li>
+<li>依赖 OpenAI API 的开发者和企业用户，以及英伟达等现有推理芯片供应商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Jalapeño 专为现代大模型推理设计，目标是在每瓦性能上实现数量级提升，从而支撑更大规模的智能服务。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding">Stability AI 再获 7600 万美元融资，累计融资达 2.32 亿美元</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding">TechCrunch AI</a> · 2026-08-25</p>
+<!-- published_at: 2026-08-25T19:03:47+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Stability AI 完成新一轮 7600 万美元融资，累计融资额达到 2.32 亿美元。</li>
+<li>新资金将支持其图像生成模型的持续研发与商业化，巩固其在开源生成式 AI 领域的竞争力。</li>
+<li>使用 Stable Diffusion 的创作者、开发者以及开源 AI 生态。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Stable Diffusion 系列模型是开源图像生成的重要选择，融资有助于其迭代和生态建设。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/blog/introducing-run">Vercel 推出 Run SDK：为 AI 智能体提供安全代码执行环境</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/blog/introducing-run">Vercel Changelog</a> · 2026-08-25</p>
+<!-- published_at: 2026-08-25T04:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Vercel 发布 Run SDK，允许 AI 智能体在隔离环境中执行不可信的 JavaScript 和 TypeScript 代码，并支持中途暂停等待人工审批。</li>
+<li>解决了智能体执行动态代码时的安全与合规痛点，降低生产环境风险，加速智能体工作流落地。</li>
+<li>需要让 AI 智能体执行用户生成代码的开发者，尤其是构建自动化工具的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Run SDK 提供开箱即用的安全沙箱和人工审批控制，可直接集成到现有智能体应用中。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://openai.com/index/introducing-admin-plugin">OpenAI 发布 ChatGPT Work 和 Codex 的 Admin 插件，集中管理成员与权限</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat">Anthropic 为 Claude Cowork 引入跨 Chat 和 Cowork 的共享记忆</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/blog/the-end-of-credential-sprawl-for-agents">Vercel Connect 全面开放，智能体改用短期、限定范围的令牌</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-08-25-mcp-portals-mcp-2026-07-28">Cloudflare Access 的 MCP 服务器门户支持最新 2026-07-28 规范</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/minimax-m3-and-m2-7-are-free-on-ai-gateway">MiniMax M3 和 M2.7 模型在 Vercel AI Gateway 上免费提供</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/08/25/accel-backed-keenable-is-indexing-the-web-for-ai-agents">Accel 领投 Keenable 2600 万美元种子轮，为 AI 智能体打造网络索引</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/ibm-granite/granite-4-2">Hugging Face 博客介绍 IBM Granite 4.2 LLM 的构建方法</a></strong> · Hugging Face Blog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>今天的 AI 动态集中在两个方向：基础设施层通过定制芯片和安全的智能体运行环境降低成本与风险；应用层则通过记忆共享、管理插件和企业级凭证管理让智能体更易融入真实工作流。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、TechCrunch AI、Vercel Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-25</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-25.html</link>
@@ -948,56 +1021,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：GitHub Changelog、Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-04</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-04.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-04.html</guid>
-      <pubDate>Tue, 04 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer">Cloudflare 发布 @cloudflare/computer：为每个 AI 代理配备专属计算机的开源运行时</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer">Cloudflare Changelog</a> · 2026-08-03</p>
-<!-- published_at: 2026-08-03T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cloudflare 发布开源代理运行时 @cloudflare/computer 早期预览，为每个代理分配独立计算机，动态调度 isolates 与 Linux 容器。</li>
-<li>代理计算从单次函数调用升级为有状态、可切换执行上下文的完整计算机，直接降低构建复杂自动化代理的门槛。</li>
-<li>使用 Cloudflare Workers 构建 AI 代理的开发者，现可将文件系统、计算资源与代理生命周期统一管理。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Workers 生态新增原生代理运行时，提供 SQLite 虚拟文件系统，可从云存储填充数据，实现持久化上下文。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/qwen-3-8-max-now-available-on-vercel-ai-gateway">阿里通义千问 Qwen 3.8 Max 登陆 Vercel AI Gateway</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/qwen-3-8-max-now-available-on-vercel-ai-gateway">Vercel Changelog</a> · 2026-08-02</p>
-<!-- published_at: 2026-08-02T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>阿里最新大模型 Qwen 3.8 Max 通过 Vercel AI Gateway 开放调用，一个 API Key 即可使用，无需注册云商账户。</li>
-<li>中国顶级大模型直接嵌入全球主流前端部署平台，分发路径大幅缩短，开发者零门槛对比模型能力。</li>
-<li>Vercel 上构建 AI 应用的开发者，以及需要一键切换多模型的团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：AI Gateway 将 Qwen 3.8 Max 变为即选即用的模型选项，提供自动回退、用量追踪和请求追踪。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/974571/eu-ai-act-transparency-labels-rules-deepfakes">欧盟 AI 透明与标注规则正式生效，强制披露聊天机器人和深度伪造内容</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/974571/eu-ai-act-transparency-labels-rules-deepfakes">The Verge AI</a> · 2026-08-03</p>
-<!-- published_at: 2026-08-03T13:38:45-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>欧盟《AI 法案》新增透明义务于8月2日生效，要求公司必须披露用户是否在与 AI 交互，以及内容是否为 AI 生成。</li>
-<li>AI 产品在欧洲市场的发行合规门槛立即可见，聊天机器人、图像生成等必须内置披露机制，否则面临法律风险。</li>
-<li>所有向欧盟用户提供 AI 聊天、图像、音频、视频产品的公司，需立即改造交互流程。</li>
-</ul>
-<p><strong>产品技术视角</strong>：对内容平台和 AI 工具厂商而言，透明标注不再是可选项，而是产品上架欧洲的必要功能。</p>
-<h3>📰 其他值得看的</h3>
-<h3>🔍 今日主题观察</h3>
-<p>本周 AI 应用层出现两份实物交付：Cloudflare 将代理运行环境下沉到边缘基础设施，Vercel 让大模型直连西方开发者，两者都在降低部署摩擦。与此同时，欧盟透明规则落地撕开合规缺口，对产品形态构成硬约束，AI 输出必须天然携带可解释的标签。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：Cloudflare Changelog、Vercel Changelog、The Verge AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
