@@ -7,8 +7,58 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 30 Aug 2026 06:42:39 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 06:52:23 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-08-31</title>
+      <link>https://daily.hiwd.com/archive/2026-08/2026-08-31.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-31.html</guid>
+      <pubDate>Mon, 31 Aug 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining">Caterpillar 将采矿自动化经验带入 AI 部署</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining">TechCrunch AI</a> · 2026-08-30</p>
+<!-- published_at: 2026-08-30T15:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Caterpillar 正在将数十年采矿自动化经验应用于 AI 部署。</li>
+<li>传统工业巨头的自动化实践正在向 AI 领域迁移，可能改变 AI 系统的可靠性和部署方式。</li>
+<li>需要大规模部署 AI 的工业和企业开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：提供经过验证的自动化部署方法论，降低 AI 落地风险。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-30-glm-5.3-flash">Cloudflare AI Search 新增支持 GLM-5.3 Flash 模型</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-30-glm-5.3-flash">Cloudflare Changelog</a> · 2026-08-30</p>
+<!-- published_at: 2026-08-30T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cloudflare AI Search 现已支持 GLM-5.3 Flash 模型进行文本生成。</li>
+<li>开发者可以在边缘运行拥有百万 token 上下文窗口的模型，扩展了长文本处理能力。</li>
+<li>使用 Cloudflare Workers AI 构建搜索和生成应用的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：集成超长上下文模型，降低长文档处理延迟和成本。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/minimax-h3-and-h3-max-are-50-off-on-ai-gateway">Vercel AI Gateway 上 MiniMax H3 系列视频生成模型五折优惠</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/minimax-h3-and-h3-max-are-50-off-on-ai-gateway">Vercel Changelog</a> · 2026-08-30</p>
+<!-- published_at: 2026-08-30T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>MiniMax H3 和 H3 Max 视频生成在 Vercel AI Gateway 上五折优惠，持续至 9 月 13 日。</li>
+<li>视频生成成本直接减半，降低开发者集成高质量视频模型的资金门槛。</li>
+<li>在 Vercel 上构建视频应用的开发者和团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：价格激励推动 H3 系列模型在应用中的采用和实验。</p>
+<h3>📰 其他值得看的</h3>
+<h3>🔍 今日主题观察</h3>
+<p>本周 AI 生态呈现边缘集成加速和成本竞争加剧：Cloudflare 在边缘引入超长上下文模型，Vercel 通过价格折扣推动视频生成采用，传统工业自动化经验也开始注入 AI 部署，显示 AI 正从模型竞赛转向部署效率与工程实践竞争。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：TechCrunch AI、Cloudflare Changelog、Vercel Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-30</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-30.html</link>
@@ -869,90 +919,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：Hugging Face Blog、The Verge AI、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-09</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-09.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-09.html</guid>
-      <pubDate>Sun, 09 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3">GitHub Copilot 周更：恢复工作上下文、代码审查分级等多项能力上线</a></p>
-<p><strong>来源</strong>：<a href="https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3">GitHub Changelog</a> · 2026-08-07</p>
-<!-- published_at: 2026-08-07T23:16:02+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>GitHub Copilot 在桌面、CLI 和 VS Code 中推出多项更新，支持恢复工作上下文、按风险分级审查代码等功能。</li>
-<li>开发者无需重复解释项目背景即可接续工作，审查深度可匹配代码复杂度，直接减少打断和无效审查，提升编码流。</li>
-<li>使用 GitHub Copilot 的开发者与团队，尤其频繁切换任务或代码审查者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：将 AI 辅助从单次问答升级为上下文保持和可控审查，强化了 Copilot 作为工作流核心的定位。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/vercel-ai-gateway-and-vercel-sandbox-now-available-on-hermes-agent">Vercel AI Gateway 与 Sandbox 接入 NousResearch 编程智能体 Hermes</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/vercel-ai-gateway-and-vercel-sandbox-now-available-on-hermes-agent">Vercel Changelog</a> · 2026-08-07</p>
-<!-- published_at: 2026-08-07T19:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>NousResearch 编码智能体 Hermes 现通过 Vercel AI Gateway 路由请求，并在 Vercel Sandbox 云微虚拟机中执行命令。</li>
-<li>智能体的模型调用和命令执行均获得托管式基础设施支持，降低了构建可行动的 AI 工具的门槛和运行风险。</li>
-<li>NousResearch 用户、需在云端安全运行智能体的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Vercel 平台能力向第三方智能体开放，从静态部署延伸至动态 agent 运行，拓展了平台型中间件的边界。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/07/after-rippling-blew-millions-on-ai-in-months-it-built-an-employee-roi-tool">Rippling 发布 AI Spend Console，量化员工 AI 开支与产出</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/07/after-rippling-blew-millions-on-ai-in-months-it-built-an-employee-roi-tool">TechCrunch AI</a> · 2026-08-07</p>
-<!-- published_at: 2026-08-07T21:30:11+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>HR 与 IT 平台 Rippling 推出 AI Spend Console，可追踪个人和团队 AI 工具花费并关联产出。</li>
-<li>企业 AI 开支正从零散报销转为可量化、可优化项，直接影响采购决策和工具合规。</li>
-<li>采用多 AI 工具的企业 IT 和财务团队，以及相关工具供应商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：将 AI 消费管理产品化，抓住企业隐性开支失控的痛点，把成本可见性化为可卖功能。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li><strong><a href="https://huggingface.co/blog/allenai/tutormoments">TutorMoments：AI 家教何时该出手相助？</a></strong> · Hugging Face Blog</li>
-<li>
-<p>Allen AI 研究评估 AI 家教在辅导中适时介入与克制的能力，为自适应学习交互提供新视角。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/entertainment/976939/roku-fairground-ai-fast-channel">Roku 的 AI 频道像在食槽前用餐</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p>Roku 推出全 AI 生成内容的免费频道，取代传统影视，评论称观看体验如同无选择进食。</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section">Copilot 影响力面板新增投资回报率专区</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p>GitHub Copilot 管理面板可将订阅支出与拉取请求产出挂钩，提供潜在 ROI 估算。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/give-every-agent-in-herdr-its-own-vercel-sandbox">Herdr 为每个智能体配备独立 Vercel Sandbox</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p>Herdr 平台为终端智能体分配隔离沙箱，支持审查上传、冲突检查补丁及人工确认删除。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/976948/openai-astra-model-pause-critical-cyber-capabilities">OpenAI 因安全顾虑暂停 Astra 模型内部开发</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p>OpenAI 宣布暂停 Astra 模型开发，因未满足新安全标准，此前披露曾意外入侵 Hugging Face。</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available">Copilot 代码审查力度分级正式上线</a></strong> · GitHub Changelog</p>
-</li>
-<li>GitHub Copilot 代码审查的 Lite 和 Balanced 力度选项正式可用，可针对不同复杂度代码匹配深度。</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>本周主题：AI 能力渗透到工作流全链条，从编码到推理到开销管理，企业级实用主义升温。Rippling 推出的 AI Spend Console 直指企业 AI 支出黑箱，而 GitHub Copilot 和 Vercel 的新功能都在把 AI 深深嵌入开发者现有工序，不再是点缀。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：GitHub Changelog、Vercel Changelog、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
