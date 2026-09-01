@@ -7,8 +7,81 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 31 Aug 2026 06:52:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 06:42:22 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-02</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-02.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-02.html</guid>
+      <pubDate>Wed, 02 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/path-to-astra">OpenAI 推迟 Astra 模型开发：首个达到“关键”网络安全能力门槛的模型</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/path-to-astra">OpenAI</a> · 2026-09-01</p>
+<!-- published_at: 2026-09-01T13:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 宣布 Astra 是首个在 Preparedness Framework 下达到“关键”网络安全能力门槛的模型，并加强了发布保障措施。</li>
+<li>这标志前沿模型在进攻性网络能力上步入新阶段，并可能影响 AI 安全评估和发布流程。</li>
+<li>企业安全团队、AI 治理机构以及使用前沿模型的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：OpenAI 在发布前主动披露关键能力并强化安全措施，展示从能力竞赛转向安全优先的产品策略。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/claude-fable-5-1-now-available-on-ai-gateway">Claude Fable 5.1 上线 Vercel AI Gateway，多模型路由简化</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/claude-fable-5-1-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-09-01</p>
+<!-- published_at: 2026-09-01T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 的 Claude Fable 5.1 模型现可通过 Vercel AI Gateway 调用，无需单独提供商账户。</li>
+<li>降低开发者接入新模型的摩擦，加速多模型应用开发和成本控制。</li>
+<li>使用 Vercel 平台的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过统一 API 和内置回退、支出跟踪，Vercel 进一步巩固其 AI 网关地位。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://blog.google/products-and-platforms/products/workspace/google-pics">Google Pics 发布：AI 图像创作工具直接对标 Canva</a></p>
+<p><strong>来源</strong>：<a href="https://blog.google/products-and-platforms/products/workspace/google-pics">Google AI Blog</a> · 2026-09-01</p>
+<!-- published_at: 2026-09-01T16:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google 在 Workspace 中推出 Google Pics，基于 Nano Banana 模型，支持通过提示生成和编辑图像。</li>
+<li>将生成式 AI 深度整合进办公套件，可能改变企业设计工作流并冲击 Canva、Adobe 市场。</li>
+<li>Workspace 企业用户、营销和设计团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：以 AI 原生交互降低设计门槛，Google 借 Workspace 分发优势切入创意软件市场。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/01/air-raises-50m-to-help-companies-vet-the-skills-and-add-ons-ai-agents-use">Air 融资 5000 万美元，帮助企业审查 AI 代理技能和插件</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/webgpu-kernels">Hugging Face 推出 200+ WebGPU 内核，加速本地 AI</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-01-copilot-code-review-can-now-approve-pull-requests">GitHub Copilot 代码审查可批准拉取请求</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-01-billing-and-model-names">Cloudflare AI Gateway 合并月度账单行项目并标准化模型名称</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/set-per-user-budgets-on-ai-gateway">Vercel AI Gateway 支持按用户设置预算</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/987486/john-deere-jd-ai-chatbot">John Deere 发布农民 AI 聊天机器人</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/01/fambot-introduces-an-ai-chief-of-staff-for-families">Fambot 推出家庭 AI 首席幕僚</a></strong> · TechCrunch AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>前沿模型在网络安全能力上迈入新阶段，同时开发者工具和 AI 网关加速多模型集成与成本控制；生成式 AI 正通过 Workspace 等产品深入主流办公和创意场景。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Vercel Changelog、Google AI Blog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-08-31</title>
       <link>https://daily.hiwd.com/archive/2026-08/2026-08-31.html</link>
@@ -849,76 +922,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：Cloudflare Changelog、Vercel Changelog、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-12</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-12.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-12.html</guid>
-      <pubDate>Wed, 12 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/nvidia/magpie-tts-multilingual-voice-agents">NVIDIA 发布 Magpie TTS：开源低延迟多语言语音代理，支持完全本地部署</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/nvidia/magpie-tts-multilingual-voice-agents">Hugging Face Blog</a> · 2026-08-10</p>
-<!-- published_at: 2026-08-10T16:25:36+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>NVIDIA 在 Hugging Face 上发布开源文本转语音模型 Magpie TTS，主打低延迟、多语言，并提供完全本地部署控制。</li>
-<li>开发者首次可以无需依赖云 API 构建低延迟语音代理，降低了语音交互产品的延迟、成本和隐私门槛。</li>
-<li>语音助手和实时翻译应用的开发者，以及追求数据主权和低延迟的企业用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：这是一个开箱即用的开源 TTS 模型，直接改变了语音代理的工程实现方式，从依赖云端转向边缘自主部署。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/977823/anthropic-claude-ai-watermarks-c2pa-text-images">Claude 将开始对 AI 生成的文字和图像添加不可见水印</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/977823/anthropic-claude-ai-watermarks-c2pa-text-images">The Verge AI</a> · 2026-08-11</p>
-<!-- published_at: 2026-08-11T08:22:20-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 宣布 Claude 生成的文字将携带嵌入式水印，文件包含数字签名来源数据，以符合欧盟 AI 透明度规则。</li>
-<li>这是主要 AI 模型提供商首次在输出层内置合规水印，直接影响内容溯源和 AI 生成内容分发的可信度。</li>
-<li>使用 Claude 生成内容的企业、平台和合规团队，以及关注 AI 内容真实性的普通用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：该功能已上线，直接改变 Claude 的输出格式，为全球内容审核和版权溯源提供了基础设施级信号。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/11/spotify-will-label-ai-persona-profiles-and-exclude-their-music-from-recommendations">Spotify 将标记 'AI Persona' 档案，并将其音乐排除在推荐之外</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/11/spotify-will-label-ai-persona-profiles-and-exclude-their-music-from-recommendations">TechCrunch AI</a> · 2026-08-11</p>
-<!-- published_at: 2026-08-11T13:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Spotify 推出“AI Persona”标签，用于标记 AI 生成的艺人档案，并默认将其音乐从编辑推荐、算法推荐和个性化推荐中排除。</li>
-<li>主流音乐流媒体平台首次以产品手段系统性隔离 AI 生成内容，这将重塑 AI 音乐的分发通路和变现可能。</li>
-<li>AI 音乐创作者、音乐厂牌，以及依赖推荐流量的独立艺人。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Spotify 在推荐算法中直接引入 AI 内容过滤层，改变了平台上音乐曝光和发现的竞争规则。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-08-11-copilot-memory-and-ollama-in-github-copilot-for-jetbrains">Copilot memory and Ollama in GitHub Copilot for JetBrains</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations">AMIE, our research medical AI system, demonstrates real-time clinical video consultation capabilities</a></strong> · Google AI Blog</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/11/general-catalyst-leads-1-1b-round-into-2-month-old-river-ai">General Catalyst leads $1.1B round into 2-month-old River AI</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/977909/zoom-vulnerability-ai-attack">‘Zoomsday’ hack uncovered using fewer than 20 AI prompts</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-08-11-mai-code-1-1-flash-available-in-github-copilot">MAI-Code-1.1-Flash available in GitHub Copilot</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://blog.google/products/ads-commerce/google-ads-analytics-ai-updates">Evolve your marketing with new AI tools</a></strong> · Google AI Blog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 生成内容的可追溯性和分发控制成为本周平台层的共同焦点：Anthropic 内置水印、Spotify 隔离 AI 音乐、NVIDIA 开源语音模型将代理能力推向边缘部署。这些产品化动作表明，AI 产业正从能力竞赛转向合规与主权框架的搭建。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：Hugging Face Blog、The Verge AI、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
