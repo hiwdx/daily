@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 02 Sep 2026 06:42:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 06:44:17 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-03</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-03.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-03.html</guid>
+      <pubDate>Thu, 03 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources">OpenAI 将医疗记录接入 ChatGPT，临床工作流迎来新入口</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources">OpenAI</a> · 2026-09-01</p>
+<!-- published_at: 2026-09-01T12:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>ChatGPT 现在可以连接 EHR 和行业数据源，帮助临床医生安全获取患者背景和医学研究。</li>
+<li>医疗机构可直接在对话界面调用患者数据，减少切换系统时间；这是 ChatGPT 进入高价值垂直场景的实质性一步。</li>
+<li>临床医生、医院 IT 部门、医疗 AI 应用开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过受信任的数据连接扩展 ChatGPT 的企业可用性，直接切入医疗工作流。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Anthropic 发布企业级前沿安全方案，零数据保留+滥用检测</a></p>
+<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Anthropic</a> · 2026-09-01</p>
+<!-- published_at: 2026-09-01T04:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 推出 Enterprise Frontier Safeguards，将零数据保留与最先进的滥用检测结合，数据存储在客户控制的基础设施中。</li>
+<li>企业可以在不牺牲数据隐私的前提下获得高级安全能力，降低合规风险，可能改变敏感行业的 AI 采用决策。</li>
+<li>金融、医疗、政府等强监管行业的企业客户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：提供客户控制的安全基础设施，兼顾隐私与安全，拓宽企业 AI 部署场景。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-02-cursor-cloud-agents">Cloudflare 开放自托管机器运行 Cursor Cloud Agents</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-02-cursor-cloud-agents">Cloudflare Changelog</a> · 2026-09-02</p>
+<!-- published_at: 2026-09-02T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cursor 自托管机器现可在 Cloudflare 上运行，每个会话在 Cloudflare Containers 支持的隔离环境中执行命令和文件编辑。</li>
+<li>开发者可以将 AI 编码代理的执行环境控制在自有基础设施中，同时利用 Cloudflare 的边缘网络，改善安全性和性能。</li>
+<li>使用 Cursor Cloud Agents 的开发者团队，尤其是对代码执行环境有严格要求的组织。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过开源模板和容器隔离，为 AI 编码代理提供可自定义的执行后端。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/988518/amazon-alexa-for-shopping-verify-emails">Amazon 的 AI 助手现在可以识别冒充公司的虚假邮件</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/policy/988228/nyc-ai-restrictions-in-schools-chatbot-ban">NYC 禁止高中以下学生使用 AI</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/02/indias-richest-man-now-wants-to-turn-aging-computers-into-ai-ready-pcs">Jio 以 11 美元将旧电脑变为 AI 就绪 PC</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/gemini-3-8-flash-now-available-on-ai-gateway">Vercel AI Gateway 新增 Gemini 3.8 Flash 模型</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/qwen-3-8-max-0902-now-available-on-ai-gateway">Vercel AI Gateway 提供 Qwen 3.8 Max 0902</a></strong> · Vercel Changelog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 平台正在同时向高价值垂直场景（医疗、企业安全）和开发者基础设施（云代理、模型网关）两端延伸，企业采用的障碍从模型能力转向数据控制与执行环境。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Anthropic、Cloudflare Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-02</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-02.html</link>
@@ -852,76 +919,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：Cursor、TechCrunch AI、The Verge AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-18</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-18.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-18.html</guid>
-      <pubDate>Tue, 18 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-17-qwen-3.8-27b-workers-ai">Cloudflare Workers AI 上线 Qwen 3.8 27B 视觉推理模型</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-17-qwen-3.8-27b-workers-ai">Cloudflare Changelog</a> · 2026-08-17</p>
-<!-- published_at: 2026-08-17T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cloudflare Workers AI 新增 @cf/qwen/qwen3.8-27b 模型。</li>
-<li>该 270 亿参数模型同时支持图像输入和文本输出，并具备思考模式与函数调用能力，使开发者无需自建基础设施即可构建代理式视觉应用。</li>
-<li>在 Cloudflare 平台上构建多模态 AI 应用的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：边缘 AI 推理服务扩展至视觉推理，进一步降低复杂 Agent 工作流的门槛。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/gpt-5-6-sol-is-50-off-on-ai-gateway-for-the-next-month">Vercel AI Gateway 对 GPT-5.6 Sol 提供五折优惠</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/gpt-5-6-sol-is-50-off-on-ai-gateway-for-the-next-month">Vercel Changelog</a> · 2026-08-17</p>
-<!-- published_at: 2026-08-17T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Vercel AI Gateway 从 8 月 17 日到 9 月 18 日对 GPT-5.6 Sol 的所有请求打五折。</li>
-<li>优惠直接降低开发者使用前沿模型的推理成本，可能促使更多生产流量迁移至该网关。</li>
-<li>通过 Vercel AI Gateway 调用 GPT-5.6 Sol 的开发者和企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：云平台以折扣吸引开发者使用最新模型，加剧 AI 推理成本竞争。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team">AI 自动化初创公司 Relay 关闭，团队加入 Google Chrome</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team">TechCrunch AI</a> · 2026-08-17</p>
-<!-- published_at: 2026-08-17T21:27:05+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>AI 自动化公司 Relay 停止运营，其员工加入 Google Chrome 团队。</li>
-<li>人才流向浏览器团队预示 AI 自动化能力将更深入地嵌入日常工具，可能改变用户的工作流。</li>
-<li>Relay 用户及关注浏览器 AI 集成的普通用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：科技巨头通过收购人才加速 AI 功能在核心产品中的落地。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/978323/whisker-litter-robot-5-pro-review">AI 自动铲屎机评测：Whisker Litter Robot 5 Pro 的猫识别可能出错</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models">亚马逊销毁稀有书籍用于 AI 训练引发争议</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/column/980337/rogue-ai-science-fiction-openai">专栏：失控 AI 已不是科幻小说</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/17/groq-raises-350m-to-fuel-its-pivot-from-ai-chips-to-neocloud">Groq 融资 3.5 亿美元，从 AI 芯片转向新云服务</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://news.ycombinator.com/item?id=49331423">AI-Generated GitHub Copilot “Autofix” Allowed Compromise of Snowflake's Jira</a></strong> · Hacker News</p>
-</li>
-<li>
-<p><strong><a href="https://news.ycombinator.com/item?id=49337392">Israel creates fake think tank in likely attempt to dupe AI chatbots</a></strong> · Hacker News</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 基础设施竞争从模型层延伸到分发层：Cloudflare 和 Vercel 等平台通过提供新模型或降价吸引开发者，同时模型能力向视觉、推理和代理工作流快速扩展。人才并购和初创公司关闭显示行业整合加速，浏览器等入口成为 AI 集成新战场。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：Cloudflare Changelog、Vercel Changelog、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
