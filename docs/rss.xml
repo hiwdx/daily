@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Thu, 03 Sep 2026 06:44:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 07:43:28 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-04</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-04.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-04.html</guid>
+      <pubDate>Fri, 04 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release">OpenAI 发布 GPT-6 Astra：自称进入 AGI 时代，安全等级达“关键”级</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release">The Verge AI</a> · 2026-09-03</p>
+<!-- published_at: 2026-09-03T14:00:00-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 正式发布 GPT-6 Astra，称其在网络安全、专业工作、软件工程、科学和计算机使用等领域实现“代际能力跃升”，且是首个达到公司“关键网络安全能力阈值”的模型。</li>
+<li>首个达到关键网络安全能力阈值的广泛部署模型，标志着前沿模型在攻击性安全能力上进入新阶段，可能改变安全防御与威胁格局。</li>
+<li>开发者、企业安全团队以及依赖 AI 进行专业工作和软件工程的人群。</li>
+</ul>
+<p><strong>产品技术视角</strong>：GPT-6 Astra 作为通用大模型，在多项能力上实现跃升，同时官方强调安全措施，但具体安全机制尚未完全公开。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://cursor.com/changelog/self-hosted-machines">Cursor 支持自托管机器：代码库、构建产物和密钥完全留在内网</a></p>
+<p><strong>来源</strong>：<a href="https://cursor.com/changelog/self-hosted-machines">Cursor</a> · 2026-09-02</p>
+<!-- published_at: 2026-09-02T21:00:25+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cursor 推出自托管机器功能，允许团队在自己的基础设施上运行代理工具调用，代码、构建输出和密钥不离开内部网络，并支持动态池调度个人和团队工作负载。</li>
+<li>企业开发者首次能在完全自托管环境中使用 Cursor 代理，消除了数据合规和代码安全顾虑，可能加速 AI 编码助手在敏感行业的采用。</li>
+<li>企业开发团队、关注数据主权的组织以及需要严格网络隔离的场景。</li>
+</ul>
+<p><strong>产品技术视角</strong>：自托管机器和团队池功能让 Cursor 从 SaaS 工具扩展为企业级可部署基础设施，支持个人和团队两种工作流。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model">Meta 为 Muse Spark 模型提供约 95% 折扣，换取用户提示和输出</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model">TechCrunch AI</a> · 2026-09-03</p>
+<!-- published_at: 2026-09-03T18:19:56+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Meta 对其用于操作编码和其他代理的 Muse Spark 模型推出折扣计划，凡同意分享提示和模型输出的用户平均可获得约 95% 的价格优惠。</li>
+<li>通过大幅折扣获取真实用户数据，Meta 以低成本构建反馈循环，可能加速其模型迭代，同时引发对数据隐私和模型改进方式的关注。</li>
+<li>使用 Muse Spark 的开发者、企业，以及关注数据共享和模型训练的用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Muse Spark 的折扣策略直接影响使用成本，但要求用户贡献数据，改变开发者选择模型时的权衡因素。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://openai.com/index/daybreak-for-frontline-defenders">OpenAI 推出 Daybreak 计划：10 亿美元保护关键服务免受网络攻击</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program">Google 推出 Fairwind 计划：向政府和可信伙伴提供主动网络防御工具</a></strong> · Google AI Blog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/03/abliteration-ai-is-making-a-business-out-of-removing-ai-guardrails">Abliteration.ai 将去除 AI 护栏变成了一门生意</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/989435/nvidia-pair-personal-ai-router-home-local-llm-compute-tool-rtx-macbook">Nvidia 推出免费工具 PAIR：将闲置电脑连接成个人 AI 数据中心</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/989503/chatgpt-grok-claude-outage-down">ChatGPT、Grok 和 Claude 同时宕机</a></strong> · The Verge AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>前沿模型的安全阈值和代理工具的自托管能力正在同步升级：GPT-6 Astra 达到关键网络安全能力，而 Cursor 允许完全在自有基础设施内运行，企业在采用 AI 时更注重数据控制与安全合规。与此同时，Meta 用大幅折扣换取用户数据，显示模型提供商正在通过商业手段加速数据飞轮。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：The Verge AI、Cursor、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-03</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-03.html</link>
@@ -843,82 +910,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：Cursor、OpenAI、Cloudflare Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-19</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-19.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-19.html</guid>
-      <pubDate>Wed, 19 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://cursor.com/changelog/origin-code-hosting">Cursor 推出 Origin 代码托管服务：内置 Git 锻造功能进入早期测试</a></p>
-<p><strong>来源</strong>：<a href="https://cursor.com/changelog/origin-code-hosting">Cursor</a> · 2026-08-18</p>
-<!-- published_at: 2026-08-18T09:40:56+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cursor 开始向所有付费计划用户推出 Origin 代码托管，支持创建仓库、Pull Request、代码浏览和 GitHub 同步。</li>
-<li>将代码托管直接融入 AI 编码环境，开发者无需离开 Cursor 即可管理项目，可能改变现有 Git 工作流。</li>
-<li>使用 Cursor 的开发者与团队，尤其是依赖 AI 辅助开发的软件项目。</li>
-</ul>
-<p><strong>产品技术视角</strong>：内置代码托管降低了工具切换成本，强化了 Cursor 作为以 AI 为中心的开发平台定位。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development">Warp 推出 Warp Factories：开箱即用的 AI 软件工厂基础设施</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development">TechCrunch AI</a> · 2026-08-18</p>
-<!-- published_at: 2026-08-18T14:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Warp 发布新基础设施系统 Warp Factories，旨在让构建 AI 软件工厂尽可能简单。</li>
-<li>抽象化 AI 开发基础设施的复杂性，可能加速企业采用 AI 软件工厂模式。</li>
-<li>希望规模化开发 AI 应用的团队和企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：提供开箱即用的系统，降低了搭建 AI 开发流水线的门槛。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/981283/mozilla-firefox-smart-window-ai-features">Firefox Smart Window 新增实时网络信息和智能标签分组</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/981283/mozilla-firefox-smart-window-ai-features">The Verge AI</a> · 2026-08-18</p>
-<!-- published_at: 2026-08-18T09:00:00-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Firefox Smart Window AI 浏览模式现在可获取当前网页信息并在回复中显示来源链接，还支持自动建议标签分组和搜索历史视觉预览。</li>
-<li>浏览器 AI 助手从独立对话框转向与网页内容和用户行为深度集成，提升信息获取效率。</li>
-<li>使用 Firefox 并依赖 AI 辅助浏览的用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过集成实时网络信息和标签管理，增强浏览器作为 AI 入口的实用性。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/strengthening-democratic-oversight-in-national-security">OpenAI 发起民主监督国家安全 AI 的倡议</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/ibm-research/altk-evolve-hmm">IBM Research 在 Hugging Face 发布关于 Agent 内存需求的博客</a></strong> · Hugging Face Blog</p>
-</li>
-<li>
-<p><strong><a href="https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships">Google Gemini 与 Pixel 合作五大足球俱乐部提升球迷体验</a></strong> · Google AI Blog</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/entertainment/981644/robin-williams-instagram-account-ai">Robin Williams 子女重启其 Instagram 以对抗 AI 滥用</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/cline-harness-adapter">Cline 现通过 AI SDK harness 层适配器可用</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/partnering-with-codeai">OpenAI 与 CodeAI 合作培养第一代 AI 素养</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/18/perplexitys-free-ai-offer-left-it-with-millions-more-users-in-india">Perplexity 免费 AI 优惠在印度带来数百万新用户</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/981640/openai-security-changes-ai-hugging-face-hack">OpenAI 宣布安全更新应对 AI 攻击 Hugging Face 事件</a></strong> · The Verge AI</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 开发工具正从代码辅助向全栈平台演进，Cursor 和 Warp 分别通过内置代码托管和软件工厂基础设施降低 AI 应用开发门槛。同时，浏览器与 AI 助手深度融合，Firefox Smart Window 的实时网络信息集成标志着 AI 从独立对话框转向内容感知的浏览体验。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：Cursor、TechCrunch AI、The Verge AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
