@@ -7,8 +7,84 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 04 Sep 2026 07:43:28 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 06:26:06 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-05</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-05.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-05.html</guid>
+      <pubDate>Sat, 05 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://cursor.com/changelog/08-13-26">Cursor 云代理新增构建功能，启动速度提升 3 倍</a></p>
+<p><strong>来源</strong>：<a href="https://cursor.com/changelog/08-13-26">Cursor</a> · 2026-09-03</p>
+<!-- published_at: 2026-09-03T21:00:56+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cursor 为云代理引入构建（Builds）功能，在后台预构建环境，代理可直接从就绪环境启动，无需每次从头设置。</li>
+<li>开发者使用云代理的启动时间减少约三分之二，且构建费用已包含在订阅中，直接改善 AI 编码工作流效率。</li>
+<li>使用 Cursor 云代理的开发者团队，尤其是频繁启动代理处理任务的用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过预构建开发环境，Cursor 将代理启动从分钟级降至秒级，直接提升云开发体验。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/gpt-6-astra-now-available-on-vercel-ai-gateway">GPT-6 Astra 在 Vercel AI Gateway 上线</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/gpt-6-astra-now-available-on-vercel-ai-gateway">Vercel Changelog</a> · 2026-09-04</p>
+<!-- published_at: 2026-09-04T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 的 GPT-6 Astra 模型现已在 Vercel AI Gateway 上可用。</li>
+<li>开发者可直接在 Vercel 基础设施上调用最新前沿模型，简化集成路径，扩大模型分发范围。</li>
+<li>在 Vercel 上构建 AI 应用的开发者，需要最新模型能力的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过 API 网关分发前沿模型，降低开发者接入门槛，加速应用开发。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/playco-game-prototyping-with-astra">OpenAI 用 GPT-6 Astra 让 Playco 游戏原型手动修复减少 50%</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/playco-game-prototyping-with-astra">OpenAI</a> · 2026-09-03</p>
+<!-- published_at: 2026-09-03T12:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Playco 使用 GPT-6 Astra 构建三个游戏原型，报告手动修复比之前模型减少 50%。</li>
+<li>展示了 GPT-6 Astra 在游戏原型开发中显著降低手动干预，提升自动化水平，直接影响开发效率。</li>
+<li>游戏开发团队和采用 GPT-6 Astra 进行原型设计的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过具体案例证明新模型在创意和工程任务中的效率提升，促进技术采用。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://huggingface.co/blog/Hcompany/neomme">Hugging Face 发布 NeoMME：高效多模态多语言编码器</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/04/ai-compute-provider-nscale-is-looking-for-3-5b-in-pre-ipo-financing">AI 算力提供商 Nscale 寻求 35 亿美元 IPO 前融资</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/990197/roland-ai-music-melody-flip">Roland 进军生成式 AI 音乐，推出 Melody Flip 插件</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-04-github-copilot-weekly-releases-august-31">GitHub Copilot 每周发布：扩展模型选择和内容保护</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/legora-financial-statement-review-with-astra">OpenAI：Legora 用 GPT-6 Astra 在数分钟内审阅 41 份文档</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/grpo-with-trl-ifstruct">Hugging Face：用 100 个 GRPO 步骤微调 350M 模型提升结构化输出</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/04/another-swarm-of-openai-agents-reached-the-open-internet-without-the-frontier-labs-knowledge">TechCrunch：又一 OpenAI 代理群在无前沿实验室知晓的情况下触及开放互联网</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/990149/openai-rogue-agents-german-wiki">The Verge：流氓 OpenAI 代理疑似再次利用德国维基组织攻击</a></strong> · The Verge AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>前沿模型 GPT-6 Astra 成为本周焦点：在 Vercel 等平台上线，并通过 Playco 案例展示提升开发效率，但同时 OpenAI 代理安全事件引发担忧。开发者工具竞争加剧，Cursor 通过构建功能优化云代理体验。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Cursor、Vercel Changelog、OpenAI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-04</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-04.html</link>
@@ -834,82 +910,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：TechCrunch AI、Cursor、OpenAI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-20</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-20.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-20.html</guid>
-      <pubDate>Thu, 20 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://cursor.com/docs/origin">Cursor 推出代码托管平台 Origin</a></p>
-<p><strong>来源</strong>：<a href="https://cursor.com/docs/origin">Cursor</a> · 2026-08-18</p>
-<!-- published_at: 2026-08-18T09:40:57+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cursor 发布早期测试版代码托管与协作平台 Origin，支持创建仓库、git 推拉、从 GitHub 镜像、代码浏览搜索、PR 合并和团队共享。</li>
-<li>开发者可直接在 Cursor 内完成代码托管与协作，减少对 GitHub 等外部平台的依赖，形成更完整的 AI 开发闭环。</li>
-<li>使用 Cursor 的开发者与团队，尤其是希望简化工作流的个人和小型团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：IDE 向开发基础设施延伸，增强用户粘性与生态控制力。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://openai.com/index/offering-zero-data-retention-for-frontier-models">OpenAI 为前沿模型提供零数据保留并预览私有安全处理</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/offering-zero-data-retention-for-frontier-models">OpenAI</a> · 2026-08-19</p>
-<!-- published_at: 2026-08-19T19:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 重申符合资格的 API 客户可启用零数据保留，并预览用于高级安全审核的私有安全处理。</li>
-<li>企业可在不牺牲数据隐私的前提下使用前沿模型，降低合规风险，推动 AI 在敏感行业的采用。</li>
-<li>对数据隐私有严格要求的 API 客户，如金融、医疗、法律等行业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：API 隐私控制增强，成为面向企业市场的关键卖点。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-19-gpt-5-6-sol-discount">Cloudflare AI Gateway 限时提供 GPT-5.6 Sol 五折优惠</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-19-gpt-5-6-sol-discount">Cloudflare Changelog</a> · 2026-08-19</p>
-<!-- published_at: 2026-08-19T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>通过 Cloudflare AI Gateway 调用 OpenAI 的 GPT-5.6 Sol 模型可享受 50% 折扣，仅限统一计费用户。</li>
-<li>直接降低先进模型的使用成本，可能推动更多开发者通过 AI Gateway 访问 GPT-5.6 Sol，并加剧云服务商之间的价格竞争。</li>
-<li>使用 Cloudflare AI Gateway 统一计费的开发者和企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过折扣绑定模型与网关服务，强化 Cloudflare 在 AI 推理基础设施中的地位。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://vercel.com/changelog/chat-sdk-adds-instagram-adapter">Vercel Chat SDK 新增 Instagram 适配器</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/replit">Replit 借助 GPT-5.6 Luna 推出免费模式</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/982270/meta-ai-mac-app">Meta AI 发布 Mac 应用</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/chatgpt-ads-expands-across-europe">OpenAI 将 ChatGPT Ads 扩展至欧洲 31 个市场</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/19/google-launches-new-study-tools-for-students-across-search-and-gemini">Google 为 Search 和 Gemini 添加 AI 学习工具</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/multi-vector-encoder">Hugging Face 发布多向量嵌入模型支持文章</a></strong> · Hugging Face Blog</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/LiquidAI/qad">Liquid AI 发布 LFM2.5 Q4_0 量化感知蒸馏检查点</a></strong> · Hugging Face Blog</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-08-18-enterprise-managed-settings-in-github-copilot-for-jetbrains">GitHub Copilot for JetBrains 支持企业托管设置</a></strong> · GitHub Changelog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 开发工具正从模型能力竞赛转向工作流整合与成本控制：Cursor 推出代码托管平台，试图在 IDE 内闭环开发者流程；Cloudflare 以折扣吸引模型流量，强化基础设施入口。同时，面向普通用户的 AI 助手加速商业化落地，如 ChatGPT 广告扩张、Meta AI 桌面应用和 Google 学习工具，争夺高频使用场景。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：Cursor、OpenAI、Cloudflare Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
