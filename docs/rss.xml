@@ -7,8 +7,46 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 07 Sep 2026 06:11:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 06:56:14 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-08</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-08.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-08.html</guid>
+      <pubDate>Tue, 08 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/supporting-independent-journalism-in-ukraine">OpenAI 联合多家组织启动乌克兰独立新闻 AI 支持计划</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/supporting-independent-journalism-in-ukraine">OpenAI</a> · 2026-09-07</p>
+<!-- published_at: 2026-09-07T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 与 AIRPPU 和 WAN-IFRA 合作推出 AI 计划，帮助乌克兰新闻机构提升创新能力、韧性和独立新闻能力。</li>
+<li>该计划为乌克兰新闻业提供 AI 工具和资源，直接增强其在冲突环境下的运营能力和内容生产。</li>
+<li>乌克兰新闻机构及其受众，以及关注 AI 在媒体领域应用的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：OpenAI 将其 AI 能力应用于新闻业，拓展了产品在媒体行业的落地场景。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/07/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms">TechCrunch 发布 AI 术语表，帮助大众理解常见概念</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/07/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms">TechCrunch AI</a> · 2026-09-07</p>
+<!-- published_at: 2026-09-07T19:24:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>TechCrunch 发布了一份 AI 术语表和常见俚语指南，涵盖幻觉等重要词汇。</li>
+<li>该术语表降低了 AI 概念的理解门槛，有助于普通用户和从业者更准确地交流。</li>
+<li>AI 初学者、非技术背景用户以及需要快速了解 AI 术语的从业者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：内容产品，为读者提供实用参考，提升 TechCrunch 在 AI 教育领域的影响力。</p>
+<h3>📰 其他值得看的</h3>
+<h3>🔍 今日主题观察</h3>
+<p>AI 的应用正在向垂直领域渗透，如新闻业，同时行业也在通过术语表等形式降低认知门槛，推动更广泛的参与。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-07</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-07.html</link>
@@ -849,32 +887,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-24</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-24.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-24.html</guid>
-      <pubDate>Mon, 24 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha">神秘新模型 Ox Alpha 引发网络猜测</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha">TechCrunch AI</a> · 2026-08-23</p>
-<!-- published_at: 2026-08-23T20:01:36+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>一个名为 Ox Alpha 的新 AI 模型出现，但其背后团队未知，引发互联网上的大量猜测。</li>
-<li>神秘模型可能代表新的能力突破或竞争格局变化，但缺乏可验证信息，实际影响尚不明确。</li>
-<li>AI 模型市场和关注前沿模型的用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：模型本身尚未公开细节，暂无法评估其产品能力。</p>
-<h3>📰 其他值得看的</h3>
-<h3>🔍 今日主题观察</h3>
-<p>AI 领域同时出现神秘新模型引发猜测、教育产品应用 AI 化身以及模型训练法律争议，显示行业在技术突破、应用落地和合规挑战中快速演进。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
