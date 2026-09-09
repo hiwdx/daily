@@ -7,8 +7,84 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 09 Sep 2026 07:28:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 06:39:45 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-10</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-10.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-10.html</guid>
+      <pubDate>Thu, 10 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/paul-christiano-joins-openai-foundation-board">OpenAI 任命对齐研究者 Paul Christiano 为基金会董事</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/paul-christiano-joins-openai-foundation-board">OpenAI</a> · 2026-09-09</p>
+<!-- published_at: 2026-09-09T17:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 基金会新增 Paul Christiano 为董事，并加入安全与安保委员会。</li>
+<li>直接强化 OpenAI 非营利部分对安全决策的影响力，而非仅停留在公司层面。</li>
+<li>关注 AI 对齐与安全的开发者、政策制定者和公众。</li>
+</ul>
+<p><strong>产品技术视角</strong>：治理结构变化，非产品功能。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/ibm-research/ibm-releases-sota-granite-time-series">IBM 发布商用友好许可的时序模型 Granite PatchTST-FM-r2</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/ibm-research/ibm-releases-sota-granite-time-series">Hugging Face Blog</a> · 2026-09-09</p>
+<!-- published_at: 2026-09-09T15:36:24+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>IBM 在 Hugging Face 上发布 Granite Time Series PatchTST-FM-r2 模型，宣称达到 SOTA，并采用商用友好许可。</li>
+<li>为时序预测提供可直接商用的领先模型，降低企业采用门槛。</li>
+<li>需要做预测分析的企业开发者、数据科学家。</li>
+</ul>
+<p><strong>产品技术视角</strong>：模型发布，能力与许可双更新。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/991977/suno-releases-its-first-ai-music-model-made-with-record-industry-help">Suno 推出首个与唱片业合作训练的 AI 音乐模型 v6</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/991977/suno-releases-its-first-ai-music-model-made-with-record-industry-help">The Verge AI</a> · 2026-09-09</p>
+<!-- published_at: 2026-09-09T17:42:19-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Suno 发布 v6 模型，声称从头训练，使用包含唱片公司授权内容的新数据集，不包含之前模型的训练数据。</li>
+<li>AI 音乐模型首次获得主流唱片业直接支持，可能改变版权争议格局并提升输出品质。</li>
+<li>音乐创作者、AI 音乐用户、唱片公司。</li>
+</ul>
+<p><strong>产品技术视角</strong>：模型更新，训练数据来源更合规。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-09-custom-cache-token-costs">Cloudflare AI Gateway 自定义成本支持缓存令牌计费</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/persistent-memory-for-eve-agents">Vercel 为 eve agents 增加持久记忆</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/gpt-6-astra-next-generation-work">GPT-6 Astra：OpenAI 面向工作的下一代智能模型</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/09/apple-watchs-new-ai-features-are-normalizing-the-idea-that-technology-is-always-listening">Apple Watch 新 AI 功能让“始终聆听”常态化</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/992766/apple-iphone-18-pro-reference-image">苹果新 iPhone 摄像头模式可证明照片非 AI 生成</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/gpt-image-2-5-flare-and-sunburst-now-available-on-ai-gateway">Vercel AI Gateway 上线 GPT Image 2.5 Flare 和 Sunburst</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/introducing-chatgpt-images-2-5">OpenAI 推出 ChatGPT Images 2.5</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/policy/992359/microsoft-aft-schools-ai-privacy">微软与教师工会达成学校 AI 隐私原则</a></strong> · The Verge AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 产品开始从单纯能力比拼转向信任与治理构建：OpenAI 引入安全董事、苹果推出照片真实性签名、Suno 拥抱唱片业授权，反映出产业在扩大应用的同时必须解决合规与信任问题。同时，模型发布仍保持高频，IBM 的商用友好时序模型和 OpenAI 的 GPT-6 Astra 显示竞争焦点向垂直领域与企业场景延伸。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Hugging Face Blog、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-09</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-09.html</link>
@@ -841,79 +917,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：The Verge AI、Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-26</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-26.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-26.html</guid>
-      <pubDate>Wed, 26 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/jalapeno-first-results">OpenAI 公布定制推理芯片 Jalapeño 首批结果：高吞吐、低延迟、更省电</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/jalapeno-first-results">OpenAI</a> · 2026-08-25</p>
-<!-- published_at: 2026-08-25T07:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 发布自研推理芯片 Jalapeño 的首批基准测试结果，显示其在 token 吞吐量和单位功耗吞吐量上均领先现有方案。</li>
-<li>若该芯片投入规模化使用，将直接降低 OpenAI 模型推理的单位成本，并可能重塑 AI 推理硬件竞争格局。</li>
-<li>依赖 OpenAI API 的开发者和企业用户，以及英伟达等现有推理芯片供应商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Jalapeño 专为现代大模型推理设计，目标是在每瓦性能上实现数量级提升，从而支撑更大规模的智能服务。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding">Stability AI 再获 7600 万美元融资，累计融资达 2.32 亿美元</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding">TechCrunch AI</a> · 2026-08-25</p>
-<!-- published_at: 2026-08-25T19:03:47+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Stability AI 完成新一轮 7600 万美元融资，累计融资额达到 2.32 亿美元。</li>
-<li>新资金将支持其图像生成模型的持续研发与商业化，巩固其在开源生成式 AI 领域的竞争力。</li>
-<li>使用 Stable Diffusion 的创作者、开发者以及开源 AI 生态。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Stable Diffusion 系列模型是开源图像生成的重要选择，融资有助于其迭代和生态建设。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/blog/introducing-run">Vercel 推出 Run SDK：为 AI 智能体提供安全代码执行环境</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/blog/introducing-run">Vercel Changelog</a> · 2026-08-25</p>
-<!-- published_at: 2026-08-25T04:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Vercel 发布 Run SDK，允许 AI 智能体在隔离环境中执行不可信的 JavaScript 和 TypeScript 代码，并支持中途暂停等待人工审批。</li>
-<li>解决了智能体执行动态代码时的安全与合规痛点，降低生产环境风险，加速智能体工作流落地。</li>
-<li>需要让 AI 智能体执行用户生成代码的开发者，尤其是构建自动化工具的团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Run SDK 提供开箱即用的安全沙箱和人工审批控制，可直接集成到现有智能体应用中。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/introducing-admin-plugin">OpenAI 发布 ChatGPT Work 和 Codex 的 Admin 插件，集中管理成员与权限</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat">Anthropic 为 Claude Cowork 引入跨 Chat 和 Cowork 的共享记忆</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/blog/the-end-of-credential-sprawl-for-agents">Vercel Connect 全面开放，智能体改用短期、限定范围的令牌</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-08-25-mcp-portals-mcp-2026-07-28">Cloudflare Access 的 MCP 服务器门户支持最新 2026-07-28 规范</a></strong> · Cloudflare Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/minimax-m3-and-m2-7-are-free-on-ai-gateway">MiniMax M3 和 M2.7 模型在 Vercel AI Gateway 上免费提供</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/25/accel-backed-keenable-is-indexing-the-web-for-ai-agents">Accel 领投 Keenable 2600 万美元种子轮，为 AI 智能体打造网络索引</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/ibm-granite/granite-4-2">Hugging Face 博客介绍 IBM Granite 4.2 LLM 的构建方法</a></strong> · Hugging Face Blog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>今天的 AI 动态集中在两个方向：基础设施层通过定制芯片和安全的智能体运行环境降低成本与风险；应用层则通过记忆共享、管理插件和企业级凭证管理让智能体更易融入真实工作流。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、TechCrunch AI、Vercel Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
