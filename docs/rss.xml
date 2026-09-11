@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 11 Sep 2026 06:41:54 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 07:45:45 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-12</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-12.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-12.html</guid>
+      <pubDate>Sat, 12 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/scaling-storage-one-billion-users-part-one">OpenAI 披露支撑 10 亿 ChatGPT 用户的存储平台演进</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/scaling-storage-one-billion-users-part-one">OpenAI</a> · 2026-09-11</p>
+<!-- published_at: 2026-09-11T10:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 发文介绍其存储平台 Habitat 如何从 Python 库演变为支持 10 亿 ChatGPT 用户、每秒 2200 万请求的全球分布式系统。</li>
+<li>这是少见的 AI 巨头主动公开基础设施细节，展示了大模型服务成本与工程复杂性的真实面貌。</li>
+<li>依赖 ChatGPT 的普通用户和企业客户，以及关注 AI 成本与规模化架构的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过工程创新支撑海量免费用户，OpenAI 正在将规模转化为竞争壁垒。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics">Cloudflare 为语音代理推出延迟与结果诊断工具</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics">Cloudflare Changelog</a> · 2026-09-11</p>
+<!-- published_at: 2026-09-11T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cloudflare 更新 @cloudflare/voice 至 v0.4.0，允许开发者通过 turnmetrics 事件检查每个语音代理回合的耗时与结果。</li>
+<li>语音代理是热门方向，但调试困难，该工具让开发者能直接定位延迟和失败环节，加速迭代。</li>
+<li>基于 Cloudflare 构建实时语音应用的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：把可观测性内置到边缘语音代理服务，降低了语音应用的工程门槛。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/blog/how-tailscale-built-a-customer-facing-model-router-on-ai-gateway">Vercel 分享 Tailscale 如何在 AI Gateway 上构建客户模型路由</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/blog/how-tailscale-built-a-customer-facing-model-router-on-ai-gateway">Vercel Changelog</a> · 2026-09-11</p>
+<!-- published_at: 2026-09-11T04:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Vercel 撰文介绍 Tailscale 利用其 AI Gateway 构建了面向客户的 Aperture 模型路由器，提供基于身份访问的数百种 AI 模型，无需 API 密钥。</li>
+<li>展示了 AI Gateway 作为模型分发层的实际落地，简化了企业接入多模型的复杂度。</li>
+<li>需要管理多模型访问和成本的企业开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：把模型路由能力产品化，Vercel 正在成为连接模型与应用的中间层。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/993391/meta-muse-ai-hands-on">Meta 的 Muse AI 助手实测：能干活但让人发毛</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data">Mecka AI 在红杉领投下估值逼近 5 亿美元</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/994207/chatgpt-new-mexico-lawyer-fined-murder-appeal">律师因在谋杀案中使用 AI 幻觉证人被罚 5000 美元</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/11/kimi-maker-moonshot-ai-targets-2-billion-in-annual-revenue">Moonshot AI 目标年收入 20 亿美元</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review">GitHub Copilot 代码审查支持自动解决和智能提交信息</a></strong> · GitHub Changelog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 基础设施竞争转向可观测性与工程效率：OpenAI 公布存储架构、Cloudflare 提供语音代理诊断、Vercel 展示模型路由案例，都在降低开发者构建复杂 AI 应用的门槛。与此同时，AI 代理的安全与合规问题开始显现，比如律师使用幻觉证词被罚、Claude 年龄限制和智能体攻击包管理器等。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Cloudflare Changelog、Vercel Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-11</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-11.html</link>
@@ -832,82 +899,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、Anthropic、Cloudflare Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-28</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-28.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-28.html</guid>
-      <pubDate>Fri, 28 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://blog.google/products-and-platforms/products/search/book-travel-ai-mode">谷歌搜索 AI 模式新增旅行预订与航班价格追踪</a></p>
-<p><strong>来源</strong>：<a href="https://blog.google/products-and-platforms/products/search/book-travel-ai-mode">Google AI Blog</a> · 2026-08-27</p>
-<!-- published_at: 2026-08-27T16:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>谷歌在 Search 的 AI Mode 中新增酒店预订、航班价格追踪以及里程与奖励查询功能。</li>
-<li>AI Mode 从信息检索转向实际交易，直接进入旅行预订赛道，可能改变用户规划行程的习惯。</li>
-<li>使用谷歌搜索的旅行者、在线旅行社和旅游服务商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：AI 助手直接嵌入预订流程，缩短从搜索到下单的路径，让谷歌成为旅行交易入口。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/claude-managed-agents-with-chat-sdk">Vercel Chat SDK 支持 Claude 托管代理，可快速搭建 Slack 研究机器人</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/claude-managed-agents-with-chat-sdk">Vercel Changelog</a> · 2026-08-28</p>
-<!-- published_at: 2026-08-28T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Vercel 的 Chat SDK 开始支持 Claude Managed Agents，开发者可以一键部署 Slack 研究机器人，每个线程保持持久会话，并输出带来源的简报。</li>
-<li>将 Anthropic 的托管代理能力接入常用开发框架，显著降低构建 AI 工作流应用的门槛。</li>
-<li>使用 Vercel 和 Claude 的开发者、需要内部知识机器人的团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：无需管理 Slack 凭据，开箱即用，让 AI 代理更快进入实际协作场景。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/985567/google-gemini-notebook-expert-sources-books">谷歌 Gemini Notebook 可基于用户购买的书籍提供问答与生成内容</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/985567/google-gemini-notebook-expert-sources-books">The Verge AI</a> · 2026-08-27</p>
-<!-- published_at: 2026-08-27T15:30:00-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>谷歌的 AI 笔记应用 Gemini Notebook 新增“Expert Intelligence”功能，可读取用户在 Google Play Books 购买的书籍，并基于内容回答问题、生成计划、信息图、AI 播客等。</li>
-<li>AI 笔记工具开始与用户个人数字内容库深度整合，使 AI 输出更具上下文和个性化。</li>
-<li>使用 Google Play Books 和 Gemini Notebook 的学生、研究人员和阅读爱好者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：从通用知识库扩展到个人书架，提升 AI 笔记的实用价值，增强谷歌生态粘性。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training">OpenAI 公布 ChatGPT 在大学作业中提升批判性思维的研究</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/27/anthropic-and-openai-are-joining-the-ai-stage-at-techcrunch-disrupt-2026">OpenAI 和 Anthropic 将参加 TechCrunch Disrupt 的 AI 舞台</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-08-27-copilot-code-review-resolution-reasons-and-expanded-capabilities">GitHub Copilot 代码审查新增解决原因并扩展支持范围</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/expanding-our-presence-in-brazil">OpenAI 宣布扩大在巴西的业务</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/08/27/openai-anthropic-google-and-100-other-companies-call-for-action-to-defend-against-rogue-ai">OpenAI、Anthropic、谷歌等 100 多家公司呼吁防御恶意 AI</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/985500/plaud-one-earbuds-ai-recorder-price-availability">Plaud 发布 AI 耳塞式录音转录设备</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-08-26-global-model-policy-generally-available">GitHub Copilot 全局模型策略全面可用</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/cursor-ai-sdk-harness-adapter">Cursor 通过 AI SDK 适配器接入 Vercel 测试框架</a></strong> · Vercel Changelog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 助手正在从被动回答转向主动执行：谷歌 AI Mode 直接完成旅行预订，Vercel 让开发者无需管理凭据即可部署代理，而 NotebookLM 类产品则深入个人数字资产提供个性化生成。这意味着竞争焦点正从模型能力转向连接用户数据和真实工作流的执行层。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：Google AI Blog、Vercel Changelog、The Verge AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
