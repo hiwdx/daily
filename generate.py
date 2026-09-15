@@ -854,7 +854,13 @@ def build_official_feed_fallback(official_candidates: Optional[list[dict[str, st
     """Publish verified metadata when DeepSeek is unavailable or invalid."""
     selected: list[dict[str, str]] = []
     seen_publishers: set[str] = set()
-    for candidate in official_candidates or []:
+    for candidate in sorted(
+        official_candidates or [],
+        key=lambda candidate: (
+            candidate.get("source") in {"Cloudflare Changelog", "Vercel Changelog"},
+            candidate.get("source") == "GitHub Changelog",
+        ),
+    ):
         url = candidate.get("url", "")
         family = _source_family(url)
         if not url or candidate.get("eligible_for_top", "true") != "true" or family in seen_publishers:
@@ -886,10 +892,16 @@ def build_official_feed_fallback(official_candidates: Optional[list[dict[str, st
     selected_urls = {candidate["url"] for candidate in selected}
     other: list[str] = []
     other_by_family: dict[str, int] = {}
-    for candidate in official_candidates or []:
+    for candidate in sorted(
+        official_candidates or [],
+        key=lambda candidate: (
+            candidate.get("source") in {"Cloudflare Changelog", "Vercel Changelog"},
+            candidate.get("source") == "GitHub Changelog",
+        ),
+    ):
         url = candidate.get("url", "")
         family = _source_family(url)
-        if not url or url in selected_urls or other_by_family.get(family, 0) >= 2:
+        if not url or url in selected_urls or other_by_family.get(family, 0) >= 1:
             continue
         title = _plain_text(str(candidate.get("title", "")))
         if not title:
@@ -974,13 +986,41 @@ def briefing_from_payload(payload: dict[str, object], candidates: list[dict[str,
         family = _source_family(candidate["url"]) if candidate else ""
         title = _plain_text(str(item.get("title", "")))[:120]
         if (not candidate or candidate["url"] in selected_urls or candidate["url"] in other_urls
-                or counts.get(family, 0) >= 2 or not title):
+                or counts.get(family, 0) >= 1 or not title):
             continue
         other.append(f"- **[{title}]({candidate['url']})** · {candidate['source']}")
         other_urls.add(candidate["url"])
         counts[family] = counts.get(family, 0) + 1
         if len(other) == 8:
             break
+    # The compact section is optional in the model response, but it should
+    # not disappear when verified candidates are available. Prefer diverse
+    # AI-native/media sources and use infrastructure changelogs only after
+    # those have been exhausted.
+    if len(other) < 5:
+        fallback_candidates = sorted(
+            (candidate for candidate in candidates
+             if candidate.get("url") not in selected_urls
+             and candidate.get("url") not in other_urls
+             and candidate.get("title")),
+            key=lambda candidate: (
+                candidate.get("source") in {"Cloudflare Changelog", "Vercel Changelog"},
+                candidate.get("source") == "GitHub Changelog",
+                -len(candidate.get("summary", "")),
+            ),
+        )
+        for candidate in fallback_candidates:
+            family = _source_family(candidate["url"])
+            if counts.get(family, 0) >= 1:
+                continue
+            title = _plain_text(str(candidate.get("title", "")))[:120]
+            if not title:
+                continue
+            other.append(f"- **[{title}]({candidate['url']})** · {candidate['source']}")
+            other_urls.add(candidate["url"])
+            counts[family] = counts.get(family, 0) + 1
+            if len(other) == 5 or len(other) == 8:
+                break
     theme = _plain_text(str(payload.get("theme_observation", "")))[:360]
     sources = "、".join(dict.fromkeys(story["source"] for story in selected))
     briefing = "### 🎯 今日 Top 3\n\n" + "\n\n---\n\n".join(render(story) for story in selected)
@@ -994,6 +1034,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
     """Generate once, then always run a separate final editorial review."""
     api_key = os.environ.get("DEEPSEEK_API_KEY", "")
     if not api_key:
+        if official_candidates:
+            print("⚠️ DEEPSEEK_API_KEY unavailable; publishing verified-source fallback")
+            return build_official_feed_fallback(official_candidates)
         raise EnvironmentError("DEEPSEEK_API_KEY environment variable is not set")
     client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
     messages: list[dict[str, str]] = [
@@ -1010,6 +1053,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
             if first_valid_briefing:
                 print("⚠️ Review API unavailable; publishing the already validated first draft")
                 return first_valid_briefing
+            if official_candidates:
+                print("⚠️ DeepSeek unavailable; publishing verified-source fallback")
+                return build_official_feed_fallback(official_candidates)
             raise
         content = response.choices[0].message.content or "{}"
         try:
