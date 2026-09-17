@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 16 Sep 2026 07:00:16 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 06:57:45 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-18</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-18.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-18.html</guid>
+      <pubDate>Fri, 18 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/astra-for-law">OpenAI 推出法律专用平台 Astra for Law</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/astra-for-law">OpenAI</a> · 2026-09-17</p>
+<!-- published_at: 2026-09-17T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 发布 Astra for Law，提供定制工作流、法律数据源连接和机密客户工作的法律级控制。</li>
+<li>前沿模型能力与法律级合规控制首次结合，直接切入高价值专业服务市场。</li>
+<li>律师事务所、企业法务及依赖法律文件的客户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过连接法律数据源和定制工作流，提供符合行业标准的专用工具。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform">Google 与联合国推出 UN System Data Commons 开放数据平台</a></p>
+<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform">Google AI Blog</a> · 2026-09-17</p>
+<!-- published_at: 2026-09-17T20:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google 与联合国系统合作推出 UN System Data Commons，让全球统计数据更易访问和搜索。</li>
+<li>将权威全球数据与 AI 搜索结合，降低数据获取门槛，可能改变公共政策分析方式。</li>
+<li>研究人员、政策制定者和需要全球数据的普通用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：提供开放平台，利用 AI 增强数据探索和可访问性。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects">Anthropic 升级 Claude Code Projects：云中管理多个 AI 代理</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects">The Verge AI</a> · 2026-09-17</p>
+<!-- published_at: 2026-09-17T14:58:05-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Claude Code 重新推出 Projects 功能，允许用户在云端运行多个 AI 代理，共享记忆、目标和文件库。</li>
+<li>开发者可并行处理多个任务并由协调器统一管理，缩短复杂工作流构建时间。</li>
+<li>使用 Claude Code 的软件开发者和小型工程团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过共享上下文和并行线程，简化多代理协作的开发流程。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai">PrismML 推出微型 LLM，希望改变 AI 使用方式</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-17-reject-if-busy">Cloudflare Workers AI 新增 rejectIfBusy 选项，拒绝忙碌的同步推理请求</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway">Vercel AI Gateway 支持 TypeSafe AI 的 Jev</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/model-misalignment-reporting-framework">OpenAI 发布模型偏差报告框架</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-17-copilot-impact-dashboard-now-shows-feature-engagement">GitHub Copilot 影响面板新增功能参与度指标</a></strong> · GitHub Changelog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>大模型厂商正从通用能力转向垂直场景与工作流深度整合：OpenAI 推出法律专用平台，Anthropic 升级多代理协作，Google 开放数据基础设施。同时，开发者工具链继续优化成本与可靠性，例如 Cloudflare 为推理请求提供快速失败选项，Vercel 集成可分类、路由的模型。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Google AI Blog、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-16</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-16.html</link>
@@ -843,56 +910,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、Vercel Changelog、Google AI Blog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-08-31</title>
-      <link>https://daily.hiwd.com/archive/2026-08/2026-08-31.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-08/2026-08-31.html</guid>
-      <pubDate>Mon, 31 Aug 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining">Caterpillar 将采矿自动化经验带入 AI 部署</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining">TechCrunch AI</a> · 2026-08-30</p>
-<!-- published_at: 2026-08-30T15:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Caterpillar 正在将数十年采矿自动化经验应用于 AI 部署。</li>
-<li>传统工业巨头的自动化实践正在向 AI 领域迁移，可能改变 AI 系统的可靠性和部署方式。</li>
-<li>需要大规模部署 AI 的工业和企业开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：提供经过验证的自动化部署方法论，降低 AI 落地风险。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-30-glm-5.3-flash">Cloudflare AI Search 新增支持 GLM-5.3 Flash 模型</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-08-30-glm-5.3-flash">Cloudflare Changelog</a> · 2026-08-30</p>
-<!-- published_at: 2026-08-30T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cloudflare AI Search 现已支持 GLM-5.3 Flash 模型进行文本生成。</li>
-<li>开发者可以在边缘运行拥有百万 token 上下文窗口的模型，扩展了长文本处理能力。</li>
-<li>使用 Cloudflare Workers AI 构建搜索和生成应用的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：集成超长上下文模型，降低长文档处理延迟和成本。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/minimax-h3-and-h3-max-are-50-off-on-ai-gateway">Vercel AI Gateway 上 MiniMax H3 系列视频生成模型五折优惠</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/minimax-h3-and-h3-max-are-50-off-on-ai-gateway">Vercel Changelog</a> · 2026-08-30</p>
-<!-- published_at: 2026-08-30T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>MiniMax H3 和 H3 Max 视频生成在 Vercel AI Gateway 上五折优惠，持续至 9 月 13 日。</li>
-<li>视频生成成本直接减半，降低开发者集成高质量视频模型的资金门槛。</li>
-<li>在 Vercel 上构建视频应用的开发者和团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：价格激励推动 H3 系列模型在应用中的采用和实验。</p>
-<h3>📰 其他值得看的</h3>
-<h3>🔍 今日主题观察</h3>
-<p>本周 AI 生态呈现边缘集成加速和成本竞争加剧：Cloudflare 在边缘引入超长上下文模型，Vercel 通过价格折扣推动视频生成采用，传统工业自动化经验也开始注入 AI 部署，显示 AI 正从模型竞赛转向部署效率与工程实践竞争。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：TechCrunch AI、Cloudflare Changelog、Vercel Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
