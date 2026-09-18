@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 18 Sep 2026 06:57:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 07:47:19 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-19</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-19.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-19.html</guid>
+      <pubDate>Sat, 19 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/cooley-gopublic">OpenAI 助力律所 Cooley 加速 IPO 工作</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/cooley-gopublic">OpenAI</a> · 2026-09-17</p>
+<!-- published_at: 2026-09-17T12:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cooley 律所使用 ChatGPT Work 构建了 GO Public 工具，将 AI 引入 IPO 流程。</li>
+<li>顶尖律所将 ChatGPT 集成到高价值法律工作流中，表明 AI 正在进入专业服务核心环节，改变法律行业交付方式。</li>
+<li>法律专业人士及准备 IPO 的企业客户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：ChatGPT Work 具体落地于专业领域，展示 AI 在垂直行业的可复制性。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/life-sciences-verification-program">Anthropic 推出生命科学验证计划，放宽模型安全限制</a></p>
+<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/life-sciences-verification-program">Anthropic</a> · 2026-09-17</p>
+<!-- published_at: 2026-09-17T04:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 推出 Life Sciences Verification Program（LSVP），为生命科学专业人士提供更宽松的模型安全策略。</li>
+<li>这是首个面向特定垂直行业的定制化安全策略，可能成为 AI 厂商服务专业领域的模板。</li>
+<li>生命科学研究人员、生物科技公司及 AI 治理相关方。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过调整安全护栏扩大模型在生命科学领域的可用性，开辟新市场。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/webmcp-mcp-handler">Vercel 推出 WebMCP 支持，让网站工具可被浏览器代理调用</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/webmcp-mcp-handler">Vercel Changelog</a> · 2026-09-18</p>
+<!-- published_at: 2026-09-18T18:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Vercel 的 mcp-handler 新增实验性 WebMCP 支持，网站可通过脚本标签注册 MCP 工具供浏览器代理调用。</li>
+<li>为 AI 代理与网站交互提供了标准化方案，可能推动代理式互联网的发展。</li>
+<li>Web 开发者、AI 代理开发者和希望被代理访问的服务提供商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：降低 AI 代理集成门槛，扩展 Vercel 平台在代理生态中的定位。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience">GitHub Copilot 代码审查体验升级，自动解决建议并生成提交信息</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/blog/ai-gateway-jev-model-launch">Jev 成为 AI Gateway 历史上采用最快的模型</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/18/world-model-companies-are-keeping-a-lot-of-secrets">世界模型公司守口如瓶，资金充足但不愿透露技术细节</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/997358/what-hollywood-thinks-about-existential-ai-warnings">好莱坞如何看待 AI 生存警告：关注现有影响而非假设风险</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49748553">Show HN: Cactus Needle 3: 8-29MB automation models can match DeepSeek V4 Flash</a></strong> · Hacker News</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 正在深入垂直行业：Anthropic 为生命科学定制安全策略，OpenAI 进入法律工作流，而 Vercel 通过 WebMCP 推动代理与网站的交互标准化。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Anthropic、Vercel Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-18</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-18.html</link>
@@ -837,79 +904,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、Anthropic、Cloudflare Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-02</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-02.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-02.html</guid>
-      <pubDate>Wed, 02 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/path-to-astra">OpenAI 推迟 Astra 模型开发：首个达到“关键”网络安全能力门槛的模型</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/path-to-astra">OpenAI</a> · 2026-09-01</p>
-<!-- published_at: 2026-09-01T13:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 宣布 Astra 是首个在 Preparedness Framework 下达到“关键”网络安全能力门槛的模型，并加强了发布保障措施。</li>
-<li>这标志前沿模型在进攻性网络能力上步入新阶段，并可能影响 AI 安全评估和发布流程。</li>
-<li>企业安全团队、AI 治理机构以及使用前沿模型的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：OpenAI 在发布前主动披露关键能力并强化安全措施，展示从能力竞赛转向安全优先的产品策略。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/claude-fable-5-1-now-available-on-ai-gateway">Claude Fable 5.1 上线 Vercel AI Gateway，多模型路由简化</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/claude-fable-5-1-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-09-01</p>
-<!-- published_at: 2026-09-01T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 的 Claude Fable 5.1 模型现可通过 Vercel AI Gateway 调用，无需单独提供商账户。</li>
-<li>降低开发者接入新模型的摩擦，加速多模型应用开发和成本控制。</li>
-<li>使用 Vercel 平台的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过统一 API 和内置回退、支出跟踪，Vercel 进一步巩固其 AI 网关地位。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://blog.google/products-and-platforms/products/workspace/google-pics">Google Pics 发布：AI 图像创作工具直接对标 Canva</a></p>
-<p><strong>来源</strong>：<a href="https://blog.google/products-and-platforms/products/workspace/google-pics">Google AI Blog</a> · 2026-09-01</p>
-<!-- published_at: 2026-09-01T16:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 在 Workspace 中推出 Google Pics，基于 Nano Banana 模型，支持通过提示生成和编辑图像。</li>
-<li>将生成式 AI 深度整合进办公套件，可能改变企业设计工作流并冲击 Canva、Adobe 市场。</li>
-<li>Workspace 企业用户、营销和设计团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：以 AI 原生交互降低设计门槛，Google 借 Workspace 分发优势切入创意软件市场。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/01/air-raises-50m-to-help-companies-vet-the-skills-and-add-ons-ai-agents-use">Air 融资 5000 万美元，帮助企业审查 AI 代理技能和插件</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/webgpu-kernels">Hugging Face 推出 200+ WebGPU 内核，加速本地 AI</a></strong> · Hugging Face Blog</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-09-01-copilot-code-review-can-now-approve-pull-requests">GitHub Copilot 代码审查可批准拉取请求</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-01-billing-and-model-names">Cloudflare AI Gateway 合并月度账单行项目并标准化模型名称</a></strong> · Cloudflare Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/set-per-user-budgets-on-ai-gateway">Vercel AI Gateway 支持按用户设置预算</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/987486/john-deere-jd-ai-chatbot">John Deere 发布农民 AI 聊天机器人</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/01/fambot-introduces-an-ai-chief-of-staff-for-families">Fambot 推出家庭 AI 首席幕僚</a></strong> · TechCrunch AI</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>前沿模型在网络安全能力上迈入新阶段，同时开发者工具和 AI 网关加速多模型集成与成本控制；生成式 AI 正通过 Workspace 等产品深入主流办公和创意场景。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、Vercel Changelog、Google AI Blog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
