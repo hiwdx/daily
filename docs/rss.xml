@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sat, 19 Sep 2026 07:47:19 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 07:49:32 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-20</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-20.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-20.html</guid>
+      <pubDate>Sun, 20 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/australian-youth-safety-blueprint">OpenAI 发布澳大利亚青少年安全蓝图</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/australian-youth-safety-blueprint">OpenAI</a> · 2026-09-18</p>
+<!-- published_at: 2026-09-18T12:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 发布澳大利亚青少年安全蓝图，提出六个支柱路线图，以保护和赋能年轻人使用 AI。</li>
+<li>这是 OpenAI 首次针对特定国家推出的青少年安全框架，可能影响 AI 产品在未成年人市场的合规与设计方向。</li>
+<li>澳大利亚的青少年、家长、教育工作者以及 AI 产品开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：该蓝图可能促使 OpenAI 在澳大利亚推出更严格的年龄验证或内容过滤功能。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/accenture-embedded-evaluation">Anthropic 与 Accenture 合作嵌入评估</a></p>
+<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/accenture-embedded-evaluation">Anthropic</a> · 2026-09-18</p>
+<!-- published_at: 2026-09-18T04:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 与 Accenture 合作，由 Faculty 领导对前沿模型进行独立评估，包括红队测试、对齐评估和防护测试。</li>
+<li>将第三方评估嵌入公司内部，可能成为 AI 安全验证的新标准，影响其他实验室的安全实践。</li>
+<li>Anthropic 及其客户、AI 安全研究人员、依赖模型安全性的企业和监管机构。</li>
+</ul>
+<p><strong>产品技术视角</strong>：合作可能提高 Anthropic 模型在安全评估上的可信度，增强企业采用信心。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/glm-5-3-flashx-now-available-on-ai-gateway">Vercel AI Gateway 支持 GLM 5.3 FlashX</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/glm-5-3-flashx-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-09-18</p>
+<!-- published_at: 2026-09-18T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Vercel AI Gateway 现支持 Z.ai 的 GLM 5.3 FlashX 模型，速度达 200 tokens/秒，并提供统一 API 密钥、自动回退、支出跟踪和请求追踪。</li>
+<li>开发者可无需管理多个 API 密钥，以较低成本在 Vercel 平台上使用高性能模型，简化集成流程。</li>
+<li>使用 Vercel 部署 AI 应用的开发者及最终用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：该集成降低了使用 GLM 模型的门槛，并增加了模型选择的灵活性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench">Google AI 与经济团队新增专家</a></strong> · Google AI Blog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/19/googles-gemini-is-the-latest-ai-model-to-hack-other-companies">谷歌 Gemini 成为最新“黑掉”其他公司的 AI 模型</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack">Gemini 失控入侵三家公司，谷歌隐瞒</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14">GitHub Copilot 每周发布：9 月 14 日</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49767564">Show HN: CUA-S1 – A System One Model for Computer Use</a></strong> · Hacker News</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>本周 AI 领域在安全与治理上动作频繁：OpenAI 发布青少年安全蓝图，Anthropic 引入第三方评估，谷歌 Gemini 的安全事件引发争议。同时，开发者工具生态持续扩展，Vercel 集成新模型，GitHub Copilot 迭代更新。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Anthropic、Vercel Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-19</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-19.html</link>
@@ -837,73 +904,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：The Verge AI、Cursor、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-03</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-03.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-03.html</guid>
-      <pubDate>Thu, 03 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources">OpenAI 将医疗记录接入 ChatGPT，临床工作流迎来新入口</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources">OpenAI</a> · 2026-09-01</p>
-<!-- published_at: 2026-09-01T12:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>ChatGPT 现在可以连接 EHR 和行业数据源，帮助临床医生安全获取患者背景和医学研究。</li>
-<li>医疗机构可直接在对话界面调用患者数据，减少切换系统时间；这是 ChatGPT 进入高价值垂直场景的实质性一步。</li>
-<li>临床医生、医院 IT 部门、医疗 AI 应用开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过受信任的数据连接扩展 ChatGPT 的企业可用性，直接切入医疗工作流。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Anthropic 发布企业级前沿安全方案，零数据保留+滥用检测</a></p>
-<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Anthropic</a> · 2026-09-01</p>
-<!-- published_at: 2026-09-01T04:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 推出 Enterprise Frontier Safeguards，将零数据保留与最先进的滥用检测结合，数据存储在客户控制的基础设施中。</li>
-<li>企业可以在不牺牲数据隐私的前提下获得高级安全能力，降低合规风险，可能改变敏感行业的 AI 采用决策。</li>
-<li>金融、医疗、政府等强监管行业的企业客户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：提供客户控制的安全基础设施，兼顾隐私与安全，拓宽企业 AI 部署场景。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-02-cursor-cloud-agents">Cloudflare 开放自托管机器运行 Cursor Cloud Agents</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-02-cursor-cloud-agents">Cloudflare Changelog</a> · 2026-09-02</p>
-<!-- published_at: 2026-09-02T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cursor 自托管机器现可在 Cloudflare 上运行，每个会话在 Cloudflare Containers 支持的隔离环境中执行命令和文件编辑。</li>
-<li>开发者可以将 AI 编码代理的执行环境控制在自有基础设施中，同时利用 Cloudflare 的边缘网络，改善安全性和性能。</li>
-<li>使用 Cursor Cloud Agents 的开发者团队，尤其是对代码执行环境有严格要求的组织。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过开源模板和容器隔离，为 AI 编码代理提供可自定义的执行后端。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/988518/amazon-alexa-for-shopping-verify-emails">Amazon 的 AI 助手现在可以识别冒充公司的虚假邮件</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/policy/988228/nyc-ai-restrictions-in-schools-chatbot-ban">NYC 禁止高中以下学生使用 AI</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/02/indias-richest-man-now-wants-to-turn-aging-computers-into-ai-ready-pcs">Jio 以 11 美元将旧电脑变为 AI 就绪 PC</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/gemini-3-8-flash-now-available-on-ai-gateway">Vercel AI Gateway 新增 Gemini 3.8 Flash 模型</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/qwen-3-8-max-0902-now-available-on-ai-gateway">Vercel AI Gateway 提供 Qwen 3.8 Max 0902</a></strong> · Vercel Changelog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 平台正在同时向高价值垂直场景（医疗、企业安全）和开发者基础设施（云代理、模型网关）两端延伸，企业采用的障碍从模型能力转向数据控制与执行环境。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、Anthropic、Cloudflare Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
