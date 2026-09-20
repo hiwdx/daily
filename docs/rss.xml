@@ -7,8 +7,57 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 20 Sep 2026 07:49:32 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 06:35:02 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-21</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-21.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-21.html</guid>
+      <pubDate>Mon, 21 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/20/world-model-companies-are-keeping-a-lot-of-secrets">世界模型公司都在隐瞒什么？</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/20/world-model-companies-are-keeping-a-lot-of-secrets">TechCrunch AI</a> · 2026-09-20</p>
+<!-- published_at: 2026-09-20T20:29:07+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>TechCrunch 报道，当前世界模型领域的主要公司手握巨额资金和高关注度，却对技术细节守口如瓶，连数据供应商都不愿透露实际构建内容。</li>
+<li>这种保密氛围可能导致行业重复投入、技术进展难以评估，也让外界无法判断各家真实差距，影响整个赛道的透明度和健康发展。</li>
+<li>世界模型创业公司、数据供应商以及关注该领域的投资者和研究人员。</li>
+</ul>
+<p><strong>产品技术视角</strong>：文章揭示了世界模型行业普遍的保密文化，与通常注重开源和分享的 AI 社区形成对比。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure">能源系统最大网络风险依然是人类自身</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure">The Verge AI</a> · 2026-09-20</p>
+<!-- published_at: 2026-09-20T08:00:00-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>The Verge 报道，专家指出能源基础设施的网络安全脆弱性早已存在且风险持续增长，人为因素而非 AI 仍是最大威胁。</li>
+<li>在 AI 安全恐慌背景下，该文提醒关键基础设施的实际弱点并非来自先进 AI，而是长期被忽视的人为疏漏，这有助于将安全讨论拉回现实。</li>
+<li>能源行业从业者、网络安全专业人士以及依赖稳定能源供应的公众。</li>
+</ul>
+<p><strong>产品技术视角</strong>：文章并非产品更新，而是对 AI 风险叙事的一种修正，强调基础安全实践的重要性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/997936/nvidia-jensen-huang-ai-fears-overblown">黄仁勋：AI 风险被夸大了</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/20/is-the-ai-industry-really-ready-to-slow-down">AI 行业真的准备好放缓脚步了吗？</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49775499">Qwen Image 2.1</a></strong> · Hacker News</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>本周 AI 领域呈现明显分化：消费级硬件开始解决具体生活痛点，前沿模型公司却陷入保密与监管争论。安全问题从抽象风险回归到基础设施的人为漏洞。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：TechCrunch AI、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-20</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-20.html</link>
@@ -837,73 +886,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：Cursor、Vercel Changelog、OpenAI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-04</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-04.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-04.html</guid>
-      <pubDate>Fri, 04 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release">OpenAI 发布 GPT-6 Astra：自称进入 AGI 时代，安全等级达“关键”级</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release">The Verge AI</a> · 2026-09-03</p>
-<!-- published_at: 2026-09-03T14:00:00-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 正式发布 GPT-6 Astra，称其在网络安全、专业工作、软件工程、科学和计算机使用等领域实现“代际能力跃升”，且是首个达到公司“关键网络安全能力阈值”的模型。</li>
-<li>首个达到关键网络安全能力阈值的广泛部署模型，标志着前沿模型在攻击性安全能力上进入新阶段，可能改变安全防御与威胁格局。</li>
-<li>开发者、企业安全团队以及依赖 AI 进行专业工作和软件工程的人群。</li>
-</ul>
-<p><strong>产品技术视角</strong>：GPT-6 Astra 作为通用大模型，在多项能力上实现跃升，同时官方强调安全措施，但具体安全机制尚未完全公开。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://cursor.com/changelog/self-hosted-machines">Cursor 支持自托管机器：代码库、构建产物和密钥完全留在内网</a></p>
-<p><strong>来源</strong>：<a href="https://cursor.com/changelog/self-hosted-machines">Cursor</a> · 2026-09-02</p>
-<!-- published_at: 2026-09-02T21:00:25+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cursor 推出自托管机器功能，允许团队在自己的基础设施上运行代理工具调用，代码、构建输出和密钥不离开内部网络，并支持动态池调度个人和团队工作负载。</li>
-<li>企业开发者首次能在完全自托管环境中使用 Cursor 代理，消除了数据合规和代码安全顾虑，可能加速 AI 编码助手在敏感行业的采用。</li>
-<li>企业开发团队、关注数据主权的组织以及需要严格网络隔离的场景。</li>
-</ul>
-<p><strong>产品技术视角</strong>：自托管机器和团队池功能让 Cursor 从 SaaS 工具扩展为企业级可部署基础设施，支持个人和团队两种工作流。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model">Meta 为 Muse Spark 模型提供约 95% 折扣，换取用户提示和输出</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model">TechCrunch AI</a> · 2026-09-03</p>
-<!-- published_at: 2026-09-03T18:19:56+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Meta 对其用于操作编码和其他代理的 Muse Spark 模型推出折扣计划，凡同意分享提示和模型输出的用户平均可获得约 95% 的价格优惠。</li>
-<li>通过大幅折扣获取真实用户数据，Meta 以低成本构建反馈循环，可能加速其模型迭代，同时引发对数据隐私和模型改进方式的关注。</li>
-<li>使用 Muse Spark 的开发者、企业，以及关注数据共享和模型训练的用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Muse Spark 的折扣策略直接影响使用成本，但要求用户贡献数据，改变开发者选择模型时的权衡因素。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/daybreak-for-frontline-defenders">OpenAI 推出 Daybreak 计划：10 亿美元保护关键服务免受网络攻击</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program">Google 推出 Fairwind 计划：向政府和可信伙伴提供主动网络防御工具</a></strong> · Google AI Blog</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/03/abliteration-ai-is-making-a-business-out-of-removing-ai-guardrails">Abliteration.ai 将去除 AI 护栏变成了一门生意</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/989435/nvidia-pair-personal-ai-router-home-local-llm-compute-tool-rtx-macbook">Nvidia 推出免费工具 PAIR：将闲置电脑连接成个人 AI 数据中心</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/989503/chatgpt-grok-claude-outage-down">ChatGPT、Grok 和 Claude 同时宕机</a></strong> · The Verge AI</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>前沿模型的安全阈值和代理工具的自托管能力正在同步升级：GPT-6 Astra 达到关键网络安全能力，而 Cursor 允许完全在自有基础设施内运行，企业在采用 AI 时更注重数据控制与安全合规。与此同时，Meta 用大幅折扣换取用户数据，显示模型提供商正在通过商业手段加速数据飞轮。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：The Verge AI、Cursor、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
