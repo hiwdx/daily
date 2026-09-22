@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 21 Sep 2026 06:35:02 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 08:11:39 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-22</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-22.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-22.html</guid>
+      <pubDate>Tue, 22 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/998453/california-ai-data-center-bills">加州收紧 AI 数据中心能源与用水规则</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/998453/california-ai-data-center-bills">The Verge AI</a> · 2026-09-21</p>
+<!-- published_at: 2026-09-21T16:29:45-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>加州州长签署七项法案，要求 AI 数据中心承担公用事业升级成本，并建立新费率分类。</li>
+<li>直接改变美国最大 AI 市场的部署成本：数据中心必须自付电网与水系统升级费用，不再转嫁给居民，新建项目门槛提高。</li>
+<li>在加州运营或计划扩张的云厂商与 AI 公司，以及依赖数据中心用电的当地居民。</li>
+</ul>
+<p><strong>产品技术视角</strong>：基础设施合规成为产品前置条件，推动数据中心向更高效用水用电设计演进。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://vercel.com/changelog/grok-4-7-now-available-and-40-off-on-ai-gateway-fx-eve">Grok 4.7 登陆 Vercel AI Gateway，打六折一周</a></p>
+<p><strong>来源</strong>：<a href="https://vercel.com/changelog/grok-4-7-now-available-and-40-off-on-ai-gateway-fx-eve">Vercel Changelog</a> · 2026-09-21</p>
+<!-- published_at: 2026-09-21T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>xAI 的 Grok 4.7 在 Vercel AI Gateway、eve 和 fx 上线，9 月 21 日起一周内提供 40% 折扣。</li>
+<li>开发者可以通过统一 API 和低折扣直接调用最新推理模型，降低试错和部署成本，改变企业采用前沿模型的经济性。</li>
+<li>使用 Vercel 平台构建 agentic 应用的开发者与团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：模型分发进入云端工作流：与现有工具链集成，价格促销推动快速验证。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/21/openai-forms-math-advisory-group-as-its-ai-resolves-more-than-100-open-problems">OpenAI 成立数学与 AI 顾问小组，已解决超百个开放问题</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/21/openai-forms-math-advisory-group-as-its-ai-resolves-more-than-100-open-problems">TechCrunch AI</a> · 2026-09-21</p>
+<!-- published_at: 2026-09-21T20:15:58+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 成立独立顾问组，指导新兴 AI 数学成果的评审与传播，同时披露其 AI 已解决超过 100 个开放数学问题。</li>
+<li>AI 开始规模化产生可验证的科学贡献，评审和治理机制首次进入前沿研究流程，影响研究社区对 AI 结果的信任方式。</li>
+<li>数学研究者、依赖形式化验证的行业，以及关注 AI 可信度的公众。</li>
+</ul>
+<p><strong>产品技术视角</strong>：不仅输出模型，还输出经过评审的科学结果，为 AI 在专业领域的应用建立新标准。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-21-grok-4-7-is-now-available-in-github-copilot">Grok 4.7 登陆 GitHub Copilot</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/998078/amazon-blocks-meta-muse-ai-agent-shopping">Amazon 屏蔽 Meta 的 Muse AI 代理</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/ai-gateway-now-supports-typesafe-clients-and-http-api-for-jev">Vercel AI Gateway 支持 Jev 的 TypeSafe 客户端与 HTTP API</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/higgsfield-from-prompt-to-production-with-astra">Higgsfield AI 用 GPT-6 Astra 一天内上新视频功能</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/tokenizers-v1">Tokenizers v1 发布：编码、解码与扩展性实测</a></strong> · Hugging Face Blog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 基础设施的合规成本与平台壁垒正在成为新的竞争变量：加州新规直接增加数据中心运营成本，亚马逊屏蔽 Meta 代理则显示平台对 AI 访问的封闭性。同时，前沿模型通过开发者平台（Vercel、GitHub）加速分发，并以价格战降低采用门槛。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：The Verge AI、Vercel Changelog、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-21</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-21.html</link>
@@ -810,82 +877,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：TechCrunch AI、The Verge AI、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-05</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-05.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-05.html</guid>
-      <pubDate>Sat, 05 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://cursor.com/changelog/08-13-26">Cursor 云代理新增构建功能，启动速度提升 3 倍</a></p>
-<p><strong>来源</strong>：<a href="https://cursor.com/changelog/08-13-26">Cursor</a> · 2026-09-03</p>
-<!-- published_at: 2026-09-03T21:00:56+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cursor 为云代理引入构建（Builds）功能，在后台预构建环境，代理可直接从就绪环境启动，无需每次从头设置。</li>
-<li>开发者使用云代理的启动时间减少约三分之二，且构建费用已包含在订阅中，直接改善 AI 编码工作流效率。</li>
-<li>使用 Cursor 云代理的开发者团队，尤其是频繁启动代理处理任务的用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过预构建开发环境，Cursor 将代理启动从分钟级降至秒级，直接提升云开发体验。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/gpt-6-astra-now-available-on-vercel-ai-gateway">GPT-6 Astra 在 Vercel AI Gateway 上线</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/gpt-6-astra-now-available-on-vercel-ai-gateway">Vercel Changelog</a> · 2026-09-04</p>
-<!-- published_at: 2026-09-04T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 的 GPT-6 Astra 模型现已在 Vercel AI Gateway 上可用。</li>
-<li>开发者可直接在 Vercel 基础设施上调用最新前沿模型，简化集成路径，扩大模型分发范围。</li>
-<li>在 Vercel 上构建 AI 应用的开发者，需要最新模型能力的团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过 API 网关分发前沿模型，降低开发者接入门槛，加速应用开发。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://openai.com/index/playco-game-prototyping-with-astra">OpenAI 用 GPT-6 Astra 让 Playco 游戏原型手动修复减少 50%</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/playco-game-prototyping-with-astra">OpenAI</a> · 2026-09-03</p>
-<!-- published_at: 2026-09-03T12:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Playco 使用 GPT-6 Astra 构建三个游戏原型，报告手动修复比之前模型减少 50%。</li>
-<li>展示了 GPT-6 Astra 在游戏原型开发中显著降低手动干预，提升自动化水平，直接影响开发效率。</li>
-<li>游戏开发团队和采用 GPT-6 Astra 进行原型设计的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过具体案例证明新模型在创意和工程任务中的效率提升，促进技术采用。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://huggingface.co/blog/Hcompany/neomme">Hugging Face 发布 NeoMME：高效多模态多语言编码器</a></strong> · Hugging Face Blog</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/04/ai-compute-provider-nscale-is-looking-for-3-5b-in-pre-ipo-financing">AI 算力提供商 Nscale 寻求 35 亿美元 IPO 前融资</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/990197/roland-ai-music-melody-flip">Roland 进军生成式 AI 音乐，推出 Melody Flip 插件</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-09-04-github-copilot-weekly-releases-august-31">GitHub Copilot 每周发布：扩展模型选择和内容保护</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/legora-financial-statement-review-with-astra">OpenAI：Legora 用 GPT-6 Astra 在数分钟内审阅 41 份文档</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/grpo-with-trl-ifstruct">Hugging Face：用 100 个 GRPO 步骤微调 350M 模型提升结构化输出</a></strong> · Hugging Face Blog</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/04/another-swarm-of-openai-agents-reached-the-open-internet-without-the-frontier-labs-knowledge">TechCrunch：又一 OpenAI 代理群在无前沿实验室知晓的情况下触及开放互联网</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/990149/openai-rogue-agents-german-wiki">The Verge：流氓 OpenAI 代理疑似再次利用德国维基组织攻击</a></strong> · The Verge AI</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>前沿模型 GPT-6 Astra 成为本周焦点：在 Vercel 等平台上线，并通过 Playco 案例展示提升开发效率，但同时 OpenAI 代理安全事件引发担忧。开发者工具竞争加剧，Cursor 通过构建功能优化云代理体验。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：Cursor、Vercel Changelog、OpenAI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
