@@ -7,8 +7,78 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 23 Sep 2026 07:07:13 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 07:16:45 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-25</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-25.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-25.html</guid>
+      <pubDate>Fri, 25 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Anthropic 新设生命科学研究组，Claude 发现类 CRISPR 新酶系统</a></p>
+<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Anthropic</a> · 2026-09-23</p>
+<!-- published_at: 2026-09-23T04:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 成立生命科学研究组与实验室，利用 Claude 分析 DNA 数据，发现一种具有 CRISPR 样重复序列的新酶系统。</li>
+<li>这是 AI 模型首次直接产出可实验验证的生物学新发现，证明大模型能加速基础科学假设生成与验证。</li>
+<li>生物技术研究者、制药企业以及关注 AI 科学发现的公众。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Claude 作为科学发现工具，已从文本生成进入实验室验证，拓展了 AI 的应用边界。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://blog.google/innovation-and-ai/technology/research/google-beam-expansion">Google Beam 扩展至六个国家，并与 Industrious 合作提升会议连接</a></p>
+<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/technology/research/google-beam-expansion">Google AI Blog</a> · 2026-09-23</p>
+<!-- published_at: 2026-09-23T18:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google Beam 新增五个国家，与 Industrious 合作扩展网络，会议连接提升 50%。</li>
+<li>Google Beam 的实体扩张将 AI 驱动的高质量会议体验带到更多办公场所，降低远程协作摩擦。</li>
+<li>跨国团队、远程工作者及使用 Industrious 办公空间的用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Google Beam 作为硬件与 AI 结合的产品，通过合作伙伴分发，进入更多线下场景。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-24-mcp-portals-ga">Cloudflare MCP 服务器门户正式可用</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-24-mcp-portals-ga">Cloudflare Changelog</a> · 2026-09-24</p>
+<!-- published_at: 2026-09-24T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cloudflare 将 MCP 服务器门户转为正式版，提供统一端点、网关路由和代码模式策略。</li>
+<li>企业现在可以安全地标准化接入多个 MCP 服务器，简化 AI 代理调用外部工具的权限管理与审计。</li>
+<li>使用 Cloudflare One 的企业开发者和安全团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：MCP 服务器门户成为 Cloudflare 边缘网络的一部分，增强了 AI 代理与企业工具集成的安全性和可观测性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://openai.com/index/two-years-of-openai-academy">OpenAI Academy 两周年：将 AI 技能带给更多社区</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark">Liquid AI 发布 LFM2.5-VL-DSpark 加速视觉语言模型</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/24/google-tests-letting-gemini-make-phone-calls-initially-for-us-pixel-owners">Google 测试让 Gemini 替用户打电话，首批面向 Pixel 11 用户</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1000328/google-gemini-ai-live-avatar-face">Gemini 3.8 Live 推出 Live Avatar，给 AI 一张脸</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-23-copilot-code-review-more-ways-to-request-and-configure-reviews">GitHub Copilot 代码评审新增更多配置方式</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/vercel-connect-tanstack-ai">Vercel Connect 支持 TanStack AI，MCP 客户端身份验证更安全</a></strong> · Vercel Changelog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>本周 AI 正从纯软件服务延伸到实体与科学领域：Anthropic 的 Claude 在实验室中发现新酶系统，Google Beam 将 AI 会议体验带到更多线下空间。同时，开发者工具链持续加固，Cloudflare 的 MCP 门户正式可用，让企业更安全地集成 AI 代理。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Anthropic、Google AI Blog、Cloudflare Changelog</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-23</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-23.html</link>
@@ -845,47 +915,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-07</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-07.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-07.html</guid>
-      <pubDate>Mon, 07 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement">Anthropic 和解金分配引作者抗议</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement">TechCrunch AI</a> · 2026-09-06</p>
-<!-- published_at: 2026-09-06T20:47:37+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>作者与出版商就 Anthropic 和解金的分配出现分歧，作者认为出版商索要份额过高。</li>
-<li>这显示 AI 公司对版权内容的使用正在引发传统出版链条内部的利益冲突，影响创作者生态。</li>
-<li>作者、出版商、文学代理机构，以及依赖版权内容的 AI 模型开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：和解协议的执行细节将影响 AI 训练数据的授权模式和成本结构。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://openai.com/index/research-acceleration-view-inside-openai">OpenAI 内部研究加速：编码代理重塑 AI 研发</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/research-acceleration-view-inside-openai">OpenAI</a> · 2026-09-06</p>
-<!-- published_at: 2026-09-06T08:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 展示了内部使用编码代理的数据，代理提升了实验速度和任务复杂度。</li>
-<li>这表明 AI 开发者正在使用自己的工具加速 AI 研发，可能缩短模型迭代周期。</li>
-<li>AI 研究人员、依赖快速模型更新的开发者，以及竞争中的 AI 实验室。</li>
-</ul>
-<p><strong>产品技术视角</strong>：编码代理的应用从辅助编程扩展到科研工作流，提升了研发效率。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li><strong><a href="https://openai.com/index/an-alien-mind">An Alien Mind</a></strong> · OpenAI</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 行业正从技术突破转向利益分配与流程再造：版权和解的分配争议显示创作者生态的紧张，而内部编码代理的采用则预示着 AI 研发自身正在被自动化加速。两者共同指向 AI 落地的现实摩擦与效率红利。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：TechCrunch AI、OpenAI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
