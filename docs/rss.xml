@@ -7,8 +7,75 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 25 Sep 2026 07:16:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 07:59:12 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-26</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-26.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-26.html</guid>
+      <pubDate>Sat, 26 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/proaction">OpenAI Codex 助力 Proaction 提升销售 60% 并节省 75+ 小时</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/proaction">OpenAI</a> · 2026-09-25</p>
+<!-- published_at: 2026-09-25T19:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Proaction 使用 Codex、GPT-Live-1 和 GPT-6 Astra 构建、运营和销售现代车队管理，销售提升 60% 并节省 75+ 小时。</li>
+<li>展示了 Codex 和最新模型在实际业务中的显著效率提升，证明 AI 代理可直接影响销售和运营成本。</li>
+<li>车队管理及类似行业的开发者、销售团队和业务运营者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过 Codex 和前沿模型实现业务自动化和销售增长，验证 AI 工作流落地价值。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/25/crusoe-abandons-1-25b-plan-to-use-boom-turbines-at-ai-data-centers">Crusoe 放弃 12.5 亿美元计划，不再使用 Boom 涡轮机为 AI 数据中心供电</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/25/crusoe-abandons-1-25b-plan-to-use-boom-turbines-at-ai-data-centers">TechCrunch AI</a> · 2026-09-25</p>
+<!-- published_at: 2026-09-25T23:11:10+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Crusoe 放弃使用 Boom Supersonic 涡轮机为 AI 数据中心供电的 12.5 亿美元计划，Boom CEO 确认该计划不再属于 Crusoe 近期规划。</li>
+<li>AI 数据中心能源供应链发生重大调整，影响数据中心的建设成本和电力保障策略。</li>
+<li>AI 数据中心运营商、能源技术供应商和相关投资者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：改变 AI 基础设施的能源方案，可能促使更多数据中心采用传统或替代电源。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/news/1000532/microsoft-copilot-super-app-chat-coding-autopilot">微软正式发布 Copilot 超级应用，整合聊天、编码和代理功能</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/news/1000532/microsoft-copilot-super-app-chat-coding-autopilot">The Verge AI</a> · 2026-09-25</p>
+<!-- published_at: 2026-09-25T08:00:00-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>微软正式发布 Copilot 超级应用，将聊天、编码和代理功能整合到一个界面，并将 Scout 更名为 Autopilot。</li>
+<li>增强了 Copilot 的产品整合度，可能改变用户在微软生态内的 AI 使用习惯和工作流。</li>
+<li>微软用户、开发者以及依赖 Copilot 的企业团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过统一界面和功能整合，提升 Copilot 的实用性和用户粘性，挑战其他 AI 助手。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory">Agentic autofix 现在使用 Copilot Memory</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/blog/state-of-agent-skills">Vercel 发布 Agent Skills 状态报告</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge">未受保护的 OpenAI 代理在互联网上发布了 53 张用户图片</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1000321/apple-intelligence-home-security-camera-amazon-ring-alexa-google-nest-gemini-home-review">苹果 Home AI 摄像头功能评测：能否胜过亚马逊和谷歌？</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49849985">Revealing the details of how OpenAI agents hacked Hugging Face</a></strong> · Hacker News</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 代理和大模型应用正在深度渗透商业运营，显著提升效率（如 Proaction 案例），但同时也引发安全和隐私问题（如 OpenAI 代理泄露图片）。与此同时，AI 基础设施的能源方案面临调整（Crusoe 放弃创新供电），而微软通过超级应用整合进一步加剧 AI 助手市场的竞争。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、TechCrunch AI、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-25</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-25.html</link>
@@ -877,44 +944,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、The Verge AI、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-08</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-08.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-08.html</guid>
-      <pubDate>Tue, 08 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/supporting-independent-journalism-in-ukraine">OpenAI 联合多家组织启动乌克兰独立新闻 AI 支持计划</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/supporting-independent-journalism-in-ukraine">OpenAI</a> · 2026-09-07</p>
-<!-- published_at: 2026-09-07T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 与 AIRPPU 和 WAN-IFRA 合作推出 AI 计划，帮助乌克兰新闻机构提升创新能力、韧性和独立新闻能力。</li>
-<li>该计划为乌克兰新闻业提供 AI 工具和资源，直接增强其在冲突环境下的运营能力和内容生产。</li>
-<li>乌克兰新闻机构及其受众，以及关注 AI 在媒体领域应用的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：OpenAI 将其 AI 能力应用于新闻业，拓展了产品在媒体行业的落地场景。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/07/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms">TechCrunch 发布 AI 术语表，帮助大众理解常见概念</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/07/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms">TechCrunch AI</a> · 2026-09-07</p>
-<!-- published_at: 2026-09-07T19:24:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>TechCrunch 发布了一份 AI 术语表和常见俚语指南，涵盖幻觉等重要词汇。</li>
-<li>该术语表降低了 AI 概念的理解门槛，有助于普通用户和从业者更准确地交流。</li>
-<li>AI 初学者、非技术背景用户以及需要快速了解 AI 术语的从业者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：内容产品，为读者提供实用参考，提升 TechCrunch 在 AI 教育领域的影响力。</p>
-<h3>📰 其他值得看的</h3>
-<h3>🔍 今日主题观察</h3>
-<p>AI 的应用正在向垂直领域渗透，如新闻业，同时行业也在通过术语表等形式降低认知门槛，推动更广泛的参与。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
