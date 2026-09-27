@@ -7,8 +7,54 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 27 Sep 2026 08:05:20 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 07:12:26 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-28</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-28.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-28.html</guid>
+      <pubDate>Mon, 28 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india">谷歌在印度测试通过 Gemini 和 AI Mode 购物，直接集成 Flipkart</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india">TechCrunch AI</a> · 2026-09-27</p>
+<!-- published_at: 2026-09-27T01:30:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>谷歌开始在印度测试通过 Gemini 和 AI Mode 购买沃尔玛旗下 Flipkart 的商品，目前覆盖部分产品和用户，计划 10 月下旬更广泛推出。</li>
+<li>这是 AI 助手从信息检索走向交易闭环的实质一步，可能改变电商流量入口和用户购物行为。</li>
+<li>印度消费者、Flipkart 卖家、谷歌和亚马逊等电商平台。</li>
+</ul>
+<p><strong>产品技术视角</strong>：将对话式 AI 直接连接到电商库存和支付，缩短从发现到购买的路径。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1001193/engram-sampler-ai-hallucinations-music">Engram：把 AI 幻觉变成乐器的采样器</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1001193/engram-sampler-ai-hallucinations-music">The Verge AI</a> · 2026-09-27</p>
+<!-- published_at: 2026-09-27T16:46:36-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>音乐初创公司 Thoughtful Things 在 Kickstarter 上发布了首款乐器 Engram，这是一个使用 AI 扭曲输入音频并产生全新声音的采样器和 groovebox。</li>
+<li>把 AI 的不可预测性转化为音乐创作的特性，为音乐人提供了新的声音设计工具，而非一键生成歌曲。</li>
+<li>音乐制作人、声音设计师、电子音乐爱好者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：AI 作为创作伙伴而非替代者，强调实时操控和意外性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.theverge.com/podcast/1000344/cloudflare-matthew-prince-google-zero-ai-web-advertising">Cloudflare CEO 谈如何从 AI 手中拯救互联网</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49867775">Show HN: TinyAIArena watch AI agents battle it out</a></strong> · Hacker News</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 正在从信息工具向行动代理演进：谷歌开始让 AI 完成购物交易，OpenAI 代理的行为暴露出自主性带来的风险。同时，创作者开始将 AI 的缺陷转化为创作素材，反映出对 AI 角色的多元化探索。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：TechCrunch AI、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-27</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-27.html</link>
@@ -847,82 +893,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、TechCrunch AI、The Verge AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-10</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-10.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-10.html</guid>
-      <pubDate>Thu, 10 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/paul-christiano-joins-openai-foundation-board">OpenAI 任命对齐研究者 Paul Christiano 为基金会董事</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/paul-christiano-joins-openai-foundation-board">OpenAI</a> · 2026-09-09</p>
-<!-- published_at: 2026-09-09T17:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 基金会新增 Paul Christiano 为董事，并加入安全与安保委员会。</li>
-<li>直接强化 OpenAI 非营利部分对安全决策的影响力，而非仅停留在公司层面。</li>
-<li>关注 AI 对齐与安全的开发者、政策制定者和公众。</li>
-</ul>
-<p><strong>产品技术视角</strong>：治理结构变化，非产品功能。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/ibm-research/ibm-releases-sota-granite-time-series">IBM 发布商用友好许可的时序模型 Granite PatchTST-FM-r2</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/ibm-research/ibm-releases-sota-granite-time-series">Hugging Face Blog</a> · 2026-09-09</p>
-<!-- published_at: 2026-09-09T15:36:24+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>IBM 在 Hugging Face 上发布 Granite Time Series PatchTST-FM-r2 模型，宣称达到 SOTA，并采用商用友好许可。</li>
-<li>为时序预测提供可直接商用的领先模型，降低企业采用门槛。</li>
-<li>需要做预测分析的企业开发者、数据科学家。</li>
-</ul>
-<p><strong>产品技术视角</strong>：模型发布，能力与许可双更新。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/991977/suno-releases-its-first-ai-music-model-made-with-record-industry-help">Suno 推出首个与唱片业合作训练的 AI 音乐模型 v6</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/991977/suno-releases-its-first-ai-music-model-made-with-record-industry-help">The Verge AI</a> · 2026-09-09</p>
-<!-- published_at: 2026-09-09T17:42:19-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Suno 发布 v6 模型，声称从头训练，使用包含唱片公司授权内容的新数据集，不包含之前模型的训练数据。</li>
-<li>AI 音乐模型首次获得主流唱片业直接支持，可能改变版权争议格局并提升输出品质。</li>
-<li>音乐创作者、AI 音乐用户、唱片公司。</li>
-</ul>
-<p><strong>产品技术视角</strong>：模型更新，训练数据来源更合规。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-09-custom-cache-token-costs">Cloudflare AI Gateway 自定义成本支持缓存令牌计费</a></strong> · Cloudflare Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/persistent-memory-for-eve-agents">Vercel 为 eve agents 增加持久记忆</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/gpt-6-astra-next-generation-work">GPT-6 Astra：OpenAI 面向工作的下一代智能模型</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/09/apple-watchs-new-ai-features-are-normalizing-the-idea-that-technology-is-always-listening">Apple Watch 新 AI 功能让“始终聆听”常态化</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/992766/apple-iphone-18-pro-reference-image">苹果新 iPhone 摄像头模式可证明照片非 AI 生成</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/gpt-image-2-5-flare-and-sunburst-now-available-on-ai-gateway">Vercel AI Gateway 上线 GPT Image 2.5 Flare 和 Sunburst</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/introducing-chatgpt-images-2-5">OpenAI 推出 ChatGPT Images 2.5</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/policy/992359/microsoft-aft-schools-ai-privacy">微软与教师工会达成学校 AI 隐私原则</a></strong> · The Verge AI</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 产品开始从单纯能力比拼转向信任与治理构建：OpenAI 引入安全董事、苹果推出照片真实性签名、Suno 拥抱唱片业授权，反映出产业在扩大应用的同时必须解决合规与信任问题。同时，模型发布仍保持高频，IBM 的商用友好时序模型和 OpenAI 的 GPT-6 Astra 显示竞争焦点向垂直领域与企业场景延伸。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、Hugging Face Blog、The Verge AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
