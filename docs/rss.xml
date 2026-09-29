@@ -7,8 +7,78 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 28 Sep 2026 07:12:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 07:51:20 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-09-30</title>
+      <link>https://daily.hiwd.com/archive/2026-09/2026-09-30.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-30.html</guid>
+      <pubDate>Wed, 30 Sep 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/introducing-gpt-6-1-sol">OpenAI 发布 GPT-6.1 Sol：价格仅 Astra 五分之一，面向编程与计算机使用</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/introducing-gpt-6-1-sol">OpenAI</a> · 2026-09-29</p>
+<!-- published_at: 2026-09-29T10:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 推出 GPT-6.1 Sol，以 Astra 五分之一的价格提供接近 Astra 的编程、计算机使用和专业工作能力。</li>
+<li>高性能模型 API 成本大幅下降，直接改变开发者的预算和选型，对竞争对手形成价格压力。</li>
+<li>使用 OpenAI API 的开发者、中小型 AI 应用团队、需要控制推理成本的企业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：GPT-6.1 Sol 降低前沿模型使用门槛，适合对成本敏感的大规模部署。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-29-user-insights-task-analysis">Cloudflare AI Gateway 新增 User Insights：识别模型过度使用与潜在节省</a></p>
+<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-29-user-insights-task-analysis">Cloudflare Changelog</a> · 2026-09-29</p>
+<!-- published_at: 2026-09-29T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Cloudflare AI Gateway 的 User Insights 功能上线，可按任务分析流量、对比模型适配度并显示潜在节省请求。</li>
+<li>让团队能直接看到哪些任务在用过度昂贵的模型，为优化成本和路由决策提供数据支撑。</li>
+<li>使用 Cloudflare AI Gateway 的企业开发团队，关注 AI 基础设施成本与效率的工程负责人。</li>
+</ul>
+<p><strong>产品技术视角</strong>：User Insights 把成本优化从人工猜测变成可操作的仪表板指标。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/29/meta-is-expanding-its-ai-agent-muse-to-small-businesses">Meta 将 Muse AI 智能体扩展到小型企业</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/29/meta-is-expanding-its-ai-agent-muse-to-small-businesses">TechCrunch AI</a> · 2026-09-29</p>
+<!-- published_at: 2026-09-29T13:47:30+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Meta 宣布将 Muse AI 智能体扩展到小型企业，帮助店主运营业务和寻找新客户。</li>
+<li>AI 助手进入主流商业场景，可能改变小企业的客户获取和运营方式，扩大 Meta 在商业工具中的分发。</li>
+<li>使用 Meta 平台的小企业主，依赖 Facebook/Instagram 进行销售和客服的商家。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Muse 将生成式 AI 能力打包成面向小企业的生产力工具，直接绑定 Meta 生态。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://huggingface.co/blog/nvidia/kumo-tabular">NVIDIA Kumo Tabular 在 Hugging Face 发布：表格预测新精度效率前沿</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-09-29-gpt-6-1-sol-in-github-copilot">GPT-6.1 Sol 在 GitHub Copilot 中可用</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/gpt-6-1-sol-now-available-on-ai-gateway">GPT-6.1 Sol 上线 Vercel AI Gateway</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/devday-2026-recap">OpenAI DevDay 2026 回顾：超过 20 项发布</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1001749/amd-world-labs-ai-acquisition-deal">AMD 收购 World Labs：价值超 80 亿美元</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/29/ai-powered-app-maker-wabi-pivots-to-a-messaging-experience">Wabi 转型为消息式 AI 智能体</a></strong> · TechCrunch AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>GPT-6.1 Sol 的发布带动多家平台迅速集成，并推动成本优化成为焦点；同时 Meta 将 AI 助手推向小企业，显示巨头正在将前沿模型能力下沉到更广泛的商业场景。基础设施层也在跟进，Cloudflare 等平台提供精细化成本分析，帮助用户避免模型过度使用。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Cloudflare Changelog、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-28</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-28.html</link>
@@ -826,73 +896,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-11</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-11.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-11.html</guid>
-      <pubDate>Fri, 11 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/introducing-chatgpt-financial-services">OpenAI 推出金融专用 ChatGPT，集成 GPT-6 Astra 与内置金融数据</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/introducing-chatgpt-financial-services">OpenAI</a> · 2026-09-10</p>
-<!-- published_at: 2026-09-10T07:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 正式发布 ChatGPT for Financial Services，集成 GPT-6 Astra 和内置金融数据，支持研究、建模和客户材料生成。</li>
-<li>垂直行业产品直接内置领域数据，减少用户整合外部数据源的成本，改变金融从业者获取分析结果的方式。</li>
-<li>金融分析师、投资经理及需要快速生成研报和客户材料的从业者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：以行业特定产品切入，通过预置金融数据和强推理模型提升工作流效率。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/10/metas-ai-agent-muse-is-now-the-no-2-app-in-the-us">Meta 的 AI 智能体 Muse 在美国应用榜升至第二</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/10/metas-ai-agent-muse-is-now-the-no-2-app-in-the-us">TechCrunch AI</a> · 2026-09-10</p>
-<!-- published_at: 2026-09-10T19:50:04+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Meta 新推出的 AI 智能体应用 Muse 在美国应用下载榜攀升至第二名。</li>
-<li>AI 助手正在进入大众消费市场，用户行为从搜索转向委托代理，对现有应用分发格局造成影响。</li>
-<li>普通消费者、应用开发者和依赖传统流量入口的服务商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：以通用智能体切入高频生活任务，验证了 AI 助手作为独立流量入口的潜力。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai">Universal Music 联手 ElevenLabs 推出 AI 音乐平台</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai">The Verge AI</a> · 2026-09-10</p>
-<!-- published_at: 2026-09-10T11:38:19-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>环球音乐集团与 ElevenLabs 达成多年授权协议，将推出允许用户基于授权曲库创作混音和改编的 AI 音乐平台。</li>
-<li>版权方正式开放曲库给 AI 生成产品，为音乐行业探索新的分发和变现模式，同时可能改变用户参与音乐创作的方式。</li>
-<li>音乐人、版权持有者、普通用户，以及音乐流媒体和短视频平台。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过授权合作将 AI 音乐生成能力产品化，让用户直接创作衍生内容。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek">Anthropic 披露来自阿里、月之暗面和 DeepSeek 的蒸馏行为</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/10/indias-pocket-fm-doubles-revenue-run-rate-to-500m-as-ai-powers-93-of-audio-content">Pocket FM 年化营收翻倍至 5 亿美元，AI 生成 93% 音频内容</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/expanding-ai-access-us-government">OpenAI 面向美国各级政府提供零授权费及 50% 使用折扣</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-10-using-openai-agents-api-with-cloudflare-containers">Cloudflare 容器支持通过 OpenAI Agents API 运行 Codex</a></strong> · Cloudflare Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/github-copilot-ai-sdk-harness-adapter">Vercel AI SDK 现已支持 GitHub Copilot 作为智能体执行层</a></strong> · Vercel Changelog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 能力加速进入垂直领域和大众消费市场，模型公司、平台方与内容版权方通过合作快速落地产品，同时开发者工具链不断整合多智能体运行时。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、TechCrunch AI、The Verge AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
