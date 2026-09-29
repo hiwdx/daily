@@ -118,18 +118,22 @@ class FreshnessValidationTests(unittest.TestCase):
         )
         self.assertTrue(any("不得为空" in error for error in errors))
 
-    def test_requires_three_stories_when_three_official_candidates_exist(self):
-        text = briefing(("只有一条", "https://example.com/one", self.now - timedelta(hours=2)))
+    def test_allows_two_stories_when_more_publishers_are_available(self):
+        published = self.now - timedelta(hours=2)
+        text = briefing(
+            ("第一条", "https://example.com/one", published),
+            ("第二条", "https://another.example/two", published),
+        )
         candidates = [
             {"title": f"候选 {index}", "url": f"https://source{index}.example/{index}"}
-            for index in range(3)
+            for index in range(6)
         ]
         errors = generate.validate_briefing(
             text,
             now=self.now,
             official_candidates=candidates,
         )
-        self.assertTrue(any("至少需要 3 条" in error for error in errors))
+        self.assertEqual(errors, [])
 
     def test_rejects_same_publisher_filling_top_three(self):
         text = briefing(*[
@@ -173,8 +177,8 @@ class FreshnessValidationTests(unittest.TestCase):
         # "其他值得看的" must NOT be rejected just because more candidates exist.
         # Padding to a quota is the filler this briefing avoids.
         published = self.now - timedelta(hours=2)
-        # Same-family candidates so the Top-3 count rule is satisfied with one
-        # story; this isolates the compact-list behaviour under test.
+        # Multiple candidates must not force the model to pad Top 3; this
+        # isolates the compact-list behaviour under test.
         candidates = [
             {"title": f"候选 {index}", "url": f"https://example.com/{index}"}
             for index in range(6)
@@ -183,7 +187,7 @@ class FreshnessValidationTests(unittest.TestCase):
         errors = generate.validate_briefing(
             text, now=self.now, official_candidates=candidates
         )
-        self.assertFalse(any("至少需要" in error for error in errors))
+        self.assertEqual(errors, [])
 
     def test_other_stories_render_as_a_single_line(self):
         candidate = {

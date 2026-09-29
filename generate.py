@@ -685,17 +685,6 @@ def validate_briefing(
         return [f"Top 3 实际包含 {len(stories)} 条，超过 3 条"]
 
     errors: list[str] = []
-    candidate_families = {
-        _source_family(candidate.get("url", ""))
-        for candidate in (official_candidates or [])
-        if candidate.get("url") and candidate.get("eligible_for_top", "true") == "true"
-    }
-    required_count = min(3, len(candidate_families))
-    if len(stories) < required_count:
-        errors.append(
-            f"可信订阅源覆盖 {len(candidate_families)} 个发布方，"
-            f"Top 3 至少需要 {required_count} 条，实际只有 {len(stories)} 条"
-        )
     top_families = [_source_family(str(story["url"])) for story in stories]
     repeated_top_families = {
         family for family in top_families if top_families.count(family) > 1
