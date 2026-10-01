@@ -7,8 +7,63 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 30 Sep 2026 07:51:20 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 08:01:01 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-01</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-01.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-01.html</guid>
+      <pubDate>Thu, 01 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/30/google-releases-gemini-4-argon-called-its-most-powerful-model-yet">Google 发布 Gemini 4 Argon，号称史上最强模型</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/30/google-releases-gemini-4-argon-called-its-most-powerful-model-yet">TechCrunch AI</a> · 2026-09-30</p>
+<!-- published_at: 2026-09-30T23:43:07+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google 发布 Gemini 4 Argon，定位为编程和网络安全领域的主力模型。</li>
+<li>直接提升开发者在编码和安全任务中的模型性能，改变相关工具链的默认选项。</li>
+<li>使用 Gemini API 的开发者及依赖 Google AI 能力的企业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：新一代旗舰模型，强化代码生成与安全分析能力。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign">OpenAI 披露并瓦解一起有组织的模型蒸馏活动</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign">OpenAI</a> · 2026-09-30</p>
+<!-- published_at: 2026-09-30T10:30:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 宣布瓦解一起试图提取其模型受保护推理能力的活动，并加强对抗性蒸馏防御。</li>
+<li>保护核心模型能力不被低成本复制，维持前沿模型商业价值。</li>
+<li>OpenAI 及其企业客户，以及试图通过蒸馏获取能力的竞争对手。</li>
+</ul>
+<p><strong>产品技术视角</strong>：安全防御升级，强化模型知识产权保护。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://huggingface.co/blog/open-tts-leaderboard">Open TTS 排行榜：多语言语音合成与克隆的可扩展评测</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-30-machine-payments">Cloudflare AI Gateway 支持机器支付，用稳定币支付推理费用</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/vercel-agent-now-installs-private-packages-from-npm-and-custom-registries">Vercel Agent 现在可以安装 npm 私有包和自定义 registry 的包</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/09/30/valor-atreides-and-sequoia-back-ai-startup-flow-engineering-at-750m-valuation">Flow Engineering 获 Valor、Atreides 和红杉投资，估值 7.5 亿美元</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1002636/ai-execs-trump-self-policing-deal-comments">Here’s what AI leaders are saying about Trump’s new safety plan</a></strong> · The Verge AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>前沿模型军备竞赛继续：Google 发布 Gemini 4 Argon 强化编码和安全能力，OpenAI 则公开对抗模型蒸馏，显示模型能力与知识产权保护并重。同时，语音 AI 赛道持续升温，ElevenLabs 估值翻倍，开源社区也在推动 TTS 评测标准化。基础设施层，支付方式、私有包安装和浏览器工具等更新，让 AI 代理更易集成到真实工作流。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：TechCrunch AI、OpenAI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-09-30</title>
       <link>https://daily.hiwd.com/archive/2026-09/2026-09-30.html</link>
@@ -829,73 +884,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、Cursor、The Verge AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-12</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-12.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-12.html</guid>
-      <pubDate>Sat, 12 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/scaling-storage-one-billion-users-part-one">OpenAI 披露支撑 10 亿 ChatGPT 用户的存储平台演进</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/scaling-storage-one-billion-users-part-one">OpenAI</a> · 2026-09-11</p>
-<!-- published_at: 2026-09-11T10:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 发文介绍其存储平台 Habitat 如何从 Python 库演变为支持 10 亿 ChatGPT 用户、每秒 2200 万请求的全球分布式系统。</li>
-<li>这是少见的 AI 巨头主动公开基础设施细节，展示了大模型服务成本与工程复杂性的真实面貌。</li>
-<li>依赖 ChatGPT 的普通用户和企业客户，以及关注 AI 成本与规模化架构的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过工程创新支撑海量免费用户，OpenAI 正在将规模转化为竞争壁垒。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics">Cloudflare 为语音代理推出延迟与结果诊断工具</a></p>
-<p><strong>来源</strong>：<a href="https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics">Cloudflare Changelog</a> · 2026-09-11</p>
-<!-- published_at: 2026-09-11T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Cloudflare 更新 @cloudflare/voice 至 v0.4.0，允许开发者通过 turnmetrics 事件检查每个语音代理回合的耗时与结果。</li>
-<li>语音代理是热门方向，但调试困难，该工具让开发者能直接定位延迟和失败环节，加速迭代。</li>
-<li>基于 Cloudflare 构建实时语音应用的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：把可观测性内置到边缘语音代理服务，降低了语音应用的工程门槛。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/blog/how-tailscale-built-a-customer-facing-model-router-on-ai-gateway">Vercel 分享 Tailscale 如何在 AI Gateway 上构建客户模型路由</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/blog/how-tailscale-built-a-customer-facing-model-router-on-ai-gateway">Vercel Changelog</a> · 2026-09-11</p>
-<!-- published_at: 2026-09-11T04:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Vercel 撰文介绍 Tailscale 利用其 AI Gateway 构建了面向客户的 Aperture 模型路由器，提供基于身份访问的数百种 AI 模型，无需 API 密钥。</li>
-<li>展示了 AI Gateway 作为模型分发层的实际落地，简化了企业接入多模型的复杂度。</li>
-<li>需要管理多模型访问和成本的企业开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：把模型路由能力产品化，Vercel 正在成为连接模型与应用的中间层。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/993391/meta-muse-ai-hands-on">Meta 的 Muse AI 助手实测：能干活但让人发毛</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data">Mecka AI 在红杉领投下估值逼近 5 亿美元</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/994207/chatgpt-new-mexico-lawyer-fined-murder-appeal">律师因在谋杀案中使用 AI 幻觉证人被罚 5000 美元</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/11/kimi-maker-moonshot-ai-targets-2-billion-in-annual-revenue">Moonshot AI 目标年收入 20 亿美元</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review">GitHub Copilot 代码审查支持自动解决和智能提交信息</a></strong> · GitHub Changelog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 基础设施竞争转向可观测性与工程效率：OpenAI 公布存储架构、Cloudflare 提供语音代理诊断、Vercel 展示模型路由案例，都在降低开发者构建复杂 AI 应用的门槛。与此同时，AI 代理的安全与合规问题开始显现，比如律师使用幻觉证词被罚、Claude 年龄限制和智能体攻击包管理器等。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、Cloudflare Changelog、Vercel Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
