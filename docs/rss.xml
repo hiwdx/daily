@@ -7,8 +7,63 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sat, 03 Oct 2026 07:54:27 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 07:55:53 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-04</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-04.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-04.html</guid>
+      <pubDate>Sun, 04 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/claude-frontier-academy">Anthropic 启动 1 亿美元计划，训练 1 万名工程师部署 AI</a></p>
+<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/claude-frontier-academy">Anthropic</a> · 2026-10-02</p>
+<!-- published_at: 2026-10-02T23:01:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 推出 Claude Frontier Academy，投入 1 亿美元训练 1 万名工程师，首批来自埃森哲、贝恩、麦肯锡等企业。</li>
+<li>通过标准化培训扩大企业 AI 部署能力，缓解人才瓶颈。</li>
+<li>大型企业的技术团队和咨询公司，以及寻求 AI 转型的传统行业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：面向企业客户的培训产品，直接绑定 Claude 生态，加速企业采用。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/chatham-financial">OpenAI 与 Chatham Financial 合作，交易验证时间从 30 分钟降至 4 分钟</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/chatham-financial">OpenAI</a> · 2026-10-02</p>
+<!-- published_at: 2026-10-02T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Chatham Financial 利用 OpenAI Codex 和 GPT-5.6 改造工作流，将交易验证时间缩短至 4 分钟以内。</li>
+<li>展示 AI 在金融专业服务中显著提升效率，可复制到其他知识密集型行业。</li>
+<li>金融机构的后台运营团队和依赖人工审核的合规部门。</li>
+</ul>
+<p><strong>产品技术视角</strong>：Codex 与 GPT-5.6 的企业级应用案例，强调降本增效。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/03/all-the-ai-agents-that-can-live-in-your-text-messages">所有可驻留在短信中的 AI 代理</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/games/1004418/capcom-ai-game-development">Capcom 准备迎接与 AI 共同创造游戏的未来</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-10-02-pi-harness">Cloudflare Agents SDK 支持 Pi Durable 框架构建长期运行代理</a></strong> · Cloudflare Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/ServiceNow-AI/autosynthdata">AutoSynthData：为企业代理生成训练数据</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-10-02-selected-models-in-github-copilot-deprecated">GitHub Copilot 弃用部分模型</a></strong> · GitHub Changelog</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>企业 AI 落地正在从模型竞争转向工程能力与人才建设：Anthropic 用 1 亿美元培训工程师，OpenAI 展示金融业效率提升，GitHub 则通过 API 将审查深度整合进开发流程。开发者工具和代理基础设施同步升级，但消费端 AI 付费意愿仍低，产业重心继续向 B 端倾斜。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：Anthropic、OpenAI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-03</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-03.html</link>
@@ -811,73 +866,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、Anthropic、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-18</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-18.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-18.html</guid>
-      <pubDate>Fri, 18 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/astra-for-law">OpenAI 推出法律专用平台 Astra for Law</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/astra-for-law">OpenAI</a> · 2026-09-17</p>
-<!-- published_at: 2026-09-17T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 发布 Astra for Law，提供定制工作流、法律数据源连接和机密客户工作的法律级控制。</li>
-<li>前沿模型能力与法律级合规控制首次结合，直接切入高价值专业服务市场。</li>
-<li>律师事务所、企业法务及依赖法律文件的客户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过连接法律数据源和定制工作流，提供符合行业标准的专用工具。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform">Google 与联合国推出 UN System Data Commons 开放数据平台</a></p>
-<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform">Google AI Blog</a> · 2026-09-17</p>
-<!-- published_at: 2026-09-17T20:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 与联合国系统合作推出 UN System Data Commons，让全球统计数据更易访问和搜索。</li>
-<li>将权威全球数据与 AI 搜索结合，降低数据获取门槛，可能改变公共政策分析方式。</li>
-<li>研究人员、政策制定者和需要全球数据的普通用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：提供开放平台，利用 AI 增强数据探索和可访问性。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects">Anthropic 升级 Claude Code Projects：云中管理多个 AI 代理</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects">The Verge AI</a> · 2026-09-17</p>
-<!-- published_at: 2026-09-17T14:58:05-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Claude Code 重新推出 Projects 功能，允许用户在云端运行多个 AI 代理，共享记忆、目标和文件库。</li>
-<li>开发者可并行处理多个任务并由协调器统一管理，缩短复杂工作流构建时间。</li>
-<li>使用 Claude Code 的软件开发者和小型工程团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过共享上下文和并行线程，简化多代理协作的开发流程。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai">PrismML 推出微型 LLM，希望改变 AI 使用方式</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-17-reject-if-busy">Cloudflare Workers AI 新增 rejectIfBusy 选项，拒绝忙碌的同步推理请求</a></strong> · Cloudflare Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway">Vercel AI Gateway 支持 TypeSafe AI 的 Jev</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/model-misalignment-reporting-framework">OpenAI 发布模型偏差报告框架</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-09-17-copilot-impact-dashboard-now-shows-feature-engagement">GitHub Copilot 影响面板新增功能参与度指标</a></strong> · GitHub Changelog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>大模型厂商正从通用能力转向垂直场景与工作流深度整合：OpenAI 推出法律专用平台，Anthropic 升级多代理协作，Google 开放数据基础设施。同时，开发者工具链继续优化成本与可靠性，例如 Cloudflare 为推理请求提供快速失败选项，Vercel 集成可分类、路由的模型。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、Google AI Blog、The Verge AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
