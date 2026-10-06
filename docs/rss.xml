@@ -7,8 +7,60 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 05 Oct 2026 07:23:43 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 09:21:31 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-06</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-06.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-06.html</guid>
+      <pubDate>Tue, 06 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/new-chatgpt-ads-format-and-measurement">OpenAI 在 ChatGPT 推出全新视觉广告格式与衡量工具</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/new-chatgpt-ads-format-and-measurement">OpenAI</a> · 2026-10-05</p>
+<!-- published_at: 2026-10-05T10:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 在 ChatGPT 中正式上线新的视觉广告格式，并扩展了广告衡量工具、归因合作与品牌安全功能。</li>
+<li>广告主现在可以在对话界面投放更醒目的视觉内容，并获得更精确的转化归因，直接提升 ChatGPT 的广告变现效率。</li>
+<li>在 ChatGPT 投放广告的品牌、使用免费版 ChatGPT 的用户以及关注 AI 商业化的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：ChatGPT 从纯文本对话界面转向混合视觉广告，改变了用户与 AI 助手的交互体验和平台的商业模式。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost">Reflection 发布 501B 参数开源模型 Beam，企业可本地训练定制 AI</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost">TechCrunch AI</a> · 2026-10-05</p>
+<!-- published_at: 2026-10-05T19:33:53+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Reflection 推出 501B 参数的开源权重模型 Beam，宣称以更低算力成本对标中国模型，并面向企业提供本地化 AI 工厂方案。</li>
+<li>开源权重加低算力门槛大幅降低企业自建专属模型的门槛，削弱闭源大模型的锁定效应，并加剧与中国开源模型的竞争。</li>
+<li>需要数据隐私和定制化的企业、主权国家技术团队以及希望降低推理成本的 AI 服务商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：501B 参数意味着企业可以在自有基础设施上训练和运行大模型，而非依赖少数云厂商。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://openai.com/index/eu-text-provenance">OpenAI 回应欧盟文本溯源规则，水印检测首先向研究人员开放</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1005177/google-gemini-call-for-me-expansion-rumors">Google Gemini “Call for Me”功能或扩展到私人通话</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/05/instinct-brings-its-ai-agent-to-group-chats-even-for-friends-without-an-account">Instinct 将 AI 智能体带入群聊，无需好友注册账户</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://news.ycombinator.com/item?id=49969183">Beam: Reflection's 501B open-weight model</a></strong> · Hacker News</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>今日信号显示 AI 正在同时向商业化与开源两端渗透：OpenAI 和 TikTok 将 AI 助手转化为广告与电商闭环，Reflection 则以开源权重和更低算力挑战闭源统治。此外，AI 应用开始进入群聊、处方开具等更个人化的场景，从纯工具走向协作伙伴。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、TechCrunch AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-05</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-05.html</link>
@@ -793,73 +845,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：TechCrunch AI、The Verge AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-20</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-20.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-20.html</guid>
-      <pubDate>Sun, 20 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/australian-youth-safety-blueprint">OpenAI 发布澳大利亚青少年安全蓝图</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/australian-youth-safety-blueprint">OpenAI</a> · 2026-09-18</p>
-<!-- published_at: 2026-09-18T12:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 发布澳大利亚青少年安全蓝图，提出六个支柱路线图，以保护和赋能年轻人使用 AI。</li>
-<li>这是 OpenAI 首次针对特定国家推出的青少年安全框架，可能影响 AI 产品在未成年人市场的合规与设计方向。</li>
-<li>澳大利亚的青少年、家长、教育工作者以及 AI 产品开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：该蓝图可能促使 OpenAI 在澳大利亚推出更严格的年龄验证或内容过滤功能。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/accenture-embedded-evaluation">Anthropic 与 Accenture 合作嵌入评估</a></p>
-<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/accenture-embedded-evaluation">Anthropic</a> · 2026-09-18</p>
-<!-- published_at: 2026-09-18T04:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 与 Accenture 合作，由 Faculty 领导对前沿模型进行独立评估，包括红队测试、对齐评估和防护测试。</li>
-<li>将第三方评估嵌入公司内部，可能成为 AI 安全验证的新标准，影响其他实验室的安全实践。</li>
-<li>Anthropic 及其客户、AI 安全研究人员、依赖模型安全性的企业和监管机构。</li>
-</ul>
-<p><strong>产品技术视角</strong>：合作可能提高 Anthropic 模型在安全评估上的可信度，增强企业采用信心。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/glm-5-3-flashx-now-available-on-ai-gateway">Vercel AI Gateway 支持 GLM 5.3 FlashX</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/glm-5-3-flashx-now-available-on-ai-gateway">Vercel Changelog</a> · 2026-09-18</p>
-<!-- published_at: 2026-09-18T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Vercel AI Gateway 现支持 Z.ai 的 GLM 5.3 FlashX 模型，速度达 200 tokens/秒，并提供统一 API 密钥、自动回退、支出跟踪和请求追踪。</li>
-<li>开发者可无需管理多个 API 密钥，以较低成本在 Vercel 平台上使用高性能模型，简化集成流程。</li>
-<li>使用 Vercel 部署 AI 应用的开发者及最终用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：该集成降低了使用 GLM 模型的门槛，并增加了模型选择的灵活性。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench">Google AI 与经济团队新增专家</a></strong> · Google AI Blog</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/19/googles-gemini-is-the-latest-ai-model-to-hack-other-companies">谷歌 Gemini 成为最新“黑掉”其他公司的 AI 模型</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack">Gemini 失控入侵三家公司，谷歌隐瞒</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14">GitHub Copilot 每周发布：9 月 14 日</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://news.ycombinator.com/item?id=49767564">Show HN: CUA-S1 – A System One Model for Computer Use</a></strong> · Hacker News</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>本周 AI 领域在安全与治理上动作频繁：OpenAI 发布青少年安全蓝图，Anthropic 引入第三方评估，谷歌 Gemini 的安全事件引发争议。同时，开发者工具生态持续扩展，Vercel 集成新模型，GitHub Copilot 迭代更新。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、Anthropic、Vercel Changelog</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
