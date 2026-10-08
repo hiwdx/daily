@@ -1,4 +1,7 @@
 import tempfile
+import json
+from types import SimpleNamespace
+from unittest.mock import patch
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -108,7 +111,7 @@ class FreshnessValidationTests(unittest.TestCase):
         text = "### 🎯 今日 Top 3\n\n过去 48 小时暂无符合条件且未报道的内容。\n\n### 📰 其他值得看的"
         self.assertEqual(generate.validate_briefing(text, now=self.now), [])
 
-    def test_rejects_empty_top_when_official_candidates_exist(self):
+    def test_allows_editor_to_reject_low_value_top_candidates(self):
         text = "### 🎯 今日 Top 3\n\n过去 48 小时暂无符合条件且未报道的内容。\n"
         candidates = [{"title": "官方更新", "url": "https://example.com/new"}]
         errors = generate.validate_briefing(
@@ -116,7 +119,7 @@ class FreshnessValidationTests(unittest.TestCase):
             now=self.now,
             official_candidates=candidates,
         )
-        self.assertTrue(any("不得为空" in error for error in errors))
+        self.assertEqual(errors, [])
 
     def test_allows_two_stories_when_more_publishers_are_available(self):
         published = self.now - timedelta(hours=2)
@@ -128,11 +131,11 @@ class FreshnessValidationTests(unittest.TestCase):
             {"title": f"候选 {index}", "url": f"https://source{index}.example/{index}"}
             for index in range(6)
         ]
-        errors = generate.validate_briefing(
-            text,
-            now=self.now,
-            official_candidates=candidates,
-        )
+        candidates.extend([
+            {"title": "第一条", "url": "https://example.com/one"},
+            {"title": "第二条", "url": "https://another.example/two"},
+        ])
+        errors = generate.validate_briefing(text, now=self.now, official_candidates=candidates)
         self.assertEqual(errors, [])
 
     def test_rejects_same_publisher_filling_top_three(self):
@@ -170,7 +173,7 @@ class FreshnessValidationTests(unittest.TestCase):
         )
         text = briefing(("Vercel 更新", "https://vercel.com/changelog/update", published), other=other)
         errors = generate.validate_briefing(text, now=self.now)
-        self.assertTrue(any("其他值得看的" in error and "最多 2 条" in error for error in errors))
+        self.assertTrue(any("其他值得看的" in error and "最多 1 条" in error for error in errors))
 
     def test_allows_empty_other_reads_quality_first(self):
         # The compact list is quality-first and variable-length: an empty
@@ -189,7 +192,7 @@ class FreshnessValidationTests(unittest.TestCase):
         )
         self.assertEqual(errors, [])
 
-    def test_other_stories_render_as_a_single_line(self):
+    def test_other_summary_is_rendered_in_the_same_list_item(self):
         candidate = {
             "source": "TechCrunch AI", "title": "可信候选", "url": "https://techcrunch.com/story",
             "published_at": self.now.isoformat(), "eligible_for_top": "true",
@@ -201,13 +204,16 @@ class FreshnessValidationTests(unittest.TestCase):
                 "who_is_affected": "用户", "product_angle": "产品",
             }],
             "other_stories": [{
-                "title": "扩展阅读", "url": "https://example.com/other", "source": "来源", "summary": "不应出现",
+                "title": "扩展阅读", "url": "https://example.com/other", "source": "来源", "summary": "新增批量处理接口，适合需要减少逐条请求开销的开发者评估。",
             }],
         }
         other_candidate = {"source": "来源", "title": "原始扩展", "url": "https://example.com/other", "published_at": self.now.isoformat(), "eligible_for_top": "false"}
         text = generate.briefing_from_payload(payload, [candidate, other_candidate])
         self.assertIn("- **[扩展阅读](https://example.com/other)** · 来源", text)
-        self.assertNotIn("不应出现", text)
+        body = generate.md_to_html(generate.clean_briefing(text))
+        self.assertRegex(body, r'(?s)<li>\s*<p><strong><a href="https://example.com/other".*?</p>\s*<p>新增批量处理接口.*?</p>\s*</li>')
+        self.assertIn("TechCrunch AI、来源", text)
+        self.assertNotIn("所有链接均来自程序已核验", text)
 
     def test_empty_state_is_rewritten_for_readers(self):
         text = """### 🎯 今日 Top 3
@@ -317,50 +323,6 @@ class OfficialFeedTests(unittest.TestCase):
         </channel></rss>"""
         self.assertEqual(generate.parse_official_feed(feed, "Media", self.now), [])
 
-    def test_builds_valid_fallback_from_distinct_publishers(self):
-        candidates = [
-            {
-                "source": "GitHub Changelog",
-                "title": "Copilot usage metrics available",
-                "url": "https://github.blog/changelog/2026-07-15-copilot-metrics",
-                "published_at": "2026-07-15T00:30:00+00:00",
-            },
-            {
-                "source": "Vercel Changelog",
-                "title": "AI Gateway adds a new model",
-                "url": "https://vercel.com/changelog/ai-gateway-new-model",
-                "published_at": "2026-07-15T00:15:00+00:00",
-            },
-        ]
-        text = generate.build_official_feed_fallback(candidates)
-        self.assertEqual(len(generate.parse_top_stories(text)), 2)
-        self.assertEqual(
-            generate.validate_briefing(
-                text,
-                now=self.now,
-                official_candidates=candidates,
-            ),
-            [],
-        )
-
-    def test_fallback_deduplicates_publishers(self):
-        candidates = [
-            {
-                "source": "GitHub Changelog",
-                "title": f"Copilot update {index}",
-                "url": f"https://github.blog/changelog/2026-07-15-copilot-{index}",
-                "published_at": f"2026-07-15T00:0{index}:00+00:00",
-            }
-            for index in range(2)
-        ]
-        text = generate.build_official_feed_fallback(candidates)
-        self.assertEqual(len(generate.parse_top_stories(text)), 1)
-
-    def test_fallback_has_reader_facing_empty_state_without_candidates(self):
-        text = generate.build_official_feed_fallback([])
-        self.assertIn("今天暂时没有新的重点动态", text)
-        self.assertEqual(generate.validate_briefing(text, now=self.now), [])
-
     def test_payload_renderer_rejects_model_invented_top_url(self):
         candidate = {
             "source": "GitHub Changelog",
@@ -377,7 +339,8 @@ class OfficialFeedTests(unittest.TestCase):
             }]
         }
         text = generate.briefing_from_payload(payload, [candidate])
-        self.assertIn("Verified update", text)
+        self.assertEqual(generate.parse_top_stories(text), [])
+        self.assertTrue(generate.validate_payload_quality(payload, [candidate]))
         self.assertNotIn("example.com/invented", text)
 
 
@@ -409,6 +372,191 @@ class EditorialQualityTests(unittest.TestCase):
     def test_rejects_prediction_as_top_story(self):
         text = briefing(("公司预测未来五年 AI 普及", "https://example.com/prediction", datetime.now(timezone.utc)))
         self.assertTrue(any("预测或观点" in error for error in generate.validate_editorial_quality(text)))
+
+    def test_rejects_fundraising_plans_as_completed_news(self):
+        text = briefing(("Lambda 拟融资并筹备上市", "https://example.com/funding", datetime.now(timezone.utc)))
+        self.assertTrue(generate.validate_editorial_quality(text))
+
+
+class PractitionerEditingTests(unittest.TestCase):
+    def setUp(self):
+        self.now = datetime.now(timezone.utc)
+        self.candidates = [{
+            "source": source, "title": title, "url": url,
+            "published_at": self.now.isoformat(), "eligible_for_top": top,
+            "summary": "The release adds batch processing and per-request cost reports. It is available in public beta and requires explicit configuration.",
+        } for source, title, url, top in (
+            ("Model Lab", "Batch API", "https://lab.example/batch", "true"),
+            ("Engineering Blog", "Cost reporting", "https://engineering.example/report", "false"),
+            ("Third Source", "Unselected story", "https://third.example/story", "true"),
+        )]
+        self.payload = {
+            "top_stories": [{
+                "title": "批处理接口开放公测", "url": self.candidates[0]["url"],
+                "what_happened": "新增批处理接口和逐请求成本报告，当前为公开测试阶段。",
+                "why_it_matters": "批处理提供新的调用方式，团队可以按请求核对成本。",
+                "who_is_affected": "需要离线处理任务的 AI 工程团队。",
+                "product_angle": "先在可重试任务中试用，再核对失败率与实际账单。",
+            }],
+            "other_stories": [{
+                "title": "工程团队记录逐请求成本", "url": self.candidates[1]["url"],
+                "summary": "新增逐请求成本报告，当前需显式配置；适合批处理团队在试用阶段核对实际账单。",
+            }],
+            "theme_observation": {
+                "thesis": "上线新接口并不意味着单位任务成本已经下降。",
+                "evidence_urls": [c["url"] for c in self.candidates[:2]],
+                "evidence": "批处理接口与逐请求成本报告同时出现，让团队有机会测量真实任务开销。",
+                "implication": "公测阶段仍应把集成与重试成本计入评估。",
+                "watch": "用相同任务对比处理前后的失败率、账单和人工复核时间。",
+            },
+        }
+
+    def test_valid_story_passes_full_pipeline_without_padding(self):
+        self.assertEqual(generate.validate_payload_quality(self.payload, self.candidates), [])
+        text = generate.briefing_from_payload(self.payload, self.candidates)
+        self.assertEqual(generate.validate_briefing(text, now=self.now, official_candidates=self.candidates), [])
+        self.assertEqual(generate.validate_editorial_quality(text), [])
+        self.assertEqual(len(generate.parse_other_stories(text)), 1)
+        self.assertNotIn("Unselected story", text)
+
+    def test_no_top_story_still_keeps_useful_other_reads(self):
+        self.payload["top_stories"] = []
+        self.payload["theme_observation"] = None
+        text = generate.briefing_from_payload(self.payload, self.candidates)
+        self.assertEqual(len(generate.parse_top_stories(text)), 0)
+        self.assertEqual(len(generate.parse_other_stories(text)), 1)
+        self.assertEqual(generate.validate_payload_quality(self.payload, self.candidates), [])
+
+    def test_rejects_theme_citing_an_unselected_candidate(self):
+        self.payload["theme_observation"]["evidence_urls"][1] = self.candidates[2]["url"]
+        self.assertTrue(any("未入选事件" in e for e in generate.validate_payload_quality(self.payload, self.candidates)))
+        self.assertNotIn("今日主题观察", generate.briefing_from_payload(self.payload, self.candidates))
+
+    def test_rejects_duplicate_evidence_and_missing_verification_action(self):
+        theme = self.payload["theme_observation"]
+        theme["evidence_urls"] = [self.candidates[0]["url"]] * 2
+        del theme["watch"]
+        errors = generate.validate_payload_quality(self.payload, self.candidates)
+        self.assertTrue(any("至少两条" in e for e in errors))
+        self.assertTrue(any("watch" in e for e in errors))
+
+    def test_rejects_other_story_without_summary(self):
+        del self.payload["other_stories"][0]["summary"]
+        self.assertTrue(generate.validate_payload_quality(self.payload, self.candidates))
+        text = generate.briefing_from_payload(self.payload, self.candidates)
+        self.assertTrue(any("中文摘要" in e for e in generate.validate_editorial_quality(text)))
+
+    def test_rejects_metadata_only_or_discussion_score_as_evidence(self):
+        for summary, source in (("A Blog post by the author", "Blog"), ("HN discussion score 300. " * 6, "Hacker News")):
+            with self.subTest(source=source):
+                self.candidates[1].update(summary=summary, source=source)
+                self.assertTrue(any("缺少原文事实" in e for e in generate.validate_payload_quality(self.payload, self.candidates)))
+
+    def test_rejects_old_or_historically_published_other_story(self):
+        candidate = self.candidates[1]
+        candidate["published_at"] = (self.now - timedelta(days=3)).isoformat()
+        text = generate.briefing_from_payload(self.payload, self.candidates)
+        errors = generate.validate_briefing(text, [candidate], self.now, self.candidates)
+        self.assertTrue(any("48 小时" in e for e in errors))
+        self.assertTrue(any("历史简报" in e for e in errors))
+
+    def test_empty_selection_requires_editorial_reason(self):
+        payload = {"top_stories": [], "other_stories": [], "theme_observation": None}
+        self.assertTrue(generate.validate_payload_quality(payload, self.candidates))
+        payload["selection_note"] = "全部为缺少细节的营销公告。"
+        self.assertEqual(generate.validate_payload_quality(payload, self.candidates), [])
+
+    def test_top_eligibility_cannot_be_overridden_by_model(self):
+        self.candidates[0]["eligible_for_top"] = "false"
+        self.assertTrue(any("仅限补充阅读" in e for e in generate.validate_payload_quality(self.payload, self.candidates)))
+
+    def test_model_failure_keeps_existing_publication(self):
+        with patch.dict(generate.os.environ, {"DEEPSEEK_API_KEY": ""}):
+            with self.assertRaises(EnvironmentError):
+                generate.fetch_briefing("test", official_candidates=self.candidates)
+
+    def test_malformed_draft_is_repaired_then_reviewed(self):
+        valid = json.dumps(self.payload, ensure_ascii=False)
+        responses = [SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=c))])
+                     for c in ("[]", valid, valid)]
+        with patch.dict(generate.os.environ, {"DEEPSEEK_API_KEY": "test-key"}), \
+             patch.object(generate, "_api_create_with_retry", side_effect=responses) as api, \
+             patch.object(generate, "NOW", self.now):
+            result = generate.fetch_briefing("test", official_candidates=self.candidates)
+        self.assertEqual(api.call_count, 3)
+        self.assertIn("编辑判断", result)
+        self.assertEqual(generate.validate_editorial_quality(result), [])
+
+
+class SourceEvidenceTests(unittest.TestCase):
+    def test_feed_top_eligibility_is_respected(self):
+        now = datetime.now(timezone.utc)
+        data = f'<rss><channel><item><title>AI update</title><link>https://vercel.com/changelog/update</link><pubDate>{now.isoformat()}</pubDate></item></channel></rss>'.encode()
+        for source in ("Vercel Changelog", "Cloudflare Changelog", "Simon Willison"):
+            with self.subTest(source=source):
+                candidates = generate.parse_official_feed(data, source, now)
+                self.assertEqual(candidates[0]["eligible_for_top"], "false")
+        self.assertEqual(generate.parse_official_feed(data, "Custom Source", now, top_eligible=False)[0]["eligible_for_top"], "false")
+
+    def test_namespaced_full_feed_content_supplies_evidence(self):
+        root = generate.ElementTree.fromstring('''<rss xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><item><title>Update</title><description>Teaser</description><content:encoded><![CDATA[<p>Actual engineering evidence.</p>]]></content:encoded></item></channel></rss>''')
+        self.assertEqual(generate._feed_entries(root)[0][3], "Actual engineering evidence.")
+
+    def test_article_body_wins_over_generic_metadata_and_navigation(self):
+        body = "The model returns probabilities in one forward pass. Hardware and batch size affect the latency. " * 3
+        page = '<meta content="A blog post" property="og:description"><nav><p>Subscribe now</p></nav><article><p>' + body + '</p><script>untrustedScript()</script></article>'
+        excerpt = generate._extract_article_excerpt(page)
+        self.assertIn("Hardware and batch size", excerpt)
+        self.assertNotIn("Subscribe", excerpt)
+        self.assertNotIn("untrustedScript", excerpt)
+
+    def test_article_metadata_attribute_order_does_not_matter(self):
+        self.assertEqual(generate._extract_article_excerpt('<meta content="Useful summary" name="description">'), "Useful summary")
+
+    def test_url_dedup_preserves_article_identity_query(self):
+        first = generate.canonicalize_url("https://news.ycombinator.com/item?id=123&utm_source=feed")
+        second = generate.canonicalize_url("https://news.ycombinator.com/item?id=456")
+        self.assertEqual(first, "https://news.ycombinator.com/item?id=123")
+        self.assertNotEqual(first, second)
+
+    def test_hosted_authors_and_repositories_are_distinct_publishers(self):
+        self.assertNotEqual(generate._source_family("https://huggingface.co/blog/LiquidAI/open-d1"), generate._source_family("https://huggingface.co/blog/microsoft/thinkingbox"))
+        self.assertNotEqual(generate._source_family("https://github.com/vllm-project/vllm/releases/tag/v1"), generate._source_family("https://github.com/huggingface/transformers/releases/tag/v1"))
+        self.assertEqual(generate._source_family("https://research.google/blog/article"), generate._source_family("https://blog.google/article"))
+
+    def test_curated_releases_skip_prereleases_and_keep_project_context(self):
+        now = datetime.now(timezone.utc)
+        data = '<feed xmlns="http://www.w3.org/2005/Atom">' + ''.join(
+            f'<entry><title>{tag}</title><link href="https://github.com/vllm-project/vllm/releases/tag/{tag}"/><published>{now.isoformat()}</published><content>New batching support.</content></entry>'
+            for tag in ("v1.0rc1", "v0.9.0", "v0.8.0")
+        ) + '</feed>'
+        with patch.object(generate, "CURATED_RELEASE_REPOS", ("vllm-project/vllm",)), patch.object(generate, "urlopen") as urlopen:
+            urlopen.return_value.__enter__.return_value.read.return_value = data.encode()
+            candidates = generate.get_github_release_candidates(now)
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["title"], "vllm-project/vllm: v0.9.0")
+        self.assertEqual(candidates[0]["eligible_for_top"], "false")
+
+    def test_context_budget_does_not_cut_off_last_source(self):
+        candidates = [{"url": f"https://source{i}.example/article", "title": "测试" * 30,
+                       "source": f"Source {i}", "summary": "证据" * 1000,
+                       "published_at": "2026-10-08T00:00:00+00:00", "eligible_for_top": "true"}
+                      for i in range(generate.MAX_CANDIDATES)]
+        prompt = generate.build_user_prompt(official_candidates=candidates)
+        data = json.loads(prompt.split("候选（时间、来源、标题、URL、原文摘录、是否可进 Top 3）：\n")[1])
+        self.assertEqual(len(data), generate.MAX_CANDIDATES)
+        self.assertEqual(data[-1]["url"], candidates[-1]["url"])
+        self.assertTrue(all(len(c["summary"]) >= 400 for c in data))
+
+    def test_context_budget_is_spent_on_missing_evidence_after_rich_sources(self):
+        candidates = [{"url": f"https://example.com/{i}", "source": "Test", "summary": "x" * 1000}
+                      for i in range(generate.MAX_ARTICLE_CONTEXT_FETCHES)]
+        candidates.append({"url": "https://example.com/needs-context", "source": "Test", "summary": ""})
+        with patch.object(generate, "urlopen") as urlopen:
+            urlopen.return_value.__enter__.return_value.read.return_value = ("<article><p>" + "Detailed evidence. " * 20 + "</p></article>").encode()
+            result = generate.enrich_candidate_context(candidates)
+        self.assertEqual(urlopen.call_count, 1)
+        self.assertGreater(len(result[-1]["summary"]), 180)
 
 
 if __name__ == "__main__":
