@@ -7,8 +7,78 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 07 Oct 2026 07:56:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 08:17:46 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-08</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-08.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-08.html</guid>
+      <pubDate>Thu, 08 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/teens-learn-and-plan">OpenAI 为青少年推出大学申请规划工具</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/teens-learn-and-plan">OpenAI</a> · 2026-10-07</p>
+<!-- published_at: 2026-10-07T12:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>ChatGPT for Teens 推出 College Planner，帮助管理大学申请，并提供新的闪卡和测验功能。</li>
+<li>将 AI 辅导与升学规划整合进青少年产品，切入高价值教育场景，可能改变学生和家长的使用习惯。</li>
+<li>高中生及家长；教育科技和升学咨询服务商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：面向细分用户的功能落地，扩展 ChatGPT 在教育领域的应用范围。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/cyber-verification-program">Anthropic 扩展网络安全验证计划，向安全专业人员提供高级模型访问</a></p>
+<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/cyber-verification-program">Anthropic</a> · 2026-10-06</p>
+<!-- published_at: 2026-10-06T19:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 推出新版网络安全验证计划（CVP），提供三个访问层级，包括最先进模型 Claude Opus 5.5 和降低的封锁分类器。</li>
+<li>直接向安全团队分发高级能力，改变网络安全工具的可及性和攻防格局。</li>
+<li>安全研究人员和企业安全团队；网络安全工具市场。</li>
+</ul>
+<p><strong>产品技术视角</strong>：通过分层访问控制释放模型能力，建立垂直领域信任。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1007113/microsoft-windows-copilot-ai-control-search-hybrid-intelligence">微软 Copilot 将能控制 Windows 和本地文件</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1007113/microsoft-windows-copilot-ai-control-search-hybrid-intelligence">The Verge AI</a> · 2026-10-07</p>
+<!-- published_at: 2026-10-07T14:01:20-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>微软在 Windows 和 Surface 活动上展示 Copilot 升级，可访问本地文件并在操作系统中执行操作，提出“混合智能”概念。</li>
+<li>AI 助手获得系统级权限，将深度介入个人电脑工作流，可能重塑桌面操作系统交互方式。</li>
+<li>Windows 用户和开发者；依赖传统桌面交互的企业应用。</li>
+</ul>
+<p><strong>产品技术视角</strong>：操作系统与 AI 集成，预示 AI 成为 PC 核心控制层。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://huggingface.co/blog/LiquidAI/open-d1">Liquid AI 发布多模态开源 d1 边缘决策模型</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform">Google 推出 Playground 实验性游戏平台</a></strong> · Google AI Blog</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users">Nous Research 完成 9000 万美元 B 轮融资，估值 15 亿美元</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/openai-decisions-api-now-available-on-ai-gateway">Vercel AI Gateway 支持 OpenAI Decisions API</a></strong> · Vercel Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/radisson">Radisson 酒店集团与 OpenAI 合作在 ChatGPT 中提供酒店预订</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1005726/doordash-ai-agentic-food-delivery-bites">DoorDash 面临 AI 驱动的食品配送初创公司 Bites 挑战</a></strong> · The Verge AI</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>AI 正在同时向两个方向渗透：一是操作系统和硬件层面获得更深控制权（如 Copilot 控制 Windows、AI PC 发布），二是垂直场景和用户细分（如青少年教育、酒店预订、游戏创建）加速落地。此外，大模型能力开始通过分层授权向安全等专业领域释放，企业级 AI 应用进入实用化阶段。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>直接提供内容的源：OpenAI、Anthropic、The Verge AI</li>
+<li>所有链接均来自程序已核验的公开数据源。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-07</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-07.html</link>
@@ -796,73 +866,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、The Verge AI、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-22</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-22.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-22.html</guid>
-      <pubDate>Tue, 22 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/998453/california-ai-data-center-bills">加州收紧 AI 数据中心能源与用水规则</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/998453/california-ai-data-center-bills">The Verge AI</a> · 2026-09-21</p>
-<!-- published_at: 2026-09-21T16:29:45-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>加州州长签署七项法案，要求 AI 数据中心承担公用事业升级成本，并建立新费率分类。</li>
-<li>直接改变美国最大 AI 市场的部署成本：数据中心必须自付电网与水系统升级费用，不再转嫁给居民，新建项目门槛提高。</li>
-<li>在加州运营或计划扩张的云厂商与 AI 公司，以及依赖数据中心用电的当地居民。</li>
-</ul>
-<p><strong>产品技术视角</strong>：基础设施合规成为产品前置条件，推动数据中心向更高效用水用电设计演进。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://vercel.com/changelog/grok-4-7-now-available-and-40-off-on-ai-gateway-fx-eve">Grok 4.7 登陆 Vercel AI Gateway，打六折一周</a></p>
-<p><strong>来源</strong>：<a href="https://vercel.com/changelog/grok-4-7-now-available-and-40-off-on-ai-gateway-fx-eve">Vercel Changelog</a> · 2026-09-21</p>
-<!-- published_at: 2026-09-21T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>xAI 的 Grok 4.7 在 Vercel AI Gateway、eve 和 fx 上线，9 月 21 日起一周内提供 40% 折扣。</li>
-<li>开发者可以通过统一 API 和低折扣直接调用最新推理模型，降低试错和部署成本，改变企业采用前沿模型的经济性。</li>
-<li>使用 Vercel 平台构建 agentic 应用的开发者与团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：模型分发进入云端工作流：与现有工具链集成，价格促销推动快速验证。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/21/openai-forms-math-advisory-group-as-its-ai-resolves-more-than-100-open-problems">OpenAI 成立数学与 AI 顾问小组，已解决超百个开放问题</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/21/openai-forms-math-advisory-group-as-its-ai-resolves-more-than-100-open-problems">TechCrunch AI</a> · 2026-09-21</p>
-<!-- published_at: 2026-09-21T20:15:58+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 成立独立顾问组，指导新兴 AI 数学成果的评审与传播，同时披露其 AI 已解决超过 100 个开放数学问题。</li>
-<li>AI 开始规模化产生可验证的科学贡献，评审和治理机制首次进入前沿研究流程，影响研究社区对 AI 结果的信任方式。</li>
-<li>数学研究者、依赖形式化验证的行业，以及关注 AI 可信度的公众。</li>
-</ul>
-<p><strong>产品技术视角</strong>：不仅输出模型，还输出经过评审的科学结果，为 AI 在专业领域的应用建立新标准。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-09-21-grok-4-7-is-now-available-in-github-copilot">Grok 4.7 登陆 GitHub Copilot</a></strong> · GitHub Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/998078/amazon-blocks-meta-muse-ai-agent-shopping">Amazon 屏蔽 Meta 的 Muse AI 代理</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/ai-gateway-now-supports-typesafe-clients-and-http-api-for-jev">Vercel AI Gateway 支持 Jev 的 TypeSafe 客户端与 HTTP API</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/higgsfield-from-prompt-to-production-with-astra">Higgsfield AI 用 GPT-6 Astra 一天内上新视频功能</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/tokenizers-v1">Tokenizers v1 发布：编码、解码与扩展性实测</a></strong> · Hugging Face Blog</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 基础设施的合规成本与平台壁垒正在成为新的竞争变量：加州新规直接增加数据中心运营成本，亚马逊屏蔽 Meta 代理则显示平台对 AI 访问的封闭性。同时，前沿模型通过开发者平台（Vercel、GitHub）加速分发，并以价格战降低采用门槛。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：The Verge AI、Vercel Changelog、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
