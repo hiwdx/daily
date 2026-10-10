@@ -1,5 +1,6 @@
 import copy
 import json
+import io
 import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
@@ -83,6 +84,34 @@ class SelectionRecoveryTests(unittest.TestCase):
             result = generate.fetch_briefing("test", official_candidates=self.candidates)
         self.assertEqual(api.call_count, generate.MAX_MODEL_CALLS)
         self.assertIn("briefing_mode: source_links", result)
+
+    def test_empty_successful_api_response_cannot_crash_generation(self):
+        with patch.dict(generate.os.environ, {"DEEPSEEK_API_KEY": "test"}), \
+             patch.object(generate, "NOW", self.now), \
+             patch.object(generate, "_api_create_with_retry", return_value=SimpleNamespace(choices=[])):
+            result = generate.fetch_briefing("test", official_candidates=self.candidates)
+        self.assertIn("briefing_mode: source_links", result)
+
+    def test_one_feed_parse_failure_does_not_abort_other_sources(self):
+        feeds = generate.OFFICIAL_UPDATE_FEEDS[:2]
+        def parse(data, source, *args):
+            if source == feeds[0].source:
+                raise ValueError("broken source")
+            return [{**self.candidates[0], "source": source}]
+        with patch.object(generate, "OFFICIAL_UPDATE_FEEDS", feeds), \
+             patch.object(generate, "urlopen", side_effect=lambda *a, **k: io.BytesIO(b"feed")), \
+             patch.object(generate, "parse_official_feed", side_effect=parse):
+            result = generate.get_official_candidates(now=self.now)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["source"], feeds[1].source)
+
+    def test_feed_invalid_port_and_non_web_urls_are_ignored(self):
+        xml = '<rss><channel>' + ''.join(
+            '<item><title>AI update</title><link>' + url + '</link><pubDate>' + self.now.isoformat() + '</pubDate></item>'
+            for url in ['https://example.com:invalid/broken', 'javascript:alert(1)', self.candidates[0]['url']]
+        ) + '</channel></rss>'
+        result = generate.parse_official_feed(xml.encode(), 'test', self.now)
+        self.assertEqual([c['url'] for c in result], [self.candidates[0]['url']])
 
     def test_fallback_rejects_stale_future_undated_and_history_links(self):
         for timestamp in [(self.now - timedelta(days=3)).isoformat(),

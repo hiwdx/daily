@@ -292,7 +292,12 @@ def parse_official_feed(
 
     candidates: list[dict[str, str]] = []
     for title, raw_link, raw_pub_date, summary in _feed_entries(root):
-        link = canonicalize_url(raw_link)
+        try:
+            link = canonicalize_url(raw_link)
+        except ValueError:
+            continue  # One malformed URL must not abort all sources.
+        if urlsplit(link).scheme not in {"http", "https"} or not urlsplit(link).hostname:
+            continue
         if not title or not link or not raw_pub_date:
             continue
         # AI-native sources are on-topic by definition; only broad sources need
@@ -349,12 +354,12 @@ def get_official_candidates(
             request = Request(feed.url, headers={"User-Agent": "hiwd-daily/1.0"})
             with urlopen(request, timeout=15) as response:
                 xml_data = response.read()
+            return parse_official_feed(
+                xml_data, feed.source, now, feed.ai_native, feed.top_eligible, feed.filter_opinion
+            )
         except Exception as error:
             print(f"  ⚠️ Could not load {feed.source} feed: {error}")
             return []
-        return parse_official_feed(
-            xml_data, feed.source, now, feed.ai_native, feed.top_eligible, feed.filter_opinion
-        )
     with ThreadPoolExecutor(max_workers=6) as pool:
         for batch in pool.map(fetch_feed, OFFICIAL_UPDATE_FEEDS):
             for candidate in batch:
@@ -1122,7 +1127,10 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
                 print("⚠️ DeepSeek unavailable; publishing verified-source fallback")
                 return build_official_feed_fallback(official_candidates, previous_stories)
             raise
-        content = response.choices[0].message.content or "{}"
+        try:
+            content = response.choices[0].message.content or "{}"
+        except (AttributeError, IndexError, TypeError):
+            content = "{}"  # Repair empty/malformed successful API responses too.
         try:
             payload = json.loads(content)
         except json.JSONDecodeError:
@@ -1641,7 +1649,8 @@ def main() -> None:
 
     user_prompt = build_user_prompt(official_candidates=official_candidates)
     briefing_md = fetch_briefing(user_prompt, previous_stories, official_candidates)
-    print(f"✅ Received {len(briefing_md)} chars of validated editorial content")
+    mode = "verified source links" if "<!-- briefing_mode: source_links -->" in briefing_md else "validated editorial content"
+    print(f"✅ Received {len(briefing_md)} chars of {mode}")
 
     # Add today to archive entries BEFORE rendering so it appears in the nav
     # and the JS "今日" highlight can find the entry.
