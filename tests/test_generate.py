@@ -470,10 +470,11 @@ class PractitionerEditingTests(unittest.TestCase):
         self.candidates[0]["eligible_for_top"] = "false"
         self.assertTrue(any("仅限补充阅读" in e for e in generate.validate_payload_quality(self.payload, self.candidates)))
 
-    def test_model_failure_keeps_existing_publication(self):
+    def test_model_failure_publishes_verified_fallback(self):
         with patch.dict(generate.os.environ, {"DEEPSEEK_API_KEY": ""}):
-            with self.assertRaises(EnvironmentError):
-                generate.fetch_briefing("test", official_candidates=self.candidates)
+            result = generate.fetch_briefing("test", official_candidates=self.candidates)
+        self.assertIn("今日 Top 3", result)
+        self.assertIn("Batch API", result)
 
     def test_malformed_draft_is_repaired_then_reviewed(self):
         valid = json.dumps(self.payload, ensure_ascii=False)

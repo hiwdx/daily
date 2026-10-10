@@ -925,6 +925,49 @@ def format_empty_top_state(briefing: str) -> str:
     return briefing[:section_match.start()] + replacement + briefing[section_match.end():]
 
 
+def build_official_feed_fallback(official_candidates: Optional[list[dict[str, str]]] = None) -> str:
+    """Render a publishable issue from verified feed metadata when the model is unavailable."""
+    candidates = official_candidates or []
+    selected: list[dict[str, str]] = []
+    families: set[str] = set()
+    for candidate in candidates:
+        family = _source_family(candidate.get("url", ""))
+        if candidate.get("eligible_for_top") != "true" or not candidate.get("url") or family in families:
+            continue
+        selected.append(candidate)
+        families.add(family)
+        if len(selected) == 3:
+            break
+    blocks = []
+    for candidate in selected:
+        blocks.append(
+            f"**标题**：[{candidate['title']}]({candidate['url']})\n\n"
+            f"**来源**：[{candidate['source']}]({candidate['url']}) · {candidate['published_at'][:10]}\n\n"
+            f"<!-- published_at: {candidate['published_at']} -->\n\n"
+            "**摘要**：\n\n"
+            f"- {candidate.get('summary', '')[:130] or '公开订阅源已确认该更新。'}\n"
+            "- 该条目来自已核验的公开来源，具体影响请以原文为准。\n"
+            "- 相关开发者和产品团队可直接查看原文。\n\n"
+            "**产品技术视角**：本期模型编辑服务不可用，先保留已核验事实。"
+        )
+    other: list[str] = []
+    used = {candidate.get("url") for candidate in selected}
+    seen: set[str] = set()
+    for candidate in candidates:
+        family = _source_family(candidate.get("url", ""))
+        if not candidate.get("url") or candidate["url"] in used or family in seen:
+            continue
+        other.append(f"- **[{candidate['title']}]({candidate['url']})** · {candidate['source']}")
+        seen.add(family)
+        if len(other) == 5:
+            break
+    return (
+        "### 🎯 今日 Top 3\n\n" + ("\n\n---\n\n".join(blocks) or "**今天暂时没有新的重点动态**")
+        + "\n\n### 📰 其他值得看的\n\n" + "\n\n".join(other)
+        + "\n\n### ⚠️ 信息来源说明\n\n- 本期来源：已核验公开订阅源。\n"
+    )
+
+
 def _api_create_with_retry(client: OpenAI, messages: list[dict[str, str]]):
     """Make one request; fetch_briefing owns the bounded review/repair budget."""
     try:
@@ -1016,6 +1059,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
     """Generate once, then always run a separate final editorial review."""
     api_key = os.environ.get("DEEPSEEK_API_KEY", "")
     if not api_key:
+        if official_candidates:
+            print("⚠️ DEEPSEEK_API_KEY unavailable; publishing verified-source fallback")
+            return build_official_feed_fallback(official_candidates)
         raise EnvironmentError("DEEPSEEK_API_KEY environment variable is not set; keeping the last published issue")
     client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
     messages: list[dict[str, str]] = [
