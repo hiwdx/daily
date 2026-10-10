@@ -1032,6 +1032,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
             if first_valid_briefing:
                 print("⚠️ Review API unavailable; publishing the already validated first draft")
                 return first_valid_briefing
+            if official_candidates:
+                print("⚠️ DeepSeek unavailable; publishing verified-source fallback")
+                return build_official_feed_fallback(official_candidates)
             raise
         content = response.choices[0].message.content or "{}"
         try:
@@ -1093,9 +1096,10 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
         + "；".join(last_blockers or ["未知"]),
         file=sys.stderr,
     )
-    raise RuntimeError(
-        "DeepSeek output did not meet editorial quality rules; refusing to publish a low-value fallback"
-    )
+    if official_candidates:
+        print("⚠️ Editorial gate exhausted; publishing verified-source fallback")
+        return build_official_feed_fallback(official_candidates)
+    raise RuntimeError("DeepSeek output did not meet editorial quality rules and no verified candidates were available")
 
 
 # ── Markdown → HTML ───────────────────────────────────────────────────────────
