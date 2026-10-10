@@ -2,117 +2,126 @@ name: Daily AI Briefing
 
 on:
   schedule:
-    # 主任务：UTC 20:30（北京时间次日 04:30）
-    # GitHub 调度器在 UTC 00:xx 高峰期通常延迟 3-4 小时，提前到此时段可让实际运行落在 CST 08:00 左右
+    # Beijing 04:30, 05:30, 06:00, 10:30 and 11:30; scheduling may be delayed.
     - cron: '30 20 * * *'
-    # 兜底1：UTC 21:30（北京时间次日 05:30，延迟后约 CST 09:00）
     - cron: '30 21 * * *'
-    # 兜底2：UTC 22:00（北京时间次日 06:00，延迟后约 CST 09:30）
     - cron: '0 22 * * *'
-    # 迟到补偿：UTC 02:30（北京时间 10:30）；仅在当天仍缺日报时生成
     - cron: '30 2 * * *'
-    # 迟到补偿2：UTC 03:30（北京时间 11:30）；覆盖更严重的调度延迟
     - cron: '30 3 * * *'
-  workflow_dispatch:    # 手动触发：默认走幂等检查；勾选 force 才强制重跑
+    # Recover missing/provisional issues at 12:17–22:17 Beijing.
+    - cron: '17 4-14/2 * * *'
+  workflow_dispatch:
     inputs:
       force:
-        description: "true 时忽略幂等检查，强制重新生成（默认 false）"
+        description: 'true forces regeneration, including a complete issue'
         required: false
         default: 'false'
+
+concurrency:
+  group: daily-briefing-main
+  cancel-in-progress: false
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     permissions:
-      contents: write   # 需要写权限以 push 生成的 HTML
-      issues: write     # 需要写权限以在失败时创建告警 Issue
-
+      contents: write
+      pages: write
+      issues: write
     steps:
-      - name: Checkout repository
+      - name: Checkout latest main
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}   # Re-run 时也拿最新 main，而非旧 SHA
+          ref: main
+          fetch-depth: 0
 
-      - name: Check if today's briefing already exists
+      - name: Check complete issue and provisional status
         id: check
+        env:
+          FORCE: ${{ github.event.inputs.force }}
         run: |
-          # 手动触发且勾选 force 时才跳过幂等检查
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.force }}" = "true" ]; then
-            echo "skip=false" >> $GITHUB_OUTPUT
-            echo "🔄 手动触发（force=true），跳过幂等检查，强制生成"
-            exit 0
-          fi
+          set -euo pipefail
+          NEEDED=$(python3 scripts/briefing_health.py needed)
+          if [ "${FORCE:-false}" = 'true' ]; then NEEDED=true; fi
+          echo "needed=$NEEDED" >> "$GITHUB_OUTPUT"
 
-          TODAY=$(TZ=Asia/Shanghai date +'%Y-%m-%d')
-          echo "今日日期（CST）: ${TODAY}"
-
-          # 定时任务 & 未勾 force 的手动触发：用 archive.json 判断今日是否已生成
-          if python3 -c "import json,sys; d=json.load(open('docs/archive.json')); sys.exit(0 if '${TODAY}' in [e.get('date','') for e in d] else 1)" 2>/dev/null; then
-            echo "skip=true" >> $GITHUB_OUTPUT
-            echo "✅ 今日简报已存在（${TODAY}），跳过生成"
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
-            echo "⚠️  简报缺失（${TODAY}），开始生成"
-          fi
-
-      - name: Set up Python 3.11
-        if: steps.check.outputs.skip == 'false'
+      - name: Set up Python
+        if: steps.check.outputs.needed == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
+          cache: pip
 
       - name: Install dependencies
-        if: steps.check.outputs.skip == 'false'
-        run: pip install -r requirements.txt
+        if: steps.check.outputs.needed == 'true'
+        run: pip install --retries 3 --timeout 30 -r requirements.txt
 
-      - name: Test freshness and deduplication guards
-        if: steps.check.outputs.skip == 'false'
+      - name: Run reliability and editorial tests
+        if: steps.check.outputs.needed == 'true'
         run: python -m unittest discover -s tests -v
 
-      - name: Generate daily briefing
-        if: steps.check.outputs.skip == 'false'
+      - name: Generate and validate daily briefing
+        if: steps.check.outputs.needed == 'true'
+        timeout-minutes: 12
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: python generate.py
-
-      - name: Commit and push
-        if: steps.check.outputs.skip == 'false'
+          PYTHONUNBUFFERED: '1'
         run: |
-          git config user.name  "AI Briefing Bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/
-          # 只有文件真正变化时才 commit
-          git diff --staged --quiet && echo "No changes" || (
-            git commit -m "📰 AI 简报 $(TZ=Asia/Shanghai date +'%Y-%m-%d')" &&
-            git pull --rebase -X theirs origin main &&
-            git push
-          )
+          python generate.py
+          python scripts/briefing_health.py local
 
-      - name: Verify briefing and alert on missing
-        # 仅定时触发时检查；用 always() 保证即使前面 step 失败，告警 step 仍会跑
-        # （否则一旦 generate.py 抛异常，verify 自动 skip → issue 永远建不出来）
-        if: always() && github.event_name == 'schedule'
+      - name: Commit and push with bounded retries
+        if: steps.check.outputs.needed == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name 'AI Briefing Bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "📰 AI 简报 $(TZ=Asia/Shanghai date +'%Y-%m-%d')"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            # Never overwrite conflicting human edits automatically.
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          echo '::error::Failed to publish the generated commit'
+          exit 1
+
+      - name: Explicitly request Pages publication
+        # GITHUB_TOKEN pushes do not trigger Pages builds automatically.
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
+          python3 scripts/briefing_health.py local
+          gh api --method POST "repos/${{ github.repository }}/pages/builds"
+
+      - name: Verify actual website publication
+        id: online
+        run: python3 scripts/briefing_health.py online
+
+      - name: Report failure or degraded publication
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JOB_STATUS: ${{ job.status }}
+          ONLINE_STATUS: ${{ steps.online.outcome }}
+        run: |
+          set -euo pipefail
           TODAY=$(TZ=Asia/Shanghai date +'%Y-%m-%d')
-          if python3 -c "import json,sys; d=json.load(open('docs/archive.json')); sys.exit(0 if '${TODAY}' in [e.get('date','') for e in d] else 1)" 2>/dev/null; then
-            echo "✅ 验证通过：${TODAY} 简报已存在"
-          else
-            echo "❌ 验证失败：${TODAY} 简报仍缺失，创建告警 Issue"
-            gh label create "briefing-missing" \
-              --color "D73A4A" \
-              --description "每日简报未能按时生成" \
-              --force
-            EXISTING=$(gh issue list --label "briefing-missing" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
-            if [ -z "$EXISTING" ]; then
-              gh issue create \
-                --title "⚠️ 每日简报缺失：${TODAY}" \
-                --body "定时任务已运行，但 **${TODAY}** 的简报仍未生成。请检查 [Actions 日志](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) 或手动触发 workflow。" \
-                --label "briefing-missing"
-            else
-              echo "Issue #${EXISTING} 已存在，跳过重复创建"
-            fi
-            exit 1
+          MODE=$(python3 -c "import json; print(json.load(open('docs/status.json')).get('mode','unknown'))" 2>/dev/null || echo unknown)
+          if [ "$JOB_STATUS" = success ] && [ "$ONLINE_STATUS" = success ] && [ "$MODE" = editorial ]; then
+            echo 'Full editorial issue verified online.'
+            exit 0
           fi
+          echo "::warning::Briefing requires attention: job=$JOB_STATUS online=$ONLINE_STATUS mode=$MODE"
+          gh label create briefing-missing --color D73A4A --description 'Briefing missing, degraded or not published' --force
+          EXISTING=$(gh issue list --label briefing-missing --state open --search "$TODAY in:title" --json number --jq '.[0].number')
+          if [ -z "$EXISTING" ]; then
+            gh issue create --label briefing-missing --title "⚠️ 每日简报异常：${TODAY}" \
+              --body "生成或上线异常，或目前仅发布原文速览（mode=$MODE）。后续定时任务将自动重试。[查看日志](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})。"
+          fi
+          if [ "$JOB_STATUS" != success ] || [ "$ONLINE_STATUS" != success ]; then exit 1; fi

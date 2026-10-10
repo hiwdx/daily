@@ -1,2 +1,2 @@
-markdown
-openai>=1.0.0,<3.0.0
+markdown==3.11
+openai==2.54.0

@@ -20,7 +20,7 @@ from email.utils import format_datetime, parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Optional
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, quote, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
 from xml.sax.saxutils import escape as xml_escape
@@ -661,6 +661,7 @@ def validate_briefing(
     previous_stories: Optional[list[dict[str, str]]] = None,
     now: Optional[datetime] = None,
     official_candidates: Optional[list[dict[str, str]]] = None,
+    allow_degraded: bool = False,
 ) -> list[str]:
     """Return publish-blocking errors for freshness and duplicate violations."""
     now = now or NOW
@@ -672,7 +673,7 @@ def validate_briefing(
     stories = parse_top_stories(briefing)
     if not stories:
         no_news = _NO_NEWS_RE.search(section_match.group(1))
-        if not no_news:
+        if not no_news and not (allow_degraded and "<!-- briefing_mode: source_links -->" in briefing):
             return ["Top 3 中没有可解析的条目，也没有明确注明过去 48 小时无合格内容"]
     if len(stories) > 3:
         return [f"Top 3 实际包含 {len(stories)} 条，超过 3 条"]
@@ -925,47 +926,86 @@ def format_empty_top_state(briefing: str) -> str:
     return briefing[:section_match.start()] + replacement + briefing[section_match.end():]
 
 
-def build_official_feed_fallback(official_candidates: Optional[list[dict[str, str]]] = None) -> str:
-    """Render a publishable issue from verified feed metadata when the model is unavailable."""
+def build_official_feed_fallback(official_candidates=None, previous_stories=None) -> str:
+    """Explicitly publish source links, not fabricated editorial summaries."""
     candidates = official_candidates or []
-    selected: list[dict[str, str]] = []
-    families: set[str] = set()
-    for candidate in candidates:
-        family = _source_family(candidate.get("url", ""))
-        if candidate.get("eligible_for_top") != "true" or not candidate.get("url") or family in families:
-            continue
-        selected.append(candidate)
-        families.add(family)
-        if len(selected) == 3:
-            break
-    blocks = []
-    for candidate in selected:
-        blocks.append(
-            f"**标题**：[{candidate['title']}]({candidate['url']})\n\n"
-            f"**来源**：[{candidate['source']}]({candidate['url']}) · {candidate['published_at'][:10]}\n\n"
-            f"<!-- published_at: {candidate['published_at']} -->\n\n"
-            "**摘要**：\n\n"
-            f"- {candidate.get('summary', '')[:130] or '公开订阅源已确认该更新。'}\n"
-            "- 该条目来自已核验的公开来源，具体影响请以原文为准。\n"
-            "- 相关开发者和产品团队可直接查看原文。\n\n"
-            "**产品技术视角**：本期模型编辑服务不可用，先保留已核验事实。"
-        )
-    other: list[str] = []
-    used = {candidate.get("url") for candidate in selected}
+    previous_urls = {canonicalize_url(s["url"]) for s in previous_stories or []}
     seen: set[str] = set()
-    for candidate in candidates:
-        family = _source_family(candidate.get("url", ""))
-        if not candidate.get("url") or candidate["url"] in used or family in seen:
+    selected = []
+    infrastructure_count = 0
+    # Prefer broader industry news over platform changelog volume.
+    def publisher(candidate):
+        return _source_family(candidate.get("url", "")).split(":")[0]
+    for candidate in sorted(candidates, key=lambda c: publisher(c) in {"github", "cloudflare", "vercel"}):
+        url = canonicalize_url(candidate.get("url", ""))
+        published = _parse_feed_date(candidate.get("published_at", ""))
+        family = publisher(candidate)
+        title = _plain_text(candidate.get("title", ""))
+        source = _plain_text(candidate.get("source", ""))
+        if (urlsplit(url).scheme not in {"https", "http"} or not urlsplit(url).hostname
+                or urlsplit(url).path.rstrip("/") in {"", "/blog", "/news", "/research", "/ai"}
+                or not title or not source or url in previous_urls or family in seen
+                or published is None or not NOW - timedelta(hours=FRESHNESS_HOURS) <= published <= NOW
+                or contains_sensitive_politics(title + " " + source + " " + candidate.get("summary", ""))):
             continue
-        other.append(f"- **[{candidate['title']}]({candidate['url']})** · {candidate['source']}")
+        infrastructure = family in {"github", "cloudflare", "vercel"}
+        if infrastructure and infrastructure_count >= 2:
+            continue
+        selected.append({**candidate, "url": url, "title": title, "source": source})
         seen.add(family)
-        if len(other) == 5:
+        infrastructure_count += int(infrastructure)
+        if len(selected) == 8:
             break
-    return (
-        "### 🎯 今日 Top 3\n\n" + ("\n\n---\n\n".join(blocks) or "**今天暂时没有新的重点动态**")
-        + "\n\n### 📰 其他值得看的\n\n" + "\n\n".join(other)
-        + "\n\n### ⚠️ 信息来源说明\n\n- 本期来源：已核验公开订阅源。\n"
+    if not selected:
+        raise RuntimeError("No fresh, safe source links available; refusing to fabricate a briefing")
+    def escape_label(value):
+        return value.replace("[", "［").replace("]", "］").replace("*", "＊").replace("<", "＜").replace(">", "＞")
+    other = [f"- **[{escape_label(c['title'])}]({quote(c['url'], safe=':/?&=%#@+,-_.~')})** · {escape_label(c['source'])}" for c in selected]
+    result = (
+        "<!-- briefing_mode: source_links -->\n\n### 🎯 今日 Top 3\n\n"
+        "**今日先提供原文速览**\n\n摘要编辑暂不可用，以下保留过去 48 小时的新内容原文标题与来源，"
+        "不生成未经核验的摘要或排名。后续任务会自动重试补全。\n\n"
+        "### 📰 其他值得看的\n\n" + "\n\n".join(other)
+        + "\n\n### ⚠️ 信息来源说明\n\n- 原文速览模式；标题保留原文，不冒充中文编辑稿。\n"
     )
+    errors = validate_briefing(result, previous_stories, official_candidates=selected, allow_degraded=True)
+    if errors:
+        raise RuntimeError("Source-link safety gate failed: " + "; ".join(errors))
+    return result
+
+
+def normalize_payload_selection(payload):
+    """Remove mechanical duplicate selections before editorial validation."""
+    if not isinstance(payload, dict):
+        return payload
+    result = dict(payload)
+    urls = set()
+    removed = False
+    for section, limit in (("top_stories", 3), ("other_stories", 8)):
+        if not isinstance(payload.get(section), list):
+            continue
+        families = set()
+        items = []
+        for item in payload[section]:
+            if not isinstance(item, dict):
+                items.append(item)  # Preserve malformed records for the quality gate.
+                continue
+            url = canonicalize_url(str(item.get("url", "")))
+            family = _source_family(url)
+            if url and (url in urls or family in families or len(items) >= limit):
+                removed = True
+                continue
+            items.append(item)
+            if url:
+                urls.add(url)
+                families.add(family)
+        result[section] = items
+    theme = result.get("theme_observation")
+    if removed and isinstance(theme, dict):
+        evidence = theme.get("evidence_urls")
+        if not isinstance(evidence, list) or not {canonicalize_url(str(u)) for u in evidence} <= urls:
+            result["theme_observation"] = None
+    return result
 
 
 def _api_create_with_retry(client: OpenAI, messages: list[dict[str, str]]):
@@ -1061,9 +1101,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
     if not api_key:
         if official_candidates:
             print("⚠️ DEEPSEEK_API_KEY unavailable; publishing verified-source fallback")
-            return build_official_feed_fallback(official_candidates)
+            return build_official_feed_fallback(official_candidates, previous_stories)
         raise EnvironmentError("DEEPSEEK_API_KEY environment variable is not set; keeping the last published issue")
-    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
+    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com", timeout=60.0, max_retries=1)
     messages: list[dict[str, str]] = [
         {"role": "system", "content": SYSTEM_PROMPT + " 只输出有效 JSON。"},
         {"role": "user", "content": user_prompt},
@@ -1080,13 +1120,14 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
                 return first_valid_briefing
             if official_candidates:
                 print("⚠️ DeepSeek unavailable; publishing verified-source fallback")
-                return build_official_feed_fallback(official_candidates)
+                return build_official_feed_fallback(official_candidates, previous_stories)
             raise
         content = response.choices[0].message.content or "{}"
         try:
             payload = json.loads(content)
         except json.JSONDecodeError:
             payload = {}
+        payload = normalize_payload_selection(payload)
         payload_errors = validate_payload_quality(payload, official_candidates or [])
         briefing = format_empty_top_state(clean_briefing(briefing_from_payload(
             payload if isinstance(payload, dict) else {}, official_candidates or []
@@ -1144,7 +1185,7 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
     )
     if official_candidates:
         print("⚠️ Editorial gate exhausted; publishing verified-source fallback")
-        return build_official_feed_fallback(official_candidates)
+        return build_official_feed_fallback(official_candidates, previous_stories)
     raise RuntimeError("DeepSeek output did not meet editorial quality rules and no verified candidates were available")
 
 
@@ -1578,7 +1619,8 @@ def main() -> None:
 
     # Load the complete reporting history so old stories cannot reappear after
     # a short rolling deduplication window.
-    previous_stories = get_previous_stories(archive_dir)
+    # Upgrading a provisional issue must not treat its own links as yesterday's news.
+    previous_stories = [s for s in get_previous_stories(archive_dir) if s.get("date") != TODAY_ISO]
     if previous_stories:
         print(f"🔍 Loaded {len(previous_stories)} previously reported stories for deduplication")
 
@@ -1644,6 +1686,12 @@ def main() -> None:
     rss_xml = build_rss(archive_dir, archive_entries, today_html=today_body)
     (docs / "rss.xml").write_text(rss_xml, encoding="utf-8")
     print(f"✅ Updated → docs/rss.xml")
+    (docs / "status.json").write_text(json.dumps({
+        "date": TODAY_ISO,
+        "mode": "source_links" if "<!-- briefing_mode: source_links -->" in briefing_md else "editorial",
+        "generated_at": datetime.now(CST).isoformat(),
+        "candidate_count": len(official_candidates),
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 if __name__ == "__main__":

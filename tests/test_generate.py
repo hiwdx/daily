@@ -471,7 +471,7 @@ class PractitionerEditingTests(unittest.TestCase):
         self.assertTrue(any("仅限补充阅读" in e for e in generate.validate_payload_quality(self.payload, self.candidates)))
 
     def test_model_failure_publishes_verified_fallback(self):
-        with patch.dict(generate.os.environ, {"DEEPSEEK_API_KEY": ""}):
+        with patch.dict(generate.os.environ, {"DEEPSEEK_API_KEY": ""}), patch.object(generate, "NOW", self.now):
             result = generate.fetch_briefing("test", official_candidates=self.candidates)
         self.assertIn("今日 Top 3", result)
         self.assertIn("Batch API", result)
