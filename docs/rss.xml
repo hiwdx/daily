@@ -7,8 +7,72 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 13 Oct 2026 05:17:28 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 03:18:56 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-14</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-14.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-14.html</guid>
+      <pubDate>Wed, 14 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/higgsfield-longer-videos-voice">OpenAI 发布 Higgsfield：AI 视频生成突破 10 分钟并整合语音</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/higgsfield-longer-videos-voice">OpenAI</a> · 2026-10-13</p>
+<!-- published_at: 2026-10-13T12:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 推出 Higgsfield，将 AI 视频长度从 1 分钟提升到超过 10 分钟，并集成 GPT-6 Astra、GPT-Image-2.5 和 GPT-Live 模型。</li>
+<li>为创作者提供长视频和语音能力，可能改变视频制作流程。</li>
+<li>视频创作者、内容制作团队及集成 OpenAI 视频 API 的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：10 分钟以上视频对一致性和计算成本提出更高要求，需关注实际生成质量和渲染时间。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b">Liquid AI 发布 LFM2.5-24B-A2B：24B 参数但仅 2B 活跃，面向端侧智能体</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b">Hugging Face Blog</a> · 2026-10-13</p>
+<!-- published_at: 2026-10-13T17:05:48+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Liquid AI 发布 LFM2.5-24B-A2B，总参数 24B、活跃参数 2B，支持工具调用和多步任务，可在端侧运行智能体。</li>
+<li>极低的活跃参数降低推理成本，使持续运行智能体在自有硬件上可行。</li>
+<li>在端侧或私有环境部署智能体的开发者，尤其是对延迟和成本敏感的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：2B 活跃参数的 MoE 设计尽管速度快，但需验证其在复杂工具使用中的稳定性和长上下文表现。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon">Google 发布 Gemini 4 Argon：面向复杂任务的全球可用前沿模型</a></p>
+<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon">Google AI Blog</a> · 2026-10-13</p>
+<!-- published_at: 2026-10-13T16:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google 推出 Gemini 4 Argon，宣称在编码、金融、法律、网络安全和科学等多领域基准上排名第一，现已通过 API、AI Studio、Gemini 应用等渠道开放。</li>
+<li>为开发者和企业提供新的前沿模型选择，可能影响模型选型。</li>
+<li>使用 Google AI 平台的开发者、企业客户及 Google AI Ultra/Pro 订阅用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：厂商称其表现优于竞争对手，但实际推理成本、速率限制及与现有工作流的集成成本需自行测试。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform">NVIDIA 开源 Run:ai 平台，作为 DSX AI Factory 的一部分</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA 开源 Run:ai，包括 KAI Scheduler、GPU Fractioning Operator 等四个组件，用于 AI 工作负载和 GPU 编排。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/13/flox-intelligence-is-building-ai-to-keep-wildlife-away-from-trains-airports-and-roads">Flox Intelligence 用 AI 防止野生动物靠近火车、机场和道路</a></strong> · TechCrunch AI</p>
+<p>Flox Intelligence 构建 AI 系统以减少野生动物与基础设施冲突，引用 FAA 数据称美国民航每年平均损失约 2.72 亿美元。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch">Google 让用户可直接从 Play Store 启动 vibe-coded 应用</a></strong> · The Verge AI</p>
+<p>Google 在美国推出新功能，允许通过 AI Studio 创建的个性化应用直接从 Play Store 启动，无需连接电脑安装。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 能力快速下放到端侧和垂直场景，但前沿模型的实际验证成本并未降低。 Liquid AI 的 24B 参数模型仅激活 2B 参数，宣称在端侧以 184 tok/s 运行智能体；Google 的 Gemini 4 Argon 同时宣称在多领域基准排名第一，但两家均未提供独立第三方验证。 端侧模型为私有部署提供了低延迟选项，但 MoE 架构的稳定性和前沿模型的性价比仍需自测；不要仅凭参数规模或厂商基准决定生产选型。 在自有任务上对比 LFM2.5-24B-A2B 与现有模型的实际成功率、工具调用失败率和单位成本；关注 Gemini 4 Argon 的 API 定价和限流是否匹配工作负载。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Hugging Face Blog、Google AI Blog、NVIDIA Technical Blog、TechCrunch AI、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-13</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-13.html</link>
@@ -802,52 +866,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：OpenAI、Cloudflare Changelog、TechCrunch AI</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-09-28</title>
-      <link>https://daily.hiwd.com/archive/2026-09/2026-09-28.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-09/2026-09-28.html</guid>
-      <pubDate>Mon, 28 Sep 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india">谷歌在印度测试通过 Gemini 和 AI Mode 购物，直接集成 Flipkart</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india">TechCrunch AI</a> · 2026-09-27</p>
-<!-- published_at: 2026-09-27T01:30:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>谷歌开始在印度测试通过 Gemini 和 AI Mode 购买沃尔玛旗下 Flipkart 的商品，目前覆盖部分产品和用户，计划 10 月下旬更广泛推出。</li>
-<li>这是 AI 助手从信息检索走向交易闭环的实质一步，可能改变电商流量入口和用户购物行为。</li>
-<li>印度消费者、Flipkart 卖家、谷歌和亚马逊等电商平台。</li>
-</ul>
-<p><strong>产品技术视角</strong>：将对话式 AI 直接连接到电商库存和支付，缩短从发现到购买的路径。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1001193/engram-sampler-ai-hallucinations-music">Engram：把 AI 幻觉变成乐器的采样器</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1001193/engram-sampler-ai-hallucinations-music">The Verge AI</a> · 2026-09-27</p>
-<!-- published_at: 2026-09-27T16:46:36-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>音乐初创公司 Thoughtful Things 在 Kickstarter 上发布了首款乐器 Engram，这是一个使用 AI 扭曲输入音频并产生全新声音的采样器和 groovebox。</li>
-<li>把 AI 的不可预测性转化为音乐创作的特性，为音乐人提供了新的声音设计工具，而非一键生成歌曲。</li>
-<li>音乐制作人、声音设计师、电子音乐爱好者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：AI 作为创作伙伴而非替代者，强调实时操控和意外性。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.theverge.com/podcast/1000344/cloudflare-matthew-prince-google-zero-ai-web-advertising">Cloudflare CEO 谈如何从 AI 手中拯救互联网</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://news.ycombinator.com/item?id=49867775">Show HN: TinyAIArena watch AI agents battle it out</a></strong> · Hacker News</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>AI 正在从信息工具向行动代理演进：谷歌开始让 AI 完成购物交易，OpenAI 代理的行为暴露出自主性带来的风险。同时，创作者开始将 AI 的缺陷转化为创作素材，反映出对 AI 角色的多元化探索。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：TechCrunch AI、The Verge AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
