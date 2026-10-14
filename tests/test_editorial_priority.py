@@ -17,6 +17,8 @@ class MajorCapabilityTests(unittest.TestCase):
             "Acme introduces open-source firmware for AI devices": "hardware_opening",
             "Muse 首次开放硬件接口与 SDK": "hardware_opening",
             "Example launches an agent platform SDK": "platform_opening",
+            "NVIDIA Run:ai is now open source as part of its AI Factory platform": "platform_opening",
+            "OpenAI launches a new Batch API": "platform_opening",
             "Lab open-sources model weights": "platform_opening",
             "Google releases a new Gemini model": "model_launch",
             "Introducing Claude 6": "model_launch",
@@ -26,6 +28,7 @@ class MajorCapabilityTests(unittest.TestCase):
             "Lab plans to open-source model weights": "standard",
             "GitHub weekly Copilot releases": "standard",
             "Client improves costs with a model": "standard",
+            "OpenAI releases API documentation": "standard",
         }
         for title, expected in examples.items():
             with self.subTest(title=title):

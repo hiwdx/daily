@@ -223,7 +223,7 @@ _DATED_ARTICLE_PATH_RE = re.compile(r"/(20\d{2})[-/](\d{2})[-/](\d{2})(?:-|/)")
 
 def capability_priority(title: str) -> str:
     """Discovery signal, not a claim that a headline has proved industry impact."""
-    if re.search(r"\b(?:patch|bug\s*fix|maintenance|rumou?r|reportedly|plans?|might|could)\b|计划|传言|修复", title, re.I):
+    if re.search(r"\b(?:patch|bug\s*fix|maintenance|rumou?r|reportedly|plans?|might|could|documentation|tutorial|case study)\b|\bhow to\b|计划|传言|修复|教程|文档", title, re.I):
         return "standard"
     if (re.search(r"\bv?\d+\.\d+\.\d+\b", title, re.I)
             and not re.search(r"open[- ]sourc|\bfirst\b|introduc|首次|开源", title, re.I)):
@@ -234,7 +234,7 @@ def capability_priority(title: str) -> str:
     if (re.search(r"\b(?:hardware|gadgets?|devices?|robotics|robots?|ESP32|Raspberry)\b|硬件|机器人|设备", title, re.I)
             and re.search(r"\b(?:SDK|API|firmware|open[- ]source)\b|开源|接口|开放", title, re.I)):
         return "hardware_opening"
-    if re.search(r"\b(?:SDK|developer platform|agent platform|open[- ]weights?|weights)\b|开发者平台|智能体平台|模型权重", title, re.I):
+    if re.search(r"\b(?:SDK|API|platform|framework|protocol|open[- ]weights?|weights)\b|开发者平台|智能体平台|模型权重|框架|协议", title, re.I):
         return "platform_opening"
     if re.search(r"\b(?:models?|GPT|Claude|Gemini|Llama|Qwen|DeepSeek|Mistral|LFM)\b|模型", title, re.I):
         return "model_launch"
