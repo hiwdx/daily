@@ -225,6 +225,9 @@ def capability_priority(title: str) -> str:
     """Discovery signal, not a claim that a headline has proved industry impact."""
     if re.search(r"\b(?:patch|bug\s*fix|maintenance|rumou?r|reportedly|plans?|might|could)\b|计划|传言|修复", title, re.I):
         return "standard"
+    if (re.search(r"\bv?\d+\.\d+\.\d+\b", title, re.I)
+            and not re.search(r"open[- ]sourc|\bfirst\b|introduc|首次|开源", title, re.I)):
+        return "standard"
     opening = re.search(r"\b(?:open[- ]sourc\w*|introduc\w*|launch\w*|unveil\w*|opens?|debut\w*|releases?)\b|首次|开源|开放|发布", title, re.I)
     if not opening:
         return "standard"
@@ -397,6 +400,8 @@ def get_official_candidates(
     by_source: dict[str, list[dict[str, str]]] = {}
     for candidate in ordered:
         by_source.setdefault(candidate["source"], []).append(candidate)
+    for bucket in by_source.values():
+        bucket.sort(key=lambda c: c.get("editorial_priority", "standard") == "standard")
     source_order = [
         feed.source for feed in OFFICIAL_UPDATE_FEEDS if feed.source in by_source
     ]

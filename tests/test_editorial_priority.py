@@ -21,6 +21,8 @@ class MajorCapabilityTests(unittest.TestCase):
             "Google releases a new Gemini model": "model_launch",
             "Introducing Claude 6": "model_launch",
             "Muse SDK bug fix and maintenance release": "standard",
+            "LangGraph releases SDK v0.2.5": "standard",
+            "Meta open-sources Muse hardware SDK v1.0.0": "hardware_opening",
             "Lab plans to open-source model weights": "standard",
             "GitHub weekly Copilot releases": "standard",
             "Client improves costs with a model": "standard",
@@ -68,6 +70,17 @@ class MajorCapabilityTests(unittest.TestCase):
         self.assertTrue(any("priority_exclusions" in e for e in errors))
         fixture.payload["priority_exclusions"] = [{"url": fixture.candidates[2]["url"], "reason": "本期优先选择有公测状态和实际调用成本报告的接口发布。"}]
         self.assertEqual(generate.validate_payload_quality(fixture.payload, fixture.candidates), [])
+
+    def test_older_major_story_is_not_dropped_by_one_publishers_newer_minor_posts(self):
+        feed = generate.Feed("Media", "https://example.com/feed", True, True)
+        candidates = [{"url": f"https://example.com/story{i}", "source": "Media", "title": str(i),
+                       "published_at": f"2026-10-14T0{9-i}:00:00+00:00", "eligible_for_top": "true",
+                       "editorial_priority": "hardware_opening" if i == 6 else "standard"} for i in range(7)]
+        with patch.object(generate, "OFFICIAL_UPDATE_FEEDS", [feed]), \
+             patch.object(generate, "urlopen", side_effect=lambda *a, **k: io.BytesIO(b"feed")), \
+             patch.object(generate, "parse_official_feed", return_value=candidates):
+            result = generate.get_official_candidates()
+        self.assertEqual(result[0]["url"], "https://example.com/story6")
 
     def test_local_duplicate_removal_records_important_candidate_exclusion(self):
         fixture = test_generate.PractitionerEditingTests()
