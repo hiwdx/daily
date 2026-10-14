@@ -7,69 +7,84 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 14 Oct 2026 03:18:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 10:59:44 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI 行业每日简报 · 2026-10-14</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-14.html</link>
       <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-14.html</guid>
       <pubDate>Wed, 14 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/higgsfield-longer-videos-voice">OpenAI 发布 Higgsfield：AI 视频生成突破 10 分钟并整合语音</a></p>
+      <description><![CDATA[<h3>📌 行业重磅补充</h3>
+<p><strong>Muse 开放硬件接口与 SDK：让第三方构建 AI Agent 的实体入口</strong></p>
+<p>原始报道：2026-10-02 · 本期补充解读：2026-10-14。这是对已发生事件的重点补充，不计入今日 48 小时新消息。</p>
+<p>开放了什么：Meta 已开源 Muse Gadgets 的 ESP32 固件与 Linux 设备 SDK，可让 Muse 接入自制屏幕、按钮、传感器和执行器；树莓派等 Linux 设备也能扩展自定义命令。</p>
+<p>行业意义（编辑判断）：关键不是新增一款硬件，而是第三方获得构建 Agent 实体入口的工具。交互和执行可以延伸到开发者自制设备，值得硬件、智能家居和 Agent 产品团队重点关注，应与普通平台补丁区别对待。</p>
+<p>开放边界：设备仍需 SDK token 和 Muse App 开发者模式配对。Linux SDK 的命令执行权限取决于安装账户，不能把设备端开源等同于 Muse 模型、云端服务或商用接入也全面开放。</p>
+<p>来源：<a href="https://gadgets.muse.ai/">Muse Gadgets 官方说明</a> · <a href="https://github.com/facebookincubator/muse-gadget-sdk">官方设备 SDK</a> · <a href="https://github.com/facebookincubator/muse-gadget-sdk/blob/main/linux/README.md">Linux 权限说明</a> · <a href="https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/">原始报道（TechCrunch）</a></p>
+<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://about.fb.com/news/2026/10/introducing-muse-wonder-models">Meta 发布 Muse Wonder 系列：面向智能体的新前沿模型</a></p>
+<p><strong>来源</strong>：<a href="https://about.fb.com/news/2026/10/introducing-muse-wonder-models">Meta Newsroom</a> · 2026-10-12</p>
+<!-- published_at: 2026-10-12T17:08:05+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Meta 宣布推出 Muse Wonder 和 Muse Wonder Full，称其为迄今最强模型，专注个人与专业智能体任务。</li>
+<li>若性能属实，将提升智能体任务基线，并可能改变开发者对 Meta 模型能力的预期。</li>
+<li>需要构建复杂智能体的开发者和企业，以及对比前沿模型的研究人员。</li>
+</ul>
+<p><strong>产品技术视角</strong>：官方未提供权重或 API 细节，需等待技术报告和实际评测，不能直接假设开源或低成本部署。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/higgsfield-longer-videos-voice">OpenAI Higgsfield 将 AI 视频时长从 1 分钟提升至 10 分钟以上</a></p>
 <p><strong>来源</strong>：<a href="https://openai.com/index/higgsfield-longer-videos-voice">OpenAI</a> · 2026-10-13</p>
 <!-- published_at: 2026-10-13T12:00:00+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>OpenAI 推出 Higgsfield，将 AI 视频长度从 1 分钟提升到超过 10 分钟，并集成 GPT-6 Astra、GPT-Image-2.5 和 GPT-Live 模型。</li>
-<li>为创作者提供长视频和语音能力，可能改变视频制作流程。</li>
-<li>视频创作者、内容制作团队及集成 OpenAI 视频 API 的开发者。</li>
+<li>OpenAI 宣布 Higgsfield 整合 GPT-6 Astra、GPT-Image-2.5 和 GPT-Live，支持更长视频和语音电影制作。</li>
+<li>长视频生成能力可能拓展专业视频工作流，但需验证一致性和成本。</li>
+<li>视频创作者、广告和影视前期制作团队。</li>
 </ul>
-<p><strong>产品技术视角</strong>：10 分钟以上视频对一致性和计算成本提出更高要求，需关注实际生成质量和渲染时间。</p>
+<p><strong>产品技术视角</strong>：公告未说明生成 10 分钟视频的计算成本或等待时间，实际可用性存疑。</p>
 <hr />
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b">Liquid AI 发布 LFM2.5-24B-A2B：24B 参数但仅 2B 活跃，面向端侧智能体</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b">Hugging Face Blog</a> · 2026-10-13</p>
-<!-- published_at: 2026-10-13T17:05:48+00:00 -->
+<p><strong>标题</strong>：<a href="https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform">NVIDIA Run:ai 开源，成为 DSX AI Factory 平台基础</a></p>
+<p><strong>来源</strong>：<a href="https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform">NVIDIA Technical Blog</a> · 2026-10-13</p>
+<!-- published_at: 2026-10-13T14:19:40+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Liquid AI 发布 LFM2.5-24B-A2B，总参数 24B、活跃参数 2B，支持工具调用和多步任务，可在端侧运行智能体。</li>
-<li>极低的活跃参数降低推理成本，使持续运行智能体在自有硬件上可行。</li>
-<li>在端侧或私有环境部署智能体的开发者，尤其是对延迟和成本敏感的团队。</li>
+<li>NVIDIA 将完整 Run:ai 平台开源，包含四个模块化组件，用于 AI 工作负载和 GPU 编排。</li>
+<li>企业可自托管 GPU 编排，降低对商业授权的依赖，并可能加速 DSX 生态集成。</li>
+<li>有大规模 GPU 集群的 AI 平台团队和基础设施工程师。</li>
 </ul>
-<p><strong>产品技术视角</strong>：2B 活跃参数的 MoE 设计尽管速度快，但需验证其在复杂工具使用中的稳定性和长上下文表现。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon">Google 发布 Gemini 4 Argon：面向复杂任务的全球可用前沿模型</a></p>
-<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon">Google AI Blog</a> · 2026-10-13</p>
-<!-- published_at: 2026-10-13T16:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 推出 Gemini 4 Argon，宣称在编码、金融、法律、网络安全和科学等多领域基准上排名第一，现已通过 API、AI Studio、Gemini 应用等渠道开放。</li>
-<li>为开发者和企业提供新的前沿模型选择，可能影响模型选型。</li>
-<li>使用 Google AI 平台的开发者、企业客户及 Google AI Ultra/Pro 订阅用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：厂商称其表现优于竞争对手，但实际推理成本、速率限制及与现有工作流的集成成本需自行测试。</p>
+<p><strong>产品技术视角</strong>：开源不等于免费维护，需评估组件成熟度和与现有 Kubernetes 生态的兼容性。</p>
 <h3>📰 其他值得看的</h3>
 <ul>
 <li>
-<p><strong><a href="https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform">NVIDIA 开源 Run:ai 平台，作为 DSX AI Factory 的一部分</a></strong> · NVIDIA Technical Blog</p>
-<p>NVIDIA 开源 Run:ai，包括 KAI Scheduler、GPU Fractioning Operator 等四个组件，用于 AI 工作负载和 GPU 编排。</p>
+<p><strong><a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b">LFM2.5-24B-A2B：低激活参数的高效端侧智能体模型</a></strong> · Hugging Face Blog</p>
+<p>Liquid AI 发布 24B 参数、2B 激活的推理模型，可在端侧持续运行智能体，声称与 Qwen3.6-35B-A3B 竞争。</p>
 </li>
 <li>
-<p><strong><a href="https://techcrunch.com/2026/10/13/flox-intelligence-is-building-ai-to-keep-wildlife-away-from-trains-airports-and-roads">Flox Intelligence 用 AI 防止野生动物靠近火车、机场和道路</a></strong> · TechCrunch AI</p>
-<p>Flox Intelligence 构建 AI 系统以减少野生动物与基础设施冲突，引用 FAA 数据称美国民航每年平均损失约 2.72 亿美元。</p>
+<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon">Gemini 4 Argon 正式发布，面向复杂推理和编码</a></strong> · Google AI Blog</p>
+<p>Google 宣布 Gemini 4 Argon 通过 API 和订阅服务全球可用，定位为最强前沿模型，适合深度推理任务。</p>
 </li>
 <li>
-<p><strong><a href="https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch">Google 让用户可直接从 Play Store 启动 vibe-coded 应用</a></strong> · The Verge AI</p>
-<p>Google 在美国推出新功能，允许通过 AI Studio 创建的个性化应用直接从 Play Store 启动，无需连接电脑安装。</p>
+<p><strong><a href="https://about.fb.com/news/2026/10/introducing-your-algorithm-facebook">Facebook 推出自然语言调整推荐算法的功能</a></strong> · Meta Newsroom</p>
+<p>Facebook 新增 AI 工具，让用户用自己的话描述想看的内容，推荐系统即时响应。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/13/spacexsi-bundles-x-premium-grok-and-cursor-into-one-subscription">SpaceXSI 将 X Premium、Grok 和 Cursor 捆绑为单一订阅</a></strong> · TechCrunch AI</p>
+<p>SpaceX Super Intelligence 推出整合其 AI 和开发工具服务的订阅包，试图提高用户留存和竞争力。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents">Shopify 向更多 AI 智能体开放商品目录</a></strong> · The Verge AI</p>
+<p>Shopify 扩大 AI 智能体浏览和购买商品的权限，此前已与 Meta Muse 合作。</p>
 </li>
 </ul>
 <h3>🔍 今日主题观察</h3>
-<p>编辑判断：AI 能力快速下放到端侧和垂直场景，但前沿模型的实际验证成本并未降低。 Liquid AI 的 24B 参数模型仅激活 2B 参数，宣称在端侧以 184 tok/s 运行智能体；Google 的 Gemini 4 Argon 同时宣称在多领域基准排名第一，但两家均未提供独立第三方验证。 端侧模型为私有部署提供了低延迟选项，但 MoE 架构的稳定性和前沿模型的性价比仍需自测；不要仅凭参数规模或厂商基准决定生产选型。 在自有任务上对比 LFM2.5-24B-A2B 与现有模型的实际成功率、工具调用失败率和单位成本；关注 Gemini 4 Argon 的 API 定价和限流是否匹配工作负载。</p>
+<p>编辑判断：前沿模型发布密集，但真正改变开发决策的是基础设施开放和成本结构，而非参数竞争。 Meta 发布 Muse Wonder 但未提供部署细节，而 NVIDIA 开源 Run:ai 让 GPU 编排可自托管，两者形成对比：模型能力需要基础设施支撑才能转化为生产价值。 从业者应优先评估可落地的工程变更，如 GPU 编排开源对成本的影响，而非急于切换尚未验证的新模型。 观察 Muse Wonder 是否发布权重或 API 定价，以及 Run:ai 开源后企业采用率和社区贡献情况。</p>
 <h3>⚠️ 信息来源说明</h3>
 <ul>
-<li>本期来源：OpenAI、Hugging Face Blog、Google AI Blog、NVIDIA Technical Blog、TechCrunch AI、The Verge AI</li>
+<li>本期来源：Meta Newsroom、OpenAI、Hugging Face Blog、Google AI Blog、TechCrunch AI、The Verge AI、NVIDIA Technical Blog</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
