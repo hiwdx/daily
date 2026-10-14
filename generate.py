@@ -177,12 +177,16 @@ OFFICIAL_UPDATE_FEEDS = (
     Feed("Cursor", "https://openrss.org/feed/cursor.com/changelog", True, True),
     Feed("Hugging Face Blog", "https://huggingface.co/blog/feed.xml", True, True),
     Feed("Google AI Blog", "https://blog.google/technology/ai/rss/", True, True),
+    Feed("Meta Newsroom", "https://about.fb.com/feed/", False, True, True),
     # Research and implementation evidence complement company launch coverage.
     Feed("Google Research", "https://research.google/blog/rss/", False, True),
     Feed("NVIDIA Technical Blog", "https://developer.nvidia.com/blog/feed/", False, True),
     Feed("Simon Willison", "https://simonwillison.net/atom/everything/", False, False),
     # AI-category media: keep the keyword filter to drop off-topic headlines.
     Feed("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/", False, True),
+    # Hardware/platform openings may be filed outside a publisher's AI category.
+    Feed("TechCrunch", "https://techcrunch.com/feed/", False, True),
+    Feed("Ars Technica", "https://feeds.arstechnica.com/arstechnica/technology-lab", False, True),
     Feed("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", False, True),
     # Developer-infra changelogs: supplementary only, never Top 3.
     Feed("GitHub Changelog", "https://github.blog/changelog/feed/", False, False),
@@ -195,7 +199,7 @@ OFFICIAL_UPDATE_FEEDS = (
 # ("Gemini 3.7 Flash", "GPT-5.6") pass even without a generic AI keyword.
 _AI_UPDATE_RE = re.compile(
     r"\b(?:AI|Copilot|agent|agents|MCP|model|models|LLM|inference|embedding|RAG"
-    r"|GPT|Claude|Gemini|Llama|Mistral|Grok|Qwen|DeepSeek|Sora)\b|Chat SDK",
+    r"|GPT|Claude|Gemini|Llama|Mistral|Grok|Qwen|DeepSeek|Sora|Muse)\b|Chat SDK",
     flags=re.IGNORECASE,
 )
 # Opinion / policy framing — dropped from sources flagged filter_opinion so a
@@ -215,6 +219,23 @@ _LOW_VALUE_UPDATE_RE = re.compile(
     flags=re.IGNORECASE,
 )
 _DATED_ARTICLE_PATH_RE = re.compile(r"/(20\d{2})[-/](\d{2})[-/](\d{2})(?:-|/)")
+
+
+def capability_priority(title: str) -> str:
+    """Discovery signal, not a claim that a headline has proved industry impact."""
+    if re.search(r"\b(?:patch|bug\s*fix|maintenance|rumou?r|reportedly|plans?|might|could)\b|计划|传言|修复", title, re.I):
+        return "standard"
+    opening = re.search(r"\b(?:open[- ]sourc\w*|introduc\w*|launch\w*|unveil\w*|opens?|debut\w*|releases?)\b|首次|开源|开放|发布", title, re.I)
+    if not opening:
+        return "standard"
+    if (re.search(r"\b(?:hardware|gadgets?|devices?|robotics|robots?|ESP32|Raspberry)\b|硬件|机器人|设备", title, re.I)
+            and re.search(r"\b(?:SDK|API|firmware|open[- ]source)\b|开源|接口|开放", title, re.I)):
+        return "hardware_opening"
+    if re.search(r"\b(?:SDK|developer platform|agent platform|open[- ]weights?|weights)\b|开发者平台|智能体平台|模型权重", title, re.I):
+        return "platform_opening"
+    if re.search(r"\b(?:models?|GPT|Claude|Gemini|Llama|Qwen|DeepSeek|Mistral|LFM)\b|模型", title, re.I):
+        return "model_launch"
+    return "standard"
 
 
 def _parse_feed_date(raw_date: str) -> Optional[datetime]:
@@ -337,6 +358,7 @@ def parse_official_feed(
             # not treat routine GitHub product updates as the day's leading AI
             # industry signal. Keep them in the supplementary list instead.
             "eligible_for_top": "true" if top_eligible else "false",
+            "editorial_priority": capability_priority(title) if top_eligible else "standard",
         })
     return candidates
 
@@ -384,7 +406,10 @@ def get_official_candidates(
         for source in source_order
         if position < len(by_source[source])
     ]
-    return balanced[:24]
+    # Reserve evidence space for capability openings before the fixed-source cap.
+    major = [c for c in balanced if c.get("editorial_priority", "standard") != "standard"]
+    major_urls = {c["url"] for c in major}
+    return (major + [c for c in balanced if c["url"] not in major_urls])[:MAX_CANDIDATES]
 
 
 CURATED_RELEASE_REPOS = ("vllm-project/vllm", "huggingface/transformers")
@@ -521,6 +546,8 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
 
 编辑标准（比“凑满 Top 3”更重要）：
 - 只把已经上线的产品/API/模型、可核实的工程更新、完成的融资收购或明确落地的合作放进 Top 3。
+- 重磅优先：首次开放硬件接口/固件/设备 SDK、开放核心模型权重、开发者/智能体平台开放及重要模型发布，优先于小版本升级、厂商案例、文档更新。Muse Gadgets 一类消息的价值是第三方可以构建实体能力入口，不是“又一个 GitHub 项目”。GitHub 是托管地点，不是降权理由；没有事实证据仍不能夸大。
+- editorial_priority 标为 hardware_opening/platform_opening/model_launch 的候选必须逐条评估，不代表程序已经认定它必然重磅。有足够证据的优先进入 Top 3；未进 Top 3 的，在 priority_exclusions 写 URL 和具体 reason（证据不足、重复事件、同来源更重大消息或本期更高优先级），不允许悄悄遗漏。
 - CEO 预测、路线图、愿景、泛泛的行业观点不能进入 Top 3，除非候选同时提供已经发生的具体产品或商业事实。
 - 区分已上线、测试/限量开放、宣布但未开放；融资洽谈不等于完成融资，发布演示不等于生产可用。只有标题、没有足够事实的条目不入选。
 - 官方公告只证明厂商的声明；性能、成本和效果须写明“厂商称/作者实测”及已有条件，不得把开源权重写成开源许可、不把参数规模推导为低部署门槛。
@@ -539,7 +566,8 @@ def build_user_prompt(previous_stories=None, official_candidates=None) -> str:
 {{
   "top_stories": [{{"title":"中文标题","url":"候选 URL","source":"候选来源","published_at":"候选时间","what_happened":"一句","why_it_matters":"一句","who_is_affected":"一句","product_angle":"一句"}}],
   "other_stories": [{{"title":"中文标题","url":"候选 URL","source":"候选来源","summary":"一句"}}],
-  "theme_observation": {{"thesis":"编辑判断，一句话","evidence_urls":["本期入选 URL 1","本期入选 URL 2"],"evidence":"连接这两条事实，勿引入其他事件","implication":"对从业者的取舍或限制","watch":"具体应该验证什么"}}
+  "theme_observation": {{"thesis":"编辑判断，一句话","evidence_urls":["本期入选 URL 1","本期入选 URL 2"],"evidence":"连接这两条事实，勿引入其他事件","implication":"对从业者的取舍或限制","watch":"具体应该验证什么"}},
+  "priority_exclusions": [{{"url":"未进 Top 3 的重要候选 URL","reason":"具体原因，最多 80 字"}}]
 }}
 无可靠共同主题时 theme_observation 返回 null。主题总计 140-240 字。全部候选均无阅读价值时，另加 selection_note 简述淘汰原因（仅供编辑复核，不展示）。
 
@@ -887,6 +915,17 @@ def validate_payload_quality(payload: object, candidates: list[dict[str, str]]) 
                     errors.append(f"{field} 过长，请精简，不能截断原文中的限制条件")
             if section == "top_stories" and candidate.get("eligible_for_top") != "true":
                 errors.append(f"《{item.get('title', '')}》仅限补充阅读")
+    top_urls = {canonicalize_url(str(item.get("url", ""))) for item in payload.get("top_stories", []) if isinstance(item, dict)} if isinstance(payload.get("top_stories"), list) else set()
+    exclusions = payload.get("priority_exclusions", [])
+    reasons = {canonicalize_url(str(item.get("url", ""))): item.get("reason") for item in exclusions if isinstance(item, dict)} if isinstance(exclusions, list) else {}
+    for candidate in candidates:
+        if (candidate.get("editorial_priority", "standard") == "standard"
+                or candidate.get("eligible_for_top") != "true" or len(candidate.get("summary", "")) < 60):
+            continue
+        url = canonicalize_url(candidate["url"])
+        reason = reasons.get(url)
+        if url not in top_urls and (not isinstance(reason, str) or not 10 <= len(reason.strip()) <= 100):
+            errors.append(f"重要能力开放候选《{candidate['title']}》未进入 Top 3，须提供具体 priority_exclusions 原因")
     theme = payload.get("theme_observation")
     if theme:
         if not isinstance(theme, dict):
@@ -979,13 +1018,14 @@ def build_official_feed_fallback(official_candidates=None, previous_stories=None
     return result
 
 
-def normalize_payload_selection(payload):
+def normalize_payload_selection(payload, candidates=None):
     """Remove mechanical duplicate selections before editorial validation."""
     if not isinstance(payload, dict):
         return payload
     result = dict(payload)
     urls = set()
     removed = False
+    top_removals = {}
     for section, limit in (("top_stories", 3), ("other_stories", 8)):
         if not isinstance(payload.get(section), list):
             continue
@@ -999,12 +1039,20 @@ def normalize_payload_selection(payload):
             family = _source_family(url)
             if url and (url in urls or family in families or len(items) >= limit):
                 removed = True
+                if section == "top_stories":
+                    top_removals[url] = "本地去重后按同一发布方最多一条、Top 3 最多三条保留其他入选消息。"
                 continue
             items.append(item)
             if url:
                 urls.add(url)
                 families.add(family)
         result[section] = items
+    top_urls = {canonicalize_url(str(i.get("url", ""))) for i in result.get("top_stories", []) if isinstance(i, dict)} if isinstance(result.get("top_stories"), list) else set()
+    priorities = {c["url"] for c in candidates or [] if c.get("url") and c.get("editorial_priority", "standard") != "standard"}
+    additions = [{"url": url, "reason": reason} for url, reason in top_removals.items() if url in priorities and url not in top_urls]
+    if additions:
+        existing = result.get("priority_exclusions", [])
+        result["priority_exclusions"] = (existing if isinstance(existing, list) else []) + additions
     theme = result.get("theme_observation")
     if removed and isinstance(theme, dict):
         evidence = theme.get("evidence_urls")
@@ -1135,7 +1183,7 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
             payload = json.loads(content)
         except json.JSONDecodeError:
             payload = {}
-        payload = normalize_payload_selection(payload)
+        payload = normalize_payload_selection(payload, official_candidates)
         payload_errors = validate_payload_quality(payload, official_candidates or [])
         briefing = format_empty_top_state(clean_briefing(briefing_from_payload(
             payload if isinstance(payload, dict) else {}, official_candidates or []
@@ -1159,6 +1207,9 @@ def fetch_briefing(user_prompt: str, previous_stories=None, official_candidates=
             return first_valid_briefing
 
         if valid:
+            for item in payload.get("priority_exclusions", []) if isinstance(payload.get("priority_exclusions"), list) else []:
+                if isinstance(item, dict):
+                    print(f"📋 重要候选取舍：{item.get('url', '')} — {item.get('reason', '')}", file=sys.stderr)
             first_valid_briefing = briefing
             if is_last:
                 return briefing
@@ -1457,6 +1508,49 @@ def render_page(briefing_md: str, archive_entries: list[dict],
     )
 
 
+def append_editorial_spotlights(briefing_md: str, date_iso: str, path: Optional[Path] = None) -> str:
+    """Dated human-reviewed follow-ups live outside the fresh-news Top 3."""
+    path = path or Path(__file__).parent / "editorial" / "spotlights.json"
+    if not path.exists():
+        return briefing_md
+    records = json.loads(path.read_text("utf-8"))
+    if not isinstance(records, list):
+        raise ValueError("Editorial spotlights must be a list")
+    blocks = []
+    for record in records:
+        if not isinstance(record, dict):
+            raise ValueError("Invalid editorial spotlight record")
+        if record.get("issue_date") != date_iso:
+            continue
+        original = record.get("original_report_date", "")
+        if datetime.strptime(original, "%Y-%m-%d") > datetime.strptime(date_iso, "%Y-%m-%d"):
+            raise ValueError("Original reporting date cannot be in the future")
+        title, paragraphs, sources = record.get("title"), record.get("paragraphs"), record.get("sources")
+        if (not isinstance(title, str) or not title.strip()
+                or not isinstance(paragraphs, list) or not paragraphs
+                or not all(isinstance(p, str) and p.strip() for p in paragraphs)
+                or not isinstance(sources, list) or not sources):
+            raise ValueError("Spotlight needs a title, factual paragraphs and sources")
+        links = []
+        for source in sources:
+            url = source.get("url", "") if isinstance(source, dict) else ""
+            label = source.get("label", "") if isinstance(source, dict) else ""
+            if not isinstance(url, str) or urlsplit(url).scheme != "https" or not urlsplit(url).hostname or not isinstance(label, str) or not label.strip():
+                raise ValueError("Invalid spotlight source")
+            links.append(f"[{label}]({url})")
+        block = (
+            f"**{title}**\n\n原始报道：{original} · 本期补充解读：{date_iso}。"
+            "这是对已发生事件的重点补充，不计入今日 48 小时新消息。\n\n"
+            + "\n\n".join(paragraphs) + "\n\n来源：" + " · ".join(links)
+        )
+        if contains_sensitive_politics(block):
+            raise ValueError("Spotlight failed the sensitive-content gate")
+        blocks.append(block)
+    if not blocks:
+        return briefing_md
+    return "### 📌 行业重磅补充\n\n" + "\n\n---\n\n".join(blocks) + "\n\n" + briefing_md
+
+
 # ── RSS feed ──────────────────────────────────────────────────────────────────
 RSS_SITE_URL = "https://daily.hiwd.com/"
 RSS_FEED_URL = "https://daily.hiwd.com/rss.xml"
@@ -1649,6 +1743,7 @@ def main() -> None:
 
     user_prompt = build_user_prompt(official_candidates=official_candidates)
     briefing_md = fetch_briefing(user_prompt, previous_stories, official_candidates)
+    briefing_md = append_editorial_spotlights(briefing_md, TODAY_ISO)
     mode = "verified source links" if "<!-- briefing_mode: source_links -->" in briefing_md else "validated editorial content"
     print(f"✅ Received {len(briefing_md)} chars of {mode}")
 
@@ -1700,6 +1795,7 @@ def main() -> None:
         "mode": "source_links" if "<!-- briefing_mode: source_links -->" in briefing_md else "editorial",
         "generated_at": datetime.now(CST).isoformat(),
         "candidate_count": len(official_candidates),
+        "major_candidate_count": sum(c.get("editorial_priority", "standard") != "standard" for c in official_candidates),
     }, ensure_ascii=False, indent=2), encoding="utf-8")
 
 

@@ -1,0 +1,18 @@
+[
+  {
+    "issue_date": "2026-10-14",
+    "original_report_date": "2026-10-02",
+    "title": "Muse 开放硬件接口与 SDK：让第三方构建 AI Agent 的实体入口",
+    "paragraphs": [
+      "开放了什么：Meta 已开源 Muse Gadgets 的 ESP32 固件与 Linux 设备 SDK，可让 Muse 接入自制屏幕、按钮、传感器和执行器；树莓派等 Linux 设备也能扩展自定义命令。",
+      "行业意义（编辑判断）：关键不是新增一款硬件，而是第三方获得构建 Agent 实体入口的工具。交互和执行可以延伸到开发者自制设备，值得硬件、智能家居和 Agent 产品团队重点关注，应与普通平台补丁区别对待。",
+      "开放边界：设备仍需 SDK token 和 Muse App 开发者模式配对。Linux SDK 的命令执行权限取决于安装账户，不能把设备端开源等同于 Muse 模型、云端服务或商用接入也全面开放。"
+    ],
+    "sources": [
+      {"label": "Muse Gadgets 官方说明", "url": "https://gadgets.muse.ai/"},
+      {"label": "官方设备 SDK", "url": "https://github.com/facebookincubator/muse-gadget-sdk"},
+      {"label": "Linux 权限说明", "url": "https://github.com/facebookincubator/muse-gadget-sdk/blob/main/linux/README.md"},
+      {"label": "原始报道（TechCrunch）", "url": "https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/"}
+    ]
+  }
+]

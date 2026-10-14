@@ -2,9 +2,9 @@ name: Briefing Reliability Tests
 on:
   push:
     branches: [main]
-    paths: ['generate.py', 'scripts/briefing_health.py', 'tests/**', 'requirements.txt', '.github/workflows/daily.yml', '.github/workflows/briefing-tests.yml']
+    paths: ['generate.py', 'scripts/briefing_health.py', 'editorial/**', 'tests/**', 'requirements.txt', '.github/workflows/daily.yml', '.github/workflows/briefing-tests.yml']
   pull_request:
-    paths: ['generate.py', 'scripts/briefing_health.py', 'tests/**', 'requirements.txt', '.github/workflows/**']
+    paths: ['generate.py', 'scripts/briefing_health.py', 'editorial/**', 'tests/**', 'requirements.txt', '.github/workflows/**']
 permissions:
   contents: read
 jobs:
