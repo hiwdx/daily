@@ -7,8 +7,76 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Thu, 15 Oct 2026 07:20:10 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 07:09:10 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-16</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-16.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-16.html</guid>
+      <pubDate>Fri, 16 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/meta-muse-spark-open">Meta 发布开源权重多模态 MoE 模型 Muse Spark Open，816B 参数、1M 上下文</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/meta-muse-spark-open">Hugging Face Blog</a> · 2026-10-15</p>
+<!-- published_at: 2026-10-15T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Meta 发布 Muse Spark Open，一个 816B 总参数、42B 活跃参数的混合专家模型，支持文本、图像、音频、视频输入，上下文窗口最高 1M tokens。</li>
+<li>作为 Meta 最大的开源多模态模型，它为开发者提供统一接口处理多种媒体，可能降低多模态应用构建门槛。</li>
+<li>需要大规模多模态推理的 AI 产品团队及关注开源模型的研究者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：42B 活跃参数仍需高显存推理；实际部署需量化或使用云 GPU，不能仅凭开源权重假设消费级硬件可运行。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/introducing-the-rosalind-academic-plan">OpenAI 推出 Rosalind 学术计划，为生命科学实验室提供 GPT-Rosalind 赞助访问</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/introducing-the-rosalind-academic-plan">OpenAI</a> · 2026-10-15</p>
+<!-- published_at: 2026-10-15T19:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 宣布学术研究实验室可申请赞助访问 GPT-Rosalind 及相关工具，用于生命科学研究。</li>
+<li>降低学术机构使用前沿生命科学模型的门槛，可能加速生物医药领域的 AI 应用。</li>
+<li>生命科学领域的高校和科研机构，特别是预算有限但需要高级模型支持的实验室。</li>
+</ul>
+<p><strong>产品技术视角</strong>：赞助访问的具体配额、模型版本和数据政策尚未公布；实验室应核实是否满足数据隐私和合规要求后再申请。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning">NVIDIA 推出 Nemotron 3.5 Super VL，120B 多模态 MoE 模型，面向专用智能体</a></p>
+<p><strong>来源</strong>：<a href="https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning">NVIDIA Technical Blog</a> · 2026-10-15</p>
+<!-- published_at: 2026-10-15T18:01:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>NVIDIA 发布 Nemotron 3.5 Super VL，一个 120B 参数的混合专家模型，每 token 激活 12B 参数，支持文本、图像、文档和视频理解及工具调用。</li>
+<li>为构建需要视觉推理和工具调用的专用智能体提供开源选择，可能降低多模态 agent 的开发成本。</li>
+<li>开发企业级多模态 agent 的工程团队，以及需要整合视觉和语言推理的应用。</li>
+</ul>
+<p><strong>产品技术视角</strong>：虽然激活参数仅 12B，但总权重较大，本地部署仍需多卡；开发者应评估其工具调用和指令遵循在具体业务场景中的可靠性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://www.theverge.com/news/1012293/meta-apple-muse-spark-open-ai-model-mlx">Meta 与 Apple 合作优化 Muse AI 模型在 Mac 上的运行，CEO 公开互相支持</a></strong> · The Verge AI</p>
+<p>Meta 和 Apple 合作让 Muse Spark Open 更好地利用 Apple 芯片，但合作细节和性能提升尚无具体数据。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/15/anthropic-is-letting-metr-researchers-look-under-the-hood-with-employee-level-access">Anthropic 允许 METR 以员工级权限查看其内部风险和实践，且不能阻止发布评估</a></strong> · TechCrunch</p>
+<p>METR 将独立发布对 Anthropic 的风险评估，这为前沿模型安全审计提供了新透明度样板，但范围限于 Anthropic 一家。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/ibm-granite/granite-switch-4-1">IBM 发布 Granite Switch 4.1，单端点支持聊天、决策和语音识别</a></strong> · Hugging Face Blog</p>
+<p>Granite Switch 4.1 增加决策适配器和快速 ASR 模型，适合需要多任务切换的企业语音应用，但需评估各任务精度。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/swiss-ai/apertus-v15-release-notes">Apertus 1.5 发布：8B 和 70B 模型增加图像/音频理解、4 倍上下文和思考模式</a></strong> · Hugging Face Blog</p>
+<p>瑞士 AI 的 Apertus 1.5 在 Apache 2.0 许可下发布，扩展了多模态和长上下文能力，适合需要灵活部署的场景。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：开源多模态巨模型同一天扎堆发布，但实际部署门槛和厂商宣称存在落差，从业者需警惕“开源即易用”的幻觉。 Meta 的 Muse Spark Open（816B 参数）和 NVIDIA 的 Nemotron 3.5 Super VL（120B 参数）均以开源权重和多模态能力为卖点，但二者激活参数分别为 42B 和 12B。尽管厂商强调开放，推理仍需要多张高端 GPU 或云资源，消费级硬件难以直接运行。 团队在评估这类模型时，应优先测试量化版本或使用托管 API，避免将参数规模等同于可部署性；同时要自己验证多模态理解和工具调用的实际表现，而不是依赖基准分数。 观察这两个模型在 Hugging Face 上的社区适配（如 GGUF 量化、MLX 支持）及第三方云平台的托管价格，看是否能在数周内降低真实使用成本。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：Hugging Face Blog、OpenAI、NVIDIA Technical Blog、The Verge AI、TechCrunch</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-15</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-15.html</link>
@@ -830,61 +898,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：Cloudflare Changelog、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-01</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-01.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-01.html</guid>
-      <pubDate>Thu, 01 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/09/30/google-releases-gemini-4-argon-called-its-most-powerful-model-yet">Google 发布 Gemini 4 Argon，号称史上最强模型</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/09/30/google-releases-gemini-4-argon-called-its-most-powerful-model-yet">TechCrunch AI</a> · 2026-09-30</p>
-<!-- published_at: 2026-09-30T23:43:07+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 发布 Gemini 4 Argon，定位为编程和网络安全领域的主力模型。</li>
-<li>直接提升开发者在编码和安全任务中的模型性能，改变相关工具链的默认选项。</li>
-<li>使用 Gemini API 的开发者及依赖 Google AI 能力的企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：新一代旗舰模型，强化代码生成与安全分析能力。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign">OpenAI 披露并瓦解一起有组织的模型蒸馏活动</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign">OpenAI</a> · 2026-09-30</p>
-<!-- published_at: 2026-09-30T10:30:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 宣布瓦解一起试图提取其模型受保护推理能力的活动，并加强对抗性蒸馏防御。</li>
-<li>保护核心模型能力不被低成本复制，维持前沿模型商业价值。</li>
-<li>OpenAI 及其企业客户，以及试图通过蒸馏获取能力的竞争对手。</li>
-</ul>
-<p><strong>产品技术视角</strong>：安全防御升级，强化模型知识产权保护。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://huggingface.co/blog/open-tts-leaderboard">Open TTS 排行榜：多语言语音合成与克隆的可扩展评测</a></strong> · Hugging Face Blog</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-09-30-machine-payments">Cloudflare AI Gateway 支持机器支付，用稳定币支付推理费用</a></strong> · Cloudflare Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/vercel-agent-now-installs-private-packages-from-npm-and-custom-registries">Vercel Agent 现在可以安装 npm 私有包和自定义 registry 的包</a></strong> · Vercel Changelog</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/09/30/valor-atreides-and-sequoia-back-ai-startup-flow-engineering-at-750m-valuation">Flow Engineering 获 Valor、Atreides 和红杉投资，估值 7.5 亿美元</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1002636/ai-execs-trump-self-policing-deal-comments">Here’s what AI leaders are saying about Trump’s new safety plan</a></strong> · The Verge AI</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>前沿模型军备竞赛继续：Google 发布 Gemini 4 Argon 强化编码和安全能力，OpenAI 则公开对抗模型蒸馏，显示模型能力与知识产权保护并重。同时，语音 AI 赛道持续升温，ElevenLabs 估值翻倍，开源社区也在推动 TTS 评测标准化。基础设施层，支付方式、私有包安装和浏览器工具等更新，让 AI 代理更易集成到真实工作流。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：TechCrunch AI、OpenAI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
