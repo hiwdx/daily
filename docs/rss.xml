@@ -7,8 +7,50 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 00:59:37 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 07:16:14 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-21</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-21.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-21.html</guid>
+      <pubDate>Wed, 21 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<!-- briefing_mode: source_links -->
+
+<h3>🎯 今日 Top 3</h3>
+<p><strong>今日先提供原文速览</strong></p>
+<p>摘要编辑暂不可用，以下保留过去 48 小时的新内容原文标题与来源，不生成未经核验的摘要或排名。后续任务会自动重试补全。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://openai.com/index/ted-taylor-restaurant">Franchisee reconciles cash in 94% less time with ChatGPT Work</a></strong> · OpenAI</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/nvidia/cosmos3-h-dreams">NVIDIA Cosmos3-H-Dreams: Bringing Clinical Surgery to Life Through Generative Simulation</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/accelerating-mamba-2-with-high-performance-forward-pass-kernels-in-nvidia-cuda-tile">Accelerating Mamba-2 with High-Performance Forward Pass Kernels in NVIDIA CUDA Tile</a></strong> · NVIDIA Technical Blog</p>
+</li>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Oct/20/battledrones">Battle Drones - a vibe coded RTS with audio-based multiplayer</a></strong> · Simon Willison</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/20/otter-ai-raises-320-million-from-general-catalysts-growth-fund-for-its-meeting-tool">Otter.ai raises $320 million from General Catalyst’s growth fund for its meeting tool</a></strong> · TechCrunch AI</p>
+</li>
+<li>
+<p><strong><a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations">Meta Muse exposes users' personal and business secrets when they share conversations</a></strong> · Ars Technica</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto">Google’s more personalized Gemini AI is heading to your car</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview">GitHub package firewall in public preview</a></strong> · GitHub Changelog</p>
+</li>
+</ul>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>原文速览模式；标题保留原文，不冒充中文编辑稿。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-20</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-20.html</link>
@@ -838,58 +880,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>直接提供内容的源：The Verge AI、TechCrunch AI、Vercel Changelog</li>
-<li>所有链接均来自程序已核验的公开数据源。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-06</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-06.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-06.html</guid>
-      <pubDate>Tue, 06 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/new-chatgpt-ads-format-and-measurement">OpenAI 在 ChatGPT 推出全新视觉广告格式与衡量工具</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/new-chatgpt-ads-format-and-measurement">OpenAI</a> · 2026-10-05</p>
-<!-- published_at: 2026-10-05T10:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 在 ChatGPT 中正式上线新的视觉广告格式，并扩展了广告衡量工具、归因合作与品牌安全功能。</li>
-<li>广告主现在可以在对话界面投放更醒目的视觉内容，并获得更精确的转化归因，直接提升 ChatGPT 的广告变现效率。</li>
-<li>在 ChatGPT 投放广告的品牌、使用免费版 ChatGPT 的用户以及关注 AI 商业化的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：ChatGPT 从纯文本对话界面转向混合视觉广告，改变了用户与 AI 助手的交互体验和平台的商业模式。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost">Reflection 发布 501B 参数开源模型 Beam，企业可本地训练定制 AI</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost">TechCrunch AI</a> · 2026-10-05</p>
-<!-- published_at: 2026-10-05T19:33:53+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Reflection 推出 501B 参数的开源权重模型 Beam，宣称以更低算力成本对标中国模型，并面向企业提供本地化 AI 工厂方案。</li>
-<li>开源权重加低算力门槛大幅降低企业自建专属模型的门槛，削弱闭源大模型的锁定效应，并加剧与中国开源模型的竞争。</li>
-<li>需要数据隐私和定制化的企业、主权国家技术团队以及希望降低推理成本的 AI 服务商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：501B 参数意味着企业可以在自有基础设施上训练和运行大模型，而非依赖少数云厂商。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/eu-text-provenance">OpenAI 回应欧盟文本溯源规则，水印检测首先向研究人员开放</a></strong> · OpenAI</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1005177/google-gemini-call-for-me-expansion-rumors">Google Gemini “Call for Me”功能或扩展到私人通话</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/05/instinct-brings-its-ai-agent-to-group-chats-even-for-friends-without-an-account">Instinct 将 AI 智能体带入群聊，无需好友注册账户</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://news.ycombinator.com/item?id=49969183">Beam: Reflection's 501B open-weight model</a></strong> · Hacker News</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>今日信号显示 AI 正在同时向商业化与开源两端渗透：OpenAI 和 TikTok 将 AI 助手转化为广告与电商闭环，Reflection 则以开源权重和更低算力挑战闭源统治。此外，AI 应用开始进入群聊、处方开具等更个人化的场景，从纯工具走向协作伙伴。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>直接提供内容的源：OpenAI、TechCrunch AI</li>
 <li>所有链接均来自程序已核验的公开数据源。</li>
 </ul>]]></description>
     </item>
