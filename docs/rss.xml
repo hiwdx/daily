@@ -7,48 +7,70 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 07:16:14 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 07:59:13 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI 行业每日简报 · 2026-10-21</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-21.html</link>
       <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-21.html</guid>
       <pubDate>Wed, 21 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<!-- briefing_mode: source_links -->
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations">Meta Muse 分享功能泄露用户机密，已暂停</a></p>
+<p><strong>来源</strong>：<a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations">Ars Technica</a> · 2026-10-20</p>
+<!-- published_at: 2026-10-20T12:33:13+00:00 -->
 
-<h3>🎯 今日 Top 3</h3>
-<p><strong>今日先提供原文速览</strong></p>
-<p>摘要编辑暂不可用，以下保留过去 48 小时的新内容原文标题与来源，不生成未经核验的摘要或排名。后续任务会自动重试补全。</p>
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>研究人员发现 Meta 的通用 AI 代理 Muse 通过网页链接分享对话时会暴露敏感信息，包括营销公司收入、工作场所日历和贷款申请；Meta 已暂停分享功能。</li>
+<li>AI 代理处理敏感数据时，分享功能可能成为数据泄露渠道，对部署企业级代理的团队是直接安全警告。</li>
+<li>使用 Muse 并分享对话的企业和个人用户，以及考虑集成 AI 代理的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：在将 AI 代理接入业务流程前，应审计共享/导出功能对敏感数据的处理方式，并设置数据防泄露策略。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/openai-to-acquire-orchestra-bio">OpenAI 收购 Orchestra Bio，扩展生物技术业务</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/openai-to-acquire-orchestra-bio">OpenAI</a> · 2026-10-20</p>
+<!-- published_at: 2026-10-20T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 宣布收购生命科学运营初创公司 Orchestra Bio，以加速其生物技术模型 Rosalind 和 Rosalind Workbench 工具的开发。</li>
+<li>此举表明 OpenAI 正在深化生命科学领域的垂直 AI 能力，可能影响生物制药研发的工作流程和工具选择。</li>
+<li>生物制药公司、生命科学研究人员以及关注 AI 垂直应用的投资者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：关注 Rosalind 模型的开放程度和 API 可用性，评估其是否能与现有实验室信息管理系统集成。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto">谷歌将个性化 Gemini AI 引入汽车</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto">The Verge AI</a> · 2026-10-20</p>
+<!-- published_at: 2026-10-20T18:11:34-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google 宣布在汽车中集成 Gemini AI，可访问用户的 Gmail、Calendar、Maps、Photos 等个人数据。</li>
+<li>个性化 AI 进入驾驶场景，扩展了 AI 助手的应用场景，但也引发隐私和驾驶安全的担忧。</li>
+<li>使用 Android Auto 的驾驶者、汽车制造商以及关注车载 AI 的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：评估车载 AI 的语音交互和上下文理解能力，并关注数据访问对用户隐私的影响。</p>
 <h3>📰 其他值得看的</h3>
 <ul>
 <li>
-<p><strong><a href="https://openai.com/index/ted-taylor-restaurant">Franchisee reconciles cash in 94% less time with ChatGPT Work</a></strong> · OpenAI</p>
+<p><strong><a href="https://huggingface.co/blog/nvidia/cosmos3-h-dreams">NVIDIA Cosmos3-H-Dreams：生成式模拟进入临床手术</a></strong> · Hugging Face Blog</p>
+<p>NVIDIA 发布 Cosmos3-H-Dreams，实现实时交互式手术场景生成，可模拟抓取、抬起组织等动作，用于外科训练和规划。</p>
 </li>
 <li>
-<p><strong><a href="https://huggingface.co/blog/nvidia/cosmos3-h-dreams">NVIDIA Cosmos3-H-Dreams: Bringing Clinical Surgery to Life Through Generative Simulation</a></strong> · Hugging Face Blog</p>
+<p><strong><a href="https://techcrunch.com/2026/10/20/yelp-can-now-call-on-your-behalf-to-check-wait-times-at-a-restaurant">Yelp 推出 AI 代打餐厅排队时间</a></strong> · TechCrunch AI</p>
+<p>Yelp 新功能 Check for Me 允许用户让语音代理致电餐厅查询等待时间，但需提供手机号，可能影响隐私。</p>
 </li>
 <li>
-<p><strong><a href="https://developer.nvidia.com/blog/accelerating-mamba-2-with-high-performance-forward-pass-kernels-in-nvidia-cuda-tile">Accelerating Mamba-2 with High-Performance Forward Pass Kernels in NVIDIA CUDA Tile</a></strong> · NVIDIA Technical Blog</p>
-</li>
-<li>
-<p><strong><a href="https://simonwillison.net/2026/Oct/20/battledrones">Battle Drones - a vibe coded RTS with audio-based multiplayer</a></strong> · Simon Willison</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/20/otter-ai-raises-320-million-from-general-catalysts-growth-fund-for-its-meeting-tool">Otter.ai raises $320 million from General Catalyst’s growth fund for its meeting tool</a></strong> · TechCrunch AI</p>
-</li>
-<li>
-<p><strong><a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations">Meta Muse exposes users' personal and business secrets when they share conversations</a></strong> · Ars Technica</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto">Google’s more personalized Gemini AI is heading to your car</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview">GitHub package firewall in public preview</a></strong> · GitHub Changelog</p>
+<p><strong><a href="https://www.theverge.com/tech/1014627/meta-muse-ai-sharing-ai-chats">Meta 暂停 Muse 分享功能（The Verge 报道）</a></strong> · The Verge AI</p>
+<p>安全公司发现 Muse 分享功能泄露用户对话，Meta 已暂停该功能进行审查。</p>
 </li>
 </ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 代理的实用性与数据安全风险正在同步加速暴露，企业在快速采用时需要建立更严格的审计和治理机制。 Meta Muse 因分享功能泄露用户机密而暂停服务，谷歌则将个性化 Gemini 引入汽车并深度访问个人数据，两者都表明 AI 助手在提升便利性的同时扩大了敏感数据的暴露面。 企业在集成 AI 代理时必须将数据安全和隐私合规作为前置条件，而非事后补救；开发者需要设计细粒度的数据访问控制和审计日志。 观察 Meta 是否恢复分享功能及其安全改进，以及车载 Gemini 的实际数据调用范围和用户反馈。</p>
 <h3>⚠️ 信息来源说明</h3>
 <ul>
-<li>原文速览模式；标题保留原文，不冒充中文编辑稿。</li>
+<li>本期来源：Hugging Face Blog、TechCrunch AI、Ars Technica、The Verge AI、OpenAI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
     <item>
