@@ -7,8 +7,68 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 07:29:19 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 07:28:49 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-23</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-23.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-23.html</guid>
+      <pubDate>Fri, 23 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model">Canva 发布首个自研图像生成模型 Canva Craft</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model">TechCrunch</a> · 2026-10-22</p>
+<!-- published_at: 2026-10-22T19:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Canva 发布自研图像生成模型 Canva Craft，采用两阶段流程先生成布局计划再产出图像，最高支持 2K 分辨率和 30 多种宽高比。</li>
+<li>设计平台直接集成自有模型可能改变创意工作流程，减少对第三方图像 API 的依赖。</li>
+<li>使用 Canva 的设计师、营销团队以及需要批量生成定制图像的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：两阶段设计将布局与像素生成解耦，更易控制构图，但需验证其对复杂空间关系和文本渲染的实际效果。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">Anthropic 向 Agentic AI Foundation 捐赠 Agent Skills 标准</a></p>
+<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">Anthropic</a> · 2026-10-22</p>
+<!-- published_at: 2026-10-22T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 将 Agent Skills 开放标准捐赠给 Linux Foundation 下的 Agentic AI Foundation，已有 70 多个平台集成。</li>
+<li>标准化技能定义可能降低多平台智能体开发成本，促进互操作性。</li>
+<li>构建跨平台智能体的开发者、集成 Agent Skills 的平台厂商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需关注标准后续治理和实际采纳，避免被单一厂商主导。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/microsoft/thinkingbox-training">微软发布 ThinkingBox-Training：用数据库验收信号训练智能体</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/microsoft/thinkingbox-training">Hugging Face Blog</a> · 2026-10-22</p>
+<!-- published_at: 2026-10-22T22:24:34+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>微软发布 ThinkingBox-Training，将可执行数据库状态对比作为奖励信号，用于智能体后训练，代码已在 GitHub 开源。</li>
+<li>提供基于可执行验证的强化学习信号，可能改善智能体在数据库操作等任务上的可靠性。</li>
+<li>训练智能体执行数据库操作或类似可验证任务的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：奖励信号直接来自数据库状态，可减少人工标注，但需评估其对复杂任务泛化能力的影响。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/22/rivian-buys-world-model-startup-to-accelerate-self-driving-ambitions">Rivian 收购 3D 世界模型初创 Third Dimension</a></strong> · TechCrunch</p>
+<p>Rivian 收购英国初创 Third Dimension，利用 AI 将图像视频转为逼真 3D 世界，加速自动驾驶开发。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/running-frontier-class-ai-models-across-8-nvidia-dgx-spark-nodes">NVIDIA DGX Spark 支持八节点集群，可本地运行 753B 模型</a></strong> · NVIDIA Technical Blog</p>
+<p>DGX Spark 官方支持八节点，统一内存扩展至 1TB，可运行 GLM 5.3 等前沿模型。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：模型能力与开发接口的同日发布，凸显 AI 应用正从“调用大模型”转向“整合可控工作流”。 Canva 自研图像模型嵌入设计平台，Anthropic 捐赠 Agent Skills 标准促进智能体互操作，二者分别指向垂直整合和开放标准化两种路线。 开发者需在自研模型与开放标准之间权衡：前者增加控制力但成本高，后者利于生态协作但可能受标准演进制约。 观察 Canva Craft 的实际生成质量和 Agent Skills 的跨平台采用情况，判断垂直整合与开放标准哪个更能降低开发成本。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：TechCrunch、Anthropic、Hugging Face Blog、NVIDIA Technical Blog</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-22</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-22.html</link>
@@ -839,82 +899,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：OpenAI、Hugging Face Blog、NVIDIA Technical Blog、TechCrunch AI、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、Simon Willison</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-08</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-08.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-08.html</guid>
-      <pubDate>Thu, 08 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/teens-learn-and-plan">OpenAI 为青少年推出大学申请规划工具</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/teens-learn-and-plan">OpenAI</a> · 2026-10-07</p>
-<!-- published_at: 2026-10-07T12:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>ChatGPT for Teens 推出 College Planner，帮助管理大学申请，并提供新的闪卡和测验功能。</li>
-<li>将 AI 辅导与升学规划整合进青少年产品，切入高价值教育场景，可能改变学生和家长的使用习惯。</li>
-<li>高中生及家长；教育科技和升学咨询服务商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：面向细分用户的功能落地，扩展 ChatGPT 在教育领域的应用范围。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.anthropic.com/news/cyber-verification-program">Anthropic 扩展网络安全验证计划，向安全专业人员提供高级模型访问</a></p>
-<p><strong>来源</strong>：<a href="https://www.anthropic.com/news/cyber-verification-program">Anthropic</a> · 2026-10-06</p>
-<!-- published_at: 2026-10-06T19:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 推出新版网络安全验证计划（CVP），提供三个访问层级，包括最先进模型 Claude Opus 5.5 和降低的封锁分类器。</li>
-<li>直接向安全团队分发高级能力，改变网络安全工具的可及性和攻防格局。</li>
-<li>安全研究人员和企业安全团队；网络安全工具市场。</li>
-</ul>
-<p><strong>产品技术视角</strong>：通过分层访问控制释放模型能力，建立垂直领域信任。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1007113/microsoft-windows-copilot-ai-control-search-hybrid-intelligence">微软 Copilot 将能控制 Windows 和本地文件</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1007113/microsoft-windows-copilot-ai-control-search-hybrid-intelligence">The Verge AI</a> · 2026-10-07</p>
-<!-- published_at: 2026-10-07T14:01:20-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>微软在 Windows 和 Surface 活动上展示 Copilot 升级，可访问本地文件并在操作系统中执行操作，提出“混合智能”概念。</li>
-<li>AI 助手获得系统级权限，将深度介入个人电脑工作流，可能重塑桌面操作系统交互方式。</li>
-<li>Windows 用户和开发者；依赖传统桌面交互的企业应用。</li>
-</ul>
-<p><strong>产品技术视角</strong>：操作系统与 AI 集成，预示 AI 成为 PC 核心控制层。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://huggingface.co/blog/LiquidAI/open-d1">Liquid AI 发布多模态 d1 边缘决策模型</a></strong> · Hugging Face Blog</p>
-<p>d1-3B 支持图文输入，另有实验版 d1-omni-600M；模型以单次前向计算输出决策，适合关注边缘分类与低延迟推理的团队细读。</p>
-</li>
-<li>
-<p><strong><a href="https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform">Google 推出 Playground 实验性游戏平台</a></strong> · Google AI Blog</p>
-<p>用户通过文字提示生成游戏，再分享给朋友或社区；可观察创作与分发如何衔接，但原文未提供制作复杂游戏的能力证据。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users">Nous Research 完成 9000 万美元 B 轮融资，估值 15 亿美元</a></strong> · TechCrunch AI</p>
-<p>融资之外，更值得跟进的是 Hermes for Businesses：Nous 正将开发者使用的智能体推向企业定制工作流，产品交付比估值更有参考价值。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/openai-decisions-api-now-available-on-ai-gateway">Vercel AI Gateway 支持 OpenAI Decisions API</a></strong> · Vercel Changelog</p>
-<p>接口返回概率、选项和评分，可用于分流、审核与规则打分；决策模型有独立 ID 和计费，接入时需核对 SDK 版本及实际成本。</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/radisson">Radisson 与 Accenture 将酒店查找和预订带入 ChatGPT</a></strong> · OpenAI</p>
-<p>Radisson 与 Accenture 合作，让旅客在 ChatGPT 中查找、比较和预订酒店；可研究旅行规划与交易的衔接，转化效果仍缺少数据。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1005726/doordash-ai-agentic-food-delivery-bites">DoorDash 面临 AI 驱动的食品配送初创公司 Bites 挑战</a></strong> · The Verge AI</p>
-<p>报道以湾区初创公司 Bites 与 DoorDash 的摩擦为切口，讨论 AI 对外卖入口的影响；值得读渠道与商户关系，尚不能据此断言格局已变。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：决策模型的竞争焦点应从“能回答”转向“错一次要付多少代价”。Liquid AI 的 d1 通过单次前向计算给出决策；Vercel 接入 Decisions API，输出概率、选项和评分。两者让分类、分流与审核更容易接入业务，但概率本身不能证明结果可靠。对从业者，更有价值的验证是：在相同业务样本上比较误报、漏报、延迟和人工复核成本，并先定义何时拒答或转人工。评测没过，接口再顺滑也只是更快地批量犯错。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：OpenAI、Anthropic、The Verge AI、Hugging Face Blog、Google AI Blog、TechCrunch AI、Vercel Changelog</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
