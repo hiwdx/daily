@@ -7,8 +7,54 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 25 Oct 2026 01:28:35 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 06:42:54 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-26</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-26.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-26.html</guid>
+      <pubDate>Mon, 26 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act">宾州签署法律，要求标注AI生成广告</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act">The Verge AI</a> · 2026-10-24</p>
+<!-- published_at: 2026-10-24T14:32:21-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>宾州州长签署《人工智能欺骗性广告法案》，要求AI生成或显著修改的广告必须附有与广告同格式的标签。</li>
+<li>首次将AI内容披露义务扩展到所有广告类型，为其他州和联邦立法提供试验样本。</li>
+<li>在宾州投放广告的企业、广告代理商以及生成式AI工具开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：合规标签可能影响广告点击率和创意自由度，跨州投放者需设计动态标注机制。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey">Grok发布《奥德赛》AI电影前七分钟</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey">TechCrunch</a> · 2026-10-25</p>
+<!-- published_at: 2026-10-25T21:31:16+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Grok发布其AI生成电影《奥德赛》系列的第一集，时长七分钟，此前马斯克批评诺兰版本选角。</li>
+<li>直接对比真人电影与AI生成叙事，为评估当前模型的长篇一致性提供公开样本。</li>
+<li>电影制作人、生成式AI内容创作者和关注模型叙事能力的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：七分钟分段发布可能是规避长上下文质量下降的策略，需重点检查角色和场景连续性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist">Apollo经济学家称AI对多数公司零财务回报</a></strong> · TechCrunch</p>
+<p>Apollo首席经济学家分析S&amp;P 493（剔除七大科技股）发现利润率和人均收入持平，认为AI未提升生产力，挑战当前AI投资回报假设。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/column/1017983/google-ai-search-online-publishing">谷歌AI搜索改变在线出版生态</a></strong> · The Verge AI</p>
+<p>专栏分析谷歌AI搜索摘要导致点击率下降，出版商失去流量和广告收入，迫使内容策略转向订阅和直接访问。</p>
+</li>
+</ul>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：TechCrunch、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-25</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-25.html</link>
@@ -845,48 +891,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：NVIDIA Technical Blog、TechCrunch AI、Cloudflare Changelog、Vercel Changelog、The Verge AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-12</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-12.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-12.html</guid>
-      <pubDate>Mon, 12 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1009051/privacy-ai-agent-promises-openai-meta-muse-dots">AI 代理制造商承诺隐私——他们会兑现吗？</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1009051/privacy-ai-agent-promises-openai-meta-muse-dots">The Verge AI</a> · 2026-10-10</p>
-<!-- published_at: 2026-10-10T09:00:00-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 的 Dots 和 Meta 的 Muse 都宣称以隐私和安全为差异化优势，并互相攻击。</li>
-<li>隐私声明成为 AI 代理竞争焦点，但缺乏独立验证，用户面临选择困境。</li>
-<li>需要处理个人数据的 AI 代理用户和评估代理方案的企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：应审查隐私政策实际条款和数据处理流程，而非依赖营销承诺。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/11/can-the-ai-industry-persuade-data-center-opponents-by-getting-rid-of-ndas">亚马逊取消数据中心谈判中的保密协议</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/11/can-the-ai-industry-persuade-data-center-opponents-by-getting-rid-of-ndas">TechCrunch AI</a> · 2026-10-11</p>
-<!-- published_at: 2026-10-11T16:52:33+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>亚马逊效仿微软，在与地方政府的数据中心谈判中不再使用 NDA。</li>
-<li>此举旨在缓解社区对数据中心的反对，但沟通问题可能才是关键。</li>
-<li>数据中心运营商、地方政府和受数据中心影响的社区。</li>
-</ul>
-<p><strong>产品技术视角</strong>：透明度提升可能影响选址进程，但需观察是否带来实质谈判变化。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/11/these-execs-think-voice-ai-hasnt-reached-its-chatgpt-moment-yet">高管认为语音 AI 尚未迎来 ChatGPT 时刻</a></strong> · TechCrunch AI</p>
-<p>PolyAI CTO 称全双工模型已实现，但推理速度不足导致对话不自然，制约语音 AI 体验。</p>
-</li>
-</ul>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：TechCrunch AI、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
