@@ -7,8 +7,62 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 28 Oct 2026 07:53:25 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 02:21:55 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-10-29</title>
+      <link>https://daily.hiwd.com/archive/2026-10/2026-10-29.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-29.html</guid>
+      <pubDate>Thu, 29 Oct 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps">谷歌开放 Connected Apps 平台，让第三方应用接入 Gemini 与搜索</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps">TechCrunch</a> · 2026-10-28</p>
+<!-- published_at: 2026-10-28T17:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google 推出 Connected Apps Platform，允许企业将应用连接到 Gemini 和搜索，用户可安全链接第三方服务并让其执行操作。</li>
+<li>为开发者提供规范化的第三方服务接入通道，可让 AI 代理直接操作现有应用，降低集成成本。</li>
+<li>希望将服务接入 Google AI 体验的企业开发者和产品团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需评估在实际操作中第三方服务的权限边界和安全审计机制，避免代理滥用用户数据。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://about.fb.com/news/2026/10/meta-partners-with-five-us-universities-to-accelerate-medical-and-scientific-breakthroughs">Meta 与五所美国大学合作推动医疗与科学突破</a></p>
+<p><strong>来源</strong>：<a href="https://about.fb.com/news/2026/10/meta-partners-with-five-us-universities-to-accelerate-medical-and-scientific-breakthroughs">Meta Newsroom</a> · 2026-10-28</p>
+<!-- published_at: 2026-10-28T17:00:49+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Meta 宣布与加州理工学院等五所美国大学合作，提供 Superintelligence 模型、研究资金和直接研究协作。</li>
+<li>学术界可获得前沿模型和资源，可能加速医疗和科学领域的研究产出。</li>
+<li>参与合作大学的研究人员以及关注 AI for Science 的从业者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需关注模型访问方式、计算资源分配和成果共享条款，判断此类合作对自身研究的可借鉴性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/nvidia-rtx-spark-powers-neural-rendering-and-ai-characters-in-games">NVIDIA RTX Spark 平台推动神经渲染与 AI 角色在游戏中的应用</a></strong> · NVIDIA Technical Blog</p>
+<p>RTX Spark 是面向轻薄笔记本的新 Windows PC 平台，集成了最多 128GB 统一内存和 CUDA 栈，支持 DLSS 5 神经渲染。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/27/bank-of-america-kindly-asks-that-you-dont-share-your-banking-password-with-your-ai-assistant">Bank of America 提醒用户勿向 AI 助手分享银行密码</a></strong> · TechCrunch AI</p>
+<p>银行通过邮件提醒客户不要向 AI 助手透露登录凭据，反映金融行业对代理安全的担忧。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1020626/chrome-enhanced-autofill-gmail-forms-gemini-personal-intelligence">Chrome 增强自动填充可从 Gmail 提取信息帮助填表</a></strong> · The Verge AI</p>
+<p>Chrome 利用 Gemini Personal Intelligence 从 Gmail 查找订单号、跟踪号和旅行预订以自动填充表单。</p>
+</li>
+<li>
+<p><strong><a href="https://www.anthropic.com/news/expanding-partnership-gsa">Anthropic 与 GSA 扩大合作，为政府提供 Claude 折扣</a></strong> · Anthropic</p>
+<p>新协议为政府合作伙伴提供 Claude Enterprise、Claude for Government 和 API 40% 折扣，覆盖所有产品面。</p>
+</li>
+</ul>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：TechCrunch、Meta Newsroom、NVIDIA Technical Blog、TechCrunch AI、The Verge AI、Anthropic</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-10-28</title>
       <link>https://daily.hiwd.com/archive/2026-10/2026-10-28.html</link>
@@ -802,80 +856,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：Hugging Face Blog、OpenAI、NVIDIA Technical Blog、The Verge AI、TechCrunch</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-15</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-15.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-15.html</guid>
-      <pubDate>Thu, 15 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://arstechnica.com/security/2026/10/anthropic-warns-small-ai-models-could-self-replicate-through-iot-devices">Anthropic 警告小型 AI 模型可能通过 IoT 设备自我复制</a></p>
-<p><strong>来源</strong>：<a href="https://arstechnica.com/security/2026/10/anthropic-warns-small-ai-models-could-self-replicate-through-iot-devices">Ars Technica</a> · 2026-10-14</p>
-<!-- published_at: 2026-10-14T12:55:06+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 警告，小型 AI 模型的进步可能催生能自我复制并感染智能冰箱、吸尘器等 IoT 设备的恶意软件，且更难清除。</li>
-<li>安全防护需从云端延伸到资源受限设备，扩大攻击面。</li>
-<li>IoT 设备制造商、安全团队和依赖联网设备的用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：需验证模型在低算力环境下的行为约束和检测手段是否有效。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/news/1011654/mckinsey-ai-client-interview">McKinsey 在入门级面试中引入模拟 AI 客户对话</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/news/1011654/mckinsey-ai-client-interview">The Verge AI</a> · 2026-10-14</p>
-<!-- published_at: 2026-10-14T18:53:31-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>McKinsey 在部分入门级面试中加入与模拟客户进行 10 分钟对话，模拟真实咨询场景。</li>
-<li>AI 开始成为招聘评估工具，可能改变人才筛选标准。</li>
-<li>求职者、HR 团队和咨询行业招聘流程。</li>
-</ul>
-<p><strong>产品技术视角</strong>：模拟客户的行为逼真度和公平性需验证，可能引入新的偏见。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/14/youtube-music-launches-new-labels-as-ai-generated-music-floods-streaming-platforms">YouTube Music 为 AI 生成歌曲添加新标签</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/14/youtube-music-launches-new-labels-as-ai-generated-music-floods-streaming-platforms">TechCrunch</a> · 2026-10-14</p>
-<!-- published_at: 2026-10-14T18:23:46+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>YouTube Music 推出新标签系统，帮助听众识别使用生成式 AI 创作的歌曲，包括作曲和演唱环节。</li>
-<li>提升 AI 音乐内容透明度，但可能影响创作者曝光和平台推荐机制。</li>
-<li>音乐创作者、听众和流媒体平台。</li>
-</ul>
-<p><strong>产品技术视角</strong>：标签的准确性和覆盖范围需观察，避免误标或漏标影响用户体验。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://developer.nvidia.com/blog/optimizing-agent-reliability-and-tool-calling-efficiency-for-chip-design-using-nvidia-nemo-gym">NVIDIA NeMo Gym 优化芯片设计代理可靠性</a></strong> · NVIDIA Technical Blog</p>
-<p>西门子 EDA 使用智能体评估将代理轮次减少 66%，基准分数从 55% 提升至 95%。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/allenai/hiro-acev2">HiRO-ACEv2 以低成本高分辨率模拟极端天气</a></strong> · Hugging Face Blog</p>
-<p>HiRO-ACEv2 能以约 X-SHiELD 1/300 的成本生成全球 3 公里气候数据，并准确再现罕见天气事件。</p>
-</li>
-<li>
-<p><strong><a href="https://research.google/blog/putting-earth-ai-to-work-geospatial-agents-for-our-planets-biggest-challenges">谷歌研究展示地理空间智能体</a></strong> · Google Research</p>
-<p>结合领域基础模型、空间工具和规划，地理空间推理智能体可执行复杂空间分析。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/14/scimplify-raises-25m-to-challenge-chinas-grip-on-critical-materials-with-ai">Scimplify 融资 2500 万美元用 AI 挑战关键材料供应</a></strong> · TechCrunch AI</p>
-<p>印度初创公司获 Hitachi Ventures 领投，AI 方法生产特种化学品，瞄准半导体、国防和能源市场。</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/sentinelone">SentinelOne 利用 OpenAI Daybreak 将恶意软件分析从数周缩短到数小时</a></strong> · OpenAI</p>
-<p>SentinelOne 使用 OpenAI Daybreak 提升威胁调查效率，释放更多分析能力。</p>
-</li>
-<li>
-<p><strong><a href="https://simonwillison.net/2026/Oct/14/ai-is-mass-decompiling-games">AI 用于大规模游戏反编译</a></strong> · Simon Willison</p>
-<p>AI 反编译游戏促进旧游戏移植和混搭，但也引发版权与工具滥用担忧。</p>
-</li>
-</ul>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：Hugging Face Blog、Google Research、NVIDIA Technical Blog、Simon Willison、TechCrunch AI、Ars Technica、The Verge AI、OpenAI、TechCrunch</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
