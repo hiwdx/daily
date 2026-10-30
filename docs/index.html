@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI 行业每日简报 | hiwd</title>
-  <meta name="description" content="AI 行业每日精选 2026年10月30日 周五" />
+  <meta name="description" content="AI 行业每日精选 2026年10月31日 周六" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
   <script src="/theme.js?v=20260704-1"></script>
@@ -19,67 +19,61 @@
     <div class="hero">
       <div class="hero-title-row">
         <h1>AI 行业每日简报</h1>
-        <span class="hero-date">2026年10月30日 周五</span>
+        <span class="hero-date">2026年10月31日 周六</span>
       </div>
     </div>
 
     <!-- Briefing body -->
     <h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity">Mistral 发布万亿参数模型 Mistral Large 4 权重，瞄准网络安全</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity">TechCrunch</a> · 2026-10-29</p>
-<!-- published_at: 2026-10-29T17:00:00+00:00 -->
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/mistral-large4">Mistral 发布 Large 4：1T 总参数、49B 活跃的开放权重 MoE</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/mistral-large4">Hugging Face Blog</a> · 2026-10-29</p>
+<!-- published_at: 2026-10-29T00:00:00+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Mistral 发布 Mistral Large 4（ML4）的权重，允许企业和政府自行下载部署。</li>
-<li>这是罕见的大规模开放权重发布，且厂商明确针对网络安全场景，为敏感环境提供可自托管的高能力模型。</li>
-<li>需要数据主权或合规要求的企业、政府机构，以及关注网络安全应用的 AI 团队。</li>
+<li>Mistral Large 4 开放权重（总参数约 1T，活跃 49B，支持文本+图像输入），并附带 FP8/NVFP4 与 GGUF 版本。</li>
+<li>提供 1M token 上下文的多模态前沿模型，许可协议限制模型即服务，影响开源部署与商用策略。</li>
+<li>需要自部署大模型或避开 API 锁定的开发者和企业。</li>
 </ul>
-<p><strong>产品技术视角</strong>：权重开放不等于免费商用，需核实具体许可证；万亿参数对推理基础设施要求极高，自部署需评估成本。</p>
+<p><strong>产品技术视角</strong>：活跃参数少但总参数量大，推理部署仍需高显存；需实测其多模态和长上下文能力是否匹配官方宣传。</p>
 <hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1021339/google-gemini-4-carbon-cybersecurity-frontier">Google 发布 Gemini 4 Carbon，称网络安全能力大幅提升</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1021339/google-gemini-4-carbon-cybersecurity-frontier">The Verge AI</a> · 2026-10-28</p>
-<!-- published_at: 2026-10-28T16:03:00-04:00 -->
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry">Google 数据中心卫星上线：4 块 TPU，每次仅能运行 20 分钟</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry">TechCrunch</a> · 2026-10-30</p>
+<!-- published_at: 2026-10-30T17:00:00+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Google 推出 Gemini 4 Carbon，厂商称在部分基准上超越 OpenAI 和 Anthropic 的顶尖模型。</li>
-<li>如果厂商声明属实，企业将多一个在网络安全等高价值任务上的前沿闭源模型选项，可能改变模型选型。</li>
-<li>使用 Google AI 服务的安全团队及考虑切换模型的企业开发者。</li>
+<li>Google 的 Suncatcher 原型卫星已与地面通信，搭载 4 块 TPU，发电量 1kW，但每次只能开启一块 TPU 约 20 分钟。</li>
+<li>首次验证在轨推理的可行性，为未来近地轨道卫星群执行大规模推理铺路。</li>
+<li>关注边缘计算、极端环境部署及卫星通信的 AI 基础设施团队。</li>
 </ul>
-<p><strong>产品技术视角</strong>：注意基准测试的选择性；需通过自身任务验证，且关注 API 定价和区域可用性。</p>
+<p><strong>产品技术视角</strong>：电力限制导致计算时间极短，目前仅能完成诗歌生成等轻量任务；需评估散热和功耗管理对推理吞吐的实际影响。</p>
 <h3>📰 其他值得看的</h3>
 <ul>
 <li>
-<p><strong><a href="https://huggingface.co/blog/anydecisionmodel">Hugging Face 发布 AnySpeechRecognizer 和 AnyDecisionModel</a></strong> · Hugging Face Blog</p>
-<p>面向 Apple 平台的开源语音识别与决策模型，可分别处理客服电话中的语音转写和路由决策。</p>
+<p><strong><a href="https://openai.com/index/community-safety-report-and-new-protections-for-teens">OpenAI 加强 ChatGPT 暴力预防与青少年保护</a></strong> · OpenAI</p>
+<p>OpenAI 扩展安全护栏并承诺公开安全报告，属于信任与安全更新，无新技术细节，适合关注合规的企业用户。</p>
 </li>
 <li>
-<p><strong><a href="https://techcrunch.com/2026/10/29/ex-palantir-execs-launch-dream-with-17m-from-a16z-to-build-ai-world-models-for-construction">前 Palantir 高管创立 Dream，获 a16z 1700 万美元融资打造建筑世界模型</a></strong> · TechCrunch</p>
-<p>专注于建筑行业的 AI 世界模型，已完成融资并启动。</p>
+<p><strong><a href="https://developer.nvidia.com/blog/build-specialized-agents-on-a-stack-you-control-with-nvidia-nemoclaw">NVIDIA NemoClaw 提供开放蓝图构建全栈智能体平台</a></strong> · NVIDIA Technical Blog</p>
+<p>结合 Nemotron 模型、优化工具和 OpenShell 安全运行时，支持 OpenClaw/LangChain 等编排层，面向已有智能体框架的优化需求。</p>
 </li>
 <li>
-<p><strong><a href="https://openai.com/index/updated-model-spec">OpenAI 更新 Model Spec，提出五个核心价值观</a></strong> · OpenAI</p>
-<p>规范强调健全判断、人类自主和忠于人类意图，尚无具体产品功能。</p>
+<p><strong><a href="https://techcrunch.com/2026/10/29/openai-backed-thrive-holdings-acquires-adt">Thrive Holdings 以 76 亿美元收购 ADT</a></strong> · TechCrunch AI</p>
+<p>OpenAI 支持的控股公司收购实体安防商，显示 AI 资本向线下服务渗透，但无直接技术发布。</p>
 </li>
 <li>
-<p><strong><a href="https://vercel.com/changelog/strix-now-supports-vercel-ai-gateway">Vercel AI Gateway 支持 Strix，可调用 400+ 模型进行渗透测试</a></strong> · Vercel Changelog</p>
-<p>开源渗透测试工具 Strix 接入 Vercel AI Gateway，避免多供应商注册并统一成本追踪。</p>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1023440/starbucks-ai-personalized-menu-drive-thru">Starbucks CEO 称将探索 AI 个性化得来速菜单</a></strong> · The Verge AI</p>
+<p>仅停留在财报电话会愿景，无具体技术或时间表，适合跟踪零售 AI 应用方向。</p>
 </li>
 <li>
-<p><strong><a href="https://huggingface.co/blog/ibm-granite/granite-switch-4-1-1">IBM Granite Switch 4.1.1 补丁发布，模型更新如软件更新</a></strong> · Hugging Face Blog</p>
-<p>完全向后兼容的增量改进，强调模块化适配器的可维护性。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1022519/google-gemini-file-editing-documents-pdfs">Gemini 聊天中可直接生成和编辑 Google Docs</a></strong> · The Verge AI</p>
-<p>无需离开 Gemini 应用即可编辑生成的文件，简化文档工作流。</p>
+<p><strong><a href="https://huggingface.co/blog/announcing-project-protostar">Hugging Face 发起 Project ProtoStar 推动公共科学数据 AI 就绪</a></strong> · Hugging Face Blog</p>
+<p>联合多家机构释放公共资助科研数据，有望提升科学 AI 训练语料质量，但首批交付未明。</p>
 </li>
 </ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：前沿模型在网络安全领域出现开放与闭源路径的正面竞争，企业面临自托管控制与性能便利的取舍。 Mistral Large 4 以开放权重提供自部署选项，而 Gemini 4 Carbon 作为闭源 API 声称在网络安全基准上领先。 数据主权与合规要求高的企业可能倾向 Mistral，但对部署成本敏感或追求最新性能的团队仍会考虑闭源 API。 在自身安全任务上对比两者实际表现，同时评估 Mistral 权重的许可证和推理成本。</p>
 <h3>⚠️ 信息来源说明</h3>
 <ul>
-<li>本期来源：Hugging Face Blog、TechCrunch、The Verge AI、OpenAI、Vercel Changelog</li>
+<li>本期来源：OpenAI、NVIDIA Technical Blog、TechCrunch AI、The Verge AI、Hugging Face Blog、TechCrunch</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>
 
@@ -87,8 +81,9 @@
     <div class="archive-section">
       <h2>历史存档</h2>
       <div class="archive-nav"><details class="month-item">
-  <summary>2026-10 <span class="month-count">29篇</span></summary>
+  <summary>2026-10 <span class="month-count">30篇</span></summary>
   <ul class="day-list">
+    <li data-date="2026-10-31"><a href="/archive/2026-10/2026-10-31.html">2026-10-31</a></li>
     <li data-date="2026-10-30"><a href="/archive/2026-10/2026-10-30.html">2026-10-30</a></li>
     <li data-date="2026-10-29"><a href="/archive/2026-10/2026-10-29.html">2026-10-29</a></li>
     <li data-date="2026-10-28"><a href="/archive/2026-10/2026-10-28.html">2026-10-28</a></li>
