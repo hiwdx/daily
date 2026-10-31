@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 行业每日简报 · 2026年11月01日 | hiwd</title>
+  <meta name="description" content="AI 行业每日精选 2026年11月01日 周日" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
+  <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
+  <script src="/theme.js?v=20260704-1"></script>
+  <link rel="stylesheet" type="text/css" href="/style.css?v=20260707-1" />
+</head>
+<body>
+
+  <a href="https://hiwd.com/" id="logo" aria-label="返回 hiwd 主站"></a>
+
+  <div id="content">
+
+    <div class="hero">
+      <div class="hero-title-row">
+        <h1>AI 行业每日简报</h1>
+        <span class="hero-date">2026年11月01日 周日</span>
+      </div>
+    </div>
+
+    <!-- Briefing body -->
+    <h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours">Anthropic 官方 VS Code 扩展在 Cursor 市场被植入后门约 12 小时</a></p>
+<p><strong>来源</strong>：<a href="https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours">Ars Technica</a> · 2026-10-30</p>
+<!-- published_at: 2026-10-30T21:09:54+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 在 Cursor 市场的官方 Claude VS Code 扩展 2.1.313 版本被植入后门，持续约 12 小时，影响最多 5000 名开发者。</li>
+<li>官方账号被视为可信来源，后门可通过扩展自动更新扩散，暴露了 AI 工具供应链的薄弱环节。</li>
+<li>使用 Cursor 且安装了 Anthropic 官方扩展的开发者，尤其是启用自动更新的用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：验证扩展来源不应仅凭官方账号；应检查版本哈希、发布历史和权限变更，并将 AI 开发工具纳入零信任策略。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission">Google 卫星 AI 服务器首次从太空返回响应</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission">The Verge AI</a> · 2026-10-30</p>
+<!-- published_at: 2026-10-30T14:21:38-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google Project Suncatcher 卫星成功启动 TPU 并运行 Gemma 4 模型，首次从太空生成俳句。</li>
+<li>展示了在轨 AI 推理的可行性，为低延迟、边缘计算和太空数据处理开辟了新的部署模式。</li>
+<li>需要低延迟或离线 AI 的太空、国防、遥感及边缘计算团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：关注辐射加固、功耗和散热限制对模型选择的影响；Gemma 4 的量化版本可能是实际部署的关键，而非完整模型。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/10/30/can-ai-data-centers-be-mass-produced-like-cars-and-online-in-48-hours-this-startup-aims-to-find-out">AI 数据中心能否像汽车一样量产？这家初创公司要在 48 小时内上线</a></strong> · TechCrunch AI</p>
+<p>Runware 计划在罗马尼亚工厂实现模块化数据中心量产，目标 2028 年日产 30 兆瓦容量，但该计划仍处于早期阶段。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/nvidia/nemotron-halloween">用 NVIDIA Nemotron 构建万圣节互动投影 MonsterHouse</a></strong> · Hugging Face Blog</p>
+<p>作者利用 Nemotron 语音代理在单工作站上构建了能与孩子互动的 MonsterHouse，展示了多模态模型在创意场景的落地。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/build-a-validated-kubernetes-runtime-for-nvidia-dynamo">NVIDIA 为 Dynamo 构建经验证的 Kubernetes 运行时</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA AICR 提供可复现的 Dynamo 运行时配方，包括 GPU 驱动、DRA、gang scheduling 和指标，简化生产部署。</p>
+</li>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Oct/30/nesformer">在 Qwen3.5-4B 权重中模拟 NES 6502 CPU</a></strong> · Simon Willison</p>
+<p>项目 nesformer 在 Qwen3.5-4B 权重中实现了 NES 模拟器，可极慢速运行超级马里奥，展示了模型内部计算的潜力。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 基础设施正从粗放扩张转向追求标准化、可验证和供应链安全的工程化阶段。 Anthropic 官方扩展被后门暴露了工具链信任假设的脆弱，而 Google 卫星 AI 推理成功则需要极端环境下的可靠工程。两者都在提醒：AI 的可用性不再仅取决于模型能力，更取决于部署和分发的工程严谨性。 从业者需要为 AI 组件建立供应链安全基线，并对极端部署场景做额外验证，避免默认信任官方渠道。 观察 Anthropic 是否发布事件调查报告，以及 Google 是否公布卫星 AI 推理的功耗、延迟和模型量化细节。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：Hugging Face Blog、NVIDIA Technical Blog、Simon Willison、TechCrunch AI、Ars Technica、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>
+
+    <!-- Archive -->
+    <div class="archive-section">
+      <h2>历史存档</h2>
+      <div class="archive-nav"><details class="month-item">
+  <summary>2026-11 <span class="month-count">1篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-11-01"><a href="/archive/2026-11/2026-11-01.html">2026-11-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
+  <summary>2026-10 <span class="month-count">30篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-10-31"><a href="/archive/2026-10/2026-10-31.html">2026-10-31</a></li>
+    <li data-date="2026-10-30"><a href="/archive/2026-10/2026-10-30.html">2026-10-30</a></li>
+    <li data-date="2026-10-29"><a href="/archive/2026-10/2026-10-29.html">2026-10-29</a></li>
+    <li data-date="2026-10-28"><a href="/archive/2026-10/2026-10-28.html">2026-10-28</a></li>
+    <li data-date="2026-10-27"><a href="/archive/2026-10/2026-10-27.html">2026-10-27</a></li>
+    <li data-date="2026-10-26"><a href="/archive/2026-10/2026-10-26.html">2026-10-26</a></li>
+    <li data-date="2026-10-25"><a href="/archive/2026-10/2026-10-25.html">2026-10-25</a></li>
+    <li data-date="2026-10-24"><a href="/archive/2026-10/2026-10-24.html">2026-10-24</a></li>
+    <li data-date="2026-10-23"><a href="/archive/2026-10/2026-10-23.html">2026-10-23</a></li>
+    <li data-date="2026-10-22"><a href="/archive/2026-10/2026-10-22.html">2026-10-22</a></li>
+    <li data-date="2026-10-21"><a href="/archive/2026-10/2026-10-21.html">2026-10-21</a></li>
+    <li data-date="2026-10-20"><a href="/archive/2026-10/2026-10-20.html">2026-10-20</a></li>
+    <li data-date="2026-10-19"><a href="/archive/2026-10/2026-10-19.html">2026-10-19</a></li>
+    <li data-date="2026-10-18"><a href="/archive/2026-10/2026-10-18.html">2026-10-18</a></li>
+    <li data-date="2026-10-17"><a href="/archive/2026-10/2026-10-17.html">2026-10-17</a></li>
+    <li data-date="2026-10-16"><a href="/archive/2026-10/2026-10-16.html">2026-10-16</a></li>
+    <li data-date="2026-10-15"><a href="/archive/2026-10/2026-10-15.html">2026-10-15</a></li>
+    <li data-date="2026-10-14"><a href="/archive/2026-10/2026-10-14.html">2026-10-14</a></li>
+    <li data-date="2026-10-13"><a href="/archive/2026-10/2026-10-13.html">2026-10-13</a></li>
+    <li data-date="2026-10-12"><a href="/archive/2026-10/2026-10-12.html">2026-10-12</a></li>
+    <li data-date="2026-10-11"><a href="/archive/2026-10/2026-10-11.html">2026-10-11</a></li>
+    <li data-date="2026-10-10"><a href="/archive/2026-10/2026-10-10.html">2026-10-10</a></li>
+    <li data-date="2026-10-08"><a href="/archive/2026-10/2026-10-08.html">2026-10-08</a></li>
+    <li data-date="2026-10-07"><a href="/archive/2026-10/2026-10-07.html">2026-10-07</a></li>
+    <li data-date="2026-10-06"><a href="/archive/2026-10/2026-10-06.html">2026-10-06</a></li>
+    <li data-date="2026-10-05"><a href="/archive/2026-10/2026-10-05.html">2026-10-05</a></li>
+    <li data-date="2026-10-04"><a href="/archive/2026-10/2026-10-04.html">2026-10-04</a></li>
+    <li data-date="2026-10-03"><a href="/archive/2026-10/2026-10-03.html">2026-10-03</a></li>
+    <li data-date="2026-10-02"><a href="/archive/2026-10/2026-10-02.html">2026-10-02</a></li>
+    <li data-date="2026-10-01"><a href="/archive/2026-10/2026-10-01.html">2026-10-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
+  <summary>2026-09 <span class="month-count">24篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-09-30"><a href="/archive/2026-09/2026-09-30.html">2026-09-30</a></li>
+    <li data-date="2026-09-28"><a href="/archive/2026-09/2026-09-28.html">2026-09-28</a></li>
+    <li data-date="2026-09-27"><a href="/archive/2026-09/2026-09-27.html">2026-09-27</a></li>
+    <li data-date="2026-09-26"><a href="/archive/2026-09/2026-09-26.html">2026-09-26</a></li>
+    <li data-date="2026-09-25"><a href="/archive/2026-09/2026-09-25.html">2026-09-25</a></li>
+    <li data-date="2026-09-23"><a href="/archive/2026-09/2026-09-23.html">2026-09-23</a></li>
+    <li data-date="2026-09-22"><a href="/archive/2026-09/2026-09-22.html">2026-09-22</a></li>
+    <li data-date="2026-09-21"><a href="/archive/2026-09/2026-09-21.html">2026-09-21</a></li>
+    <li data-date="2026-09-20"><a href="/archive/2026-09/2026-09-20.html">2026-09-20</a></li>
+    <li data-date="2026-09-19"><a href="/archive/2026-09/2026-09-19.html">2026-09-19</a></li>
+    <li data-date="2026-09-18"><a href="/archive/2026-09/2026-09-18.html">2026-09-18</a></li>
+    <li data-date="2026-09-16"><a href="/archive/2026-09/2026-09-16.html">2026-09-16</a></li>
+    <li data-date="2026-09-13"><a href="/archive/2026-09/2026-09-13.html">2026-09-13</a></li>
+    <li data-date="2026-09-12"><a href="/archive/2026-09/2026-09-12.html">2026-09-12</a></li>
+    <li data-date="2026-09-11"><a href="/archive/2026-09/2026-09-11.html">2026-09-11</a></li>
+    <li data-date="2026-09-10"><a href="/archive/2026-09/2026-09-10.html">2026-09-10</a></li>
+    <li data-date="2026-09-09"><a href="/archive/2026-09/2026-09-09.html">2026-09-09</a></li>
+    <li data-date="2026-09-08"><a href="/archive/2026-09/2026-09-08.html">2026-09-08</a></li>
+    <li data-date="2026-09-07"><a href="/archive/2026-09/2026-09-07.html">2026-09-07</a></li>
+    <li data-date="2026-09-06"><a href="/archive/2026-09/2026-09-06.html">2026-09-06</a></li>
+    <li data-date="2026-09-05"><a href="/archive/2026-09/2026-09-05.html">2026-09-05</a></li>
+    <li data-date="2026-09-04"><a href="/archive/2026-09/2026-09-04.html">2026-09-04</a></li>
+    <li data-date="2026-09-03"><a href="/archive/2026-09/2026-09-03.html">2026-09-03</a></li>
+    <li data-date="2026-09-02"><a href="/archive/2026-09/2026-09-02.html">2026-09-02</a></li>
+  </ul>
+</details>
+<details class="older-archive">
+  <summary>查看更早</summary>
+  <div class="older-months">
+<details class="month-item">
+  <summary>2026-08 <span class="month-count">22篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-08-31"><a href="/archive/2026-08/2026-08-31.html">2026-08-31</a></li>
+    <li data-date="2026-08-30"><a href="/archive/2026-08/2026-08-30.html">2026-08-30</a></li>
+    <li data-date="2026-08-29"><a href="/archive/2026-08/2026-08-29.html">2026-08-29</a></li>
+    <li data-date="2026-08-28"><a href="/archive/2026-08/2026-08-28.html">2026-08-28</a></li>
+    <li data-date="2026-08-27"><a href="/archive/2026-08/2026-08-27.html">2026-08-27</a></li>
+    <li data-date="2026-08-26"><a href="/archive/2026-08/2026-08-26.html">2026-08-26</a></li>
+    <li data-date="2026-08-25"><a href="/archive/2026-08/2026-08-25.html">2026-08-25</a></li>
+    <li data-date="2026-08-24"><a href="/archive/2026-08/2026-08-24.html">2026-08-24</a></li>
+    <li data-date="2026-08-23"><a href="/archive/2026-08/2026-08-23.html">2026-08-23</a></li>
+    <li data-date="2026-08-21"><a href="/archive/2026-08/2026-08-21.html">2026-08-21</a></li>
+    <li data-date="2026-08-20"><a href="/archive/2026-08/2026-08-20.html">2026-08-20</a></li>
+    <li data-date="2026-08-19"><a href="/archive/2026-08/2026-08-19.html">2026-08-19</a></li>
+    <li data-date="2026-08-18"><a href="/archive/2026-08/2026-08-18.html">2026-08-18</a></li>
+    <li data-date="2026-08-12"><a href="/archive/2026-08/2026-08-12.html">2026-08-12</a></li>
+    <li data-date="2026-08-09"><a href="/archive/2026-08/2026-08-09.html">2026-08-09</a></li>
+    <li data-date="2026-08-08"><a href="/archive/2026-08/2026-08-08.html">2026-08-08</a></li>
+    <li data-date="2026-08-07"><a href="/archive/2026-08/2026-08-07.html">2026-08-07</a></li>
+    <li data-date="2026-08-06"><a href="/archive/2026-08/2026-08-06.html">2026-08-06</a></li>
+    <li data-date="2026-08-05"><a href="/archive/2026-08/2026-08-05.html">2026-08-05</a></li>
+    <li data-date="2026-08-04"><a href="/archive/2026-08/2026-08-04.html">2026-08-04</a></li>
+    <li data-date="2026-08-03"><a href="/archive/2026-08/2026-08-03.html">2026-08-03</a></li>
+    <li data-date="2026-08-01"><a href="/archive/2026-08/2026-08-01.html">2026-08-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
+  <summary>2026-07 <span class="month-count">31篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-07-31"><a href="/archive/2026-07/2026-07-31.html">2026-07-31</a></li>
+    <li data-date="2026-07-30"><a href="/archive/2026-07/2026-07-30.html">2026-07-30</a></li>
+    <li data-date="2026-07-29"><a href="/archive/2026-07/2026-07-29.html">2026-07-29</a></li>
+    <li data-date="2026-07-28"><a href="/archive/2026-07/2026-07-28.html">2026-07-28</a></li>
+    <li data-date="2026-07-27"><a href="/archive/2026-07/2026-07-27.html">2026-07-27</a></li>
+    <li data-date="2026-07-26"><a href="/archive/2026-07/2026-07-26.html">2026-07-26</a></li>
+    <li data-date="2026-07-25"><a href="/archive/2026-07/2026-07-25.html">2026-07-25</a></li>
+    <li data-date="2026-07-24"><a href="/archive/2026-07/2026-07-24.html">2026-07-24</a></li>
+    <li data-date="2026-07-23"><a href="/archive/2026-07/2026-07-23.html">2026-07-23</a></li>
+    <li data-date="2026-07-22"><a href="/archive/2026-07/2026-07-22.html">2026-07-22</a></li>
+    <li data-date="2026-07-21"><a href="/archive/2026-07/2026-07-21.html">2026-07-21</a></li>
+    <li data-date="2026-07-20"><a href="/archive/2026-07/2026-07-20.html">2026-07-20</a></li>
+    <li data-date="2026-07-19"><a href="/archive/2026-07/2026-07-19.html">2026-07-19</a></li>
+    <li data-date="2026-07-18"><a href="/archive/2026-07/2026-07-18.html">2026-07-18</a></li>
+    <li data-date="2026-07-17"><a href="/archive/2026-07/2026-07-17.html">2026-07-17</a></li>
+    <li data-date="2026-07-16"><a href="/archive/2026-07/2026-07-16.html">2026-07-16</a></li>
+    <li data-date="2026-07-15"><a href="/archive/2026-07/2026-07-15.html">2026-07-15</a></li>
+    <li data-date="2026-07-14"><a href="/archive/2026-07/2026-07-14.html">2026-07-14</a></li>
+    <li data-date="2026-07-13"><a href="/archive/2026-07/2026-07-13.html">2026-07-13</a></li>
+    <li data-date="2026-07-12"><a href="/archive/2026-07/2026-07-12.html">2026-07-12</a></li>
+    <li data-date="2026-07-11"><a href="/archive/2026-07/2026-07-11.html">2026-07-11</a></li>
+    <li data-date="2026-07-10"><a href="/archive/2026-07/2026-07-10.html">2026-07-10</a></li>
+    <li data-date="2026-07-09"><a href="/archive/2026-07/2026-07-09.html">2026-07-09</a></li>
+    <li data-date="2026-07-08"><a href="/archive/2026-07/2026-07-08.html">2026-07-08</a></li>
+    <li data-date="2026-07-07"><a href="/archive/2026-07/2026-07-07.html">2026-07-07</a></li>
+    <li data-date="2026-07-06"><a href="/archive/2026-07/2026-07-06.html">2026-07-06</a></li>
+    <li data-date="2026-07-05"><a href="/archive/2026-07/2026-07-05.html">2026-07-05</a></li>
+    <li data-date="2026-07-04"><a href="/archive/2026-07/2026-07-04.html">2026-07-04</a></li>
+    <li data-date="2026-07-03"><a href="/archive/2026-07/2026-07-03.html">2026-07-03</a></li>
+    <li data-date="2026-07-02"><a href="/archive/2026-07/2026-07-02.html">2026-07-02</a></li>
+    <li data-date="2026-07-01"><a href="/archive/2026-07/2026-07-01.html">2026-07-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
+  <summary>2026-06 <span class="month-count">28篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-06-30"><a href="/archive/2026-06/2026-06-30.html">2026-06-30</a></li>
+    <li data-date="2026-06-27"><a href="/archive/2026-06/2026-06-27.html">2026-06-27</a></li>
+    <li data-date="2026-06-26"><a href="/archive/2026-06/2026-06-26.html">2026-06-26</a></li>
+    <li data-date="2026-06-25"><a href="/archive/2026-06/2026-06-25.html">2026-06-25</a></li>
+    <li data-date="2026-06-24"><a href="/archive/2026-06/2026-06-24.html">2026-06-24</a></li>
+    <li data-date="2026-06-23"><a href="/archive/2026-06/2026-06-23.html">2026-06-23</a></li>
+    <li data-date="2026-06-22"><a href="/archive/2026-06/2026-06-22.html">2026-06-22</a></li>
+    <li data-date="2026-06-21"><a href="/archive/2026-06/2026-06-21.html">2026-06-21</a></li>
+    <li data-date="2026-06-20"><a href="/archive/2026-06/2026-06-20.html">2026-06-20</a></li>
+    <li data-date="2026-06-19"><a href="/archive/2026-06/2026-06-19.html">2026-06-19</a></li>
+    <li data-date="2026-06-18"><a href="/archive/2026-06/2026-06-18.html">2026-06-18</a></li>
+    <li data-date="2026-06-17"><a href="/archive/2026-06/2026-06-17.html">2026-06-17</a></li>
+    <li data-date="2026-06-16"><a href="/archive/2026-06/2026-06-16.html">2026-06-16</a></li>
+    <li data-date="2026-06-15"><a href="/archive/2026-06/2026-06-15.html">2026-06-15</a></li>
+    <li data-date="2026-06-14"><a href="/archive/2026-06/2026-06-14.html">2026-06-14</a></li>
+    <li data-date="2026-06-13"><a href="/archive/2026-06/2026-06-13.html">2026-06-13</a></li>
+    <li data-date="2026-06-12"><a href="/archive/2026-06/2026-06-12.html">2026-06-12</a></li>
+    <li data-date="2026-06-11"><a href="/archive/2026-06/2026-06-11.html">2026-06-11</a></li>
+    <li data-date="2026-06-10"><a href="/archive/2026-06/2026-06-10.html">2026-06-10</a></li>
+    <li data-date="2026-06-09"><a href="/archive/2026-06/2026-06-09.html">2026-06-09</a></li>
+    <li data-date="2026-06-08"><a href="/archive/2026-06/2026-06-08.html">2026-06-08</a></li>
+    <li data-date="2026-06-07"><a href="/archive/2026-06/2026-06-07.html">2026-06-07</a></li>
+    <li data-date="2026-06-06"><a href="/archive/2026-06/2026-06-06.html">2026-06-06</a></li>
+    <li data-date="2026-06-05"><a href="/archive/2026-06/2026-06-05.html">2026-06-05</a></li>
+    <li data-date="2026-06-04"><a href="/archive/2026-06/2026-06-04.html">2026-06-04</a></li>
+    <li data-date="2026-06-03"><a href="/archive/2026-06/2026-06-03.html">2026-06-03</a></li>
+    <li data-date="2026-06-02"><a href="/archive/2026-06/2026-06-02.html">2026-06-02</a></li>
+    <li data-date="2026-06-01"><a href="/archive/2026-06/2026-06-01.html">2026-06-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
+  <summary>2026-05 <span class="month-count">7篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-05-31"><a href="/archive/2026-05/2026-05-31.html">2026-05-31</a></li>
+    <li data-date="2026-05-30"><a href="/archive/2026-05/2026-05-30.html">2026-05-30</a></li>
+    <li data-date="2026-05-29"><a href="/archive/2026-05/2026-05-29.html">2026-05-29</a></li>
+    <li data-date="2026-05-28"><a href="/archive/2026-05/2026-05-28.html">2026-05-28</a></li>
+    <li data-date="2026-05-27"><a href="/archive/2026-05/2026-05-27.html">2026-05-27</a></li>
+    <li data-date="2026-05-26"><a href="/archive/2026-05/2026-05-26.html">2026-05-26</a></li>
+    <li data-date="2026-05-25"><a href="/archive/2026-05/2026-05-25.html">2026-05-25</a></li>
+  </ul>
+</details>
+  </div>
+</details></div>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <div>© 2026 <a href="https://hiwd.com/">hiwd</a> · All rights reserved. <button class="theme-toggle" type="button" data-theme-toggle>夜间</button></div>
+  </div>
+  <script>
+    // Dynamically mark today's entry in the archive nav.
+    // Using browser time shifted to CST (UTC+8) so it matches the generation timezone.
+    (function () {
+      const cstNow = new Date(Date.now() + 8 * 3600 * 1000);
+      const today = cstNow.toISOString().slice(0, 10);
+      const li = document.querySelector('[data-date="' + today + '"]');
+      if (!li) return;
+      li.classList.add('active');
+      const a = li.querySelector('a');
+      if (a) {
+        a.innerHTML = today + ' <span class="today-tag">今日</span>';
+      }
+    })();
+  </script>
+
+</body>
+</html>

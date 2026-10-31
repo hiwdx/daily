@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI 行业每日简报 | hiwd</title>
-  <meta name="description" content="AI 行业每日精选 2026年10月31日 周六" />
+  <meta name="description" content="AI 行业每日精选 2026年11月01日 周日" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
   <script src="/theme.js?v=20260704-1"></script>
@@ -19,61 +19,59 @@
     <div class="hero">
       <div class="hero-title-row">
         <h1>AI 行业每日简报</h1>
-        <span class="hero-date">2026年10月31日 周六</span>
+        <span class="hero-date">2026年11月01日 周日</span>
       </div>
     </div>
 
     <!-- Briefing body -->
     <h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/mistral-large4">Mistral 发布 Large 4：1T 总参数、49B 活跃的开放权重 MoE</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/mistral-large4">Hugging Face Blog</a> · 2026-10-29</p>
-<!-- published_at: 2026-10-29T00:00:00+00:00 -->
+<p><strong>标题</strong>：<a href="https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours">Anthropic 官方 VS Code 扩展在 Cursor 市场被植入后门约 12 小时</a></p>
+<p><strong>来源</strong>：<a href="https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours">Ars Technica</a> · 2026-10-30</p>
+<!-- published_at: 2026-10-30T21:09:54+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Mistral Large 4 开放权重（总参数约 1T，活跃 49B，支持文本+图像输入），并附带 FP8/NVFP4 与 GGUF 版本。</li>
-<li>提供 1M token 上下文的多模态前沿模型，许可协议限制模型即服务，影响开源部署与商用策略。</li>
-<li>需要自部署大模型或避开 API 锁定的开发者和企业。</li>
+<li>Anthropic 在 Cursor 市场的官方 Claude VS Code 扩展 2.1.313 版本被植入后门，持续约 12 小时，影响最多 5000 名开发者。</li>
+<li>官方账号被视为可信来源，后门可通过扩展自动更新扩散，暴露了 AI 工具供应链的薄弱环节。</li>
+<li>使用 Cursor 且安装了 Anthropic 官方扩展的开发者，尤其是启用自动更新的用户。</li>
 </ul>
-<p><strong>产品技术视角</strong>：活跃参数少但总参数量大，推理部署仍需高显存；需实测其多模态和长上下文能力是否匹配官方宣传。</p>
+<p><strong>产品技术视角</strong>：验证扩展来源不应仅凭官方账号；应检查版本哈希、发布历史和权限变更，并将 AI 开发工具纳入零信任策略。</p>
 <hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry">Google 数据中心卫星上线：4 块 TPU，每次仅能运行 20 分钟</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry">TechCrunch</a> · 2026-10-30</p>
-<!-- published_at: 2026-10-30T17:00:00+00:00 -->
+<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission">Google 卫星 AI 服务器首次从太空返回响应</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission">The Verge AI</a> · 2026-10-30</p>
+<!-- published_at: 2026-10-30T14:21:38-04:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Google 的 Suncatcher 原型卫星已与地面通信，搭载 4 块 TPU，发电量 1kW，但每次只能开启一块 TPU 约 20 分钟。</li>
-<li>首次验证在轨推理的可行性，为未来近地轨道卫星群执行大规模推理铺路。</li>
-<li>关注边缘计算、极端环境部署及卫星通信的 AI 基础设施团队。</li>
+<li>Google Project Suncatcher 卫星成功启动 TPU 并运行 Gemma 4 模型，首次从太空生成俳句。</li>
+<li>展示了在轨 AI 推理的可行性，为低延迟、边缘计算和太空数据处理开辟了新的部署模式。</li>
+<li>需要低延迟或离线 AI 的太空、国防、遥感及边缘计算团队。</li>
 </ul>
-<p><strong>产品技术视角</strong>：电力限制导致计算时间极短，目前仅能完成诗歌生成等轻量任务；需评估散热和功耗管理对推理吞吐的实际影响。</p>
+<p><strong>产品技术视角</strong>：关注辐射加固、功耗和散热限制对模型选择的影响；Gemma 4 的量化版本可能是实际部署的关键，而非完整模型。</p>
 <h3>📰 其他值得看的</h3>
 <ul>
 <li>
-<p><strong><a href="https://openai.com/index/community-safety-report-and-new-protections-for-teens">OpenAI 加强 ChatGPT 暴力预防与青少年保护</a></strong> · OpenAI</p>
-<p>OpenAI 扩展安全护栏并承诺公开安全报告，属于信任与安全更新，无新技术细节，适合关注合规的企业用户。</p>
+<p><strong><a href="https://techcrunch.com/2026/10/30/can-ai-data-centers-be-mass-produced-like-cars-and-online-in-48-hours-this-startup-aims-to-find-out">AI 数据中心能否像汽车一样量产？这家初创公司要在 48 小时内上线</a></strong> · TechCrunch AI</p>
+<p>Runware 计划在罗马尼亚工厂实现模块化数据中心量产，目标 2028 年日产 30 兆瓦容量，但该计划仍处于早期阶段。</p>
 </li>
 <li>
-<p><strong><a href="https://developer.nvidia.com/blog/build-specialized-agents-on-a-stack-you-control-with-nvidia-nemoclaw">NVIDIA NemoClaw 提供开放蓝图构建全栈智能体平台</a></strong> · NVIDIA Technical Blog</p>
-<p>结合 Nemotron 模型、优化工具和 OpenShell 安全运行时，支持 OpenClaw/LangChain 等编排层，面向已有智能体框架的优化需求。</p>
+<p><strong><a href="https://huggingface.co/blog/nvidia/nemotron-halloween">用 NVIDIA Nemotron 构建万圣节互动投影 MonsterHouse</a></strong> · Hugging Face Blog</p>
+<p>作者利用 Nemotron 语音代理在单工作站上构建了能与孩子互动的 MonsterHouse，展示了多模态模型在创意场景的落地。</p>
 </li>
 <li>
-<p><strong><a href="https://techcrunch.com/2026/10/29/openai-backed-thrive-holdings-acquires-adt">Thrive Holdings 以 76 亿美元收购 ADT</a></strong> · TechCrunch AI</p>
-<p>OpenAI 支持的控股公司收购实体安防商，显示 AI 资本向线下服务渗透，但无直接技术发布。</p>
+<p><strong><a href="https://developer.nvidia.com/blog/build-a-validated-kubernetes-runtime-for-nvidia-dynamo">NVIDIA 为 Dynamo 构建经验证的 Kubernetes 运行时</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA AICR 提供可复现的 Dynamo 运行时配方，包括 GPU 驱动、DRA、gang scheduling 和指标，简化生产部署。</p>
 </li>
 <li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1023440/starbucks-ai-personalized-menu-drive-thru">Starbucks CEO 称将探索 AI 个性化得来速菜单</a></strong> · The Verge AI</p>
-<p>仅停留在财报电话会愿景，无具体技术或时间表，适合跟踪零售 AI 应用方向。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/announcing-project-protostar">Hugging Face 发起 Project ProtoStar 推动公共科学数据 AI 就绪</a></strong> · Hugging Face Blog</p>
-<p>联合多家机构释放公共资助科研数据，有望提升科学 AI 训练语料质量，但首批交付未明。</p>
+<p><strong><a href="https://simonwillison.net/2026/Oct/30/nesformer">在 Qwen3.5-4B 权重中模拟 NES 6502 CPU</a></strong> · Simon Willison</p>
+<p>项目 nesformer 在 Qwen3.5-4B 权重中实现了 NES 模拟器，可极慢速运行超级马里奥，展示了模型内部计算的潜力。</p>
 </li>
 </ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 基础设施正从粗放扩张转向追求标准化、可验证和供应链安全的工程化阶段。 Anthropic 官方扩展被后门暴露了工具链信任假设的脆弱，而 Google 卫星 AI 推理成功则需要极端环境下的可靠工程。两者都在提醒：AI 的可用性不再仅取决于模型能力，更取决于部署和分发的工程严谨性。 从业者需要为 AI 组件建立供应链安全基线，并对极端部署场景做额外验证，避免默认信任官方渠道。 观察 Anthropic 是否发布事件调查报告，以及 Google 是否公布卫星 AI 推理的功耗、延迟和模型量化细节。</p>
 <h3>⚠️ 信息来源说明</h3>
 <ul>
-<li>本期来源：OpenAI、NVIDIA Technical Blog、TechCrunch AI、The Verge AI、Hugging Face Blog、TechCrunch</li>
+<li>本期来源：Hugging Face Blog、NVIDIA Technical Blog、Simon Willison、TechCrunch AI、Ars Technica、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>
 
@@ -81,6 +79,12 @@
     <div class="archive-section">
       <h2>历史存档</h2>
       <div class="archive-nav"><details class="month-item">
+  <summary>2026-11 <span class="month-count">1篇</span></summary>
+  <ul class="day-list">
+    <li data-date="2026-11-01"><a href="/archive/2026-11/2026-11-01.html">2026-11-01</a></li>
+  </ul>
+</details>
+<details class="month-item">
   <summary>2026-10 <span class="month-count">30篇</span></summary>
   <ul class="day-list">
     <li data-date="2026-10-31"><a href="/archive/2026-10/2026-10-31.html">2026-10-31</a></li>
@@ -144,6 +148,9 @@
     <li data-date="2026-09-02"><a href="/archive/2026-09/2026-09-02.html">2026-09-02</a></li>
   </ul>
 </details>
+<details class="older-archive">
+  <summary>查看更早</summary>
+  <div class="older-months">
 <details class="month-item">
   <summary>2026-08 <span class="month-count">22篇</span></summary>
   <ul class="day-list">
@@ -171,9 +178,6 @@
     <li data-date="2026-08-01"><a href="/archive/2026-08/2026-08-01.html">2026-08-01</a></li>
   </ul>
 </details>
-<details class="older-archive">
-  <summary>查看更早</summary>
-  <div class="older-months">
 <details class="month-item">
   <summary>2026-07 <span class="month-count">31篇</span></summary>
   <ul class="day-list">
