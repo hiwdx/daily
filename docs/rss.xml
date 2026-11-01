@@ -7,8 +7,42 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 01 Nov 2026 01:16:23 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 01:56:33 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-02</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-02.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-02.html</guid>
+      <pubDate>Mon, 02 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code">The Verge 记者用 50 美元自制 AI Tamagotchi，揭示 Muse 硬件开放可能</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code">The Verge AI</a> · 2026-10-31</p>
+<!-- published_at: 2026-10-31T12:05:00-04:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>The Verge 记者使用 50 美元的 Waveshare ESP32 设备，通过 Claude 生成代码和 Muse API 构建了类似 Meta Muse Charm 的 AI 玩具。</li>
+<li>表明第三方可以利用 Muse API 和低成本硬件构建实体 AI 设备，为开发者提供了新的硬件交互路径。</li>
+<li>希望开发实体 AI 设备的开发者、智能硬件创业者，以及关注 Meta Muse 生态的厂商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：该自制设备缺少摄像头和蜂窝网络，且需要大量额外代码才能实现智能家居控制，说明 API 开放程度和功能完整性仍需验证。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/01/techcrunch-mobility-a-new-bigger-av-boom-is-here">TechCrunch 报道自动驾驶行业迎来新一波热潮</a></strong> · TechCrunch</p>
+<p>Trucks VC 称 2026 年已收到 81 家新自动驾驶初创公司的融资申请，超过历史纪录，认为这是由 AI 突破驱动的第二波热潮。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/run-ai-models-for-edge-application-development-with-just-a-few-commands">NVIDIA TensorRT Edge-LLM 简化边缘 AI 开发</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA 推出 TensorRT Edge-LLM，提供轻量 C++ 推理运行时和 trtedge CLI，可在 DGX Spark 上开发并部署到 Jetson Thor、DRIVE AGX Thor 和 IGX Thor。</p>
+</li>
+</ul>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：NVIDIA Technical Blog、TechCrunch、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-01</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-01.html</link>
@@ -774,58 +808,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：TechCrunch、Simon Willison、Cloudflare Changelog、Vercel Changelog</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-19</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-19.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-19.html</guid>
-      <pubDate>Mon, 19 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says">Replit 弃用 Anthropic，默认模型全面转向 OpenAI</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says">TechCrunch</a> · 2026-10-17</p>
-<!-- published_at: 2026-10-17T18:48:08+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Replit CEO Amjad Masad 在 TechCrunch Disrupt 上宣布不再与 Anthropic 合作，并称内部基准显示 OpenAI 的 Sol 和 Astra 在 vibe-coding 场景表现更好，且成本更低。</li>
-<li>AI 编码平台因成本与基准测试切换主力模型，直接影响开发者的模型选择与工具链默认配置。</li>
-<li>使用 Replit 构建应用的开发者、初创公司，以及依赖大模型 API 的 AI 编码产品。</li>
-</ul>
-<p><strong>产品技术视角</strong>：Replit 公开了自己的内部基准，但未披露具体评估标准；开发者应验证自己场景下的实际性能，而非照搬平台默认。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web">主流网站开始封锁 AI 智能体访问，代理任务面临数据围墙</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web">The Verge AI</a> · 2026-10-17</p>
-<!-- published_at: 2026-10-17T09:00:00-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Yelp 等主流网站对未付费的 AI 智能体实施封锁，Meta Muse、xAI Grok、OpenAI Dots 和 Instinct 等智能体用户已遇到访问阻碍。</li>
-<li>网站封锁可能使通用智能体的“代办一切”能力大打折扣，企业必须考虑数据授权和智能体合规成本。</li>
-<li>依赖网页自动化的智能体开发者、使用智能体处理日常任务的用户，以及提供数据服务的网站平台。</li>
-</ul>
-<p><strong>产品技术视角</strong>：智能体产品需将“网站是否允许访问”作为核心前置条件，并为关键任务设计人工回退机制。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/itau-generative-ai">Itaú 银行推出生成式 AI 助手 ia.i 及治理平台 IARA</a></strong> · OpenAI</p>
-<p>巴西 Itaú 银行在高度监管的金融业中部署 ia.i 对话界面和 IARA 治理平台，将 AI First 战略同时应用于客户与员工。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns">Meta 撤回商业条款中引发 AI 爬取与训练争议的表述</a></strong> · TechCrunch</p>
-<p>Meta 在舆论压力下移除商业条款中允许使用企业账号域名内容训练 AI 的措辞，并澄清该条款原本仅针对广告和商业产品。</p>
-</li>
-<li>
-<p><strong><a href="https://github.com/vllm-project/vllm/releases/tag/v0.32.0">vLLM v0.32.0 发布：低精度 KV 缓存和结构化决策接口</a></strong> · GitHub Release · vllm-project/vllm</p>
-<p>vLLM v0.32.0 带来 814 个提交，新增 /v1/systemone 结构化决策端点，并将 NVFP4 和 FP8 KV 缓存扩展到更多 GPU 架构。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：智能体革命的真正瓶颈不是模型能力，而是外部世界的数据准入和成本结构。 The Verge 报道主流网站开始封锁未付费 AI 智能体；TechCrunch 报道 Replit 因成本和性能考虑弃用 Anthropic 转向 OpenAI。前者显示智能体运行依赖的公开网页数据正在关闭，后者表明即使头部 AI 服务商也必须精打细算推理成本。两条都指向智能体规模化落地时，数据获取与算力成本成为关键限制。 行业会从“通用智能体全能”叙事转向针对垂直场景做数据授权和成本优化的务实路线，从业者需将商业可行性置于模型能力之前。 观察未来一个季度内主要网站是否推出针对 AI 智能体的付费 API 或数据授权协议，以及 AI 编码平台是否普遍转向更便宜或自研模型。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：OpenAI、The Verge AI、TechCrunch、GitHub Release · vllm-project/vllm</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
