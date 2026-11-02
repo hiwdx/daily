@@ -7,8 +7,76 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 02 Nov 2026 01:56:33 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 06:47:36 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-03</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-03.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-03.html</guid>
+      <pubDate>Tue, 03 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1024632/anthropic-claude-ai-video-game-clones">Anthropic 更新 Claude Code 系统提示，阻止直接克隆现有视频游戏</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1024632/anthropic-claude-ai-video-game-clones">The Verge AI</a> · 2026-11-02</p>
+<!-- published_at: 2026-11-02T13:56:02-05:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Anthropic 更新了 Claude Code 的系统提示，防止其被用于重建现有游戏，但用户仍可使用它制作自己的游戏。</li>
+<li>此举限制了 AI 辅助游戏克隆，可能减少版权纠纷，但也约束了开发者对现有游戏进行逆向或移植的能力。</li>
+<li>使用 Claude Code 进行游戏开发的开发者，特别是从事复古游戏反编译、重编译和移植的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：验证系统提示的实际拦截效果：尝试让 Claude Code 生成类似知名游戏的代码，观察其拒绝程度和绕过可能性，以评估对工作流的真实影响。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/lifeval">OpenAI 发布 LifeVal 基准，衡量 AI 完成日常任务的能力</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/lifeval">OpenAI</a> · 2026-11-02</p>
+<!-- published_at: 2026-11-02T09:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 推出 LifeVal，一个基准测试，用于衡量 AI 在育儿、财务管理和政府文书等日常任务中的帮助效果。</li>
+<li>为评估 AI 在真实生活场景中的实用性提供了标准化指标，帮助产品团队量化模型在非编程任务上的表现。</li>
+<li>面向消费者的 AI 应用开发者，以及关注 AI 实用性和可信度的产品经理。</li>
+</ul>
+<p><strong>产品技术视角</strong>：检查 LifeVal 的任务覆盖范围和评分方法，判断其是否代表目标用户的实际痛点，或者偏向于特定类型的任务，从而可能误导产品优化方向。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/02/readwise-takes-on-amazons-kindle-and-goodreads-with-its-new-app-for-book-lovers">Readwise 推出电子书应用，挑战 Kindle 与 Goodreads</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/02/readwise-takes-on-amazons-kindle-and-goodreads-with-its-new-app-for-book-lovers">TechCrunch</a> · 2026-11-02</p>
+<!-- published_at: 2026-11-02T17:49:41+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Readwise 发布新应用 Readwise Books，提供电子书购买、阅读和跟踪功能，并强调更详细的阅读数据可视化。</li>
+<li>展示了独立阅读平台如何通过差异化的数据分析和跨服务整合挑战巨头，可能影响电子书市场的竞争格局。</li>
+<li>重度阅读用户、电子书内容创作者，以及关注数字阅读体验的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：评估其阅读统计指标（如词数、节奏、深度）是否真正提供 actionable insights，还是仅仅为了数据而数据，以及其商店的选书范围能否支撑用户迁移。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026">Google 回顾十月 AI 更新：Gemini 4 Argon、Genie 4、SynthID Detector</a></strong> · Google AI Blog</p>
+<p>Google 汇总了十月发布的 Gemini 4 Argon、世界模型 Genie 4 和检测 AI 生成内容的 SynthID Detector，适合快速了解其产品组合。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/keep-distributed-training-running-with-automated-workload-recovery">NVIDIA 推出自动化工作负载恢复功能，减少分布式训练中断</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA Recovery 通过日志、GPU 指标和调度信号检测故障，并执行四阶段恢复流程，支持 Slurm 集成，默认监控模式可先验证信号质量。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/02/42ai-comes-out-of-stealth-with-62-5m-and-a-world-model-that-can-predict-human-behavior">42AI 走出隐身，声称其世界模型可预测人类行为</a></strong> · TechCrunch</p>
+<p>以色列初创公司 42AI 获得 6250 万美元种子轮，在金融经纪公司试点预测交易者行为，但声称的能力有待验证。</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/grid-protectors-program">OpenAI 推出 Grid Protectors 计划，与公用事业合作支持电网可靠性</a></strong> · OpenAI</p>
+<p>该计划旨在让未来计算园区支持电网可靠性并保护消费者电价，但具体合作和实施细节尚未公布。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 产品正在从追求通用能力转向划分明确的使用边界并验证特定场景的价值。 Anthropic 禁止 Claude Code 克隆现有游戏，而 OpenAI 发布 LifeVal 基准衡量日常任务帮助，两者都反映了平台对合规性和实用性的主动约束。 开发者需要适应平台政策变化，同时利用新基准筛选真正有价值的应用场景，避免在泛化能力上过度投入。 观察 Claude Code 系统提示更新的实际拦截效果，以及 LifeVal 是否被第三方采用并发展出社区扩展任务集。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Google AI Blog、NVIDIA Technical Blog、The Verge AI、TechCrunch</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-02</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-02.html</link>
@@ -770,44 +838,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：Hugging Face Blog、TechCrunch AI、Ars Technica、The Verge AI、OpenAI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-20</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-20.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-20.html</guid>
-      <pubDate>Tue, 20 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs">Nvidia 发布企业级与端侧新开放权重模型</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs">TechCrunch</a> · 2026-10-19</p>
-<!-- published_at: 2026-10-19T15:37:09+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Nvidia 推出 Nemotron 3.5 Super VL（120B 参数，面向企业智能体）和两款轻量 Bolt 模型（可运行于 RTX Spark/DGX Spark 的 AI PC 与工作站）。</li>
-<li>厂商称在指令遵循和工具调用上精度接近更大模型，为智能体提供不同算力层级的开放权重选项，可能降低企业部署门槛。</li>
-<li>需要本地或边缘运行智能体的企业开发者、AI PC 用户及工作站用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：120B 参数规模仍需要较高显存，Bolt 模型的实际端侧性能与功耗尚未经独立验证，建议在部署前用自有任务测试指令遵循和工具调用。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-10-19-clairic-workers-ai">Cloudflare Workers AI 推出结构化提取模型 Clairic</a></strong> · Cloudflare Changelog</p>
-<p>Clairic 以值而非文本回答，适用于发票总额、日期等无预定义选项的字段，提供预览版，计划开放权重。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/minimax-m3-1-flash-now-available-on-ai-gateway-for-free">Vercel AI Gateway 免费提供 MiniMax M3.1 Flash 至 10 月 22 日</a></strong> · Vercel Changelog</p>
-<p>MiniMax M3.1 Flash 为开源多模态模型，支持 1M token 上下文，免费条件需由 MiniMax 提供请求，适合短期测试编码和智能体任务。</p>
-</li>
-<li>
-<p><strong><a href="https://simonwillison.net/2026/Oct/18/llm-tools-datasette">Simon Willison 修复 llm-tools-datasette 插件</a></strong> · Simon Willison</p>
-<p>修复因 LLM 0.33 升级到 httpx2 导致的插件破坏，提醒插件开发者显式声明依赖，避免底层库升级时出错。</p>
-</li>
-</ul>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：TechCrunch、Simon Willison、Cloudflare Changelog、Vercel Changelog</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
