@@ -7,8 +7,76 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 03 Nov 2026 06:47:36 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 03:31:08 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-04</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-04.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-04.html</guid>
+      <pubDate>Wed, 04 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/accelerating-engineering-for-the-physical-world">OpenAI 发布物理世界工程加速指南，聚焦 CAD/PCB 与仿真</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/accelerating-engineering-for-the-physical-world">OpenAI</a> · 2026-11-03</p>
+<!-- published_at: 2026-11-03T12:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 发布新页面介绍 ChatGPT 和 Codex 如何加速 CAD、PCB 设计、仿真等物理世界工程工作流。</li>
+<li>首次系统化展示大模型在实体工程领域的应用路径，为硬件工程师提供可直接借鉴的提示词和工作流模板。</li>
+<li>从事机械、电子、仿真等物理产品设计的工程师和研发团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：页面内容偏向厂商演示，实际效果需用自有 CAD/PCB 项目验证，尤其是复杂装配和制造约束下的适用性。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/allenai/statebench">StateBench：长上下文状态跟踪基准发布</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/allenai/statebench">Hugging Face Blog</a> · 2026-11-03</p>
+<!-- published_at: 2026-11-03T17:15:21+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>AllenAI 发布 StateBench，一个评估语言模型在长文档中跟踪实体状态变化能力的基准，包含代码变量更新、故事角色移动等任务。</li>
+<li>为长上下文推理提供了可量化的评测工具，帮助开发者识别模型在状态跟踪上的具体短板，避免在生产中误用。</li>
+<li>需要模型处理长文档、代码或叙事中动态状态的应用开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：基准结果尚未公布完整模型对比，建议先用自有领域数据测试代表性任务，验证基准与业务指标的相关性。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developer.nvidia.com/blog/diagnose-distributed-ai-workload-failures-with-nvidia-attribution">NVIDIA Attribution：开源分布式 AI 故障诊断工具</a></p>
+<p><strong>来源</strong>：<a href="https://developer.nvidia.com/blog/diagnose-distributed-ai-workload-failures-with-nvidia-attribution">NVIDIA Technical Blog</a> · 2026-11-02</p>
+<!-- published_at: 2026-11-02T23:39:34+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>NVIDIA 发布开源工具 Attribution，可关联工作负载范围内的日志、指标和调度器状态，生成可复现的结构化诊断。</li>
+<li>为分布式 AI 训练/推理故障排查提供了标准化方法，减少人工定位根因的时间，尤其适合大规模集群运维。</li>
+<li>负责管理 GPU 集群和分布式训练任务的平台工程师和 SRE。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需要评估与现有监控栈（如 Prometheus、Loki）的集成成本，以及诊断准确性是否满足生产环境要求。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/02/trajectory-raises-45m-to-make-ai-model-training-accessible-to-nontechnical-experts">Trajectory 融资 4500 万美元，面向非技术专家提供模型训练</a></strong> · TechCrunch AI</p>
+<p>Trajectory 完成 4500 万美元融资，旨在让法律、金融等领域的非技术专家也能微调模型，降低对内部研究团队的依赖。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/streaming/1025029/netflix-ai-discover-recommendations">Netflix 推出 AI Discover 标签页，基于情绪推荐内容</a></strong> · The Verge AI</p>
+<p>Netflix 推出实验性 AI Discover 功能，根据用户当前心情生成主题推荐，首批测试面向部分用户。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos">NVIDIA 发布 Cosmos 世界模型工具，支持交互式仿真</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA Cosmos 提供世界基础模型和开发工具，重点关注传感器适配和可靠部署，支持训练、强化学习和推理。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/cwe-bench">CWE-bench v2 发布：100 个公开网络安全任务</a></strong> · Hugging Face Blog</p>
+<p>Collinear AI 发布 CWE-bench v2，包含 100 个可公开评估的网络安全任务，用于测试模型发现和修复漏洞的能力。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 应用正从通用助手转向垂直场景的深度工具化，工程评测与诊断能力成为落地关键。 OpenAI 针对物理世界工程提供专用工作流，StateBench 为长上下文状态跟踪建立基准，NVIDIA Attribution 解决分布式 AI 故障诊断，三者均指向垂直场景的深度工具化。 通用模型能力已不是唯一瓶颈，工程师更需关注任务特异的评测、诊断和流程适配，避免在复杂系统中盲目部署大模型。 观察这些工具是否被实际整合到企业研发流程中，例如 CAD 设计迭代周期是否缩短、分布式训练故障平均恢复时间是否下降。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Hugging Face Blog、NVIDIA Technical Blog、TechCrunch AI、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-03</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-03.html</link>
@@ -774,70 +842,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：TechCrunch、Hugging Face Blog、The Verge AI、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、NVIDIA Technical Blog、TechCrunch AI、OpenAI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-21</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-21.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-21.html</guid>
-      <pubDate>Wed, 21 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations">Meta Muse 分享功能泄露用户机密，已暂停</a></p>
-<p><strong>来源</strong>：<a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations">Ars Technica</a> · 2026-10-20</p>
-<!-- published_at: 2026-10-20T12:33:13+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>研究人员发现 Meta 的通用 AI 代理 Muse 通过网页链接分享对话时会暴露敏感信息，包括营销公司收入、工作场所日历和贷款申请；Meta 已暂停分享功能。</li>
-<li>AI 代理处理敏感数据时，分享功能可能成为数据泄露渠道，对部署企业级代理的团队是直接安全警告。</li>
-<li>使用 Muse 并分享对话的企业和个人用户，以及考虑集成 AI 代理的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：在将 AI 代理接入业务流程前，应审计共享/导出功能对敏感数据的处理方式，并设置数据防泄露策略。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://openai.com/index/openai-to-acquire-orchestra-bio">OpenAI 收购 Orchestra Bio，扩展生物技术业务</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/openai-to-acquire-orchestra-bio">OpenAI</a> · 2026-10-20</p>
-<!-- published_at: 2026-10-20T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 宣布收购生命科学运营初创公司 Orchestra Bio，以加速其生物技术模型 Rosalind 和 Rosalind Workbench 工具的开发。</li>
-<li>此举表明 OpenAI 正在深化生命科学领域的垂直 AI 能力，可能影响生物制药研发的工作流程和工具选择。</li>
-<li>生物制药公司、生命科学研究人员以及关注 AI 垂直应用的投资者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：关注 Rosalind 模型的开放程度和 API 可用性，评估其是否能与现有实验室信息管理系统集成。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto">谷歌将个性化 Gemini AI 引入汽车</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto">The Verge AI</a> · 2026-10-20</p>
-<!-- published_at: 2026-10-20T18:11:34-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 宣布在汽车中集成 Gemini AI，可访问用户的 Gmail、Calendar、Maps、Photos 等个人数据。</li>
-<li>个性化 AI 进入驾驶场景，扩展了 AI 助手的应用场景，但也引发隐私和驾驶安全的担忧。</li>
-<li>使用 Android Auto 的驾驶者、汽车制造商以及关注车载 AI 的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：评估车载 AI 的语音交互和上下文理解能力，并关注数据访问对用户隐私的影响。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://huggingface.co/blog/nvidia/cosmos3-h-dreams">NVIDIA Cosmos3-H-Dreams：生成式模拟进入临床手术</a></strong> · Hugging Face Blog</p>
-<p>NVIDIA 发布 Cosmos3-H-Dreams，实现实时交互式手术场景生成，可模拟抓取、抬起组织等动作，用于外科训练和规划。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/20/yelp-can-now-call-on-your-behalf-to-check-wait-times-at-a-restaurant">Yelp 推出 AI 代打餐厅排队时间</a></strong> · TechCrunch AI</p>
-<p>Yelp 新功能 Check for Me 允许用户让语音代理致电餐厅查询等待时间，但需提供手机号，可能影响隐私。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/1014627/meta-muse-ai-sharing-ai-chats">Meta 暂停 Muse 分享功能（The Verge 报道）</a></strong> · The Verge AI</p>
-<p>安全公司发现 Muse 分享功能泄露用户对话，Meta 已暂停该功能进行审查。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：AI 代理的实用性与数据安全风险正在同步加速暴露，企业在快速采用时需要建立更严格的审计和治理机制。 Meta Muse 因分享功能泄露用户机密而暂停服务，谷歌则将个性化 Gemini 引入汽车并深度访问个人数据，两者都表明 AI 助手在提升便利性的同时扩大了敏感数据的暴露面。 企业在集成 AI 代理时必须将数据安全和隐私合规作为前置条件，而非事后补救；开发者需要设计细粒度的数据访问控制和审计日志。 观察 Meta 是否恢复分享功能及其安全改进，以及车载 Gemini 的实际数据调用范围和用户反馈。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：Hugging Face Blog、TechCrunch AI、Ars Technica、The Verge AI、OpenAI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
