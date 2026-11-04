@@ -7,8 +7,80 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 04 Nov 2026 03:31:08 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 03:48:12 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-05</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-05.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-05.html</guid>
+      <pubDate>Thu, 05 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/openai-to-acquire-pierre">OpenAI 收购 Pierre Computer Company，扩展 Codex 代码构建与理解能力</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/openai-to-acquire-pierre">OpenAI</a> · 2026-11-04</p>
+<!-- published_at: 2026-11-04T14:30:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 宣布收购 Pierre Computer Company，并计划将其技术整合进 Codex，扩展代码构建、理解和审查工具。</li>
+<li>收购带来可落地的代码工程能力，可能改变开发者使用 Codex 的工作流。</li>
+<li>使用 Codex 的开发者、代码审查团队，以及依赖 OpenAI 开发工具的工程团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需观察整合后的具体功能发布时间，以及如何与现有 Codex 环境集成。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/Dharma-AI/dharma-field-extractor">Dharma Field Extractor：20 亿参数模型从任意文档提取结构化 JSON 字段</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/Dharma-AI/dharma-field-extractor">Hugging Face Blog</a> · 2026-11-04</p>
+<!-- published_at: 2026-11-04T17:50:10+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Hugging Face 博客介绍 Dharma Field Extractor，一个 20 亿参数模型，可从任意文档类型精确提取用户指定字段并输出 JSON。</li>
+<li>厂商称在测试中超越多个前沿大模型，且成本更低，为文档解析提供轻量替代方案。</li>
+<li>需要处理合同、发票、表单等文档并提取结构化数据的开发者与业务流程团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：虽然参数规模小，仍需验证其在特定文档类型上的泛化能力和延迟表现。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas">Google Research 推出 Agile Deliberation：人机协作定义主观分类边界</a></p>
+<p><strong>来源</strong>：<a href="https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas">Google Research</a> · 2026-11-04</p>
+<!-- published_at: 2026-11-04T18:07:05+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google Research 发布 Agile Deliberation 方法，通过交互式流程指导用户定义主观类别的图像分类器，包含子类别划分和边缘案例处理。</li>
+<li>提供将 AI 分类器用于主观任务时的用户对齐机制，减少标注歧义。</li>
+<li>构建内容审核、情感分析等主观分类模型的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需评估该方法是否能降低标注成本并提高分类一致性，而非仅适用于研究原型。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/how-nvidia-factory-operations-blueprint-coordinates-ai-agents-to-investigate-production-issues">NVIDIA Factory Operations Blueprint 协调 AI 代理调查生产问题</a></strong> · NVIDIA Technical Blog</p>
+<p>提供工厂经理代理参考架构，利用 LLM 和专用代理连接数据工具并定义需人工审核的决策。</p>
+</li>
+<li>
+<p><strong><a href="https://openai.com/index/daybreak-red-aws-govcloud">OpenAI Daybreak Red 在 AWS GovCloud 上线，面向批准客户的安全工作</a></strong> · OpenAI</p>
+<p>Daybreak Red 通过 Amazon Bedrock 在 GovCloud 提供 GPT-5.6 Cyber，用于授权网络安全工作。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/ibm-research/palette-deck-building">IBM Research 发布 Palette：教小模型按设计语言生成演示文稿</a></strong> · Hugging Face Blog</p>
+<p>使用用户模板训练小模型生成符合特定设计语言的幻灯片，避免默认模板风格。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood">Netflix 推出 AI Discover 标签页，根据心情推荐内容</a></strong> · TechCrunch AI</p>
+<p>首个实验功能允许用户选择主题片段来获得基于心情的推荐，逐步向用户推出。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6">ChatGPT 可制作动画 GIF，支持编辑速度和帧</a></strong> · The Verge AI</p>
+<p>用户可以通过 ChatGPT 生成动画 GIF，并编辑动画速度和单个帧。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：轻量级模型和应用层并购正在推动 AI 能力向垂直场景下沉，但代理类应用与实际生产环境之间仍有明显鸿沟。 Dharma Field Extractor 用 20 亿参数模型在文档提取任务上声称超越大模型，同时 OpenAI 收购 Pierre Computer Company 强化 Codex，两者都试图将 AI 能力嵌入具体工程环节。 开发者可以优先在明确边界、可验证的任务上尝试小模型和专用工具，但需要谨慎评估代理类产品的实际采用率。 跟踪 Dharma 模型在自建数据上的准确率和延迟，以及 OpenAI 收购后 Codex 新功能的上线时间。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Hugging Face Blog、Google Research、NVIDIA Technical Blog、TechCrunch AI、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-04</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-04.html</link>
@@ -762,86 +834,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：TechCrunch、Anthropic、Hugging Face Blog、NVIDIA Technical Blog</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-22</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-22.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-22.html</guid>
-      <pubDate>Thu, 22 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai">Recursive 发布可在笔记本运行的编码模型 Flint，号称主要由 AI 构建</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai">TechCrunch</a> · 2026-10-21</p>
-<!-- published_at: 2026-10-21T20:27:41+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>AI 初创公司 Recursive 发布免费编码模型 Flint，可在笔记本电脑上运行，并声称其研究系统 Eureka Machine 参与了几乎所有开发步骤。</li>
-<li>首次展示 AI 自动化研究系统参与模型构建全流程，可能改变模型开发范式并降低编码模型的使用门槛。</li>
-<li>需要轻量级本地编码模型的开发者，以及关注 AI 自动化研发的企业和研究者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：需验证其实际性能、资源占用与许可条款，以及模型开发中 AI 参与的具体环节和可靠性。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1015843/anthropic-claude-duet-ai-agent">Anthropic 推出专业级 AI 代理 Claude Duet，以研究预览形式发布</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1015843/anthropic-claude-duet-ai-agent">The Verge AI</a> · 2026-10-21</p>
-<!-- published_at: 2026-10-21T15:53:20-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 发布新代理 Claude Duet，面向专业人士和小企业主，以研究预览形式推出。</li>
-<li>标志着 Anthropic 正式进入 AI 代理市场，与 Muse 等产品竞争，可能改变专业用户的工作流程。</li>
-<li>寻求 AI 代理辅助的专业人士、小企业主，以及关注代理市场竞争格局的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：研究预览阶段需关注其能力边界、可靠性和价格，以及与其他 Anthropic 产品的整合方式。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://openai.com/index/openai-models-google-cloud">OpenAI 模型将登陆 Google Cloud，通过 Gemini Model Garden 提供</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/openai-models-google-cloud">OpenAI</a> · 2026-10-21</p>
-<!-- published_at: 2026-10-21T12:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 宣布与 Google Cloud 合作，将其前沿模型和 Codex 工作流引入 Gemini Model Garden，可通过 Google Cloud Marketplace 获取。</li>
-<li>打破模型云平台壁垒，使企业可在 Google Cloud 上使用 OpenAI 模型，影响多云 AI 部署策略。</li>
-<li>使用 Google Cloud 的企业开发者，以及需要在多云环境中集成前沿模型的团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：需关注模型版本、成本和网络延迟，以及是否支持与 Google Cloud 原生服务的深度集成。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://huggingface.co/blog/nvidia/kumo-relational">NVIDIA Kumo Relational 宣称无需训练即可在关系数据上超越监督学习</a></strong> · Hugging Face Blog</p>
-<p>NVIDIA 发布预训练关系基础模型 Kumo Relational，可直接在数据库上进行预测，无需特征工程，适合企业快速部署。</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview">GitHub 推出包防火墙公开预览，拦截安装时恶意软件</a></strong> · GitHub Changelog</p>
-<p>GitHub 新包防火墙位于 CI/CD 和包仓库之间，可阻止安装时攻击，增强供应链安全。</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-10-21-createai">Cloudflare 统一 AI 提供者接口：createAI 取代旧 provider</a></strong> · Cloudflare Changelog</p>
-<p>Cloudflare Agents SDK 新增 createAI 函数，统一支持多种模型和路由，旧 provider 已弃用，适合简化多模型管理。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/basetens-mammoth-1-and-elephant-1-now-available-on-ai-gateway-for-free">Vercel 限时免费提供 Baseten 决策模型 Mammoth-1 和 Elephant-1</a></strong> · Vercel Changelog</p>
-<p>Vercel AI Gateway 免费提供两个决策模型一周，可用于文本分类和请求路由，适合试用评估。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization">专业词汇表可降低 SLM 推理成本 77%</a></strong> · Hugging Face Blog</p>
-<p>作者展示通过词汇表专门化可大幅降低领域内小语言模型的推理成本，并预告论文发布。</p>
-</li>
-<li>
-<p><strong><a href="https://developer.nvidia.com/blog/inside-nvidia-sentry-secure-ai-agents-at-runtime">NVIDIA Sentry：硬件隔离保障 AI 代理运行时安全</a></strong> · NVIDIA Technical Blog</p>
-<p>NVIDIA Sentry 从硬件层监控和限制 AI 代理访问，可在毫秒内遏制威胁，适用于高安全需求场景。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/20/hugging-face-ceo-warns-that-netflixs-openai-hack-documentary-isnt-accurate">Hugging Face CEO 称 Netflix 纪录片内容不准确</a></strong> · TechCrunch AI</p>
-<p>Clem Delangue 警告 Netflix 纪录片对 AI 安全事件的描述有误，提醒观众谨慎对待媒体叙事。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：AI 生态正在从模型能力竞争转向部署渠道和代理可用性的争夺，但厂商宣传与工程现实之间存在巨大落差。 OpenAI 模型入驻 Google Cloud 显示云平台合作扩大分发面，而 Claude Duet 以研究预览发布则表明代理产品尚不成熟，真正可用的工具仍需等待验证。 开发者应同时关注模型获取路径和代理实用性，不要因平台集成或产品发布就假设生产就绪。 观察未来几周 Claude Duet 的实际使用反馈和 OpenAI 在 Google Cloud 上的性能表现。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：TechCrunch、Hugging Face Blog、The Verge AI、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、NVIDIA Technical Blog、TechCrunch AI、OpenAI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
