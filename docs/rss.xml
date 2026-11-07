@@ -7,8 +7,70 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sat, 07 Nov 2026 03:26:43 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 01:45:05 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-08</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-08.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-08.html</guid>
+      <pubDate>Sun, 08 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development">Anthropic 内部 AI 加速研究，METR 报告引发担忧</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development">The Verge AI</a> · 2026-11-07</p>
+<!-- published_at: 2026-11-07T07:30:00-05:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>METR 报告称，Anthropic 使用 AI 自动化研究后，模型改进速度约为一年前的两倍。</li>
+<li>显示 AI 自动化研发已产生可衡量的加速效果，同时与该公司呼吁减速形成矛盾，影响安全治理讨论。</li>
+<li>AI 安全研究人员、依赖 Anthropic 模型的开发者和关注 AI 发展速度的政策制定者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：报告基于 11 周内部调查，应区分厂商自述与第三方审计结论，并验证其方法论是否适用于其他实验室。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web">Artex AI 黑客工具数百实例暴露于公网</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web">TechCrunch</a> · 2026-11-06</p>
+<!-- published_at: 2026-11-06T18:44:38+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>安全研究人员发现数百个中国产 AI 渗透测试工具 Artex 的实例公开暴露，可被用于发动网络攻击。</li>
+<li>开源 AI 攻击工具的滥用降低入侵门槛，威胁企业安全。</li>
+<li>使用 Artex 的安全团队、依赖公开互联网的系统管理员及网络安全厂商。</li>
+</ul>
+<p><strong>产品技术视角</strong>：开源工具本身并非恶意，但部署者需自行加固；建议企业扫描暴露实例并监控异常行为。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://openai.com/index/cultfit-builds-with-codex">Cult.fit 使用 Codex 构建工具提升运营效率</a></strong> · OpenAI</p>
+<p>健身公司 Cult.fit 利用 Codex 帮助跨职能团队构建工具，改变工作方式；案例展示了代码生成在非技术团队中的落地，但缺乏量化数据。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/open-asr-leaderboard-liva">Hugging Face 开放 ASR 排行榜新增埃及和尼日利亚英语口音</a></strong> · Hugging Face Blog</p>
+<p>与 Liva AI 合作添加两个口音的私有数据，提升 ASR 评估代表性和可信度；对语音识别模型开发者是重要基准补充。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/speed-up-image-generation-with-flux-3-image-klein-on-nvidia-blackwell-gpus">NVIDIA 发布 FLUX 3 Image Klein 在 Blackwell GPU 上的加速方法</a></strong> · NVIDIA Technical Blog</p>
+<p>使用 TensorRT LLM VisualGen 和 NVFP4 量化，在 B200 上图像生成速度提升最高 1.62 倍；为高分辨率图像生成提供优化参考。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google">Crusoe 将怀俄明州数据中心项目出售给 Google</a></strong> · TechCrunch</p>
+<p>Google 接手未完工的数据中心项目并计划投资 170 亿美元，反映数据中心开发的资本密集和风险转移趋势。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1029489/nyt-cooking-ai-assistant-review">NYT Cooking AI 助手实测：换食材成功但烤蛋糕失败</a></strong> · The Verge AI</p>
+<p>作者测试 AI 助手在食材替换和菜谱缩放上的表现，发现它在特定场景下不可靠，提醒用户对 AI 建议保持批判。</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/deepseek-v4-1-flash-1017-ultrafast-now-available-on-ai-gateway">Vercel AI Gateway 新增 DeepSeek V4.1 Flash 高速模型</a></strong> · Vercel Changelog</p>
+<p>通过 Fireworks 提供每秒 1000 token 的 DeepSeek 模型，适合交互式编码和代理工作流，但需注意公共预览状态。</p>
+</li>
+</ul>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Hugging Face Blog、NVIDIA Technical Blog、The Verge AI、Vercel Changelog、TechCrunch</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-07</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-07.html</link>
@@ -800,62 +862,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：TechCrunch、The Verge AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-25</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-25.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-25.html</guid>
-      <pubDate>Sun, 25 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet">OpenAI 开始在没有互联网接入的环境中训练前沿模型</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet">The Verge AI</a> · 2026-10-23</p>
-<!-- published_at: 2026-10-23T17:11:07-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 披露已在离线环境中训练其最先进的模型，模型只能访问索引和缓存的网络内容，无法影响外部系统。</li>
-<li>这反映前沿实验室正在隔离训练环境以遏制模型自主操作风险，可能改变安全评估和部署流程。</li>
-<li>依赖 OpenAI 模型的企业和开发者需要关注模型行为变化及安全保证。</li>
-</ul>
-<p><strong>产品技术视角</strong>：离线训练可能减少模型对外部网络的依赖，但需验证其性能是否下降及对实时数据更新能力的影响。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human">Block 发布本地运行的语音模型 Dessa，声音酷似人类</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human">TechCrunch</a> · 2026-10-24</p>
-<!-- published_at: 2026-10-24T16:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Jack Dorsey 的 Block 公司发布语音模型 Dessa，完全基于人类对话训练，可在单张 NVIDIA GPU 上本地运行，支持全双工。</li>
-<li>该模型展示了低资源本地部署高度自然语音的可能性，可能降低语音交互产品的门槛。</li>
-<li>语音应用开发者、需要隐私保护的语音服务提供商以及关注边缘计算的企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：虽然声音自然，但其知识来自对话数据而非外部知识库，可能限制事实性问答，需测试其在专业领域的表现。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/1017450/meta-business-terms-delayed-ai-scraping">Meta 因 AI 抓取争议推迟新商业条款执行</a></strong> · The Verge AI</p>
-<p>Meta 将新商业条款的执行推迟到 11 月 20 日，以回应出版商对其可能抓取新闻内容训练 AI 的担忧，显示数据使用条款正在成为谈判焦点。</p>
-</li>
-<li>
-<p><strong><a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro">Kimi K3.1 Pro 发布，权重将于 11 月 4 日开放</a></strong> · Simon Willison</p>
-<p>Moonshot AI 推出 Kimi K3.1 Pro，API 定价为输入 2 美元/百万 token、输出 10 美元/百万 token，并承诺在 11 月 4 日前发布完整权重，可能为开源社区提供高性能选择。</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-10-23-usage-metrics-api-adds-usage-from-tools-like-opencode">GitHub Copilot 指标 API 纳入 OpenCode 等客户端使用数据</a></strong> · GitHub Changelog</p>
-<p>Copilot usage metrics API 新增 totals_by_client 数组，可报告 opencode、claude_code 等工具的模型使用情况，帮助企业更全面追踪 Copilot 采用率。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/send-feedback-from-vercel-mcp">Vercel MCP 新增反馈工具，便于从代理直接提交问题</a></strong> · Vercel Changelog</p>
-<p>Vercel MCP 增加 submit_feedback 工具，允许 AI 代理以结构化方式提交 bug 报告和功能请求，简化开发者反馈流程。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：AI 安全从模型层面向训练环境和数据合规延伸，企业需在创新与风险之间重新平衡。 OpenAI 通过离线训练隔离模型对外部系统的潜在影响，而 Block 的 Dessa 则在本地运行以减少数据外流风险，两者都反映了对安全和隐私的主动应对。 开发者应评估自身 AI 工作流中训练数据访问和模型运行环境，可能需要引入隔离机制或本地推理来满足合规要求。 观察 OpenAI 离线训练模型的性能基准是否与非隔离训练模型相当，以及 Dessa 在实际应用中的知识局限性。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：TechCrunch、The Verge AI、GitHub Changelog、Vercel Changelog、Simon Willison</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
