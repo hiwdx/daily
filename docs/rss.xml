@@ -7,33 +7,31 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 01:57:01 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 07:51:20 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI 行业每日简报 · 2026-11-09</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-09.html</link>
       <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-09.html</guid>
       <pubDate>Mon, 09 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<!-- briefing_mode: source_links -->
-
-<h3>🎯 今日 Top 3</h3>
-<p><strong>今日先提供原文速览</strong></p>
-<p>摘要编辑暂不可用，以下保留过去 48 小时的新内容原文标题与来源，不生成未经核验的摘要或排名。后续任务会自动重试补全。</p>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>今天暂时没有新的重点动态</strong></p>
+<p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
 <h3>📰 其他值得看的</h3>
 <ul>
 <li>
-<p><strong><a href="https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry">How a Blue Wave midterm might reshape the AI industry</a></strong> · TechCrunch AI</p>
+<p><strong><a href="https://techcrunch.com/2026/11/08/the-ex-secret-service-agent-who-flipped-a-hacker-is-now-raising-a-second-250m-cybersecurity-fund">前特勤局探员转型网络安全风投，首期基金规模 2.5 亿美元</a></strong> · TechCrunch</p>
+<p>Stephen Ward 联合创立 Brightmind Partners，首期基金 2.5 亿美元，其投资的 SGNL 近期被 CrowdStrike 以 7.4 亿美元收购，显示其投资策略奏效。</p>
 </li>
 <li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1029533/elvis-eminem-suno-ai-music-clone-lawsuit">Elvis and Eminem rights holders are suing Suno</a></strong> · The Verge AI</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/json-render-and-chat-sdk-agents">Chat SDK agents can now stream generative UI with json-render</a></strong> · Vercel Changelog</p>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1029552/apple-siri-ai-agentic">苹果加速 Siri 代理化，将增强第三方应用控制</a></strong> · The Verge AI</p>
+<p>彭博社 Mark Gurman 称苹果 CEO 施压 AI 负责人加速 Siri 路线图，未来数月将增加对第一方和第三方应用的控制能力，以追赶 OpenAI 和 Meta，但具体功能尚未发布。</p>
 </li>
 </ul>
 <h3>⚠️ 信息来源说明</h3>
 <ul>
-<li>原文速览模式；标题保留原文，不冒充中文编辑稿。</li>
+<li>本期来源：TechCrunch、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
     <item>
