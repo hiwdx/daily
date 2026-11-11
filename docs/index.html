@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI 行业每日简报 | hiwd</title>
-  <meta name="description" content="AI 行业每日精选 2026年11月11日 周三" />
+  <meta name="description" content="AI 行业每日精选 2026年11月12日 周四" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
   <script src="/theme.js?v=20260704-1"></script>
@@ -19,71 +19,67 @@
     <div class="hero">
       <div class="hero-title-row">
         <h1>AI 行业每日简报</h1>
-        <span class="hero-date">2026年11月11日 周三</span>
+        <span class="hero-date">2026年11月12日 周四</span>
       </div>
     </div>
 
     <!-- Briefing body -->
     <h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1030787/google-gemini-4-carbon-public-rollout">Google 发布 Gemini 4 Carbon，带智能体“群”功能</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1030787/google-gemini-4-carbon-public-rollout">The Verge AI</a> · 2026-11-10</p>
-<!-- published_at: 2026-11-10T11:00:00-05:00 -->
+<p><strong>标题</strong>：<a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api">谷歌推出 Gemini Decisions API，多模态决策一次评估 1000 项</a></p>
+<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api">Google AI Blog</a> · 2026-11-11</p>
+<!-- published_at: 2026-11-11T18:00:00+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Google 公开发布 Gemini 4 Carbon 模型，包含智能体“群”功能。</li>
-<li>为复杂编码和智能体工作负载提供新选择，定价有初期优惠。</li>
-<li>需要处理复杂编码、智能体任务的开发者和企业。</li>
+<li>Gemini Decisions API 上线，搭载新模型 Gemini Decision 1，可在单次请求中对文本、图像、音频、视频和 PDF 进行最多 1000 个是/否、选择和评分类决策评估。</li>
+<li>为开发者提供低延迟、校准的多模态决策能力，可用于路由、策略检查、工具过滤和结果排序，无需生成输出 token。</li>
+<li>需要构建规则引擎、内容审核或排序系统的 AI 产品与工程团队。</li>
 </ul>
-<p><strong>产品技术视角</strong>：关注其 1M token 上下文和定价变化，验证在长代码库中的实际表现。</p>
+<p><strong>产品技术视角</strong>：返回布尔概率、选项和分数而非自然语言，需验证其在边缘案例上的校准性和偏差；同时注意 Vercel AI Gateway 已提供托管接入。</p>
 <hr />
-<p><strong>标题</strong>：<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Anthropic 发布 Claude Fable 5.2 和 Mythos 5.2</a></p>
-<p><strong>来源</strong>：<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Anthropic</a> · 2026-11-09</p>
-<!-- published_at: 2026-11-09T05:00:00+00:00 -->
+<p><strong>标题</strong>：<a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi">Grok Build 编程智能体泄露数千用户机密信息</a></p>
+<p><strong>来源</strong>：<a href="https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi">Ars Technica</a> · 2026-11-10</p>
+<!-- published_at: 2026-11-10T21:12:59+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Anthropic 推出 Claude Fable 5.2 和 Mythos 5.2 模型，改进编码、推理和视觉能力。</li>
-<li>针对高难度技术挑战，可能提升复杂任务自动化水平。</li>
-<li>使用 Claude 进行编码、推理和视觉任务的开发者。</li>
+<li>研究表明，SpaceXSI 的 Grok Build 编程智能体通过分享链接泄露了数千用户的敏感数据，包括专有业务信息和机密，甚至波及提供该平台的 Musk 旗下公司。</li>
+<li>暴露了智能体生成应用在默认共享或链接机制下的严重数据泄漏风险，提醒开发者在集成此类工具时需审计访问控制和数据流向。</li>
+<li>使用 vibe-coding 智能体快速构建内部工具或原型的工程团队，尤其是处理敏感数据的企业。</li>
 </ul>
-<p><strong>产品技术视角</strong>：比较其在代码所有权语境下的行为差异，评估对工程实践的影响。</p>
+<p><strong>产品技术视角</strong>：验证此类智能体是否默认产生公开可访问的分享链接，并在部署前实施最小权限和数据脱敏；事故原因是否源于应用路由或存储配置错误。</p>
 <hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m">Oura 以 6.25 亿美元收购 AI 原生初级保健公司 Counsel Health</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m">TechCrunch</a> · 2026-11-10</p>
-<!-- published_at: 2026-11-10T19:23:34+00:00 -->
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips">Fractile 完成 7.2 亿美元 C 轮融资，加速 AI 芯片竞赛</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips">TechCrunch</a> · 2026-11-11</p>
+<!-- published_at: 2026-11-11T19:34:55+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Oura 宣布以 6.25 亿美元收购 AI 原生初级保健公司 Counsel Health。</li>
-<li>可穿戴设备与 AI 医疗服务的整合，可能改变健康监测的商业模式。</li>
-<li>健康科技创业者和 Oura 用户。</li>
+<li>英国 AI 芯片初创 Fractile 获得 7.2 亿美元 C 轮融资，由英国主权 AI 基金支持，成为 Axelera、Etched 等之后又一高额融资的 AI 芯片公司。</li>
+<li>巨额融资标志着欧洲在 AI 硬件领域的战略布局，可能影响未来 AI 芯片供应链和云成本结构。</li>
+<li>关注 AI 推理成本、硬件多样性和地缘供应链的企业架构师与采购决策者。</li>
 </ul>
-<p><strong>产品技术视角</strong>：观察 AI 健康建议如何与设备数据结合，及监管和隐私挑战。</p>
+<p><strong>产品技术视角</strong>：融资完成不等于产品可用，需跟进其芯片架构、性能指标和实际部署时间表，评估对现有推理方案的替代可行性。</p>
 <h3>📰 其他值得看的</h3>
 <ul>
 <li>
-<p><strong><a href="https://github.blog/changelog/2026-11-10-gemini-4-carbon-in-github-copilot">Gemini 4 Carbon 进入 GitHub Copilot</a></strong> · GitHub Changelog</p>
-<p>Google 最新模型 Gemini 4 Carbon 已在 GitHub Copilot 中可用，用于复杂编码、智能体和推理任务，按提供商列表价计费。</p>
+<p><strong><a href="https://developer.nvidia.com/blog/agent-substrate-advancing-kubernetes-for-agents-at-scale">NVIDIA 发布 Agent Substrate，改进 Kubernetes 以支持智能体规模化</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA 开源了为 AI 智能体设计的 Kubernetes 扩展，解决智能体空闲等待时资源浪费问题，管理大量 Pod 的生命周期。</p>
 </li>
 <li>
-<p><strong><a href="https://vercel.com/changelog/gemini-4-carbon-now-available-on-ai-gateway">Gemini 4 Carbon 上线 Vercel AI Gateway，五折优惠</a></strong> · Vercel Changelog</p>
-<p>Vercel AI Gateway 支持 Gemini 4 Carbon，2026 年 11 月 30 日前五折。</p>
+<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop">Google 推出 Tabletop 实验，让用户构建自定义协作应用</a></strong> · Google AI Blog</p>
+<p>Tabletop 是 Google Labs 新实验，提供可定制协作空间，用户可添加模块进行实时规划、游戏和共同决策，目前通过候补名单开放。</p>
 </li>
 <li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-11-09-codex-harness">Cloudflare Workers 运行 Codex 智能体循环实验示例</a></strong> · Cloudflare Changelog</p>
-<p>通过 Durable Objects 持久化会话和恢复中断，实验性在 Workers 上运行 Codex 智能体循环。</p>
-</li>
-<li>
-<p><strong><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare">Google Cloud 推出医疗保健专用 Gemini</a></strong> · Google AI Blog</p>
-<p>Google Cloud 发布面向医疗行业的 Gemini 解决方案，旨在统一临床、运营和行政系统，并减少文书工作。</p>
+<p><strong><a href="https://techcrunch.com/2026/11/10/adobe-adds-more-ai-to-its-products-and-launches-an-mcp">Adobe 为 Photoshop、Premiere 和 Firefly 引入 AI 智能体和 MCP</a></strong> · TechCrunch AI</p>
+<p>Adobe 发布新的 AI 智能体和创意工具，并推出 MCP（模型上下文协议），在 Firefly 中提供原型构建器以与 Figma 竞争。</p>
 </li>
 </ul>
 <h3>🔍 今日主题观察</h3>
-<p>编辑判断：前沿模型发布正在频繁化，但开发者需警惕厂商宣传与实际工程收益的落差。 Google 和 Anthropic 同日发布新模型，强调编码和智能体能力，但缺乏独立基准，定价与上下文窗口差异显著。 工程团队应基于自身负载测试模型，而非仅依赖厂商声明。 关注第三方基准和实际部署案例，验证模型在特定任务上的性价比。</p>
+<p>编辑判断：AI 决策能力加速从生成走向判别，但安全边界同步暴露。 谷歌推出 Gemini Decisions API，为多模态内容提供快速校准的布尔、选择和评分输出；与此同时，Grok Build 编程智能体被曝泄露数千用户机密，凸显生成式智能体在共享机制上的安全缺陷。 开发者应把判别式 API 用于规则明确、需低延迟的决策环节，但对生成式智能体产生的应用必须默认隔离敏感数据并审查分享链接。 验证 Gemini Decisions API 在自身业务数据上的准确率和偏差，并对所有 vibe-coding 产物执行安全扫描，观察是否仍有默认公开分享或权限配置失误。</p>
 <h3>⚠️ 信息来源说明</h3>
 <ul>
-<li>本期来源：Anthropic、Google AI Blog、The Verge AI、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、TechCrunch</li>
+<li>本期来源：Google AI Blog、TechCrunch、Ars Technica、NVIDIA Technical Blog、TechCrunch AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>
 
@@ -91,8 +87,9 @@
     <div class="archive-section">
       <h2>历史存档</h2>
       <div class="archive-nav"><details class="month-item">
-  <summary>2026-11 <span class="month-count">11篇</span></summary>
+  <summary>2026-11 <span class="month-count">12篇</span></summary>
   <ul class="day-list">
+    <li data-date="2026-11-12"><a href="/archive/2026-11/2026-11-12.html">2026-11-12</a></li>
     <li data-date="2026-11-11"><a href="/archive/2026-11/2026-11-11.html">2026-11-11</a></li>
     <li data-date="2026-11-10"><a href="/archive/2026-11/2026-11-10.html">2026-11-10</a></li>
     <li data-date="2026-11-09"><a href="/archive/2026-11/2026-11-09.html">2026-11-09</a></li>
