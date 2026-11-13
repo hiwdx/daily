@@ -7,8 +7,92 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 05:28:49 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 03:49:56 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-14</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-14.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-14.html</guid>
+      <pubDate>Sat, 14 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/introducing-chatgpt-wallet">OpenAI 推出 ChatGPT Wallet，AI 智能体可持卡完成购买</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/introducing-chatgpt-wallet">OpenAI</a> · 2026-11-13</p>
+<!-- published_at: 2026-11-13T15:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 上线 ChatGPT Wallet，让 ChatGPT Work、Codex 和 dots 中的智能体在用户批准后使用现有信用卡完成购买。</li>
+<li>首次将 AI 代理接入真实支付环节，需要同时处理交易授权、风控与责任归属，直接影响智能体商业化闭环。</li>
+<li>美国 ChatGPT Pro 订阅者以及希望在智能体中集成购买能力的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：用户审批与卡保护机制可能与现有电商反欺诈策略冲突，开发者需评估退款、拒付和代理误购场景。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation">LangChain 完成 3 亿美元 C 轮融资，估值 30 亿美元</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation">TechCrunch</a> · 2026-11-13</p>
+<!-- published_at: 2026-11-13T19:37:57+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>AI 智能体管理初创公司 LangChain 宣布完成 3 亿美元 C 轮融资，估值达 30 亿美元，由 CapitalG 领投。</li>
+<li>大额融资说明市场对智能体编排与管理层的需求从开源工具转向企业级平台，会影响开发者选型。</li>
+<li>使用 LangChain/LangGraph 的 AI 工程师、企业平台团队及智能体基础设施投资者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：估值一年翻倍以上，需要观察其企业版功能是否与开源版分裂，以及多云/本地部署的锁定风险。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla">NVIDIA 技术博客：用 cuDLA 在 Jetson AGX Orin 上于 Python 中运行原生 DLA 推理</a></p>
+<p><strong>来源</strong>：<a href="https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla">NVIDIA Technical Blog</a> · 2026-11-13</p>
+<!-- published_at: 2026-11-13T18:57:10+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>NVIDIA 发布 cuDLA 的 Python 绑定，使 Jetson AGX Orin 上的 DLA（深度学习加速器）支持通过 CUDA 流协调混合推理。</li>
+<li>为边缘设备提供在 Python 中直接调用 DLA 的路径，有望显著降低推理功耗并释放 GPU 算力。</li>
+<li>在 Jetson 平台上部署视觉或多模态模型的边缘 AI 工程师。</li>
+</ul>
+<p><strong>产品技术视角</strong>：混合模式下需手动管理 CUDA 流同步，开发者应抽象统一内存并量化 DLA 实际能效收益。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place">Hugging Face 博客：使用 SimReady 资产构建机器人抓取仿真</a></strong> · Hugging Face Blog</p>
+<p>SimReady 为 OpenUSD 资产预置碰撞、质量、关节等仿真属性，示例展示 UR17G 机械臂与 Robotiq 夹爪完成拾放任务。</p>
+</li>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Nov/12/llm-gemini">Simon Willison 发布 llm-gemini 0.37，记录 Gemini 4 系列定价</a></strong> · Simon Willison</p>
+<p>Gemini 4 Hydrogen 价格接近 Carbon/Argon，但促销价随时间上涨，作者称定价令人困惑。</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-11-13-github-enterprise-server-support-in-the-github-copilot-app">GitHub Copilot 应用支持 GitHub Enterprise Server</a></strong> · GitHub Changelog</p>
+<p>GHES 用户可在 Copilot 应用中处理远程仓库、Issue 和 PR，该功能由预览转正式。</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-11-13-quick-actions-local-dev">Cloudflare Browser Run 快速操作支持本地开发</a></strong> · Cloudflare Changelog</p>
+<p>wrangler dev 下可通过本地 Chrome 调用 .quickAction()，但 JSON 操作需要 AI 模型且存在限制。</p>
+</li>
+<li>
+<p><strong><a href="https://vercel.com/changelog/parallel-decisions-now-available-on-ai-gateway-for-free">Vercel AI Gateway 免费提供 Parallel Decisions 至 11 月 23 日</a></strong> · Vercel Changelog</p>
+<p>Parallel Decisions 可搜索实时网页并以概率和引用证据回答是非、选择或评分问题。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/allenai/xybench">Hugging Face 博客发布 XYBench，测试 AI 对误导性问题的处理</a></strong> · Hugging Face Blog</p>
+<p>XYBench 包含 8000 多个基于误解的问题，评估助手能否识别并纠正用户提问中的隐藏前提。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm">NVIDIA 技术博客：利用 vLLM 在两台 DGX Station 上服务 GLM-5.3</a></strong> · NVIDIA Technical Blog</p>
+<p>GLM-5.3 NVFP4 量化模型需要 464GB 显存，演示如何用 ConnectX-8 RDMA 和 TP=2 跨两机提供服务。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on">The Verge 评测 Claude Duet：神经质但意外地有帮助</a></strong> · The Verge AI</p>
+<p>Duet 会主动提出帮助撰写评测，行动略显急躁但可作为助手处理任务。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 智能体正在从对话界面转向真实世界的支付与任务执行，但当前的安全与责任边界尚未明确。 OpenAI 直接让智能体完成信用卡支付，代表能力触达资金流；LangChain 获巨额融资说明智能体编排层正被资本押注为关键基础设施。 开发者必须自行设计权限隔离、交易审计和回滚机制；平台方会越来越深入支付与身份，但事故责任可能落在集成方。 观察 ChatGPT Wallet 的退款率、欺诈投诉和开发者调用量，以及 LangChain 企业版是否加强交易与合规功能。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Hugging Face Blog、NVIDIA Technical Blog、Simon Willison、TechCrunch、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-13</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-13.html</link>
@@ -783,64 +867,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：Hugging Face Blog、NVIDIA Technical Blog、Simon Willison、TechCrunch AI、Ars Technica、The Verge AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-10-31</title>
-      <link>https://daily.hiwd.com/archive/2026-10/2026-10-31.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-10/2026-10-31.html</guid>
-      <pubDate>Sat, 31 Oct 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/mistral-large4">Mistral 发布 Large 4：1T 总参数、49B 活跃的开放权重 MoE</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/mistral-large4">Hugging Face Blog</a> · 2026-10-29</p>
-<!-- published_at: 2026-10-29T00:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Mistral Large 4 开放权重（总参数约 1T，活跃 49B，支持文本+图像输入），并附带 FP8/NVFP4 与 GGUF 版本。</li>
-<li>提供 1M token 上下文的多模态前沿模型，许可协议限制模型即服务，影响开源部署与商用策略。</li>
-<li>需要自部署大模型或避开 API 锁定的开发者和企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：活跃参数少但总参数量大，推理部署仍需高显存；需实测其多模态和长上下文能力是否匹配官方宣传。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry">Google 数据中心卫星上线：4 块 TPU，每次仅能运行 20 分钟</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry">TechCrunch</a> · 2026-10-30</p>
-<!-- published_at: 2026-10-30T17:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 的 Suncatcher 原型卫星已与地面通信，搭载 4 块 TPU，发电量 1kW，但每次只能开启一块 TPU 约 20 分钟。</li>
-<li>首次验证在轨推理的可行性，为未来近地轨道卫星群执行大规模推理铺路。</li>
-<li>关注边缘计算、极端环境部署及卫星通信的 AI 基础设施团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：电力限制导致计算时间极短，目前仅能完成诗歌生成等轻量任务；需评估散热和功耗管理对推理吞吐的实际影响。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/community-safety-report-and-new-protections-for-teens">OpenAI 加强 ChatGPT 暴力预防与青少年保护</a></strong> · OpenAI</p>
-<p>OpenAI 扩展安全护栏并承诺公开安全报告，属于信任与安全更新，无新技术细节，适合关注合规的企业用户。</p>
-</li>
-<li>
-<p><strong><a href="https://developer.nvidia.com/blog/build-specialized-agents-on-a-stack-you-control-with-nvidia-nemoclaw">NVIDIA NemoClaw 提供开放蓝图构建全栈智能体平台</a></strong> · NVIDIA Technical Blog</p>
-<p>结合 Nemotron 模型、优化工具和 OpenShell 安全运行时，支持 OpenClaw/LangChain 等编排层，面向已有智能体框架的优化需求。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/10/29/openai-backed-thrive-holdings-acquires-adt">Thrive Holdings 以 76 亿美元收购 ADT</a></strong> · TechCrunch AI</p>
-<p>OpenAI 支持的控股公司收购实体安防商，显示 AI 资本向线下服务渗透，但无直接技术发布。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1023440/starbucks-ai-personalized-menu-drive-thru">Starbucks CEO 称将探索 AI 个性化得来速菜单</a></strong> · The Verge AI</p>
-<p>仅停留在财报电话会愿景，无具体技术或时间表，适合跟踪零售 AI 应用方向。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/announcing-project-protostar">Hugging Face 发起 Project ProtoStar 推动公共科学数据 AI 就绪</a></strong> · Hugging Face Blog</p>
-<p>联合多家机构释放公共资助科研数据，有望提升科学 AI 训练语料质量，但首批交付未明。</p>
-</li>
-</ul>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：OpenAI、NVIDIA Technical Blog、TechCrunch AI、The Verge AI、Hugging Face Blog、TechCrunch</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
