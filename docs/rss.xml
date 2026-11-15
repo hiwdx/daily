@@ -7,8 +7,33 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 15 Nov 2026 02:06:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 02:53:11 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-16</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-16.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-16.html</guid>
+      <pubDate>Mon, 16 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>今天暂时没有新的重点动态</strong></p>
+<p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Nov/14/datasette-llm">datasette-llm 0.1a11 支持 OpenAI 兼容端点</a></strong> · Simon Willison</p>
+<p>该版本允许 Datasette 使用任何 OpenAI 兼容 API 的模型，可直接配置本地 LM Studio、Ollama 或 llama.cpp 模型，并通过 uvx 一行命令启动本地 Agent 服务。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/14/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it">AI 坟场：那些失败的项目和初创公司</a></strong> · TechCrunch</p>
+<p>列出了已关闭、转型或未达预期的 AI 项目和初创公司，显示约 42% 的 AI 项目被企业放弃，原因包括资金、竞争和需求不足。</p>
+</li>
+</ul>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：Simon Willison、TechCrunch</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-15</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-15.html</link>
@@ -837,40 +862,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：OpenAI、Google AI Blog、NVIDIA Technical Blog、The Verge AI、TechCrunch</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-11-02</title>
-      <link>https://daily.hiwd.com/archive/2026-11/2026-11-02.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-02.html</guid>
-      <pubDate>Mon, 02 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code">The Verge 记者用 50 美元自制 AI Tamagotchi，揭示 Muse 硬件开放可能</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code">The Verge AI</a> · 2026-10-31</p>
-<!-- published_at: 2026-10-31T12:05:00-04:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>The Verge 记者使用 50 美元的 Waveshare ESP32 设备，通过 Claude 生成代码和 Muse API 构建了类似 Meta Muse Charm 的 AI 玩具。</li>
-<li>表明第三方可以利用 Muse API 和低成本硬件构建实体 AI 设备，为开发者提供了新的硬件交互路径。</li>
-<li>希望开发实体 AI 设备的开发者、智能硬件创业者，以及关注 Meta Muse 生态的厂商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：该自制设备缺少摄像头和蜂窝网络，且需要大量额外代码才能实现智能家居控制，说明 API 开放程度和功能完整性仍需验证。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/11/01/techcrunch-mobility-a-new-bigger-av-boom-is-here">TechCrunch 报道自动驾驶行业迎来新一波热潮</a></strong> · TechCrunch</p>
-<p>Trucks VC 称 2026 年已收到 81 家新自动驾驶初创公司的融资申请，超过历史纪录，认为这是由 AI 突破驱动的第二波热潮。</p>
-</li>
-<li>
-<p><strong><a href="https://developer.nvidia.com/blog/run-ai-models-for-edge-application-development-with-just-a-few-commands">NVIDIA TensorRT Edge-LLM 简化边缘 AI 开发</a></strong> · NVIDIA Technical Blog</p>
-<p>NVIDIA 推出 TensorRT Edge-LLM，提供轻量 C++ 推理运行时和 trtedge CLI，可在 DGX Spark 上开发并部署到 Jetson Thor、DRIVE AGX Thor 和 IGX Thor。</p>
-</li>
-</ul>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：NVIDIA Technical Blog、TechCrunch、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
