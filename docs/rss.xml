@@ -7,8 +7,84 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Wed, 18 Nov 2026 06:25:56 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 05:58:38 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-19</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-19.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-19.html</guid>
+      <pubDate>Thu, 19 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/rumble-2-flash">Hugging Face 开源 0.5B 多语言语音识别模型 Rumble-2-Flash</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/rumble-2-flash">Hugging Face Blog</a> · 2026-11-18</p>
+<!-- published_at: 2026-11-18T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Hugging Face 以 Apache 2.0 许可证开源了 Rumble-2-Flash，一个 0.5B 参数的语音识别模型，支持 40+ 语言自动检测。</li>
+<li>小体积模型可在 Transformers 和 vLLM 原生运行，无须自定义代码，适合低资源环境下的语音识别部署。</li>
+<li>需要在边缘设备或资源受限环境部署多语言语音识别的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：直接验证该模型与现有推理栈的兼容性，测试自动语言检测和输出控制选项在真实音频上的表现。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/18/snapchat-now-lets-developers-build-ar-lenses-with-ai-coding-assistants-like-claude-code-and-cursor">Snapchat 允许开发者使用 Claude Code、Cursor 等 AI 工具构建 AR Lens</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/18/snapchat-now-lets-developers-build-ar-lenses-with-ai-coding-assistants-like-claude-code-and-cursor">TechCrunch</a> · 2026-11-18</p>
+<!-- published_at: 2026-11-18T19:56:39+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Snapchat 宣布 Lens 创作者可以使用 Claude Code、Cursor、Codex 等 AI 编程助手构建 AR 效果。</li>
+<li>该变化使开发者能将现有 AI 编码工作流引入 Lens 创建，可能降低 AR 开发门槛。</li>
+<li>AR 滤镜创作者和依赖 Snapchat 平台进行社交营销的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：评估 AI 助手生成的 Lens 代码在 Snapchat 平台上的实际兼容性和性能，注意平台审核限制。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/inside-the-codex-sandbox">OpenAI 发布 Codex 沙箱使用说明，明确文件系统与网络限制执行机制</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/inside-the-codex-sandbox">OpenAI</a> · 2026-11-18</p>
+<!-- published_at: 2026-11-18T08:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 公开了 Codex 沙箱的内部机制，展示如何在 macOS、Linux 和 Windows 上强制执行用户设定的文件系统和网络权限。</li>
+<li>为使用 Codex 执行本地命令的开发者提供了安全边界参考，有助于降低误操作或恶意指令造成的风险。</li>
+<li>在本地或 CI 环境中集成 Codex 的企业和开发者，尤其是处理敏感数据的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：验证沙箱在不同操作系统上的限制是否严格，并检查其对常用开发工具和性能的影响。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices">Google Gemini app 现可在低内存 Android 设备上使用</a></strong> · Google AI Blog</p>
+<p>Gemini app 登陆 Android (Go edition) 设备，数百万低内存手机用户可体验 AI 功能，但具体性能限制未详述。</p>
+</li>
+<li>
+<p><strong><a href="https://about.fb.com/news/2026/11/meta-welcomes-loblaw-as-first-canadian-retail-partner-to-muse">Meta 将加拿大零售巨头 Loblaw 引入 Muse 平台</a></strong> · Meta Newsroom</p>
+<p>Loblaw 成为首个接入 Muse 的加拿大零售商，用户可将购物目录连接至 Muse 管理日常任务，显示 Muse 向商业场景扩展。</p>
+</li>
+<li>
+<p><strong><a href="https://developer.nvidia.com/blog/build-training-ready-physical-ai-datasets-with-two-prompts-in-nvidia-cosmos">NVIDIA Cosmos 平台推出双提示构建物理 AI 数据集的蓝图</a></strong> · NVIDIA Technical Blog</p>
+<p>NVIDIA Cosmos Data Factory 提供五个云原生蓝图和六个可组合技能，用于物理 AI 数据的生成、增强和标注，面向世界模型开发者。</p>
+</li>
+<li>
+<p><strong><a href="https://huggingface.co/blog/RadixArk/daisyrose-27b-pushing-the-frontier-of-post-trainin">RadixArk 发布 27B 模型 DaisyRose，终端基准性能翻倍</a></strong> · Hugging Face Blog</p>
+<p>DaisyRose-27B 基于 Qwen3.8-27B 训练，Terminal-Bench 4.1 pass@1 从 5.6% 提升到 12.0%，使用 144 H200 GPU 训练 18 天。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/18/spend-management-platform-payhawk-announces-280m-raise-2b-valuation">Payhawk 完成 2.8 亿美元 C 轮融资，估值 20 亿美元</a></strong> · TechCrunch</p>
+<p>英国支出管理平台 Payhawk 获高盛领投的 2.8 亿美元融资，将用于产品开发和市场扩张。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/tech/1036729/disney-star-wars-anzellans-animatronic-amazon-aws-cloud-ai">迪士尼用 AI 打造可互动的星球大战机器人</a></strong> · The Verge AI</p>
+<p>迪士尼的 Anzellans 机器人通过隐藏摄像头和麦克风与游客互动，利用 AWS 云 AI 实现个性化对话。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 能力正加速渗透到低门槛开发与物理交互场景，但安全边界仍需借助厂商明确机制来建立信任。 Rumble-2-Flash 以极低参数实现多语言识别，Snapchat 开放 AI 编码助手接口降低 AR 创作门槛，而 OpenAI 公布 Codex 沙箱细节，为本地执行提供安全参考。 开发者可快速尝试小模型和 AI 辅助开发，但在涉及执行环境或平台内容时需要额外验证。 观察这些开放能力在真实项目中的错误率和安全事件报告。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：Hugging Face Blog、Google AI Blog、Meta Newsroom、NVIDIA Technical Blog、OpenAI、TechCrunch、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-18</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-18.html</link>
@@ -798,78 +874,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：Hugging Face Blog、OpenAI、Google AI Blog、Meta Newsroom、NVIDIA Technical Blog、The Verge AI、TechCrunch AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-11-05</title>
-      <link>https://daily.hiwd.com/archive/2026-11/2026-11-05.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-05.html</guid>
-      <pubDate>Thu, 05 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/openai-to-acquire-pierre">OpenAI 收购 Pierre Computer Company，扩展 Codex 代码构建与理解能力</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/openai-to-acquire-pierre">OpenAI</a> · 2026-11-04</p>
-<!-- published_at: 2026-11-04T14:30:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 宣布收购 Pierre Computer Company，并计划将其技术整合进 Codex，扩展代码构建、理解和审查工具。</li>
-<li>收购带来可落地的代码工程能力，可能改变开发者使用 Codex 的工作流。</li>
-<li>使用 Codex 的开发者、代码审查团队，以及依赖 OpenAI 开发工具的工程团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：需观察整合后的具体功能发布时间，以及如何与现有 Codex 环境集成。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://huggingface.co/blog/Dharma-AI/dharma-field-extractor">Dharma Field Extractor：20 亿参数模型从任意文档提取结构化 JSON 字段</a></p>
-<p><strong>来源</strong>：<a href="https://huggingface.co/blog/Dharma-AI/dharma-field-extractor">Hugging Face Blog</a> · 2026-11-04</p>
-<!-- published_at: 2026-11-04T17:50:10+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Hugging Face 博客介绍 Dharma Field Extractor，一个 20 亿参数模型，可从任意文档类型精确提取用户指定字段并输出 JSON。</li>
-<li>厂商称在测试中超越多个前沿大模型，且成本更低，为文档解析提供轻量替代方案。</li>
-<li>需要处理合同、发票、表单等文档并提取结构化数据的开发者与业务流程团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：虽然参数规模小，仍需验证其在特定文档类型上的泛化能力和延迟表现。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas">Google Research 推出 Agile Deliberation：人机协作定义主观分类边界</a></p>
-<p><strong>来源</strong>：<a href="https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas">Google Research</a> · 2026-11-04</p>
-<!-- published_at: 2026-11-04T18:07:05+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google Research 发布 Agile Deliberation 方法，通过交互式流程指导用户定义主观类别的图像分类器，包含子类别划分和边缘案例处理。</li>
-<li>提供将 AI 分类器用于主观任务时的用户对齐机制，减少标注歧义。</li>
-<li>构建内容审核、情感分析等主观分类模型的团队。</li>
-</ul>
-<p><strong>产品技术视角</strong>：需评估该方法是否能降低标注成本并提高分类一致性，而非仅适用于研究原型。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://developer.nvidia.com/blog/how-nvidia-factory-operations-blueprint-coordinates-ai-agents-to-investigate-production-issues">NVIDIA Factory Operations Blueprint 协调 AI 代理调查生产问题</a></strong> · NVIDIA Technical Blog</p>
-<p>提供工厂经理代理参考架构，利用 LLM 和专用代理连接数据工具并定义需人工审核的决策。</p>
-</li>
-<li>
-<p><strong><a href="https://openai.com/index/daybreak-red-aws-govcloud">OpenAI Daybreak Red 在 AWS GovCloud 上线，面向批准客户的安全工作</a></strong> · OpenAI</p>
-<p>Daybreak Red 通过 Amazon Bedrock 在 GovCloud 提供 GPT-5.6 Cyber，用于授权网络安全工作。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/ibm-research/palette-deck-building">IBM Research 发布 Palette：教小模型按设计语言生成演示文稿</a></strong> · Hugging Face Blog</p>
-<p>使用用户模板训练小模型生成符合特定设计语言的幻灯片，避免默认模板风格。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood">Netflix 推出 AI Discover 标签页，根据心情推荐内容</a></strong> · TechCrunch AI</p>
-<p>首个实验功能允许用户选择主题片段来获得基于心情的推荐，逐步向用户推出。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6">ChatGPT 可制作动画 GIF，支持编辑速度和帧</a></strong> · The Verge AI</p>
-<p>用户可以通过 ChatGPT 生成动画 GIF，并编辑动画速度和单个帧。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：轻量级模型和应用层并购正在推动 AI 能力向垂直场景下沉，但代理类应用与实际生产环境之间仍有明显鸿沟。 Dharma Field Extractor 用 20 亿参数模型在文档提取任务上声称超越大模型，同时 OpenAI 收购 Pierre Computer Company 强化 Codex，两者都试图将 AI 能力嵌入具体工程环节。 开发者可以优先在明确边界、可验证的任务上尝试小模型和专用工具，但需要谨慎评估代理类产品的实际采用率。 跟踪 Dharma 模型在自建数据上的准确率和延迟，以及 OpenAI 收购后 Codex 新功能的上线时间。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：OpenAI、Hugging Face Blog、Google Research、NVIDIA Technical Blog、TechCrunch AI、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
