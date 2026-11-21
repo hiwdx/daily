@@ -7,8 +7,68 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sat, 21 Nov 2026 05:50:08 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 04:32:49 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-22</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-22.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-22.html</guid>
+      <pubDate>Sun, 22 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://research.google/blog/how-google-duplex-evolved-to-also-call-businesses-for-you-in-gemini">Google Duplex 进化：Gemini 中的 Tasks 可直接为企业拨打电话</a></p>
+<p><strong>来源</strong>：<a href="https://research.google/blog/how-google-duplex-evolved-to-also-call-businesses-for-you-in-gemini">Google Research</a> · 2026-11-20</p>
+<!-- published_at: 2026-11-20T23:30:30+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Google 将 Duplex 电话对话能力集成到 Gemini 的 Tasks 中，用户可让 AI 代理直接致电餐厅订座、预约美发等本地商户。</li>
+<li>标志着电话语音代理从演示走向消费级任务执行，开发者可关注其对话鲁棒性与商家接受度。</li>
+<li>需要自动化电话交互的用户、本地生活服务商家，以及构建语音代理的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需验证在意外应答、打断和口音场景下的成功率，同时关注商家对 AI 来电的识别与接受意愿。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/business/customer-stories/hebbia">Hebbia 测试 GPT-6 Astra：金融研究引用准确率领先 13.6 个百分点</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/business/customer-stories/hebbia">OpenAI</a> · 2026-11-20</p>
+<!-- published_at: 2026-11-20T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 公布金融研究平台 Hebbia 对 GPT-6 Astra 的测试结果，称在来源引用相关性和演示要求满足率上分别领先最佳替代方案 13.6 和 14.4 个百分点。</li>
+<li>为需要高精度引用和结构化输出的金融研究场景提供可参考的性能基线，但结果来自厂商合作测试。</li>
+<li>投行分析师、金融研究团队，以及依赖文档引用准确性的企业用户。</li>
+</ul>
+<p><strong>产品技术视角</strong>：建议用自有金融文档集复现测试，关注不同文档类型下的引用召回与格式合规性，而非直接采信百分比。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-11-20-pi-harness-pi-1-6">Cloudflare Agents SDK 0.34.0 支持 Pi 1.6：工具可等待且不占运行资源</a></strong> · Cloudflare Changelog</p>
+<p>SDK 升级 PiHarness 至 Pi 1.6，工具可返回 park 状态并在信号或截止时间到达时恢复，Durable Object 在等待期间可休眠以节省成本。</p>
+</li>
+<li>
+<p><strong><a href="https://about.fb.com/news/2026/11/advancing-science-together-highlights-from-the-open-source-ai-for-science-summit">Meta 开源科学峰会：扩大数字大脑项目，目标 15,000 小时脑数据</a></strong> · Meta Newsroom</p>
+<p>Meta FAIR 宣布与 Rothschild 医院基金会等合作扩大 Digital Brain Project，开放共享脑数据，用于医疗和神经科学研究。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/21/all-the-ai-agents-that-can-live-in-your-text-messages">TechCrunch 盘点主流短信 AI 代理：从通用助手到家庭出行专用</a></strong> · TechCrunch</p>
+<p>文章汇总了可通过短信交互的多种 AI 代理，包括 Ask Proxy、Instinct 等，比较其定位与功能差异。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure">The Verge 播客：Anthropic 上市后能否坚持安全优先？</a></strong> · The Verge AI</p>
+<p>主持人 Nilay Patel 与记者讨论 Anthropic IPO 后的治理挑战，焦点是安全投入与资本市场压力的平衡。</p>
+</li>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Nov/20/llm-gemini">llm-gemini 0.38.1 修复 Gemini 4 推理级别支持，xhigh 成本大增</a></strong> · Simon Willison</p>
+<p>Simon Willison 的插件更新补上了 Gemini 4 Hydrogen/Neon 的 xhigh 推理级别，实测 xhigh 输出 token 数是 high 的近 6 倍。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 代理开始进入生产任务，但可靠性验证和资源成本控制成为新的工程焦点。 Google Duplex 在 Gemini Tasks 中直接面向用户执行电话任务，而 Cloudflare SDK 提供了等待机制节省代理运行成本。两者共同反映出代理从原型向实用化过渡时的真实挑战。 开发者需要在代理对话成功率和等待状态下的资源效率之间取得平衡，否则生产环境可能出现高成本或低可用性。 监测 Google Tasks 中电话代理的用户反馈，以及 Cloudflare park 功能在真实多代理场景下的休眠唤醒延迟。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Meta Newsroom、Google Research、TechCrunch、The Verge AI、Cloudflare Changelog、Simon Willison</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-21</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-21.html</link>
@@ -818,68 +878,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：TechCrunch、The Verge AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-11-08</title>
-      <link>https://daily.hiwd.com/archive/2026-11/2026-11-08.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-08.html</guid>
-      <pubDate>Sun, 08 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development">Anthropic 内部 AI 加速研究，METR 报告引发担忧</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development">The Verge AI</a> · 2026-11-07</p>
-<!-- published_at: 2026-11-07T07:30:00-05:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>METR 报告称，Anthropic 使用 AI 自动化研究后，模型改进速度约为一年前的两倍。</li>
-<li>显示 AI 自动化研发已产生可衡量的加速效果，同时与该公司呼吁减速形成矛盾，影响安全治理讨论。</li>
-<li>AI 安全研究人员、依赖 Anthropic 模型的开发者和关注 AI 发展速度的政策制定者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：报告基于 11 周内部调查，应区分厂商自述与第三方审计结论，并验证其方法论是否适用于其他实验室。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web">Artex AI 黑客工具数百实例暴露于公网</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web">TechCrunch</a> · 2026-11-06</p>
-<!-- published_at: 2026-11-06T18:44:38+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>安全研究人员发现数百个中国产 AI 渗透测试工具 Artex 的实例公开暴露，可被用于发动网络攻击。</li>
-<li>开源 AI 攻击工具的滥用降低入侵门槛，威胁企业安全。</li>
-<li>使用 Artex 的安全团队、依赖公开互联网的系统管理员及网络安全厂商。</li>
-</ul>
-<p><strong>产品技术视角</strong>：开源工具本身并非恶意，但部署者需自行加固；建议企业扫描暴露实例并监控异常行为。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://openai.com/index/cultfit-builds-with-codex">Cult.fit 使用 Codex 构建工具提升运营效率</a></strong> · OpenAI</p>
-<p>健身公司 Cult.fit 利用 Codex 帮助跨职能团队构建工具，改变工作方式；案例展示了代码生成在非技术团队中的落地，但缺乏量化数据。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/open-asr-leaderboard-liva">Hugging Face 开放 ASR 排行榜新增埃及和尼日利亚英语口音</a></strong> · Hugging Face Blog</p>
-<p>与 Liva AI 合作添加两个口音的私有数据，提升 ASR 评估代表性和可信度；对语音识别模型开发者是重要基准补充。</p>
-</li>
-<li>
-<p><strong><a href="https://developer.nvidia.com/blog/speed-up-image-generation-with-flux-3-image-klein-on-nvidia-blackwell-gpus">NVIDIA 发布 FLUX 3 Image Klein 在 Blackwell GPU 上的加速方法</a></strong> · NVIDIA Technical Blog</p>
-<p>使用 TensorRT LLM VisualGen 和 NVFP4 量化，在 B200 上图像生成速度提升最高 1.62 倍；为高分辨率图像生成提供优化参考。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google">Crusoe 将怀俄明州数据中心项目出售给 Google</a></strong> · TechCrunch</p>
-<p>Google 接手未完工的数据中心项目并计划投资 170 亿美元，反映数据中心开发的资本密集和风险转移趋势。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/tech/1029489/nyt-cooking-ai-assistant-review">NYT Cooking AI 助手实测：换食材成功但烤蛋糕失败</a></strong> · The Verge AI</p>
-<p>作者测试 AI 助手在食材替换和菜谱缩放上的表现，发现它在特定场景下不可靠，提醒用户对 AI 建议保持批判。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/deepseek-v4-1-flash-1017-ultrafast-now-available-on-ai-gateway">Vercel AI Gateway 新增 DeepSeek V4.1 Flash 高速模型</a></strong> · Vercel Changelog</p>
-<p>通过 Fireworks 提供每秒 1000 token 的 DeepSeek 模型，适合交互式编码和代理工作流，但需注意公共预览状态。</p>
-</li>
-</ul>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：OpenAI、Hugging Face Blog、NVIDIA Technical Blog、The Verge AI、Vercel Changelog、TechCrunch</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
