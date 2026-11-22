@@ -7,8 +7,64 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Sun, 22 Nov 2026 04:32:49 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 04:44:15 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-23</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-23.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-23.html</guid>
+      <pubDate>Mon, 23 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance">Signal 限制移动端截图以对抗系统级 AI 监控</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance">TechCrunch</a> · 2026-11-21</p>
+<!-- published_at: 2026-11-21T21:37:10+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Signal 宣布在 Android 和 iOS 上限制截图，以回应用户设备上系统级 AI 代理可扫描屏幕内容带来的隐私威胁。</li>
+<li>端到端加密无法防止终端侧 AI 对明文内容的捕获，产品层面需要增加防御层。</li>
+<li>重视隐私的通信用户、安全团队，以及将系统 AI 与敏感数据打交道的开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：产品需要在安全模型中引入对 AI 代理的威胁假设，而不只是防御传统恶意软件。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://openai.com/index/perplexity-and-intelligence">OpenAI 公开内部预训练困惑度并提议作为共同安全标准</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/perplexity-and-intelligence">OpenAI</a> · 2026-11-22</p>
+<!-- published_at: 2026-11-22T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 首席科学家 Jakub Pachocki 发布文章，公开内部预训练困惑度测量，并主张用该指标在模型开发者间建立共同安全标准。</li>
+<li>若被广泛采纳，模型比较将从任务基准转向底层压缩效率，影响评估和研发决策。</li>
+<li>模型开发者、AI 安全研究人员，以及依赖基准做选型的企业。</li>
+</ul>
+<p><strong>产品技术视角</strong>：困惑度不直接反映部署成本和实际任务表现，落地前需验证它与业务指标的相关性。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Nov/21/muru">Simon Willison 介绍 AI 辅助开发的 Rust ASGI/WSGI 服务器 Muru</a></strong> · Simon Willison</p>
+<p>Muru 是 mod_wsgi 作者 Graham Dumpleton 的新 Rust 服务器，旨在为 Python Web 应用提供开发与生产环境的最佳工具，作者以博客详述开发过程。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/22/techcrunch-mobility-a-b-testing-robots-vs-humans">TechCrunch Mobility 讨论无人驾驶出租车：Waymo 与 Zoox 的进展与挫折</a></strong> · TechCrunch</p>
+<p>Waymo 再次在高速公路上撤回自动驾驶出租车，Zoox 在 Uber 应用上线，特斯拉在德州的注册数量超过 Waymo，但按商业无人驾驶里程衡量 Waymo 仍领先。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/games/1039770/binding-of-isaac-ai-music">《以撒的结合》开发者称不知情使用 AI 音乐，游戏遭差评轰炸</a></strong> · The Verge AI</p>
+<p>最新版本中的 AI 音乐被玩家发现后，游戏在 Steam 遭到差评；开发者 Edmund McMillen 道歉并声称不知情。</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/huggingface/transformers/releases/tag/v5.24.0">Transformers v5.24.0 新增多模态模型 Inkling 2 Mini</a></strong> · GitHub Release · huggingface/transformers</p>
+<p>新增 Thinking Machines Lab 的 Inkling 2 Mini，采用循环层和专家混合机制，支持文本和图像输入。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：终端侧 AI 能力的增强正在迫使应用层重新设计安全边界。 Signal 限制截图是对系统级 AI 监控的直接回应，而 OpenAI 公开困惑度试图建立跨开发者的安全标准，两者都指向 AI 能力提升后旧有安全假设失效。 产品团队必须将 AI 代理视为潜在的内部威胁，安全设计需要覆盖到模型训练和端侧推理环节。 观察其他端到端加密应用是否会跟进类似限制，以及困惑度指标是否被纳入主流模型评估。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Simon Willison、TechCrunch、The Verge AI、GitHub Release · huggingface/transformers</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-22</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-22.html</link>
@@ -853,31 +909,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：TechCrunch、OpenAI、Hugging Face Blog、The Verge AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-11-09</title>
-      <link>https://daily.hiwd.com/archive/2026-11/2026-11-09.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-09.html</guid>
-      <pubDate>Mon, 09 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>今天暂时没有新的重点动态</strong></p>
-<p>过去 48 小时内，暂未发现来源可靠、值得关注且没有重复报道的新消息。我们会继续关注，有重要进展会及时更新。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/11/08/the-ex-secret-service-agent-who-flipped-a-hacker-is-now-raising-a-second-250m-cybersecurity-fund">前特勤局探员转型网络安全风投，首期基金规模 2.5 亿美元</a></strong> · TechCrunch</p>
-<p>Stephen Ward 联合创立 Brightmind Partners，首期基金 2.5 亿美元，其投资的 SGNL 近期被 CrowdStrike 以 7.4 亿美元收购，显示其投资策略奏效。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1029552/apple-siri-ai-agentic">苹果加速 Siri 代理化，将增强第三方应用控制</a></strong> · The Verge AI</p>
-<p>彭博社 Mark Gurman 称苹果 CEO 施压 AI 负责人加速 Siri 路线图，未来数月将增加对第一方和第三方应用的控制能力，以追赶 OpenAI 和 Meta，但具体功能尚未发布。</p>
-</li>
-</ul>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：TechCrunch、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
