@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI 行业每日简报 | hiwd</title>
-  <meta name="description" content="AI 行业每日精选 2026年11月24日 周二" />
+  <meta name="description" content="AI 行业每日精选 2026年11月25日 周三" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
   <link rel="alternate" type="application/rss+xml" title="hiwd daily · AI 行业每日简报" href="/rss.xml" />
   <script src="/theme.js?v=20260704-1"></script>
@@ -19,79 +19,67 @@
     <div class="hero">
       <div class="hero-title-row">
         <h1>AI 行业每日简报</h1>
-        <span class="hero-date">2026年11月24日 周二</span>
+        <span class="hero-date">2026年11月25日 周三</span>
       </div>
     </div>
 
     <!-- Briefing body -->
     <h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes">Anthropic 推出 Claude Ship，AI 代理可自动评审、修复和批准代码变更</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes">TechCrunch</a> · 2026-11-23</p>
-<!-- published_at: 2026-11-23T22:05:50+00:00 -->
+<p><strong>标题</strong>：<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities">OpenAI GPT-6 蛋白质设计能力：不靠专用模型，仅凭推理与代码生成新结构</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities">OpenAI</a> · 2026-11-24</p>
+<!-- published_at: 2026-11-24T13:00:00+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Anthropic 发布 Claude Ship，一套用于自动化代码评审、修复和批准常规代码变更的 AI 代理套件。</li>
-<li>将 AI 从代码生成延伸到发布决策，可能改变开发者的代码审查流程和责任分配。</li>
-<li>使用 Claude 进行代码开发的软件工程团队，尤其是依赖自动化审查的中小型团队。</li>
+<li>OpenAI 宣布 GPT-6 系列模型仅通过推理和代码即可设计新蛋白质形状与序列，内部研究模型在多项任务上匹敌或超越专用模型。</li>
+<li>通用模型内生涌现出专业生物建模能力，可能改变药物设计、合成生物学的工具链，降低使用专用模型的门槛。</li>
+<li>生物技术研究者、AI4Science 团队、计算蛋白设计从业者。</li>
 </ul>
-<p><strong>产品技术视角</strong>：除了评审和修复，Claude Ship 还能批准更改，但授权边界和例外处理机制尚未公布，企业需评估误批准风险。</p>
+<p><strong>产品技术视角</strong>：需自行验证：论文尚未提供开放式基准，且在真实湿实验验证前，生成结果仍属硅基预测。</p>
 <hr />
-<p><strong>标题</strong>：<a href="https://openai.com/index/introducing-shirudo">OpenAI 与 Cisco 开源 Shirudo，无需补丁或重启即可保护 Linux 运行系统</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/introducing-shirudo">OpenAI</a> · 2026-11-23</p>
-<!-- published_at: 2026-11-23T21:20:00+00:00 -->
+<p><strong>标题</strong>：<a href="https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers">NVIDIA Cosmos 3 可在 12GB 显存本地设备运行，借助 Diffusers 与 CPU 卸载</a></p>
+<p><strong>来源</strong>：<a href="https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers">NVIDIA Technical Blog</a> · 2026-11-24</p>
+<!-- published_at: 2026-11-24T18:44:05+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>OpenAI 和 Cisco 发布开源运行时 Shirudo，可在补丁部署期间保护 Linux 系统。</li>
-<li>针对漏洞利用提供临时防护，减少等待补丁或重启的窗口期风险。</li>
-<li>负责 Linux 服务器安全的基础设施和运维团队，尤其是无法快速打补丁的生产环境。</li>
+<li>NVIDIA 发布教程，使用 Cosmos-Framework 卸载包将 Cosmos 3 Nano 世界模型权重存放于系统内存，FP8 混合精度在 12GB 显存 GPU 上生成视频。</li>
+<li>物理 AI 视频生成模型部署门槛大幅下降，使本地原型和边缘设备实验成为可能。</li>
+<li>机器人仿真、自动驾驶数据生成、边缘 AI 开发者。</li>
 </ul>
-<p><strong>产品技术视角</strong>：Shirudo 的防护由 Codex 生成的 shield 实现，其有效性依赖生成质量，需在真实环境中验证对复杂攻击的覆盖。</p>
+<p><strong>产品技术视角</strong>：12GB 显存限制基于 Nano 版本和 FP8 量化，生成质量与速度需在目标硬件上实测。</p>
 <hr />
-<p><strong>标题</strong>：<a href="https://about.fb.com/news/2026/11/researchers-using-meta-open-weight-ai-models-medical-breakthroughs">Meta 扩大开放权重模型在医学研究中的应用合作</a></p>
-<p><strong>来源</strong>：<a href="https://about.fb.com/news/2026/11/researchers-using-meta-open-weight-ai-models-medical-breakthroughs">Meta Newsroom</a> · 2026-11-23</p>
-<!-- published_at: 2026-11-23T18:00:01+00:00 -->
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse">Meta 与 Walmart 合作，Muse AI 代理接入黑五购物</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse">TechCrunch</a> · 2026-11-24</p>
+<!-- published_at: 2026-11-24T21:32:38+00:00 -->
 
 <p><strong>摘要</strong>：</p>
 <ul>
-<li>Meta 宣布扩展学术合作，为研究人员提供 Muse Glimmer、SAM3、DINOv3 等开放权重模型的资金和访问权限。</li>
-<li>通过开放模型推动医学研究，可能加速医疗 AI 应用的独立开发和验证。</li>
-<li>医学研究机构和 AI 开发者，特别是需要定制模型处理医疗数据的团队。</li>
+<li>Walmart 与 Meta 周二宣布合作，允许用户通过 Muse 代理浏览黑五优惠、比较价格并完成购买，无需访问 Walmart 网站。</li>
+<li>大型零售商与 AI 代理的支付级整合落地，标志着代理商务从演示走向真实交易场景。</li>
+<li>电商从业者、零售品牌、AI agent 支付与转化优化团队。</li>
 </ul>
-<p><strong>产品技术视角</strong>：开放权重不等于无限制使用，医疗场景还需考虑数据合规和模型微调成本，合作机制尚未公开细节。</p>
+<p><strong>产品技术视角</strong>：关注代理下单的转化率和客服介入率，可能暴露当前 AI 购物在退货、比价透明度上的短板。</p>
 <h3>📰 其他值得看的</h3>
 <ul>
 <li>
-<p><strong><a href="https://huggingface.co/blog/allenai/robotrack">RoboTrack：面向真实世界机器人操作的点跟踪模型</a></strong> · Hugging Face Blog</p>
-<p>AI2 发布 RoboTrack，用于机器人操作中跟踪夹持器和物体位置，解决遮挡和视角变化问题。</p>
+<p><strong><a href="https://about.fb.com/news/2026/11/introducing-muse-in-the-uk-a-personal-ai-agent-you-control">Meta Muse 在英国全面上线，可连接邮箱、日历和购物 app 代办任务</a></strong> · Meta Newsroom</p>
+<p>Muse 在英国开放给成人用户，可委派如追退款、续保险等任务，并连接用户已有应用；官方称用户保持控制权。</p>
 </li>
 <li>
-<p><strong><a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps">Google Search 个性化智能接入 Drive 和 Wallet</a></strong> · Google AI Blog</p>
-<p>用户可选择将 Google Drive、Wallet 和 Gemini 应用连接到搜索的个性化智能，获取基于个人数据的回答。</p>
+<p><strong><a href="https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life">研究显示顶尖 AI 代理在日常生活任务中可靠性不足</a></strong> · TechCrunch</p>
+<p>新研究指出最先进的 AI 模型在安全可靠处理个人生活杂务方面仍有困难，挑战当前个人代理营销叙事。</p>
 </li>
 <li>
-<p><strong><a href="https://simonwillison.net/2026/Nov/23/glm-54">GLM-5.4：首个采用循环 Transformer 的编码模型</a></strong> · Simon Willison</p>
-<p>Z.ai 发布 GLM-5.4，使用循环 Transformer 架构在不增加参数量的情况下加深网络。</p>
-</li>
-<li>
-<p><strong><a href="https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development">OpenAI 首席科学家讨论如何限制 AI 发展</a></strong> · TechCrunch AI</p>
-<p>Jakub Pachocki 提出以困惑度为指标限制 AI 发展，但未包含具体政策。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/gadgets/1040357/nothing-ear-note-earbuds-ai-recording">Nothing Ear Note：带 AI 转录功能的耳塞</a></strong> · The Verge AI</p>
-<p>Nothing 发布 Ear Note，可通过耳塞或充电盒麦克风录制并转录音频，但上市时间未定。</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-11-23-issue-statuses-and-repository-boards-are-in-public-preview">GitHub 问题状态和仓库看板进入公开预览</a></strong> · GitHub Changelog</p>
-<p>GitHub 新增问题状态和看板功能，帮助团队和代理共享工作进度，当前为公开预览。</p>
+<p><strong><a href="https://www.theverge.com/entertainment/1041362/tidal-ai-music-ban">Tidal 下月起禁止 AI 生成音乐，预计删除 2900 万首歌曲</a></strong> · The Verge AI</p>
+<p>Tidal 正式宣布将禁止 AI 生成音乐，估计会因此删除 2900 万首歌曲，引发音乐平台内容治理讨论。</p>
 </li>
 </ul>
 <h3>🔍 今日主题观察</h3>
-<p>编辑判断：AI 系统正在从辅助工具转变为可独立执行关键操作的代理，开发者需要重新设计监督与责任机制。 Claude Ship 允许 AI 代理批准代码变更，而 Shirudo 能实时阻断漏洞利用，两者都减少了人类在关键安全与发布环节的直接干预。 团队需建立针对 AI 决策的审计、回滚和异常处理流程，并评估误批或漏防带来的风险。 观察 Claude Ship 在真实项目中的误批率，以及 Shirudo 对新型漏洞的防护效果。</p>
+<p>编辑判断：AI 代理正在从演示进入真实交易，但可靠性短板可能让早期采用者付出隐性成本。 Walmart 与 Meta 合作让 Muse 代理直接处理黑五购物，而同一天 TechCrunch 报道的研究指出最先进 AI 代理在日常生活任务中仍不可靠，二者形成张力。 商家若过早依赖代理自动化交易，可能面临客服、退货和品牌信任风险；用户也可能因代理失误而遭受财务损失。 追踪 Muse-Walmart 合作上线后的用户投诉率、代理任务完成率和人工介入比例。</p>
 <h3>⚠️ 信息来源说明</h3>
 <ul>
-<li>本期来源：Meta Newsroom、TechCrunch、OpenAI、Hugging Face Blog、Google AI Blog、Simon Willison、TechCrunch AI、GitHub Changelog、The Verge AI</li>
+<li>本期来源：OpenAI、Meta Newsroom、NVIDIA Technical Blog、TechCrunch、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>
 
@@ -99,8 +87,9 @@
     <div class="archive-section">
       <h2>历史存档</h2>
       <div class="archive-nav"><details class="month-item">
-  <summary>2026-11 <span class="month-count">24篇</span></summary>
+  <summary>2026-11 <span class="month-count">25篇</span></summary>
   <ul class="day-list">
+    <li data-date="2026-11-25"><a href="/archive/2026-11/2026-11-25.html">2026-11-25</a></li>
     <li data-date="2026-11-24"><a href="/archive/2026-11/2026-11-24.html">2026-11-24</a></li>
     <li data-date="2026-11-23"><a href="/archive/2026-11/2026-11-23.html">2026-11-23</a></li>
     <li data-date="2026-11-22"><a href="/archive/2026-11/2026-11-22.html">2026-11-22</a></li>

@@ -7,8 +7,72 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Tue, 24 Nov 2026 12:53:08 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 11:37:34 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-25</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-25.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-25.html</guid>
+      <pubDate>Wed, 25 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities">OpenAI GPT-6 蛋白质设计能力：不靠专用模型，仅凭推理与代码生成新结构</a></p>
+<p><strong>来源</strong>：<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities">OpenAI</a> · 2026-11-24</p>
+<!-- published_at: 2026-11-24T13:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>OpenAI 宣布 GPT-6 系列模型仅通过推理和代码即可设计新蛋白质形状与序列，内部研究模型在多项任务上匹敌或超越专用模型。</li>
+<li>通用模型内生涌现出专业生物建模能力，可能改变药物设计、合成生物学的工具链，降低使用专用模型的门槛。</li>
+<li>生物技术研究者、AI4Science 团队、计算蛋白设计从业者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：需自行验证：论文尚未提供开放式基准，且在真实湿实验验证前，生成结果仍属硅基预测。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers">NVIDIA Cosmos 3 可在 12GB 显存本地设备运行，借助 Diffusers 与 CPU 卸载</a></p>
+<p><strong>来源</strong>：<a href="https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers">NVIDIA Technical Blog</a> · 2026-11-24</p>
+<!-- published_at: 2026-11-24T18:44:05+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>NVIDIA 发布教程，使用 Cosmos-Framework 卸载包将 Cosmos 3 Nano 世界模型权重存放于系统内存，FP8 混合精度在 12GB 显存 GPU 上生成视频。</li>
+<li>物理 AI 视频生成模型部署门槛大幅下降，使本地原型和边缘设备实验成为可能。</li>
+<li>机器人仿真、自动驾驶数据生成、边缘 AI 开发者。</li>
+</ul>
+<p><strong>产品技术视角</strong>：12GB 显存限制基于 Nano 版本和 FP8 量化，生成质量与速度需在目标硬件上实测。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse">Meta 与 Walmart 合作，Muse AI 代理接入黑五购物</a></p>
+<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse">TechCrunch</a> · 2026-11-24</p>
+<!-- published_at: 2026-11-24T21:32:38+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Walmart 与 Meta 周二宣布合作，允许用户通过 Muse 代理浏览黑五优惠、比较价格并完成购买，无需访问 Walmart 网站。</li>
+<li>大型零售商与 AI 代理的支付级整合落地，标志着代理商务从演示走向真实交易场景。</li>
+<li>电商从业者、零售品牌、AI agent 支付与转化优化团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：关注代理下单的转化率和客服介入率，可能暴露当前 AI 购物在退货、比价透明度上的短板。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://about.fb.com/news/2026/11/introducing-muse-in-the-uk-a-personal-ai-agent-you-control">Meta Muse 在英国全面上线，可连接邮箱、日历和购物 app 代办任务</a></strong> · Meta Newsroom</p>
+<p>Muse 在英国开放给成人用户，可委派如追退款、续保险等任务，并连接用户已有应用；官方称用户保持控制权。</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life">研究显示顶尖 AI 代理在日常生活任务中可靠性不足</a></strong> · TechCrunch</p>
+<p>新研究指出最先进的 AI 模型在安全可靠处理个人生活杂务方面仍有困难，挑战当前个人代理营销叙事。</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/entertainment/1041362/tidal-ai-music-ban">Tidal 下月起禁止 AI 生成音乐，预计删除 2900 万首歌曲</a></strong> · The Verge AI</p>
+<p>Tidal 正式宣布将禁止 AI 生成音乐，估计会因此删除 2900 万首歌曲，引发音乐平台内容治理讨论。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：AI 代理正在从演示进入真实交易，但可靠性短板可能让早期采用者付出隐性成本。 Walmart 与 Meta 合作让 Muse 代理直接处理黑五购物，而同一天 TechCrunch 报道的研究指出最先进 AI 代理在日常生活任务中仍不可靠，二者形成张力。 商家若过早依赖代理自动化交易，可能面临客服、退货和品牌信任风险；用户也可能因代理失误而遭受财务损失。 追踪 Muse-Walmart 合作上线后的用户投诉率、代理任务完成率和人工介入比例。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：OpenAI、Meta Newsroom、NVIDIA Technical Blog、TechCrunch、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-24</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-24.html</link>
@@ -863,74 +927,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：Google AI Blog、TechCrunch、Ars Technica、NVIDIA Technical Blog、TechCrunch AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-11-11</title>
-      <link>https://daily.hiwd.com/archive/2026-11/2026-11-11.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-11.html</guid>
-      <pubDate>Wed, 11 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1030787/google-gemini-4-carbon-public-rollout">Google 发布 Gemini 4 Carbon，带智能体“群”功能</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1030787/google-gemini-4-carbon-public-rollout">The Verge AI</a> · 2026-11-10</p>
-<!-- published_at: 2026-11-10T11:00:00-05:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Google 公开发布 Gemini 4 Carbon 模型，包含智能体“群”功能。</li>
-<li>为复杂编码和智能体工作负载提供新选择，定价有初期优惠。</li>
-<li>需要处理复杂编码、智能体任务的开发者和企业。</li>
-</ul>
-<p><strong>产品技术视角</strong>：关注其 1M token 上下文和定价变化，验证在长代码库中的实际表现。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Anthropic 发布 Claude Fable 5.2 和 Mythos 5.2</a></p>
-<p><strong>来源</strong>：<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Anthropic</a> · 2026-11-09</p>
-<!-- published_at: 2026-11-09T05:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Anthropic 推出 Claude Fable 5.2 和 Mythos 5.2 模型，改进编码、推理和视觉能力。</li>
-<li>针对高难度技术挑战，可能提升复杂任务自动化水平。</li>
-<li>使用 Claude 进行编码、推理和视觉任务的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：比较其在代码所有权语境下的行为差异，评估对工程实践的影响。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m">Oura 以 6.25 亿美元收购 AI 原生初级保健公司 Counsel Health</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m">TechCrunch</a> · 2026-11-10</p>
-<!-- published_at: 2026-11-10T19:23:34+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Oura 宣布以 6.25 亿美元收购 AI 原生初级保健公司 Counsel Health。</li>
-<li>可穿戴设备与 AI 医疗服务的整合，可能改变健康监测的商业模式。</li>
-<li>健康科技创业者和 Oura 用户。</li>
-</ul>
-<p><strong>产品技术视角</strong>：观察 AI 健康建议如何与设备数据结合，及监管和隐私挑战。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-11-10-gemini-4-carbon-in-github-copilot">Gemini 4 Carbon 进入 GitHub Copilot</a></strong> · GitHub Changelog</p>
-<p>Google 最新模型 Gemini 4 Carbon 已在 GitHub Copilot 中可用，用于复杂编码、智能体和推理任务，按提供商列表价计费。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/gemini-4-carbon-now-available-on-ai-gateway">Gemini 4 Carbon 上线 Vercel AI Gateway，五折优惠</a></strong> · Vercel Changelog</p>
-<p>Vercel AI Gateway 支持 Gemini 4 Carbon，2026 年 11 月 30 日前五折。</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-11-09-codex-harness">Cloudflare Workers 运行 Codex 智能体循环实验示例</a></strong> · Cloudflare Changelog</p>
-<p>通过 Durable Objects 持久化会话和恢复中断，实验性在 Workers 上运行 Codex 智能体循环。</p>
-</li>
-<li>
-<p><strong><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare">Google Cloud 推出医疗保健专用 Gemini</a></strong> · Google AI Blog</p>
-<p>Google Cloud 发布面向医疗行业的 Gemini 解决方案，旨在统一临床、运营和行政系统，并减少文书工作。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：前沿模型发布正在频繁化，但开发者需警惕厂商宣传与实际工程收益的落差。 Google 和 Anthropic 同日发布新模型，强调编码和智能体能力，但缺乏独立基准，定价与上下文窗口差异显著。 工程团队应基于自身负载测试模型，而非仅依赖厂商声明。 关注第三方基准和实际部署案例，验证模型在特定任务上的性价比。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：Anthropic、Google AI Blog、The Verge AI、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、TechCrunch</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
