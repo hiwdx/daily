@@ -7,8 +7,44 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Thu, 26 Nov 2026 10:57:27 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 07:00:05 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-27</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-27.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-27.html</guid>
+      <pubDate>Fri, 27 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<!-- briefing_mode: source_links -->
+
+<h3>🎯 今日 Top 3</h3>
+<p><strong>今日先提供原文速览</strong></p>
+<p>摘要编辑暂不可用，以下保留过去 48 小时的新内容原文标题与来源，不生成未经核验的摘要或排名。后续任务会自动重试补全。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://huggingface.co/blog/ggml-org/llamacpp-amd-bench">Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon</a></strong> · Hugging Face Blog</p>
+</li>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Nov/26/jack-despain-zhou">Quoting Jack Despain Zhou</a></strong> · Simon Willison</p>
+</li>
+<li>
+<p><strong><a href="https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia">Nvidia hits pause on chip shipments to Southeast Asia</a></strong> · TechCrunch</p>
+</li>
+<li>
+<p><strong><a href="https://www.theverge.com/policy/1042620/character-ai-sale-state-ags-block-selling-users-chats">42 state AGs are trying to stop Character.AI from selling users’ chats</a></strong> · The Verge AI</p>
+</li>
+<li>
+<p><strong><a href="https://github.blog/changelog/2026-11-25-copilot-code-review-billing-will-default-to-the-organization">Copilot code review billing will default to the organization</a></strong> · GitHub Changelog</p>
+</li>
+<li>
+<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-11-25-search-for-agents">AI Search - Introducing Search for Agents</a></strong> · Cloudflare Changelog</p>
+</li>
+</ul>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>原文速览模式；标题保留原文，不冒充中文编辑稿。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-26</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-26.html</link>
@@ -879,70 +915,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：OpenAI、Hugging Face Blog、NVIDIA Technical Blog、Simon Willison、TechCrunch、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、The Verge AI</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-11-13</title>
-      <link>https://daily.hiwd.com/archive/2026-11/2026-11-13.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-13.html</guid>
-      <pubDate>Fri, 13 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade">Google 搜索接入 Gemini 4 Hydrogen，复杂查询能力升级</a></p>
-<p><strong>来源</strong>：<a href="https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade">Google AI Blog</a> · 2026-11-12</p>
-<!-- published_at: 2026-11-12T18:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>谷歌将 Gemini 4 Hydrogen 模型部署到全球 Google 搜索，以提供更直观、视觉化和精准的答案。</li>
-<li>这是搜索产品大规模的模型升级，直接影响数十亿用户的查询体验，并展示 Hydrogen 模型在快速执行和复杂任务理解上的能力。</li>
-<li>使用 Google 搜索的普通用户，以及参考搜索结果的 AI 应用开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：厂商声称提升了复杂问题处理能力，但实际效果需通过具体查询对比验证，注意其与 Gemini 4 Carbon/Argon 的定位差异。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending">Nebius 公布 2027 年 400 亿美元支出计划</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending">TechCrunch</a> · 2026-11-12</p>
-<!-- published_at: 2026-11-12T21:27:10+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>Nebius 在第三季度财报电话会议上宣布 2027 年计划支出 400 亿美元，远超华尔街预期。</li>
-<li>这笔支出计划将影响 AI 基础设施供应格局，并揭示其依赖客户预付款和贷款的融资模式风险。</li>
-<li>AI 基础设施投资者、云服务客户和竞争对手。</li>
-</ul>
-<p><strong>产品技术视角</strong>：虽然计划宏大，但融资模式存在风险，需要关注项目延误和客户合同执行情况。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations">研究：AI 聊天机器人在 15% 的对话中推荐虚假零售网站</a></p>
-<p><strong>来源</strong>：<a href="https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations">The Verge AI</a> · 2026-11-12</p>
-<!-- published_at: 2026-11-12T12:00:00-05:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>一项研究测试了 Gemini、Perplexity 和 ChatGPT，发现高达 15% 的对话中聊天机器人展示了“有风险”的 URL。</li>
-<li>这暴露了 AI 助手在购物推荐中的安全隐患，可能将用户导向仿冒或其他风险网站。</li>
-<li>依赖 AI 进行购物研究的消费者，以及需要确保引用安全性的 AI 产品开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：验证 AI 助手输出 URL 的可靠性和安全性；该研究结果基于特定测试集，实际风险可能因场景而异。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-11-12-d1-data-source">Cloudflare AI Search 支持 D1 数据库作为数据源（beta）</a></strong> · Cloudflare Changelog</p>
-<p>AI Search 现在可以将 D1 数据库中的行作为文档进行索引和同步，支持从仪表板、API 或 Workers 绑定创建实例，扩展了无服务器搜索的数据源选项。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/gemini-4-hydrogen-now-available-on-ai-gateway">Vercel AI Gateway 支持 Gemini 4 Hydrogen</a></strong> · Vercel Changelog</p>
-<p>Gemini 4 Hydrogen 现已在 Vercel AI Gateway 上可用，改进了代理编码、知识工作和工具使用，并保持低延迟，适合需要长任务处理的开发者集成。</p>
-</li>
-<li>
-<p><strong><a href="https://simonwillison.net/2026/Nov/11/aws-emulator">AWS 推出官方模拟器 aws-emulator</a></strong> · Simon Willison</p>
-<p>AWS 发布官方模拟器，允许在本地克隆其多种服务进行测试而无需付费 API 密钥，目前要求 Docker 运行，为开发者提供了新的测试便利。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：AI 模型的能力升级与实际部署风险并存，企业需在采用前沿模型时同步验证安全性和可靠性。 Google 搜索升级宣称带来更好答案，但同一日的研究显示主流聊天机器人在高达 15% 的购物对话中推荐虚假网站，凸显能力提升与安全风险的矛盾。 从业者不能仅依赖模型厂商的性能声明，需建立独立的安全验证流程，并关注输出中的外部链接和引用。 观察 AI 助手在真实购物查询中推荐虚假网站的比率是否随时间下降，以及平台是否引入更严格的 URL 过滤机制。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：Google AI Blog、TechCrunch、Cloudflare Changelog、Vercel Changelog、Simon Willison、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
