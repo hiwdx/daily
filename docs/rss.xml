@@ -7,8 +7,52 @@
     <description>AI 行业每日精选</description>
     <language>zh-CN</language>
     <copyright>© 2026 hiwd · All rights reserved. https://hiwd.com/</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 11:00:16 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2026 06:43:58 +0800</lastBuildDate>
     <atom:link href="https://daily.hiwd.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 行业每日简报 · 2026-11-28</title>
+      <link>https://daily.hiwd.com/archive/2026-11/2026-11-28.html</link>
+      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-28.html</guid>
+      <pubDate>Sat, 28 Nov 2026 23:59:00 +0800</pubDate>
+      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
+<p><strong>标题</strong>：<a href="https://huggingface.co/blog/video-trainium3">在 AWS Trainium3 上实测 LTX-2.5 视频生成：10 秒音视频片段 22-23 秒出片</a></p>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/video-trainium3">Hugging Face Blog</a> · 2026-11-27</p>
+<!-- published_at: 2026-11-27T00:00:00+00:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>Hugging Face 团队在 AWS Trainium3 实例上使用 diffusers 运行 LTX-2.5，生成 10 秒带音频视频耗时 22-23 秒。</li>
+<li>这是 Trainium3 在视频生成任务上的早期实测，为评估非英伟达硬件路线提供了数据点。</li>
+<li>关注推理成本和硬件多样性的 AI 工程师与基础设施团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：作者目标是验证易用性和性能，并接近 CUDA 或官方 API 水平；尚未提供与 CUDA 的全面基准对比。</p>
+<hr />
+<p><strong>标题</strong>：<a href="https://www.theverge.com/tech/1041801/android-intelligence-create-my-widget-gemini">Android AI 自制小组件上手：适合摆弄，但别指望解决实时用例</a></p>
+<p><strong>来源</strong>：<a href="https://www.theverge.com/tech/1041801/android-intelligence-create-my-widget-gemini">The Verge AI</a> · 2026-11-27</p>
+<!-- published_at: 2026-11-27T09:00:00-05:00 -->
+
+<p><strong>摘要</strong>：</p>
+<ul>
+<li>The Verge 编辑实测 Android 的 AI 自定义小组件功能，发现其无法实现实时公交提醒，但能生成其他有趣小组件。</li>
+<li>该测试揭示了 AI 生成界面的实际边界：静态布局可行，实时数据场景仍受限。</li>
+<li>移动端产品经理和 Android 开发者，尤其是探索 AI 驱动个性化界面的团队。</li>
+</ul>
+<p><strong>产品技术视角</strong>：功能定位为“vibe-coding”，可能更适合原型探索；采用前应验证动态数据绑定和更新能力。</p>
+<h3>📰 其他值得看的</h3>
+<ul>
+<li>
+<p><strong><a href="https://simonwillison.net/2026/Nov/26/jack-despain-zhou">Simon Willison 引用评论：AI 正在造成“去个体化”</a></strong> · Simon Willison</p>
+<p>作者引用 Jack Despain Zhou 的观点，指出 AI 生成内容让视频、演讲和邮件都听起来像 Claude，可能导致个人表达同质化。</p>
+</li>
+</ul>
+<h3>🔍 今日主题观察</h3>
+<p>编辑判断：硬件加速与轻量 AI 工具同时推进，但“生成能力”和“生产可用性”之间仍有巨大鸿沟。 Trainium3 实测展示了视频生成在非英伟达硬件上的可行性，但作者强调的是接近 CUDA 性能而非超越；Android AI 小组件则体现了 AI 生成界面的趣味性，但无法满足实时数据需求。两条证据分别从底层算力和终端应用层面说明：AI 能生成内容，但距离可靠的生产工具还有差距。 团队在采用新硬件或 AI 生成界面时，应该先明确用例对实时性、动态性和性能的要求，避免被“能跑通”误导。 关注 Trainium3 与 CUDA 的标准化基准对比，以及 Android AI 小组件是否引入实时数据 API。</p>
+<h3>⚠️ 信息来源说明</h3>
+<ul>
+<li>本期来源：Hugging Face Blog、Simon Willison、The Verge AI</li>
+<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
+</ul>]]></description>
+    </item>
     <item>
       <title>AI 行业每日简报 · 2026-11-27</title>
       <link>https://daily.hiwd.com/archive/2026-11/2026-11-27.html</link>
@@ -867,90 +911,6 @@
 <h3>⚠️ 信息来源说明</h3>
 <ul>
 <li>本期来源：OpenAI、Hugging Face Blog、TechCrunch、The Verge AI、GitHub Changelog</li>
-<li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
-</ul>]]></description>
-    </item>
-    <item>
-      <title>AI 行业每日简报 · 2026-11-14</title>
-      <link>https://daily.hiwd.com/archive/2026-11/2026-11-14.html</link>
-      <guid isPermaLink="true">https://daily.hiwd.com/archive/2026-11/2026-11-14.html</guid>
-      <pubDate>Sat, 14 Nov 2026 23:59:00 +0800</pubDate>
-      <description><![CDATA[<h3>🎯 今日 Top 3</h3>
-<p><strong>标题</strong>：<a href="https://openai.com/index/introducing-chatgpt-wallet">OpenAI 推出 ChatGPT Wallet，AI 智能体可持卡完成购买</a></p>
-<p><strong>来源</strong>：<a href="https://openai.com/index/introducing-chatgpt-wallet">OpenAI</a> · 2026-11-13</p>
-<!-- published_at: 2026-11-13T15:00:00+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>OpenAI 上线 ChatGPT Wallet，让 ChatGPT Work、Codex 和 dots 中的智能体在用户批准后使用现有信用卡完成购买。</li>
-<li>首次将 AI 代理接入真实支付环节，需要同时处理交易授权、风控与责任归属，直接影响智能体商业化闭环。</li>
-<li>美国 ChatGPT Pro 订阅者以及希望在智能体中集成购买能力的开发者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：用户审批与卡保护机制可能与现有电商反欺诈策略冲突，开发者需评估退款、拒付和代理误购场景。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation">LangChain 完成 3 亿美元 C 轮融资，估值 30 亿美元</a></p>
-<p><strong>来源</strong>：<a href="https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation">TechCrunch</a> · 2026-11-13</p>
-<!-- published_at: 2026-11-13T19:37:57+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>AI 智能体管理初创公司 LangChain 宣布完成 3 亿美元 C 轮融资，估值达 30 亿美元，由 CapitalG 领投。</li>
-<li>大额融资说明市场对智能体编排与管理层的需求从开源工具转向企业级平台，会影响开发者选型。</li>
-<li>使用 LangChain/LangGraph 的 AI 工程师、企业平台团队及智能体基础设施投资者。</li>
-</ul>
-<p><strong>产品技术视角</strong>：估值一年翻倍以上，需要观察其企业版功能是否与开源版分裂，以及多云/本地部署的锁定风险。</p>
-<hr />
-<p><strong>标题</strong>：<a href="https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla">NVIDIA 技术博客：用 cuDLA 在 Jetson AGX Orin 上于 Python 中运行原生 DLA 推理</a></p>
-<p><strong>来源</strong>：<a href="https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla">NVIDIA Technical Blog</a> · 2026-11-13</p>
-<!-- published_at: 2026-11-13T18:57:10+00:00 -->
-
-<p><strong>摘要</strong>：</p>
-<ul>
-<li>NVIDIA 发布 cuDLA 的 Python 绑定，使 Jetson AGX Orin 上的 DLA（深度学习加速器）支持通过 CUDA 流协调混合推理。</li>
-<li>为边缘设备提供在 Python 中直接调用 DLA 的路径，有望显著降低推理功耗并释放 GPU 算力。</li>
-<li>在 Jetson 平台上部署视觉或多模态模型的边缘 AI 工程师。</li>
-</ul>
-<p><strong>产品技术视角</strong>：混合模式下需手动管理 CUDA 流同步，开发者应抽象统一内存并量化 DLA 实际能效收益。</p>
-<h3>📰 其他值得看的</h3>
-<ul>
-<li>
-<p><strong><a href="https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place">Hugging Face 博客：使用 SimReady 资产构建机器人抓取仿真</a></strong> · Hugging Face Blog</p>
-<p>SimReady 为 OpenUSD 资产预置碰撞、质量、关节等仿真属性，示例展示 UR17G 机械臂与 Robotiq 夹爪完成拾放任务。</p>
-</li>
-<li>
-<p><strong><a href="https://simonwillison.net/2026/Nov/12/llm-gemini">Simon Willison 发布 llm-gemini 0.37，记录 Gemini 4 系列定价</a></strong> · Simon Willison</p>
-<p>Gemini 4 Hydrogen 价格接近 Carbon/Argon，但促销价随时间上涨，作者称定价令人困惑。</p>
-</li>
-<li>
-<p><strong><a href="https://github.blog/changelog/2026-11-13-github-enterprise-server-support-in-the-github-copilot-app">GitHub Copilot 应用支持 GitHub Enterprise Server</a></strong> · GitHub Changelog</p>
-<p>GHES 用户可在 Copilot 应用中处理远程仓库、Issue 和 PR，该功能由预览转正式。</p>
-</li>
-<li>
-<p><strong><a href="https://developers.cloudflare.com/changelog/post/2026-11-13-quick-actions-local-dev">Cloudflare Browser Run 快速操作支持本地开发</a></strong> · Cloudflare Changelog</p>
-<p>wrangler dev 下可通过本地 Chrome 调用 .quickAction()，但 JSON 操作需要 AI 模型且存在限制。</p>
-</li>
-<li>
-<p><strong><a href="https://vercel.com/changelog/parallel-decisions-now-available-on-ai-gateway-for-free">Vercel AI Gateway 免费提供 Parallel Decisions 至 11 月 23 日</a></strong> · Vercel Changelog</p>
-<p>Parallel Decisions 可搜索实时网页并以概率和引用证据回答是非、选择或评分问题。</p>
-</li>
-<li>
-<p><strong><a href="https://huggingface.co/blog/allenai/xybench">Hugging Face 博客发布 XYBench，测试 AI 对误导性问题的处理</a></strong> · Hugging Face Blog</p>
-<p>XYBench 包含 8000 多个基于误解的问题，评估助手能否识别并纠正用户提问中的隐藏前提。</p>
-</li>
-<li>
-<p><strong><a href="https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm">NVIDIA 技术博客：利用 vLLM 在两台 DGX Station 上服务 GLM-5.3</a></strong> · NVIDIA Technical Blog</p>
-<p>GLM-5.3 NVFP4 量化模型需要 464GB 显存，演示如何用 ConnectX-8 RDMA 和 TP=2 跨两机提供服务。</p>
-</li>
-<li>
-<p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on">The Verge 评测 Claude Duet：神经质但意外地有帮助</a></strong> · The Verge AI</p>
-<p>Duet 会主动提出帮助撰写评测，行动略显急躁但可作为助手处理任务。</p>
-</li>
-</ul>
-<h3>🔍 今日主题观察</h3>
-<p>编辑判断：AI 智能体正在从对话界面转向真实世界的支付与任务执行，但当前的安全与责任边界尚未明确。 OpenAI 直接让智能体完成信用卡支付，代表能力触达资金流；LangChain 获巨额融资说明智能体编排层正被资本押注为关键基础设施。 开发者必须自行设计权限隔离、交易审计和回滚机制；平台方会越来越深入支付与身份，但事故责任可能落在集成方。 观察 ChatGPT Wallet 的退款率、欺诈投诉和开发者调用量，以及 LangChain 企业版是否加强交易与合规功能。</p>
-<h3>⚠️ 信息来源说明</h3>
-<ul>
-<li>本期来源：OpenAI、Hugging Face Blog、NVIDIA Technical Blog、Simon Willison、TechCrunch、GitHub Changelog、Cloudflare Changelog、Vercel Changelog、The Verge AI</li>
 <li>日期与链接来自公开订阅源；效果与性能结论保留原文归属，点评为编辑判断。</li>
 </ul>]]></description>
     </item>
